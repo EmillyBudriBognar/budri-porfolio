@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Home - Budri</title>
+        <title>Budri - Estúdio Criativo</title>
         <meta
           name="description"
           content="Página inicial do portfólio profissional de Budri, especialista em front-end, mobile e UX design."
@@ -23,12 +24,12 @@ export default function Home() {
         </header>
 
         {/* Main Content */}
-        <main className="flex flex-col items-center justify-center gap-16 p-8 sm:p-20">
+        <main className="flex flex-col items-center bg-white justify-center gap-16 p-8 sm:p-20">
           
         </main>
 
         {/* Footer */}
-        
+        <Footer></Footer>
       </div>
     </>
   );

@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import Logo from "../assets/img/logo/black-and-purple.svg"; 
-import MenuIcon from "../assets/icons/menu.svg"; 
-import CloseIcon from "../assets/icons/close.svg"; 
+import Logo from "../assets/img/logo/black-and-purple.svg";
+import MenuIcon from "../assets/icons/menu.svg";
+import CloseIcon from "../assets/icons/close.svg";
 import Button from "../components/Button";
 import Image from "next/image";
 
 const Nav = () => {
   const Links = [
     { name: "INÍCIO", link: "/" },
-    { name: "PORTFOLIO", link: "/portfolio" },
+    { name: "PROJETOS", link: "/portfolio" },
     { name: "SOBRE", link: "/sobre" },
     { name: "CONTATO", link: "/contato" },
   ];
@@ -18,8 +18,8 @@ const Nav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="shadow-md w-full fixed top-0 left-0 z-50">
-      <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
+    <div className="w-full fixed top-0 left-0 z-50">
+      <div className="flex items-center justify-between bg-white py-4 md:px-10 px-7">
         {/* Logo */}
         <div
           className="font-bold text-2xl cursor-pointer flex items-center text-gray-800"
@@ -52,12 +52,14 @@ const Nav = () => {
 
         {/* Links */}
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-20 opacity-100" : "top-[-490px] opacity-0"
-          } md:opacity-100`}
+          className={`absolute md:static bg-white left-0 w-full md:w-auto transition-all duration-500 ease-in ${
+            open
+              ? "top-20 opacity-100 flex flex-col items-center gap-5"
+              : "top-[-490px] opacity-0"
+          } md:opacity-100 md:flex md:flex-row md:gap-8 md:left-0`}
         >
           {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
+            <li key={link.name} className="text-xl">
               <a
                 href={link.link}
                 className="text-gray-800 hover:text-gray-400 duration-500"
@@ -66,10 +68,16 @@ const Nav = () => {
               </a>
             </li>
           ))}
-          <li>
-            <Button>Pedir Orçamento</Button>
+          {/* Botão em telas menores */}
+          <li className="mt-3 md:hidden">
+            <Button>FALE CONOSCO!</Button>
           </li>
         </ul>
+
+        {/* Botão em telas maiores */}
+        <div className="hidden md:block">
+          <Button>FALE CONOSCO!</Button>
+        </div>
       </div>
     </div>
   );
