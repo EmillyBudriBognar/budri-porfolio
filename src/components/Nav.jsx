@@ -70,13 +70,13 @@ const Nav = () => {
           ))}
           {/* Botão em telas menores */}
           <li className="mt-3 md:hidden">
-            <Button>FALE CONOSCO!</Button>
+            <Button>FALE COMIGO!</Button>
           </li>
         </ul>
 
         {/* Botão em telas maiores */}
         <div className="hidden md:block">
-          <Button>FALE CONOSCO!</Button>
+          <Button>FALE COMIGO!</Button>
         </div>
       </div>
     </div>

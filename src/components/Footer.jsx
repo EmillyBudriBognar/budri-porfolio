@@ -1,6 +1,7 @@
 import React from "react";
-import { SocialIcons, Icons } from "./SocialIcons"; // Componente responsável pelos ícones sociais
-import Logo from "../assets/img/logo/all-white.svg"; // Logo da empresa
+import { SocialIcons, Icons } from "./SocialIcons"; 
+import Logo from "../assets/img/logo/all-white.svg";
+import Image from "next/image";
 
 const Footer = () => {
   // Informações sobre a empresa
@@ -28,7 +29,7 @@ const Footer = () => {
   // Componente para exibir a logo
   const LogoComponent = () => (
     <div className="flex items-center justify-center">
-      <img
+      <Image
         src={Logo}
         alt="Budri Logo"
         className="w-24 h-auto"

@@ -2,6 +2,7 @@ import React from "react";
 import LogoGithub from "../assets/icons/logo-github.svg";
 import LogoLinkedin from "../assets/icons/logo-linkedin.svg";
 import LogoInstagram from "../assets/icons/logo-instagram.svg";
+import Image from "next/image";
 
 const SocialIcons = ({ Icons }) => {
   return (
@@ -14,7 +15,7 @@ const SocialIcons = ({ Icons }) => {
           rel="noopener noreferrer"
           className="p-2 cursor-pointer inline-flex items-center rounded-full bg-purple-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-purple-500 duration-300"
         >
-          <img src={icon.icon} alt={icon.name} className="w-6 h-6" />
+          <Image src={icon.icon} alt={icon.name} className="w-6 h-6" />
         </a>
       ))}
     </div>

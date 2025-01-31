@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
+import ScrollingWords from "@/components/ScrollingWords";
 import Image from "next/image";
 
 export default function Home() {
@@ -25,7 +27,8 @@ export default function Home() {
 
         {/* Main Content */}
         <main className="flex flex-col items-center bg-white justify-center gap-16 p-8 sm:p-20">
-          
+          <HeroSection></HeroSection>
+          <ScrollingWords></ScrollingWords>
         </main>
 
         {/* Footer */}

@@ -1,0 +1,30 @@
+.bg-gradient-circle {
+    background: radial-gradient(circle at bottom, rgba(169, 48, 203, 0.7) 0%, rgba(128, 0, 128, 0) 37%);
+  }
+  
+  /* Animação do aceno da mãozinha */
+  @keyframes wave {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(16deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+  
+  .animate-wave {
+    display: inline-block;
+    animation: wave 0.8s ease-in-out 2;
+  }
+  
+  /* Animação palavras scroll */
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 100s linear infinite;
+  }
+  
