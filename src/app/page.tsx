@@ -11,7 +11,7 @@ export default function Home() {
         <title>Budri - Estúdio Criativo</title>
         <meta
           name="description"
-          content="Página inicial do portfólio profissional de Budri, especialista em front-end, mobile e UX design."
+          content="A Budri é uma marca especializada em criar soluções digitais que combinam pesquisa sobre a experiência do usuário, design, identidade visual, desenvolvimento mobile e front-end. Focada em oferecer experiências intuitivas e envolventes, a marca transforma ideias em interfaces que unem funcionalidade e estética, sempre alinhadas às necessidades reais de quem interage."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
