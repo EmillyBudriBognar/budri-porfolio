@@ -19,7 +19,7 @@ const Nav = () => {
 
   return (
     <div className="w-full fixed top-0 left-0 z-50">
-      <div className="flex items-center justify-between bg-white py-4 md:px-10 px-7">
+      <div className="flex items-center justify-between bg-gray-100 py-4 md:px-10 px-7">
         {/* Logo */}
         <div
           className="font-bold text-2xl cursor-pointer flex items-center text-gray-800"
@@ -52,7 +52,7 @@ const Nav = () => {
 
         {/* Links */}
         <ul
-          className={`absolute md:static bg-white left-0 w-full md:w-auto transition-all duration-500 ease-in ${
+          className={`absolute md:static bg-gray-100 left-0 w-full md:w-auto transition-all duration-500 ease-in ${
             open
               ? "top-20 opacity-100 flex flex-col items-center gap-5"
               : "top-[-490px] opacity-0"

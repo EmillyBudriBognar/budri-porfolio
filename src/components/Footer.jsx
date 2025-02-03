@@ -32,7 +32,7 @@ const Footer = () => {
       <Image
         src={Logo}
         alt="Budri Logo"
-        className="w-24 h-auto"
+        className="w-40 h-auto"
       />
     </div>
   );
@@ -105,7 +105,7 @@ const Footer = () => {
 
       {/* Rodapé inferior com direitos reservados e ícones sociais */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-2 text-gray-300 text-sm pb-8">
-        <span>© {currentYear} Budri - Por: Emilly Budri Bognar.</span>
+        <span>© {currentYear}. Budri - Por: Emilly Budri Bognar.</span>
         <span>Todos os direitos reservados.</span>
         <SocialIcons Icons={Icons} />
       </div>

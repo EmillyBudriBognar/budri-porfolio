@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import ScrollingWords from "@/components/ScrollingWords";
+import ServicesSection from "@/components/ServicesSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -26,9 +27,10 @@ export default function Home() {
         </header>
 
         {/* Main Content */}
-        <main className="flex flex-col items-center bg-white justify-center gap-16 p-8 sm:p-20">
+        <main className="flex flex-col items-center bg-gray-100 justify-center">
           <HeroSection></HeroSection>
           <ScrollingWords></ScrollingWords>
+          <ServicesSection></ServicesSection>
         </main>
 
         {/* Footer */}
