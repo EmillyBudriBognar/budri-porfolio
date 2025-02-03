@@ -16,6 +16,7 @@ const Footer = () => {
     { name: "INÍCIO", link: "#" },
     { name: "PROJETOS", link: "#" },
     { name: "SOBRE", link: "#" },
+    { name: "FORMAÇÃO", link: "/formacao" },
     { name: "CONTATO", link: "#" },
   ];
 

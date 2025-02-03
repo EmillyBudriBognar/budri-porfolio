@@ -5,7 +5,7 @@ import Services from "@/components/Services";
 
 const ServicesSection = () => {
   return (
-    <section className="bg-gray-900 w-full text-white py-16 px-6 md:px-12">
+    <section id="ServicesSection" className="bg-gray-900 w-full text-white py-16 px-6 md:px-12">
       <div className="mx-auto text-center">
         {/* Logo e Título */}
         <div className="mb-8">

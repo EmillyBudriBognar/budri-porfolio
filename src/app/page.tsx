@@ -8,6 +8,7 @@ import HeroSection from "@/components/HeroSection";
 import ScrollingWords from "@/components/ScrollingWords";
 import ServicesSection from "@/components/ServicesSection";
 import AboutMeSection from "@/components/AboutMeSection";
+import FormationSection from "@/components/FormationSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -31,14 +32,15 @@ export default function Home() {
 
         {/* Main Content */}
         <main className="flex flex-col items-center bg-gray-100 justify-center">
-          <HeroSection></HeroSection>
-          <ScrollingWords></ScrollingWords>
-          <ServicesSection></ServicesSection>
-          <AboutMeSection></AboutMeSection>
+          <HeroSection/>
+          <ScrollingWords/>
+          <ServicesSection/>
+          <AboutMeSection/>
+          <FormationSection />
         </main>
 
         {/* Footer */}
-        <Footer></Footer>
+        <Footer />
       </div>
     </>
   );
