@@ -5,6 +5,7 @@ import Logo from "../assets/img/logo/black-and-purple.svg";
 import MenuIcon from "../assets/icons/menu.svg";
 import CloseIcon from "../assets/icons/close.svg";
 import Button from "../components/Button";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const Nav = () => {
@@ -59,14 +60,16 @@ const Nav = () => {
           } md:opacity-100 md:flex md:flex-row md:gap-8 md:left-0`}
         >
           {Links.map((link) => (
-            <li key={link.name} className="text-xl">
-              <a
-                href={link.link}
-                className="text-gray-800 hover:text-gray-400 duration-500"
-              >
-                {link.name}
-              </a>
-            </li>
+           <li key={link.name} className="text-xl">
+            <motion.a
+              href={link.link}
+              className="text-gray-800 hover:text-gray-400 duration-500"
+              whileHover={{ scale: 1.10 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {link.name}
+            </motion.a>
+          </li>
           ))}
           {/* Botão em telas menores */}
           <li className="mt-3 md:hidden">

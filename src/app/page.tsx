@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import ScrollingWords from "@/components/ScrollingWords";
 import ServicesSection from "@/components/ServicesSection";
+import AboutMeSection from "@/components/AboutMeSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
           <HeroSection></HeroSection>
           <ScrollingWords></ScrollingWords>
           <ServicesSection></ServicesSection>
+          <AboutMeSection></AboutMeSection>
         </main>
 
         {/* Footer */}

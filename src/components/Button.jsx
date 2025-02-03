@@ -1,13 +1,15 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Button = (props) => {
   return (
-    <button
-      className="bg-gradient-to-r from-indigo-600 to-purple-600 font-bold text-white px-6 py-2 rounded-2xl shadow-md hover:shadow-lg hover:from-indigo-500 hover:to-purple-500 focus:ring-2 focus:ring-purple-300 focus:outline-none duration-500"
-      style={{ fontFamily: "Jost, sans-serif" }}
+    <motion.button 
+            className="px-8 py-3 border-2 border-purple-600 bg-[#ffffff73] text-purple-600 font-bold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 self-center md:self-start"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
     >
       {props.children}
-    </button>
+    </motion.button>
   );
 };
 

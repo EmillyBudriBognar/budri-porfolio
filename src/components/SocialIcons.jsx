@@ -1,26 +1,10 @@
+"use client";
 import React from "react";
 import LogoGithub from "../assets/icons/logo-github.svg";
 import LogoLinkedin from "../assets/icons/logo-linkedin.svg";
 import LogoInstagram from "../assets/icons/logo-instagram.svg";
+import { motion } from "framer-motion";
 import Image from "next/image";
-
-const SocialIcons = ({ Icons }) => {
-  return (
-    <div className="text-purple-300">
-      {Icons.map((icon) => (
-        <a
-          key={icon.name}
-          href={icon.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 cursor-pointer inline-flex items-center rounded-full bg-purple-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-purple-500 duration-300"
-        >
-          <Image src={icon.icon} alt={icon.name} className="w-6 h-6" />
-        </a>
-      ))}
-    </div>
-  );
-};
 
 const Icons = [
   { name: "logo-github", icon: LogoGithub, link: "https://github.com/EmillyBudriBognar" },
@@ -28,4 +12,24 @@ const Icons = [
   { name: "logo-instagram", icon: LogoInstagram, link: "https://www.instagram.com/emillybudri/#" },
 ];
 
-export { SocialIcons, Icons };
+const SocialIcons = () => {
+  return (
+    <div className="text-purple-300">
+      {Icons.map((icon) => (
+        <motion.a
+          key={icon.name}
+          href={icon.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 cursor-pointer inline-flex items-center rounded-full bg-purple-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-purple-500 duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Image src={icon.icon} alt={icon.name} className="w-6 h-6" />
+        </motion.a>
+      ))}
+    </div>
+  );
+};
+
+export { SocialIcons };
