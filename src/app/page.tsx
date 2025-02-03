@@ -9,6 +9,7 @@ import ScrollingWords from "@/components/ScrollingWords";
 import ServicesSection from "@/components/ServicesSection";
 import AboutMeSection from "@/components/AboutMeSection";
 import FormationSection from "@/components/FormationSection";
+import ContactSection from "@/components/ContactSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
           <ServicesSection/>
           <AboutMeSection/>
           <FormationSection />
+          <ContactSection/>
         </main>
 
         {/* Footer */}
