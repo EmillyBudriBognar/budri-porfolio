@@ -17,7 +17,7 @@
   /* Animação palavras scroll */
   @keyframes scroll {
     0% {
-      transform: translateX(100%);
+      transform: translateX(0);
     }
     100% {
       transform: translateX(-100%);
@@ -25,6 +25,11 @@
   }
   
   .animate-scroll {
-    animation: scroll 100s linear infinite;
+    display: flex;
+    animation: scroll 800s linear infinite;
+  }
+  
+  .scrolling-text {
+    white-space: nowrap;
   }
   
