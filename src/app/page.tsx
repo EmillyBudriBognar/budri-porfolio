@@ -32,13 +32,23 @@ export default function Home() {
         </header>
 
         {/* Main Content */}
-        <main className="flex flex-col items-center bg-gray-100 justify-center">
-          <HeroSection/>
-          <ScrollingWords/>
-          <ServicesSection/>
-          <AboutMeSection/>
-          <FormationSection />
-          <ContactSection/>
+        <main>
+          <div id="hero-section">
+            <HeroSection/>
+          </div>
+            <ScrollingWords/>
+          <div id="services-section">
+            <ServicesSection/>
+          </div>
+          <div id="aboutme-section">
+            <AboutMeSection/>
+          </div>
+          <div id="formation-section">
+            <FormationSection />
+          </div>
+          <div id="contact-section">
+            <ContactSection/>
+          </div>
         </main>
 
         {/* Footer */}

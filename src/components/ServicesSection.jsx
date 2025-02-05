@@ -5,7 +5,7 @@ import Services from "@/components/Services";
 
 const ServicesSection = () => {
   return (
-    <section id="ServicesSection" className="bg-gray-900 w-full text-white py-16 px-6 md:px-12">
+    <section id="ServicesSection" className="bg-[#1f0b32] w-full text-white py-16 px-6 md:px-12">
       <div className="mx-auto text-center">
         {/* Logo e Título */}
         <div className="mb-8">
@@ -30,7 +30,7 @@ const ServicesSection = () => {
 
         {/* Subtítulo */}
         <p className="text-xl mb-4 font-bold">
-          Serviços <span className="text-purple-400">oferecidos</span>.
+          Serviços oferecidos que <span className="text-purple-400">ALAVANCARÃO </span>os seus negócios.
         </p>
 
         {/* Cards */}
@@ -40,7 +40,7 @@ const ServicesSection = () => {
         <p className="mt-6 mb-10 text-lg font-bold">
           Sinta-se à vontade para dar uma olhada nos{" "}
           <span className="text-purple-400">
-            principais projetos
+            PRINCIPAIS PROJETOS
           </span>
           .
         </p>

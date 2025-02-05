@@ -7,7 +7,10 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section id="HeroSection" className="flex flex-col items-center justify-start h-[90vh] text-center py-10 px-4 relative bg-gradient-circle">
+    <section className="flex flex-col items-center justify-start h-[90vh] text-center py-10 px-4 relative bg-gray-100">
+      {/* Fundo do círculo com a classe bg-gradient-circle */}
+      <div className="absolute inset-0 bg-gradient-circle z-0"></div>
+
       <div className="flex flex-col items-center z-10 mt-16">
         <h3 className="text-gray-700 text-lg font-bold">
           <span className="text-3xl animate-wave">👋</span> Olá, eu sou a Emilly, mas pode me chamar de{' '}

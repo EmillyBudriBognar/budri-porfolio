@@ -13,11 +13,11 @@ const Footer = () => {
 
   // Links para navegação nas páginas principais
   const PAGE_LINKS = [
-    { name: "INÍCIO", link: "#" },
-    { name: "PROJETOS", link: "#" },
-    { name: "SOBRE", link: "#" },
-    { name: "FORMAÇÃO", link: "/formacao" },
-    { name: "CONTATO", link: "#" },
+    { name: "INÍCIO", link: "hero-section" },
+    { name: "PROJETOS", link: "services-section" },
+    { name: "SOBRE", link: "aboutme-section" },
+    { name: "FORMAÇÃO", link: "formation-section" },
+    { name: "CONTATO", link: "contact-section" },
   ];
 
   // Informações de contato
@@ -26,6 +26,14 @@ const Footer = () => {
     { name: "emillybudribognar@gmail.com", link: "mailto:emillybudribognar@gmail.com" },
     { name: "Brasil" },
   ];
+
+  // Função para rolar suavemente até a seção
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   // Componente para exibir a logo
   const LogoComponent = () => (
@@ -38,30 +46,6 @@ const Footer = () => {
     </div>
   );
 
-  // Componente reutilizável para listas de itens
-  const Item = ({ Links, title, removeHover, justifyText }) => (
-    <ul className={`text-left ${justifyText ? "text-justify" : ""}`}>
-      {/* Título da seção */}
-      <h1 className="mb-1 font-semibold">{title}</h1>
-      {Links.map((link) => (
-        <li key={link.name}>
-          {/* Link estilizado com hover opcional */}
-          <a
-            className={`text-gray-300 ${
-              removeHover ? "" : "hover:text-purple-300"
-            } duration-300 text-sm leading-6`}
-            href={link.link}
-          >
-            {link.name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-
-  // Obtendo o ano atual dinamicamente
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-purple-900 text-white">
       {/* Container principal com grid para organizar os itens */}
@@ -73,29 +57,42 @@ const Footer = () => {
 
         {/* Sobre a empresa */}
         <div>
-          <Item
-            Links={COMPANY_INFO}
-            title="SOBRE"
-            removeHover={true}
-            justifyText={true}
-          />
+          <ul className="text-left text-justify">
+            <h1 className="mb-1 font-semibold">SOBRE</h1>
+            {COMPANY_INFO.map((item, index) => (
+              <li key={index} className="text-gray-200 text-sm">
+                {item.name}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Links das páginas */}
         <div className="lg:ml-20">
-          <Item Links={PAGE_LINKS} title="LINKS" removeHover={false} />
+          <h1 className="mb-1 font-semibold">LINKS</h1>
+          {PAGE_LINKS.map((link) => (
+            <a
+              key={link.name}
+              href={`#${link.link}`}
+              className="text-gray-200 hover:text-purple-300 duration-300 text-sm leading-6 cursor-pointer block mb-2"
+              onClick={(e) => {
+                e.preventDefault(); // Previne o comportamento padrão do link
+                scrollToSection(link.link); // Chama a função de rolagem suave
+              }}
+            >
+              {link.name}
+            </a>
+          ))}
         </div>
 
         {/* Informações de contato */}
         <div className="lg:-ml-10">
           <h1 className="mb-1 font-semibold">CONTATO</h1>
           {CONTACT_INFO.map((contact) => (
-            <p key={contact.name} className="text-gray-300 text-sm">
+            <p key={contact.name} className="text-gray-200 text-sm">
               <a
                 href={contact.link}
-                className={`duration-300 ${
-                  contact.name === "Brasil" ? "" : "hover:text-purple-400"
-                }`}
+                className={`duration-300 ${contact.name === "Brasil" ? "" : "hover:text-purple-400"}`}
               >
                 {contact.name}
               </a>
@@ -105,8 +102,8 @@ const Footer = () => {
       </div>
 
       {/* Rodapé inferior com direitos reservados e ícones sociais */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-2 text-gray-300 text-sm pb-8">
-        <span>© {currentYear}. Budri - Por: Emilly Budri Bognar.</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-2 text-gray-200 text-sm pb-10">
+        <span>© {new Date().getFullYear()}. Budri - Por: Emilly Budri Bognar.</span>
         <span>Todos os direitos reservados.</span>
         <SocialIcons Icons={Icons} />
       </div>

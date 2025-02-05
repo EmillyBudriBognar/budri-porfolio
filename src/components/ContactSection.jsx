@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import Button from "./ButtonPurple"; // Importe o componente Button
+import Button from "./ButtonPurple"; 
 
 const serviceId = "service_3cck3s6";
 const templateId = "template_xwq40df";
@@ -61,7 +61,7 @@ const ContactForm = () => {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-purple-50 p-4">
       <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-10 text-center">
-        Vamos construir algo incrível juntos?
+        Vamos construir algo incrível <span className="text-purple-600">juntos?</span>
       </h2>
       <p className="text-gray-600 text-center mb-8">
         Envie sua proposta e entraremos em contato o mais breve possível.
@@ -138,7 +138,7 @@ const ContactForm = () => {
         </div>
         <div className="pb-14">
             <Button type="submit" disabled={status === "sending"} className="w-full mt-6">
-            {status === "sending" ? "Enviando..." : "Enviar Mensagem"}
+            {status === "sending" ? "Enviando..." : "ENVIAR MENSAGEM"}
             </Button>
             {status === "success" && <p className="text-green-600 text-center mt-4 mb-8">Mensagem enviada com sucesso!</p>}
             {status === "error" && <p className="text-red-600 text-center mt-4 mb-8">Erro ao enviar mensagem. Tente novamente.</p>}

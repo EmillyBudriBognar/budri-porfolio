@@ -80,8 +80,8 @@ const Formacao = () => {
         <h3 className="font-semibold text-lg border-b border-white pb-2 mb-4">Certificações</h3>
         <div className="space-y-2">
           {certificacoes.slice(0, 5).map((item, index) => (
-            <div key={index} className="flex justify-between">
-              <span><a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-purple-300 duration-300">{item.nome}</a></span>
+            <div key={index} className="flex justify-between ">
+              <span><a href={item.link} target="_blank" rel="noopener noreferrer" className=" hover:text-purple-300 duration-300">{item.nome}</a></span>
               <span>{item.ano}</span>
             </div>
           ))}
@@ -99,7 +99,7 @@ const Formacao = () => {
         >
           {certificacoes.slice(5).map((item, index) => (
             <div key={index} className="flex justify-between mb-2">
-              <span><a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-purple-300 duration-300">{item.nome}</a></span>
+              <span><a href={item.link} target="_blank" rel="noopener noreferrer" className="left-text hover:text-purple-300 duration-300">{item.nome}</a></span>
               <span>{item.ano}</span>
             </div>
           ))}
