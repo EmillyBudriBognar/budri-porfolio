@@ -43,8 +43,8 @@ const Formacao = () => {
   ];
 
   return (
-    <div id="FormationSection" className="bg-gradient-to-l from-purple-800 to-blue-800 w-full text-white py-12 px-4 sm:px-8 md:px-16 lg:px-32">
-      <div className="text-center mb-8">
+    <div className="bg-gradient-to-l from-purple-800 to-blue-800 w-full pt-16 text-white py-12 px-4 sm:px-8 md:px-16 lg:px-32">
+      <div className="text-center pt-14 mb-8">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4">FORMAÇÃO</h2>
         <p className="text-sm sm:text-base max-w-2xl mx-auto">
           Aqui você encontra um resumo das minhas formações acadêmicas, cursos e certificações.

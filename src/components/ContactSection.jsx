@@ -59,8 +59,8 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-purple-50 p-4">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-10 text-center">
+    <div className="min-h-screen w-full pt-16 flex flex-col items-center justify-center bg-purple-50 p-4">
+      <h2 className="text-3xl font-bold text-gray-900 mb-6 pt-14 text-center">
         Vamos construir algo incrível <span className="text-purple-600">juntos?</span>
       </h2>
       <p className="text-gray-600 text-center mb-8">

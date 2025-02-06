@@ -5,11 +5,9 @@ import Projects from "@/components/Projects";
 
 const ProjectsSection = () => {
   return (
-    <section
-      id="ProjectsSection"
-      className="bg-gradient-to-r from-purple-800 to-blue-800 w-full text-white py-24 px-6 md:px-12"
+    <section className="bg-gradient-to-r pt-16 from-purple-800 to-blue-800 w-full text-white py-24 px-6 md:px-12"
     >
-      <div className="mx-auto text-center">
+      <div className="mx-auto text-center pt-14">
         {/* Título da seção */}
         <h2 className="text-4xl font-semibold mb-8 leading-tight">
           Principais Projetos
