@@ -35,7 +35,10 @@ export default function ProfileCard() {
   }, [displayedText, isDeleting, roleIndex]);
 
   return (
-    <motion.div id="AboutMeSection" className="flex flex-col items-center justify-center min-h-screen w-full p-8 bg-[#F6EEF9]">
+    <motion.div
+      id="AboutMeSection"
+      className="flex flex-col items-center justify-center min-h-screen w-full p-8 bg-purple-50"
+    >
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-10 max-w-4xl mt-10 mx-auto pb-10">
         Olá, eu sou a <span className="text-purple-600">Emilly Budri Bognar</span>! <br />
         <motion.span className="text-indigo-600">
@@ -43,9 +46,9 @@ export default function ProfileCard() {
           <span className="text-gray-900">|</span>
         </motion.span>
       </h2>
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto gap-24">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto gap-12">
         {/* Imagem e Social Icons */}
-        <div className="flex flex-col items-center w-full md:w-1/3 mb-12 md:mb-0 md:ml-12">
+        <div className="flex flex-col items-center w-full md:w-1/3 mb-12 md:mb-0">
           <div className="relative w-80 h-80 -mt-8 mb-8">
             <Image
               src={Emilly}
@@ -58,16 +61,19 @@ export default function ProfileCard() {
           </div>
         </div>
 
-       {/* Conteúdo */}
-       <div className="flex flex-col w-full md:w-2/3 text-center md:text-left md:mr-24">
+        {/* Conteúdo */}
+        <div className="flex flex-col w-full md:w-2/3 text-center md:text-left">
           {/* Cards em Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {[ 
+          <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {[
               { icon: "🔥", title: "Excelência", subtitle: "Expertise comprovada." },
               { icon: "⚡", title: "Performance", subtitle: "Soluções eficientes." },
-              { icon: "💰", title: "Custos", subtitle: "Qualidade acessível." }
+              { icon: "💰", title: "Custos", subtitle: "Qualidade acessível." },
             ].map((item, index) => (
-              <div key={index} className="p-4 h-40 bg-gradient-to-r from-purple-600 to-blue-800 rounded-lg shadow-md text-white text-center transition-all hover:scale-105">
+              <div
+                key={index}
+                className="p-4 h-40 bg-gradient-to-r from-purple-600 to-blue-800 rounded-lg shadow-md text-white text-center transition-all hover:scale-105"
+              >
                 <div className="text-3xl mb-2">{item.icon}</div>
                 <h4 className="font-semibold text-lg mb-1 transition-all">{item.title}</h4>
                 <p className="text-sm transition-all">{item.subtitle}</p>
@@ -75,13 +81,22 @@ export default function ProfileCard() {
             ))}
           </div>
 
-          <p className="text-gray-700 mx-auto mb-6 md:mx-0 text-justify">
-            Sou apaixonada por <b>tecnologia</b> e, especialmente, por <span className="text-purple-600 font-semibold">UX Design</span>, que mistura <b>psicologia</b>, <b>arte</b> e <b>pessoas</b> de uma forma única. Para mim, o <b>design</b> vai além de ser funcional – ele precisa ser uma <span className="text-purple-600 font-semibold">experiência agradável</span>, <b>intuitiva</b> e conectada com as <b>demandas reais</b> das pessoas. O que me motiva é criar <span className="text-indigo-600 font-semibold">soluções digitais</span> que realmente fazem a diferença no dia a dia. Curiosa e sempre em busca de <span className="text-indigo-600 font-semibold">novas perspectivas</span>, acredito que a chave para um design de sucesso é uma <b>comunicação clara</b> e entender as <span className="text-purple-600 font-semibold">necessidades reais</span> de quem vai usar o produto.
+          <p className="text-gray-700 mx-auto mb-10 md:mx-0 text-justify leading-relaxed sm:mt-[-35px] md:mt-0">
+            Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional – ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.
+
+            Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia, sempre com <b>comunicação clara</b> e foco nas <b>necessidades reais</b> dos usuários. Sou curiosa e estou sempre explorando <b>novas perspectivas</b> para aprimorar cada detalhe do design.
           </p>
 
+
           {/* Botão Centralizado */}
-          <div className="flex justify-center items-center mt-4">
-            <Button onClick={() => window.open("/", "_blank")}>BAIXAR CV</Button>
+          <div className="flex justify-center items-center mt-4 pb-12">
+            <Button
+              onClick={() =>
+                window.open("https://drive.google.com/file/d/SEU_ID_DO_PDF/view", "_blank")
+              }
+            >
+              BAIXAR CV
+            </Button>
           </div>
         </div>
       </div>

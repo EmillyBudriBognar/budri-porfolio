@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Button from "@/components/ButtonWhite";  // Certifique-se de que esse componente está funcionando corretamente
+import Button from "@/components/ButtonWhite";  
 
 const Formacao = () => {
   const [expanded, setExpanded] = useState(false);
 
   const formacoesAcademicas = [
-    { nome: "Tecnólogo em Desenvolvimento de Softwares Multiplataforma - FATEC Luigi Papaiz", ano: "2027" },
+    { nome: "Tecnólogo em Desenvolvimento de Softwares Multiplataforma - FATEC", ano: "2027" },
     { nome: "Ensino Médio - Colégio COB", ano: "2024" },
-    { nome: "Técnico em Informática para Internet - ETEC Lauro Gomes", ano: "2024" },
+    { nome: "Técnico em Informática para Internet - ETEC", ano: "2024" },
     { nome: "Profissional em Criação de Sites e Plataformas Digitais - SENAI", ano: "2022" }
   ];
 
@@ -43,7 +43,7 @@ const Formacao = () => {
   ];
 
   return (
-    <div id="FormationSection" className="bg-gradient-to-r from-purple-800 to-blue-800 w-full text-white py-12 px-4 sm:px-8 md:px-16 lg:px-32">
+    <div id="FormationSection" className="bg-gradient-to-l from-purple-800 to-blue-800 w-full text-white py-12 px-4 sm:px-8 md:px-16 lg:px-32">
       <div className="text-center mb-8">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4">FORMAÇÃO</h2>
         <p className="text-sm sm:text-base max-w-2xl mx-auto">

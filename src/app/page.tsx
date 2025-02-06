@@ -10,6 +10,7 @@ import ServicesSection from "@/components/ServicesSection";
 import AboutMeSection from "@/components/AboutMeSection";
 import FormationSection from "@/components/FormationSection";
 import ContactSection from "@/components/ContactSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -39,6 +40,9 @@ export default function Home() {
             <ScrollingWords/>
           <div id="services-section">
             <ServicesSection/>
+          </div>
+          <div id="projects-section">
+            <ProjectsSection/>
           </div>
           <div id="aboutme-section">
             <AboutMeSection/>

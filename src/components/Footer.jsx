@@ -14,7 +14,8 @@ const Footer = () => {
   // Links para navegação nas páginas principais
   const PAGE_LINKS = [
     { name: "INÍCIO", link: "hero-section" },
-    { name: "PROJETOS", link: "services-section" },
+    { name: "SERVIÇOS", link: "services-section" },
+    { name: "PROJETOS", link: "projects-section" },
     { name: "SOBRE", link: "aboutme-section" },
     { name: "FORMAÇÃO", link: "formation-section" },
     { name: "CONTATO", link: "contact-section" },

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <section className="flex flex-col items-center justify-start h-[90vh] text-center py-10 px-4 relative bg-gray-100">
+    <section className="flex flex-col items-center justify-start h-[93.5vh] text-center py-10 px-4 relative bg-purple-50">
       {/* Fundo do círculo com a classe bg-gradient-circle */}
       <div className="absolute inset-0 bg-gradient-circle z-0"></div>
 
