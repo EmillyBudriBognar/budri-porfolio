@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Button from "@/components/ButtonWhite";  
+import ButtonAllPurple from "@/components/ButtonAllPurple"; // Importando o novo botão
+import { useInView } from "react-intersection-observer";
 
 const Formacao = () => {
   const [expanded, setExpanded] = useState(false);
@@ -38,52 +39,101 @@ const Formacao = () => {
     { nome: "Programação com JavaScript - Meta", ano: "2024", link: "https://www.coursera.org/verify/NLVLLFW25QMJ" },
     { nome: "Introdução ao desenvolvimento de front-end - Meta", ano: "2024", link: "https://coursera.org/verify/MPHK2EV89FKG" },
     { nome: "Redes e Computadores - Fundação Bradesco", ano: "2023" },
-    { nome: "Imersão com Python na Prática - Empowerdata", ano: "2023"},
-    { nome: "Lógica de Programação - SENAI", ano: "2023"}
+    { nome: "Imersão com Python na Prática - Empowerdata", ano: "2023" },
+    { nome: "Lógica de Programação - SENAI", ano: "2023" }
   ];
 
+  // Hook useInView para detectar quando a seção está visível
+  const { ref: sectionRef, inView: sectionInView } = useInView({
+    triggerOnce: true, // Dispara a animação uma vez
+    threshold: 0.1, // A animação começa quando 10% da seção estiver visível
+  });
+
   return (
-    <div className="bg-gradient-to-l from-purple-800 to-blue-800 w-full pt-16 text-white py-12 px-4 sm:px-8 md:px-16 lg:px-32">
-      <div className="text-center pt-14 mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4">FORMAÇÃO</h2>
-        <p className="text-sm sm:text-base max-w-2xl mx-auto">
+    <div
+      ref={sectionRef}
+      className="bg-gradient-to-l from-purple-200 to-blue-200 dark:from-purple-900 dark:to-blue-900 w-full text-gray-900 dark:text-white py-12 px-4 sm:px-8 md:px-16 lg:px-32"
+    >
+      {/* Título e descrição */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="text-center pt-12 mb-8"
+      >
+        <h2 className="text-3xl sm:text-3xl font-bold mb-4">FORMAÇÃO</h2>
+        <p className="text-2xl sm:text-base mx-auto text-gray-700 dark:text-gray-200">
           Aqui você encontra um resumo das minhas formações acadêmicas, cursos e certificações.
         </p>
-      </div>
+      </motion.div>
 
+      {/* Formações Acadêmicas e Idiomas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Coluna 1: Formações Acadêmicas */}
         <div>
-          <h3 className="font-semibold text-lg border-b border-white pb-2 mb-4">Formações Acadêmicas</h3>
+          <h3 className="font-semibold text-lg border-b border-gray-900 dark:border-white pb-2 mb-4">
+            Formações Acadêmicas
+          </h3>
           {formacoesAcademicas.map((item, index) => (
-            <div key={index} className="flex justify-between mb-2">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }} // Delay progressivo
+              className="flex justify-between mb-2"
+            >
               <span>{item.nome}</span>
               <span>{item.ano}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Coluna 2: Idiomas */}
         <div>
-          <h3 className="font-semibold text-lg border-b border-white pb-2 mb-4">Idiomas</h3>
+          <h3 className="font-semibold text-lg border-b border-gray-900 dark:border-white pb-2 mb-4">
+            Idiomas
+          </h3>
           {idiomas.map((item, index) => (
-            <div key={index} className="flex justify-between mb-2">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }} // Delay progressivo
+              className="flex justify-between mb-2"
+            >
               <span>{item.nome}</span>
               <span>{item.nivel}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Seção de Certificações (ocupando toda a largura) */}
+      {/* Seção de Certificações */}
       <div className="mt-8 w-full">
-        <h3 className="font-semibold text-lg border-b border-white pb-2 mb-4">Certificações</h3>
+        <h3 className="font-semibold text-lg border-b border-gray-900 dark:border-white pb-2 mb-4">
+          Certificações
+        </h3>
         <div className="space-y-2">
           {certificacoes.slice(0, 5).map((item, index) => (
-            <div key={index} className="flex justify-between ">
-              <span><a href={item.link} target="_blank" rel="noopener noreferrer" className=" hover:text-purple-300 duration-300">{item.nome}</a></span>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }} // Delay progressivo
+              className="flex justify-between"
+            >
+              <span>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-800 dark:hover:text-purple-300 duration-300"
+                >
+                  {item.nome}
+                </a>
+              </span>
               <span>{item.ano}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -98,20 +148,43 @@ const Formacao = () => {
           className="mt-8 w-full text-center overflow-hidden"
         >
           {certificacoes.slice(5).map((item, index) => (
-            <div key={index} className="flex justify-between mb-2">
-              <span><a href={item.link} target="_blank" rel="noopener noreferrer" className="left-text hover:text-purple-300 duration-300">{item.nome}</a></span>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.1 }} // Delay progressivo
+              className="flex justify-between mb-2"
+            >
+              <span>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-800 dark:hover:text-purple-300 duration-300"
+                >
+                  {item.nome}
+                </a>
+              </span>
               <span>{item.ano}</span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       )}
 
       {/* Botão Ver Mais/Ver Menos */}
-      <div className="mt-2 text-center">
-      <Button onClick={() => setExpanded(!expanded)} className="mt-12 text-center">
-        {expanded ? "VER MENOS" : "VER MAIS"}
-      </Button>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 1.5 }} // Delay maior para aparecer por último
+        className="mt-2 text-center"
+      >
+        <ButtonAllPurple
+          onClick={() => setExpanded(!expanded)}
+          className={`dark:bg-[#ffffff30] dark:border-gray-300 dark:hover:bg-gray-200 dark:hover:text-purple-800`}
+        >
+          {expanded ? "VER MENOS" : "VER MAIS"}
+        </ButtonAllPurple>
+      </motion.div>
     </div>
   );
 };
