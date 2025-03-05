@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Jost';
+  src: url('../assets/fonts/Jost-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* Adicionando transições */
   --transition-duration: 0.3s;
 }
 
@@ -23,7 +30,7 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Jost', sans-serif;
   transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 

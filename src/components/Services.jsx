@@ -345,7 +345,7 @@ export default function Services({ language }) {
           >
             <span className="text-3xl">{service.icon}</span>
             <h3 className="font-semibold text-lg my-2">{service.title}</h3>
-            <p className="text-sm">{service.description}</p>
+            <p className="text-l">{service.description}</p>
             <Button
               onClick={() => setSelectedService(service)}
               className="mt-4 dark:bg-[#ffffff30] dark:border-gray-200 dark:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-purple-800"

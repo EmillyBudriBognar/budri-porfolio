@@ -238,7 +238,7 @@ const ContactForm = ({ language = "pt" }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.3 }}
-        className="text-center mb-10 text-gray-600 dark:text-gray-200"
+        className="text-center text-xl mb-10 text-gray-600 dark:text-gray-200"
       >
         {description}
       </motion.p>
@@ -275,7 +275,7 @@ const ContactForm = ({ language = "pt" }) => {
               placeholder={placeholders.fullName}
             />
             {errors.fullName && (
-              <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+              <p className="text-red-500 text-l mt-1">{errors.fullName}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -308,7 +308,7 @@ const ContactForm = ({ language = "pt" }) => {
               />
             </div>
             {errors.phoneNumber && (
-              <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>
+              <p className="text-red-500 text-l mt-1">{errors.phoneNumber}</p>
             )}
           </div>
         </motion.div>
@@ -337,7 +337,7 @@ const ContactForm = ({ language = "pt" }) => {
               placeholder={placeholders.email}
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              <p className="text-red-500 text-l mt-1">{errors.email}</p>
             )}
           </div>
           <div className="flex flex-col">
@@ -357,7 +357,7 @@ const ContactForm = ({ language = "pt" }) => {
               placeholder={placeholders.subject}
             />
             {errors.subject && (
-              <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+              <p className="text-red-500 text-l mt-1">{errors.subject}</p>
             )}
           </div>
         </motion.div>
@@ -384,7 +384,7 @@ const ContactForm = ({ language = "pt" }) => {
             placeholder={placeholders.message}
           />
           {errors.message && (
-            <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+            <p className="text-red-500 text-l mt-1">{errors.message}</p>
           )}
         </motion.div>
 

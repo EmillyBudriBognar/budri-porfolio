@@ -87,14 +87,14 @@ const ProfileCard = ({ language }) => {
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col items-center justify-center min-h-screen w-full p-8 transition-all duration-300 bg-purple-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100"
+      className="flex flex-col items-center justify-center min-h-screen w-full p-4 sm:p-8 transition-all duration-300 bg-purple-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100"
     >
       {/* Título principal */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="text-3xl font-bold text-center max-w-4xl pt-14 mx-auto pb-4"
+        className="text-3xl font-bold text-center max-w-4xl pt-8 sm:pt-14 mx-auto pb-4"
       >
         {greeting}
       </motion.h2>
@@ -104,26 +104,26 @@ const ProfileCard = ({ language }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.5 }} // Delay maior para aparecer após o título
-        className="text-2xl font-bold text-center mb-10 max-w-4xl mx-auto pb-10 text-purple-600 dark:text-purple-400"
+        className="text-2xl font-bold text-center mb-6 sm:mb-16 max-w-4xl mx-auto pb-6 sm:pb-10 text-purple-600 dark:text-purple-400"
       >
         {displayedText}
         <span className="text-current">|</span>
       </motion.h2>
 
       {/* Conteúdo principal */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto gap-12">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto gap-6 sm:gap-12">
         {/* Imagem e ícones sociais */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={sectionInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.9 }} // Delay maior para aparecer após o subtítulo
-          className="flex flex-col items-center w-full md:w-1/3 mb-12 md:mb-0"
+          className="flex flex-col items-center w-full md:w-1/3 mb-6 sm:mb-0"
         >
-          <div className="relative w-80 h-80 -mt-10 mb-8">
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 -mt-12 sm:-mt-16 mb-6 sm:mb-8">
             <Image
               src={Emilly}
               alt="Emilly Budri"
-              className="w-full h-full rounded-full border-4 border-purple-600 dark:border-purple-400 shadow-xl transform hover:scale-105 transition-all duration-300"
+              className="w-full h-full rounded-full border-4 border-purple-600 sm:mt-2 dark:border-purple-400 shadow-xl transform hover:scale-105 transition-all duration-300"
             />
           </div>
           <div className="flex gap-6 justify-center items-center">
@@ -139,17 +139,17 @@ const ProfileCard = ({ language }) => {
           className="flex flex-col w-full md:w-2/3 text-center md:text-left"
         >
           <motion.p
-            className="mx-auto mb-16 md:mx-0 text-justify leading-relaxed sm:mt-[-45px] md:-mt-10 text-gray-700 dark:text-gray-200"
+            className="mx-auto lg:mb-8 sm:mb-4 text-l md:mx-0 md:my-0 text-justify leading-relaxed sm:mt-4 md:-mt-10 text-gray-700 dark:text-gray-200"
             dangerouslySetInnerHTML={{ __html: description1 }}
           />
           <motion.p
-            className="mx-auto mb-10 md:mx-0 text-justify leading-relaxed sm:mt-[-45px] md:-mt-10 text-gray-700 dark:text-gray-200"
+            className="mx-auto mb-8 sm:mb-10 text-l md:mx-0 text-justify leading-relaxed sm:mt-0 text-gray-700 dark:text-gray-200"
             dangerouslySetInnerHTML={{ __html: description2 }}
           />
 
           {/* Botão animado */}
           <motion.div
-            className="flex justify-center items-center mt-4 pb-12"
+            className="flex justify-center items-center mt-4 pb-8 sm:pb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={sectionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 1.7 }} // Delay maior para aparecer após o texto

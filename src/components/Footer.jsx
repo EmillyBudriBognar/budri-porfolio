@@ -143,7 +143,7 @@ const Footer = ({ language = "pt" }) => {
         >
           <ul className="text-left text-justify">
             <h1 className="mb-1 font-semibold">{aboutTitle}</h1>
-            <li className="text-gray-700 dark:text-gray-200 text-sm">
+            <li className="text-gray-700 dark:text-gray-200 text-l">
               {aboutDescription}
             </li>
           </ul>
@@ -161,7 +161,7 @@ const Footer = ({ language = "pt" }) => {
             <a
               key={link.name}
               href={`#${link.link}`}
-              className="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-300 duration-300 text-sm leading-6 cursor-pointer block mb-2"
+              className="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-300 duration-300 text-l leading-6 cursor-pointer block mb-2"
               onClick={(e) => {
                 e.preventDefault(); // Previne o comportamento padrão do link
                 scrollToSection(link.link); // Chama a função de rolagem suave
@@ -181,7 +181,7 @@ const Footer = ({ language = "pt" }) => {
         >
           <h1 className="mb-1 font-semibold">{contactTitle}</h1>
           {contactInfo.map((contact) => (
-            <p key={contact.name} className="text-gray-700 dark:text-gray-200 text-sm">
+            <p key={contact.name} className="text-gray-700 dark:text-gray-200 text-l">
               <a
                 href={contact.link}
                 className={`duration-300 ${contact.name === "Brasil" || contact.name === "Brazil" ? "" : "hover:text-purple-600 dark:hover:text-purple-300"}`}
@@ -198,7 +198,7 @@ const Footer = ({ language = "pt" }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={footerInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.9 }} // Delay maior para aparecer por último
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-2 text-gray-700 dark:text-gray-200 text-sm pb-10"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-2 text-gray-700 dark:text-gray-200 text-l pb-10"
       >
         <span>{copyright}</span>
         <span>{rights}</span>

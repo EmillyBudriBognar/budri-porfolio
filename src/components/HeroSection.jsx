@@ -70,7 +70,7 @@ const HeroSection = ({ language = "pt" }) => { // Fallback para "pt" caso langua
         className="flex flex-col items-center z-10 mt-16"
       >
         <h3 className="text-gray-700 dark:text-gray-200 text-lg transition-colors duration-300">
-          <span className="text-3xl animate-wave">👋</span> {greeting}{' '}
+          <span className="text-3xl font-semibold animate-wave">👋</span> <span className="text-xl font-semibold">{greeting}{' '}</span>
           <span className="text-purple-600 dark:text-purple-400 text-2xl font-bold transition-colors duration-300">{name}</span>
         </h3>
       </motion.div>

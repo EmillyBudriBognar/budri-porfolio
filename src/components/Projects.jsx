@@ -217,7 +217,7 @@ const Portfolio = ({ language }) => {
           <motion.button
             key={index}
             onClick={() => setSelectedCategory(category)}
-            className={`px-5 py-2 text-sm font-semibold rounded-lg transition-all ${
+            className={`px-5 py-2 text-l font-semibold rounded-lg transition-all ${
               selectedCategory === category
                 ? "bg-purple-600 text-white dark:bg-purple-700 dark:text-white" // Ativo
                 : "bg-purple-50 text-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white" // Inativo

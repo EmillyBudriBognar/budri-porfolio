@@ -33,7 +33,7 @@ const ProjectItem = ({ project, index }) => {
       {/* Efeito ao Hover */}
       <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center text-white text-center p-4">
         <h3 className="text-lg font-semibold">{project.title}</h3>
-        <p className="text-sm mt-2">{project.description}</p>
+        <p className="text-l mt-2">{project.description}</p>
       </div>
     </motion.a>
   );

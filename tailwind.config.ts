@@ -11,6 +11,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        jost: ['Jost', 'sans-serif'], // Adiciona a fonte Jost
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

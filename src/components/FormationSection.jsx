@@ -161,7 +161,7 @@ const Formacao = ({ language = "pt" }) => {
         className="text-center pt-12 mb-8"
       >
         <h2 className="text-3xl sm:text-3xl font-bold mb-4">{title}</h2>
-        <p className="text-2xl sm:text-base mx-auto text-gray-700 dark:text-gray-200">
+        <p className="text-xl mx-auto text-gray-700 dark:text-gray-200">
           {description}
         </p>
       </motion.div>
@@ -226,7 +226,7 @@ const Formacao = ({ language = "pt" }) => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-800 dark:hover:text-purple-300 duration-300"
+                  className="hover:text-blue-800 text-l dark:hover:text-purple-300 duration-300"
                 >
                   {item.nome}
                 </a>
@@ -244,7 +244,7 @@ const Formacao = ({ language = "pt" }) => {
           animate={{ opacity: 1, maxHeight: 1000 }}
           exit={{ opacity: 0, maxHeight: 0 }}
           transition={{ duration: 0.3 }}
-          className="mt-8 w-full text-center overflow-hidden"
+          className="mt-2 w-full text-center overflow-hidden"
         >
           {certificacoes.slice(5).map((item, index) => (
             <motion.div
@@ -279,7 +279,7 @@ const Formacao = ({ language = "pt" }) => {
       >
         <ButtonAllPurple
           onClick={() => setExpanded(!expanded)}
-          className={`dark:bg-[#ffffff30] dark:border-gray-200 dark:hover:bg-gray-200 dark:hover:text-purple-800`}
+          className={`mt-8 dark:bg-[#ffffff30] dark:border-gray-200 dark:hover:bg-gray-200 dark:hover:text-purple-800`}
         >
           {expanded ? seeLess : seeMore}
         </ButtonAllPurple>
