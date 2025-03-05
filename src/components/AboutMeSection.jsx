@@ -8,15 +8,58 @@ import Image from "next/image";
 import Button from "./ButtonAllPurple";
 import { useInView } from "react-intersection-observer";
 
-const roles = ["UX Designer", "Desenvolvedora Front-End", "Desenvolvedora Mobile"];
-
-export default function ProfileCard() {
+const ProfileCard = ({ language }) => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Objeto de tradução para os textos e links
+  const translations = {
+    pt: {
+      greeting: "Olá, eu sou a Emilly Budri Bognar!",
+      roles: ["UX Designer", "Desenvolvedora Front-End", "Desenvolvedora Mobile"],
+      description1:
+        "Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional – ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.",
+      description2:
+        "Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia, sempre com <b>comunicação clara</b> e foco nas <b>necessidades reais</b> dos usuários. Sou curiosa e estou sempre explorando <b>novas perspectivas</b> para aprimorar cada detalhe do design.",
+      buttonText: "BAIXAR CV",
+      cvLink: "https://drive.google.com/file/", // Link para o CV em português
+    },
+    es: {
+      greeting: "¡Hola, soy Emilly Budri Bognar!",
+      roles: ["Diseñadora UX", "Desarrolladora Front-End", "Desarrolladora Mobile"],
+      description1:
+        "Me apasiona la <b>tecnología</b> y el <b>Diseño UX</b>, donde se encuentran la <b>psicología</b>, el <b>arte</b> y la <b>experiencia del usuario</b>. Creo que el <b>diseño</b> debe ser más que funcional: debe crear una <b>experiencia intuitiva</b> y alineada con las <b>necesidades reales</b> de las personas.",
+      description2:
+        "Mi objetivo es desarrollar <b>soluciones digitales</b> que marquen la diferencia en el día a día, siempre con <b>comunicación clara</b> y enfoque en las <b>necesidades reales</b> de los usuarios. Soy curiosa y siempre estoy explorando <b>nuevas perspectivas</b> para mejorar cada detalle del diseño.",
+      buttonText: "DESCARGAR CV",
+      cvLink: "https://drive.google.com/file/", // Link para o CV em espanhol
+    },
+    en: {
+      greeting: "Hi, I'm Emilly Budri Bognar!",
+      roles: ["UX Designer", "Front-End Developer", "Mobile Developer"],
+      description1:
+        "I am passionate about <b>technology</b> and <b>UX Design</b>, where <b>psychology</b>, <b>art</b>, and <b>user experience</b> come together. I believe that <b>design</b> should be more than functional – it needs to create an <b>intuitive experience</b> aligned with the <b>real demands</b> of people.",
+      description2:
+        "My goal is to develop <b>digital solutions</b> that make a difference in everyday life, always with <b>clear communication</b> and a focus on the <b>real needs</b> of users. I am curious and always exploring <b>new perspectives</b> to enhance every detail of design.",
+      buttonText: "DOWNLOAD CV",
+      cvLink: "https://drive.google.com/file/", // Link para o CV em inglês
+    },
+  };
+
+  // Seleciona os textos e links com base no idioma
+  const {
+    greeting,
+    roles: translatedRoles,
+    description1,
+    description2,
+    buttonText,
+    cvLink,
+  } = translations[language];
+
+  // Efeito para a animação de digitação
   useEffect(() => {
-    const fullText = roles[roleIndex];
+    const fullText = translatedRoles[roleIndex];
     let timer;
 
     if (isDeleting) {
@@ -29,11 +72,11 @@ export default function ProfileCard() {
       setTimeout(() => setIsDeleting(true), 1200);
     } else if (isDeleting && displayedText === "") {
       setIsDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % roles.length);
+      setRoleIndex((prev) => (prev + 1) % translatedRoles.length);
     }
 
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, roleIndex]);
+  }, [displayedText, isDeleting, roleIndex, translatedRoles]);
 
   // Hook useInView para a animação da seção
   const { ref: sectionRef, inView: sectionInView } = useInView({
@@ -53,7 +96,7 @@ export default function ProfileCard() {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="text-3xl font-bold text-center max-w-4xl pt-14 mx-auto pb-4"
       >
-        Olá, eu sou a Emilly Budri Bognar!
+        {greeting}
       </motion.h2>
 
       {/* Subtítulo animado */}
@@ -96,16 +139,13 @@ export default function ProfileCard() {
           className="flex flex-col w-full md:w-2/3 text-center md:text-left"
         >
           <motion.p
-            className="mx-auto mb-10 md:mx-0 text-justify leading-relaxed sm:mt-[-45px] md:-mt-10 text-gray-700 dark:text-gray-200"
-          >
-            Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional – ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.
-            <br /><br />
-          </motion.p>
+            className="mx-auto mb-16 md:mx-0 text-justify leading-relaxed sm:mt-[-45px] md:-mt-10 text-gray-700 dark:text-gray-200"
+            dangerouslySetInnerHTML={{ __html: description1 }}
+          />
           <motion.p
             className="mx-auto mb-10 md:mx-0 text-justify leading-relaxed sm:mt-[-45px] md:-mt-10 text-gray-700 dark:text-gray-200"
-          >
-            Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia, sempre com <b>comunicação clara</b> e foco nas <b>necessidades reais</b> dos usuários. Sou curiosa e estou sempre explorando <b>novas perspectivas</b> para aprimorar cada detalhe do design.
-          </motion.p>
+            dangerouslySetInnerHTML={{ __html: description2 }}
+          />
 
           {/* Botão animado */}
           <motion.div
@@ -116,15 +156,15 @@ export default function ProfileCard() {
           >
             <Button
               className="transition-all duration-300"
-              onClick={() =>
-                window.open("https://drive.google.com/file/d/SEU_ID_DO_PDF/view", "_blank")
-              }
+              onClick={() => window.open(cvLink, "_blank")}
             >
-              BAIXAR CV
+              {buttonText}
             </Button>
           </motion.div>
         </motion.div>
       </div>
     </div>
   );
-}
+};
+
+export default ProfileCard;

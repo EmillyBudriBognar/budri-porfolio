@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react"; // Adicione useState
 import "@/app/globals.css";
 import Head from "next/head";
 import Nav from "@/components/Nav";
@@ -15,6 +15,14 @@ import ProjectsSection from "@/components/ProjectsSection";
 import Image from "next/image";
 
 export default function Home() {
+  // Estado para gerenciar o idioma
+  const [language, setLanguage] = useState("pt");
+
+  // Função para atualizar o idioma
+  const handleLanguageChange = (code) => {
+    setLanguage(code);
+  };
+
   return (
     <>
       <Head>
@@ -40,20 +48,20 @@ export default function Home() {
             "url": "https://www.budri.com.br",
             "description": "Estúdio criativo especializado em UX, Front-End e Mobile.",
             "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+55-11-99998-6102",
-            "contactType": "customer service",
-            "email": "emillybudribognar@gmail.com",
-            "availableLanguage": ["Portuguese", "English", "Spanish"],
-            "areaServed": "BR",
-            "hoursAvailable": {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "09:00",
-              "closes": "18:00"
-            },
-            "contactPage": "https://www.budri.com.br/"
-          }
+              "@type": "ContactPoint",
+              "telephone": "+55-11-99998-6102",
+              "contactType": "customer service",
+              "email": "emillybudribognar@gmail.com",
+              "availableLanguage": ["Portuguese", "English", "Spanish"],
+              "areaServed": "BR",
+              "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              },
+              "contactPage": "https://www.budri.com.br/"
+            }
           })}
         </script>
       </Head>
@@ -61,34 +69,34 @@ export default function Home() {
       <div className="grid grid-rows-[auto_1fr_auto] min-h-screen">
         {/* Navbar */}
         <header>
-          <Nav />
+          <Nav language={language} onLanguageChange={handleLanguageChange} />
         </header>
 
         {/* Main Content */}
         <main>
           <section id="hero-section" aria-label="Seção principal">
-            <HeroSection />
+            <HeroSection language={language} />
           </section>
-          <ScrollingWords />
+          <ScrollingWords language={language} />
           <section id="services-section" aria-label="Seção de serviços">
-            <ServicesSection />
+            <ServicesSection language={language} />
           </section>
           <section id="projects-section" aria-label="Seção de projetos">
-            <ProjectsSection />
+            <ProjectsSection language={language} />
           </section>
           <section id="aboutme-section" aria-label="Sobre mim">
-            <AboutMeSection />
+            <AboutMeSection language={language} />
           </section>
           <section id="formation-section" aria-label="Formação">
-            <FormationSection />
+            <FormationSection language={language} />
           </section>
           <section id="contact-section" aria-label="Contato">
-            <ContactSection />
+            <ContactSection language={language} />
           </section>
         </main>
 
         {/* Footer */}
-        <Footer />
+        <Footer language={language} />
       </div>
     </>
   );

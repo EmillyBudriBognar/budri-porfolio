@@ -2,20 +2,43 @@ import { useState, useEffect, useRef } from "react";
 import { Languages } from "lucide-react"; // Ícone de tradutor
 import { motion, AnimatePresence } from "framer-motion";
 
-const LanguageSelector = ({ onLanguageChange }) => {
+const LanguageSelector = ({ onLanguageChange, language = "pt" }) => {
   const [open, setOpen] = useState(false);
-  const [language, setLanguage] = useState("pt");
   const [hover, setHover] = useState(false);
   const dropdownRef = useRef(null); // Referência para o dropdown
 
-  const languages = [
-    { code: "pt", label: "Português" },
-    { code: "es", label: "Español" },
-    { code: "en", label: "English" },
-  ];
+  // Textos traduzidos para cada idioma
+  const translations = {
+    pt: {
+      tooltip: "Seletor de Idioma",
+      languages: [
+        { code: "pt", label: "Português" },
+        { code: "es", label: "Español" },
+        { code: "en", label: "English" },
+      ],
+    },
+    es: {
+      tooltip: "Selector de Idioma",
+      languages: [
+        { code: "pt", label: "Portugués" },
+        { code: "es", label: "Español" },
+        { code: "en", label: "Inglés" },
+      ],
+    },
+    en: {
+      tooltip: "Language Selector",
+      languages: [
+        { code: "pt", label: "Portuguese" },
+        { code: "es", label: "Spanish" },
+        { code: "en", label: "English" },
+      ],
+    },
+  };
+
+  // Seleciona o texto com base no idioma
+  const { tooltip, languages } = translations[language];
 
   const handleSelect = (code) => {
-    setLanguage(code);
     setOpen(false);
     onLanguageChange(code); // Notifica o componente pai sobre a mudança de idioma
   };
@@ -68,7 +91,7 @@ const LanguageSelector = ({ onLanguageChange }) => {
             transition={{ duration: 0.2 }}
             className="absolute top-[42px] -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-bold bg-white dark:bg-gray-800 text-purple-700 dark:text-purple-200 border border-purple-400 dark:border-purple-600 px-2 py-1 rounded-md shadow-md whitespace-nowrap"
           >
-            Seletor de Idioma
+            {tooltip}
           </motion.div>
         )}
       </AnimatePresence>

@@ -9,9 +9,8 @@ import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Nav = () => {
+const Nav = ({ language, onLanguageChange }) => {
   const [open, setOpen] = useState(false);
-  const [language, setLanguage] = useState("pt"); // Estado para o idioma selecionado
 
   // Objeto de tradução
   const translations = {
@@ -74,11 +73,6 @@ const Nav = () => {
       section.scrollIntoView({ behavior: "smooth" });
       setOpen(false);
     }
-  };
-
-  // Função para atualizar o idioma
-  const handleLanguageChange = (code) => {
-    setLanguage(code);
   };
 
   return (
@@ -144,16 +138,16 @@ const Nav = () => {
                 </li>
               ))}
               <div className="flex flex-row items-center gap-4 pt-4 pb-4">
-                <ThemeToggle />
-                <LanguageSelector onLanguageChange={handleLanguageChange} />
+                <ThemeToggle language={language} />
+                <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
               </div>
             </motion.ul>
           )}
         </AnimatePresence>
 
         <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <LanguageSelector onLanguageChange={handleLanguageChange} />
+          <ThemeToggle language={language} />
+          <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
         </div>
       </div>
     </nav>

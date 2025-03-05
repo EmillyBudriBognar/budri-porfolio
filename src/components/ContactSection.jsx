@@ -14,10 +14,10 @@ const formatPhoneNumber = (value) => {
 
   return value.length <= 10
     ? value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3") // Formato (XX) XXXX-XXXX
-    : value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) XXXXX-XXXX"); // Formato (XX) XXXXX-XXXX
+    : value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3"); // Formato (XX) XXXXX-XXXX
 };
 
-const ContactForm = () => {
+const ContactForm = ({ language = "pt" }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -28,6 +28,127 @@ const ContactForm = () => {
 
   const [status, setStatus] = useState("");
   const [errors, setErrors] = useState({}); // Estado para armazenar erros de validação
+
+  // Textos traduzidos para cada idioma
+  const translations = {
+    pt: {
+      title: "Vamos construir algo incrível <span class='text-purple-600 dark:text-purple-300'>JUNTOS</span>?",
+      description: "Envie sua proposta e entraremos em contato o mais breve possível.",
+      labels: {
+        fullName: "Nome Completo",
+        mobile: "Telefone",
+        email: "E-mail",
+        subject: "Assunto",
+        message: "Sua Mensagem",
+      },
+      placeholders: {
+        fullName: "Seu nome completo",
+        mobile: "(XX) XXXXX-XXXX",
+        email: "seuemail@exemplo.com",
+        subject: "Qual é o assunto?",
+        message: "Escreva sua mensagem aqui...",
+      },
+      errors: {
+        required: "Preencha este campo",
+      },
+      button: {
+        submit: "ENVIAR MENSAGEM",
+        sending: "Enviando...",
+      },
+      success: {
+        title: "Mensagem enviada com sucesso!",
+        message: "Entraremos em contato o mais breve possível.",
+        button: "Entendido, obrigado!",
+      },
+      error: {
+        title: "Erro ao enviar mensagem!",
+        message: "Por favor, tente novamente mais tarde.",
+        button: "Entendido, obrigado!",
+      },
+    },
+    es: {
+      title: "¿Vamos a construir algo increíble <span class='text-purple-600 dark:text-purple-300'>JUNTOS</span>?",
+      description: "Envía tu propuesta y nos pondremos en contacto lo antes posible.",
+      labels: {
+        fullName: "Nombre Completo",
+        mobile: "Teléfono",
+        email: "Correo Electrónico",
+        subject: "Asunto",
+        message: "Tu Mensaje",
+      },
+      placeholders: {
+        fullName: "Tu nombre completo",
+        mobile: "(XX) XXXXX-XXXX",
+        email: "tucorreo@ejemplo.com",
+        subject: "¿Cuál es el asunto?",
+        message: "Escribe tu mensaje aquí...",
+      },
+      errors: {
+        required: "Completa este campo",
+      },
+      button: {
+        submit: "ENVIAR MENSAJE",
+        sending: "Enviando...",
+      },
+      success: {
+        title: "¡Mensaje enviado con éxito!",
+        message: "Nos pondremos en contacto lo antes posible.",
+        button: "Entendido, ¡gracias!",
+      },
+      error: {
+        title: "¡Error al enviar el mensaje!",
+        message: "Por favor, inténtalo de nuevo más tarde.",
+        button: "Entendido, ¡gracias!",
+      },
+    },
+    en: {
+      title: "Let's build something amazing <span class='text-purple-600 dark:text-purple-300'>TOGETHER</span>?",
+      description: "Send your proposal and we'll get back to you as soon as possible.",
+      labels: {
+        fullName: "Full Name",
+        mobile: "Phone",
+        email: "Email",
+        subject: "Subject",
+        message: "Your Message",
+      },
+      placeholders: {
+        fullName: "Your full name",
+        mobile: "(XX) XXXXX-XXXX",
+        email: "youremail@example.com",
+        subject: "What's the subject?",
+        message: "Write your message here...",
+      },
+      errors: {
+        required: "Fill this field",
+      },
+      button: {
+        submit: "SEND MESSAGE",
+        sending: "Sending...",
+      },
+      success: {
+        title: "Message sent successfully!",
+        message: "We'll get back to you as soon as possible.",
+        button: "Got it, thank you!",
+      },
+      error: {
+        title: "Error sending message!",
+        message: "Please try again later.",
+        button: "Got it, thank you!",
+      },
+    },
+  };
+
+  // Seleciona o texto com base no idioma
+  const {
+    title,
+    description,
+    labels,
+    placeholders,
+    errors: errorMessages,
+    button,
+    success,
+    error,
+  } = translations[language];
 
   // Desativa o scroll quando o card de confirmação está aberto
   useEffect(() => {
@@ -52,11 +173,11 @@ const ContactForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Preencha este campo";
-    if (!formData.email.trim()) newErrors.email = "Preencha este campo";
-    if (!formData.mobile.trim()) newErrors.mobile = "Preencha este campo";
-    if (!formData.subject.trim()) newErrors.subject = "Preencha este campo";
-    if (!formData.message.trim()) newErrors.message = "Preencha este campo";
+    if (!formData.fullName.trim()) newErrors.fullName = errorMessages.required;
+    if (!formData.email.trim()) newErrors.email = errorMessages.required;
+    if (!formData.mobile.trim()) newErrors.mobile = errorMessages.required;
+    if (!formData.subject.trim()) newErrors.subject = errorMessages.required;
+    if (!formData.message.trim()) newErrors.message = errorMessages.required;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Retorna true se não houver erros
@@ -105,16 +226,15 @@ const ContactForm = () => {
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.1 }}
         className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4 pt-8 text-center"
-      >
-        Vamos construir algo incrível <span className="text-purple-600 dark:text-purple-300">JUNTOS</span>?
-      </motion.h2>
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.3 }}
         className="text-center mb-10 text-gray-600 dark:text-gray-200"
       >
-        Envie sua proposta e entraremos em contato o mais breve possível.
+        {description}
       </motion.p>
 
       {/* Formulário */}
@@ -133,7 +253,9 @@ const ContactForm = () => {
           transition={{ duration: 0.7, delay: 0.7 }}
         >
           <div className="flex flex-col">
-            <label htmlFor="fullName" className="font-medium mb-2 text-gray-700 dark:text-gray-300">Nome Completo</label>
+            <label htmlFor="fullName" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
+              {labels.fullName}
+            </label>
             <input
               type="text"
               name="fullName"
@@ -144,14 +266,16 @@ const ContactForm = () => {
               className={`border ${
                 errors.fullName ? "border-red-500" : "border-gray-300 dark:border-gray-600"
               } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-              placeholder="Seu nome completo"
+              placeholder={placeholders.fullName}
             />
             {errors.fullName && (
               <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
             )}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="mobile" className="font-medium mb-2 text-gray-700 dark:text-gray-300">Telefone</label>
+            <label htmlFor="mobile" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
+              {labels.mobile}
+            </label>
             <input
               type="tel"
               name="mobile"
@@ -163,7 +287,7 @@ const ContactForm = () => {
               className={`border ${
                 errors.mobile ? "border-red-500" : "border-gray-300 dark:border-gray-600"
               } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-              placeholder="(XX) XXXXX-XXXX"
+              placeholder={placeholders.mobile}
             />
             {errors.mobile && (
               <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>
@@ -179,7 +303,9 @@ const ContactForm = () => {
           transition={{ duration: 0.7, delay: 0.9 }}
         >
           <div className="flex flex-col">
-            <label htmlFor="email" className="font-medium mb-2 text-gray-700 dark:text-gray-300">E-mail</label>
+            <label htmlFor="email" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
+              {labels.email}
+            </label>
             <input
               type="email"
               name="email"
@@ -190,14 +316,16 @@ const ContactForm = () => {
               className={`border ${
                 errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"
               } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-              placeholder="seuemail@exemplo.com"
+              placeholder={placeholders.email}
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">{errors.email}</p>
             )}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="subject" className="font-medium mb-2 text-gray-700 dark:text-gray-300">Assunto</label>
+            <label htmlFor="subject" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
+              {labels.subject}
+            </label>
             <input
               type="text"
               name="subject"
@@ -208,7 +336,7 @@ const ContactForm = () => {
               className={`border ${
                 errors.subject ? "border-red-500" : "border-gray-300 dark:border-gray-600"
               } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-              placeholder="Qual é o assunto?"
+              placeholder={placeholders.subject}
             />
             {errors.subject && (
               <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
@@ -223,7 +351,9 @@ const ContactForm = () => {
           transition={{ duration: 0.7, delay: 1.1 }}
           className="flex flex-col"
         >
-          <label htmlFor="message" className="font-medium mb-2 text-gray-700 dark:text-gray-300">Sua Mensagem</label>
+          <label htmlFor="message" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
+            {labels.message}
+          </label>
           <textarea
             name="message"
             id="message"
@@ -232,8 +362,8 @@ const ContactForm = () => {
             onChange={handleChange}
             className={`border ${
               errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-            } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-            placeholder="Escreva sua mensagem aqui..."
+            } bg-white max-h-40 min-h-40 dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
+            placeholder={placeholders.message}
           />
           {errors.message && (
             <p className="text-red-500 text-sm mt-1">{errors.message}</p>
@@ -252,7 +382,7 @@ const ContactForm = () => {
             disabled={status === "sending"} 
             className="w-full mt-6 transition-all duration-300"
           >
-            {status === "sending" ? "Enviando..." : "ENVIAR MENSAGEM"}
+            {status === "sending" ? button.sending : button.submit}
           </Button>
         </motion.div>
       </motion.form>
@@ -277,18 +407,16 @@ const ContactForm = () => {
               onClick={(e) => e.stopPropagation()} // Impede que o card feche ao clicar nele
             >
               <h2 className="text-xl font-bold text-purple-600 dark:text-purple-300 mb-4">
-                {status === "success" ? "Mensagem enviada com sucesso!" : "Erro ao enviar mensagem!"}
+                {status === "success" ? success.title : error.title}
               </h2>
               <p className="text-gray-700 dark:text-gray-200">
-                {status === "success"
-                  ? "Entraremos em contato o mais breve possível."
-                  : "Por favor, tente novamente mais tarde."}
+                {status === "success" ? success.message : error.message}
               </p>
               <Button
                 onClick={() => setStatus("")}
                 className="mt-4 w-full"
               >
-                Entendido, obrigado!
+                {status === "success" ? success.button : error.button}
               </Button>
             </motion.div>
           </motion.div>

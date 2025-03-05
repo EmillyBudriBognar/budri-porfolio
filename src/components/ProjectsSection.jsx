@@ -4,7 +4,53 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import Projects from "@/components/Projects";
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ language }) => {
+  // Objeto de tradução para os textos da seção
+  const translations = {
+    pt: {
+      title: "PRINCIPAIS PROJETOS",
+      subtitle: "A Budri transforma ideias em ",
+      highlight: "soluções reais.",
+      firstText: "Confira alguns dos nossos principais projetos e veja como trazemos ",
+      innovation: "inovação",
+      and: "e",
+      experience: "experiência",
+      secondText: " em cada um deles.",
+    },
+    es: {
+      title: "PRINCIPALES PROYECTOS",
+      subtitle: "Budri transforma ideas en ",
+      highlight: "soluciones reales.",
+      firstText: "Descubre algunos de nuestros principales proyectos y cómo aportamos ",
+      innovation: "innovación",
+      and: "y",
+      experience: "experiencia",
+      secondText: " en cada uno de ellos.",
+    },
+    en: {
+      title: "MAIN PROJECTS",
+      subtitle: "Budri transforms ideas into ",
+      highlight: "real solutions.",
+      firstText: "Check out some of our main projects and see how we bring ",
+      innovation: "innovation",
+      and: "and",
+      experience: "experience",
+      secondText: " to each of them.",
+    },
+  };
+
+  // Seleciona os textos com base no idioma
+  const {
+    title,
+    subtitle,
+    highlight,
+    firstText,
+    innovation,
+    and,
+    experience,
+    secondText,
+  } = translations[language];
+
   // Definindo hook useInView para os textos
   const { ref: titleRef, inView: titleInView } = useInView({
     triggerOnce: true, // Só dispara uma vez
@@ -21,11 +67,6 @@ const ProjectsSection = () => {
     threshold: 0.1,
   });
 
-  const { ref: secondTextRef, inView: secondTextInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   return (
     <section className="bg-gradient-to-r pt-12 from-purple-200 to-blue-200 dark:from-purple-900 dark:to-blue-900 w-full text-gray-900 dark:text-white py-24 px-6 md:px-12">
       <div className="mx-auto text-center pt-12">
@@ -36,7 +77,7 @@ const ProjectsSection = () => {
             titleInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           } transition-all duration-700 ease-out`}
         >
-          PRINCIPAIS PROJETOS
+          {title}
         </h2>
 
         {/* Linha decorativa */}
@@ -49,9 +90,9 @@ const ProjectsSection = () => {
             subtitleInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           } transition-all duration-700 ease-out`}
         >
-          A Budri transforma ideias em{" "}
+          {subtitle}
           <span className="text-gray-900 dark:text-white uppercase font-bold">
-            soluções reais.
+            {highlight}
           </span>
         </p>
 
@@ -62,15 +103,15 @@ const ProjectsSection = () => {
             firstTextInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           } transition-all duration-700 ease-out`}
         >
-          Confira alguns dos nossos principais projetos e veja como trazemos{" "}
+          {firstText}
           <span className="text-gray-900 dark:text-white uppercase font-bold">
-            inovação
+            {innovation}
           </span>{" "}
-          e{" "}
+          {and}{" "}
           <span className="text-gray-900 dark:text-white uppercase font-bold">
-            experiência
-          </span>{" "}
-          em cada um deles.
+            {experience}
+          </span>
+          {secondText}
         </p>
 
         {/* Linha decorativa */}
@@ -78,7 +119,7 @@ const ProjectsSection = () => {
 
         {/* Exibição dos projetos */}
         <div>
-          <Projects />
+          <Projects language={language} />
         </div>
       </div>
     </section>

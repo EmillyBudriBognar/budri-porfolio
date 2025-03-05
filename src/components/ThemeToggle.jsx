@@ -2,9 +2,28 @@ import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const ThemeToggle = () => {
+const ThemeToggle = ({ language = "pt" }) => {
   const [theme, setTheme] = useState("light");
   const [hover, setHover] = useState(false);
+
+  // Textos traduzidos para cada idioma
+  const translations = {
+    pt: {
+      lightMode: "Modo Claro",
+      darkMode: "Modo Escuro",
+    },
+    es: {
+      lightMode: "Modo Claro",
+      darkMode: "Modo Oscuro",
+    },
+    en: {
+      lightMode: "Light Mode",
+      darkMode: "Dark Mode",
+    },
+  };
+
+  // Seleciona o texto com base no idioma
+  const { lightMode, darkMode } = translations[language];
 
   useEffect(() => {
     const savedTheme =
@@ -38,7 +57,11 @@ const ThemeToggle = () => {
         />
 
         {/* Ícone de tema */}
-        {theme === "light" ? <Sun size={20} className="relative z-10" /> : <Moon size={20} className="relative z-10" />}
+        {theme === "light" ? (
+          <Sun size={20} className="relative z-10" />
+        ) : (
+          <Moon size={20} className="relative z-10" />
+        )}
       </button>
 
       {/* Tooltip centralizado abaixo */}
@@ -51,7 +74,7 @@ const ThemeToggle = () => {
             transition={{ duration: 0.2 }}
             className="absolute top-[42px] -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-bold bg-white dark:bg-gray-800 text-purple-700 dark:text-purple-200 border border-purple-400 dark:border-purple-600 px-2 py-1 rounded-md shadow-md whitespace-nowrap"
           >
-            {theme === "light" ? "Modo Claro" : "Modo Escuro"}
+            {theme === "light" ? lightMode : darkMode}
           </motion.div>
         )}
       </AnimatePresence>
