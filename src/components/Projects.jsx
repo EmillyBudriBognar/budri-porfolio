@@ -1,22 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import ProjectItem from "./ProjectItem";
 import Teste from "../assets/img/teste.jpg";
 
 const Portfolio = ({ language }) => {
-  const [selectedCategory, setSelectedCategory] = useState("Todos");
-
   // Objeto de tradução para os textos
   const translations = {
     pt: {
       categories: [
         "Todos",
         "UX/UI Design",
-        "Dev. WEB",
-        "Dev. Mobile",
+        "Desenvolvimento WEB",
+        "Desenvolvimento Mobile",
         "Pesquisas de Usabilidade",
         "E-mails HTML",
         "Design Gráfico",
@@ -34,7 +31,7 @@ const Portfolio = ({ language }) => {
           title: "Orça$imples – Sistema de Gestão Financeira",
           description:
             "Desenvolvimento de interfaces modernas e intuitivas para um sistema de gestão financeira (Projeto Integrador – Tecnólogo em Desenvolvimento de Software Multiplataforma).",
-          category: "Dev. WEB",
+          category: "Desenvolvimento WEB",
           image: Teste,
           link: "/projetos/",
         },
@@ -42,7 +39,7 @@ const Portfolio = ({ language }) => {
           title: "Aplicativo WorkingBrain – Educação Mobile",
           description:
             "Desenvolvimento de um aplicativo educacional focado na experiência do usuário e acessibilidade (TCC – Técnico em Informática para Internet).",
-          category: "Dev. Mobile",
+          category: "Desenvolvimento Mobile",
           image: Teste,
           link: "/projetos/",
         },
@@ -140,7 +137,7 @@ const Portfolio = ({ language }) => {
         "WEB Development",
         "Mobile Development",
         "Usability Research",
-        "HTML Emails",
+        "HTML Emails", // Corrigido para "HTML Emails"
         "Graphic Design",
       ],
       projects: [
@@ -180,7 +177,7 @@ const Portfolio = ({ language }) => {
           title: "Meu Aumigo – Email Marketing Campaign",
           description:
             "Creation of a responsive and interactive email template for the Meu Aumigo marketing campaign.",
-          category: "HTML Emails",
+          category: "HTML Emails", // Corrigido para "HTML Emails"
           image: Teste,
           link: "/projetos/",
         },
@@ -199,9 +196,16 @@ const Portfolio = ({ language }) => {
   // Seleciona os textos com base no idioma
   const { categories: translatedCategories, projects: translatedProjects } = translations[language];
 
+  // Estado inicial dinâmico com base no idioma
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+  if (language === "en") return "All";
+  if (language === "es") return "Todos";
+  return "Todos"; // Para "pt"
+});
+
   // Filtrar projetos com base na categoria selecionada
   const filteredProjects =
-    selectedCategory === translatedCategories[0]
+    selectedCategory === "All" || selectedCategory === translatedCategories[0]
       ? translatedProjects
       : translatedProjects.filter((project) => project.category === selectedCategory);
 
@@ -227,40 +231,9 @@ const Portfolio = ({ language }) => {
 
       {/* Grid de Projetos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProjects.map((project, index) => {
-          const { ref, inView } = useInView({
-            triggerOnce: true,
-            threshold: 0.2,
-          });
-
-          return (
-            <motion.a
-              ref={ref}
-              key={index}
-              href={project.link}
-              className="relative rounded-xl overflow-hidden group cursor-pointer"
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.2 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              {/* Imagem do Projeto */}
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={600}
-                height={400}
-                className="w-full h-60 object-cover transition-all duration-500"
-              />
-
-              {/* Efeito ao Hover */}
-              <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center text-white text-center p-4">
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p className="text-sm mt-2">{project.description}</p>
-              </div>
-            </motion.a>
-          );
-        })}
+        {filteredProjects.map((project, index) => (
+          <ProjectItem key={index} project={project} index={index} />
+        ))}
       </div>
     </section>
   );

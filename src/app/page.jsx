@@ -15,8 +15,8 @@ import ProjectsSection from "@/components/ProjectsSection";
 import Image from "next/image";
 
 export default function Home() {
-  // Estado para gerenciar o idioma
-  const [language, setLanguage] = useState("pt");
+  // Estado para gerenciar o idioma (iniciando em inglês)
+  const [language, setLanguage] = useState("en");
 
   // Função para atualizar o idioma
   const handleLanguageChange = (code) => {
@@ -26,16 +26,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Budri - UX Design, Front-End e Mobile | Soluções Criativas</title>
+        <title>Budri - UX Design, Front-End e Mobile | Creative Solutions</title>
         <meta
           name="description"
-          content="Budri é um estúdio criativo especializado em UX Design, Front-End e Mobile. Transformamos ideias em interfaces intuitivas e funcionais. Vamos inovar juntos?"
+          content="Budri is a creative studio specializing in UX Design, Front-End, and Mobile. We transform ideas into intuitive and functional interfaces. Let's innovate together?"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Budri" />
-        <meta property="og:title" content="Budri - UX Design, Front-End e Mobile | Soluções Criativas" />
-        <meta property="og:description" content="Estúdio criativo especializado em UX, Front-End e Mobile." />
+        <meta property="og:title" content="Budri - UX Design, Front-End e Mobile | Creative Solutions" />
+        <meta property="og:description" content="Creative studio specializing in UX, Front-End, and Mobile." />
         <meta property="og:image" content="/og-image.jpg" />
         <meta property="og:url" content="https://www.budri.com.br" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -46,7 +46,7 @@ export default function Home() {
             "@type": "Organization",
             "name": "Budri",
             "url": "https://www.budri.com.br",
-            "description": "Estúdio criativo especializado em UX, Front-End e Mobile.",
+            "description": "Creative studio specializing in UX, Front-End, and Mobile.",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+55-11-99998-6102",
@@ -74,23 +74,23 @@ export default function Home() {
 
         {/* Main Content */}
         <main>
-          <section id="hero-section" aria-label="Seção principal">
+          <section id="hero-section" aria-label="Main section">
             <HeroSection language={language} />
           </section>
           <ScrollingWords language={language} />
-          <section id="services-section" aria-label="Seção de serviços">
+          <section id="services-section" aria-label="Services section">
             <ServicesSection language={language} />
           </section>
-          <section id="projects-section" aria-label="Seção de projetos">
+          <section id="projects-section" aria-label="Projects section">
             <ProjectsSection language={language} />
           </section>
-          <section id="aboutme-section" aria-label="Sobre mim">
+          <section id="aboutme-section" aria-label="About me">
             <AboutMeSection language={language} />
           </section>
-          <section id="formation-section" aria-label="Formação">
+          <section id="formation-section" aria-label="Formation">
             <FormationSection language={language} />
           </section>
-          <section id="contact-section" aria-label="Contato">
+          <section id="contact-section" aria-label="Contact">
             <ContactSection language={language} />
           </section>
         </main>
