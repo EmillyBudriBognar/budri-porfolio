@@ -348,7 +348,7 @@ export default function Services({ language }) {
             <p className="text-sm">{service.description}</p>
             <Button
               onClick={() => setSelectedService(service)}
-              className="mt-4 dark:bg-[#ffffff30] dark:border-gray-200 dark:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-purple-800"
+              className="mt-4 dark:bg-[#ffffff30] dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-200 dark:hover:text-purple-800"
             >
               {buttonText}
             </Button>

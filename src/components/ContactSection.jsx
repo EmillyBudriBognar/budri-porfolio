@@ -8,24 +8,20 @@ const serviceId = "service_3cck3s6";
 const templateId = "template_xwq40df";
 const publicKey = "uVXdxc_nUznzm6N3X";
 
-// Função para formatar o número de telefone com o código do país
-const formatPhoneNumber = (countryId, phoneNumber) => {
-  phoneNumber = phoneNumber.replace(/\D/g, ""); // Remove tudo que não for número
-  if (phoneNumber.length > 11) phoneNumber = phoneNumber.slice(0, 11); // Limita a 11 dígitos
+const formatPhoneNumber = (value) => {
+  value = value.replace(/\D/g, ""); // Remove tudo que não for número
+  if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
 
-  const formattedNumber = phoneNumber.length <= 10
-    ? phoneNumber.replace(/(\d{2})(\d{4})(\d{0,4})/, "$1 $2-$3") // Formato XX XXXX-XXXX
-    : phoneNumber.replace(/(\d{2})(\d{5})(\d{0,4})/, "$1 $2-$3"); // Formato XX XXXXX-XXXX
-
-  return `${countryId} ${formattedNumber}`; // Retorna o número formatado com o código do país
+  return value.length <= 10
+    ? value.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3") // Formato (XX) XXXX-XXXX
+    : value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3"); // Formato (XX) XXXXX-XXXX
 };
 
 const ContactForm = ({ language = "pt" }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    countryId: "+55", // Código do país padrão (Brasil)
-    phoneNumber: "", // Número de telefone sem o código do país
+    mobile: "",
     subject: "",
     message: "",
   });
@@ -40,14 +36,14 @@ const ContactForm = ({ language = "pt" }) => {
       description: "Envie sua proposta e entraremos em contato o mais breve possível.",
       labels: {
         fullName: "Nome Completo",
-        phone: "Telefone",
+        mobile: "Telefone",
         email: "E-mail",
         subject: "Assunto",
         message: "Sua Mensagem",
       },
       placeholders: {
         fullName: "Seu nome completo",
-        phone: "+55 11 98765-4321",
+        mobile: "(XX) XXXXX-XXXX",
         email: "seuemail@exemplo.com",
         subject: "Qual é o assunto?",
         message: "Escreva sua mensagem aqui...",
@@ -75,14 +71,14 @@ const ContactForm = ({ language = "pt" }) => {
       description: "Envía tu propuesta y nos pondremos en contacto lo antes posible.",
       labels: {
         fullName: "Nombre Completo",
-        phone: "Teléfono",
+        mobile: "Teléfono",
         email: "Correo Electrónico",
         subject: "Asunto",
         message: "Tu Mensaje",
       },
       placeholders: {
         fullName: "Tu nombre completo",
-        phone: "+34 912 345 678",
+        mobile: "(XX) XXXXX-XXXX",
         email: "tucorreo@ejemplo.com",
         subject: "¿Cuál es el asunto?",
         message: "Escribe tu mensaje aquí...",
@@ -110,14 +106,14 @@ const ContactForm = ({ language = "pt" }) => {
       description: "Send your proposal and we'll get back to you as soon as possible.",
       labels: {
         fullName: "Full Name",
-        phone: "Phone",
+        mobile: "Phone",
         email: "Email",
         subject: "Subject",
         message: "Your Message",
       },
       placeholders: {
         fullName: "Your full name",
-        phone: "+1 123 456 7890",
+        mobile: "(XX) XXXXX-XXXX",
         email: "youremail@example.com",
         subject: "What's the subject?",
         message: "Write your message here...",
@@ -167,7 +163,7 @@ const ContactForm = ({ language = "pt" }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === "mobile" ? formatPhoneNumber(value) : value,
     }));
     // Limpa o erro ao começar a digitar
     if (errors[name]) {
@@ -179,7 +175,7 @@ const ContactForm = ({ language = "pt" }) => {
     const newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = errorMessages.required;
     if (!formData.email.trim()) newErrors.email = errorMessages.required;
-    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = errorMessages.required;
+    if (!formData.mobile.trim()) newErrors.mobile = errorMessages.required;
     if (!formData.subject.trim()) newErrors.subject = errorMessages.required;
     if (!formData.message.trim()) newErrors.message = errorMessages.required;
 
@@ -193,12 +189,10 @@ const ContactForm = ({ language = "pt" }) => {
 
     setStatus("sending");
 
-    const formattedPhone = formatPhoneNumber(formData.countryId, formData.phoneNumber); // Formata o telefone
-
     const templateParams = {
       user_name: formData.fullName,
       user_email: formData.email,
-      user_phone: formattedPhone, // Telefone formatado com código do país
+      user_phone: formData.mobile,
       user_subject: formData.subject,
       message: formData.message,
     };
@@ -206,7 +200,7 @@ const ContactForm = ({ language = "pt" }) => {
     emailjs.send(serviceId, templateId, templateParams, publicKey).then(
       () => {
         setStatus("success");
-        setFormData({ fullName: "", email: "", countryId: "+55", phoneNumber: "", subject: "", message: "" });
+        setFormData({ fullName: "", email: "", mobile: "", subject: "", message: "" });
       },
       (error) => {
         console.error("Error sending email: ", error.text);
@@ -279,36 +273,24 @@ const ContactForm = ({ language = "pt" }) => {
             )}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="phoneNumber" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
-              {labels.phone}
+            <label htmlFor="mobile" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
+              {labels.mobile}
             </label>
-            <div className="flex">
-              <input
-                type="text"
-                name="countryId"
-                value={formData.countryId}
-                onChange={handleChange}
-                className={`border ${
-                  errors.phoneNumber ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-l-lg px-4 py-3 w-20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-                placeholder="+55"
-              />
-              <input
-                type="tel"
-                name="phoneNumber"
-                id="phoneNumber"
-                required
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                maxLength={15}
-                className={`border ${
-                  errors.phoneNumber ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-r-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-                placeholder={placeholders.phone}
-              />
-            </div>
-            {errors.phoneNumber && (
-              <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>
+            <input
+              type="tel"
+              name="mobile"
+              id="mobile"
+              required
+              value={formData.mobile}
+              onChange={handleChange}
+              maxLength={15}
+              className={`border ${
+                errors.mobile ? "border-red-500" : "border-gray-300 dark:border-gray-600"
+              } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
+              placeholder={placeholders.mobile}
+            />
+            {errors.mobile && (
+              <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>
             )}
           </div>
         </motion.div>
