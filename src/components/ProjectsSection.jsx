@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import Projects from "@/components/Projects";
 
 const ProjectsSection = ({ language }) => {
-  // Objeto de tradução para os textos da seção
-  const translations = {
+  // Objeto de tradução memoizado
+  const translations = useMemo(() => ({
     pt: {
       title: "PRINCIPAIS PROJETOS",
       subtitle: "A Budri transforma ideias em ",
@@ -37,7 +37,7 @@ const ProjectsSection = ({ language }) => {
       experience: "experience",
       secondText: " to each of them.",
     },
-  };
+  }), []);
 
   // Seleciona os textos com base no idioma
   const {
@@ -51,21 +51,14 @@ const ProjectsSection = ({ language }) => {
     secondText,
   } = translations[language];
 
-  // Definindo hook useInView para os textos
-  const { ref: titleRef, inView: titleInView } = useInView({
-    triggerOnce: true, // Só dispara uma vez
-    threshold: 0.1, // A transição começa quando 10% do título estiver visível
-  });
+  // Hook useInView para animações
+  const { ref: titleRef, inView: titleInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: subtitleRef, inView: subtitleInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: firstTextRef, inView: firstTextInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  const { ref: subtitleRef, inView: subtitleInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const { ref: firstTextRef, inView: firstTextInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  // Função para gerar classes de animação
+  const getAnimationClasses = (inView) => 
+    inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10";
 
   return (
     <section className="bg-gradient-to-r pt-12 from-purple-200 to-blue-200 dark:from-purple-900 dark:to-blue-900 w-full text-gray-900 dark:text-white py-24 px-6 md:px-12">
@@ -73,9 +66,7 @@ const ProjectsSection = ({ language }) => {
         {/* Título da seção com animação */}
         <h2
           ref={titleRef}
-          className={`text-3xl font-semibold mb-8 leading-tight ${
-            titleInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          } transition-all duration-700 ease-out`}
+          className={`text-3xl font-semibold mb-8 leading-tight ${getAnimationClasses(titleInView)} transition-all duration-700 ease-out`}
         >
           {title}
         </h2>
@@ -86,9 +77,7 @@ const ProjectsSection = ({ language }) => {
         {/* Subtítulo com animação */}
         <p
           ref={subtitleRef}
-          className={`text-xl font-light mb-8 max-w-3xl text-gray-700 dark:text-gray-200 mx-auto ${
-            subtitleInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          } transition-all duration-700 ease-out`}
+          className={`text-xl font-light mb-8 max-w-3xl text-gray-700 dark:text-gray-200 mx-auto ${getAnimationClasses(subtitleInView)} transition-all duration-700 ease-out`}
         >
           {subtitle}
           <span className="text-gray-900 dark:text-white uppercase font-bold">
@@ -99,9 +88,7 @@ const ProjectsSection = ({ language }) => {
         {/* Texto adicional com animação */}
         <p
           ref={firstTextRef}
-          className={`text-xl font-light mb-8 max-w-3xl text-gray-700 dark:text-gray-200 mx-auto ${
-            firstTextInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          } transition-all duration-700 ease-out`}
+          className={`text-xl font-light mb-8 max-w-3xl text-gray-700 dark:text-gray-200 mx-auto ${getAnimationClasses(firstTextInView)} transition-all duration-700 ease-out`}
         >
           {firstText}
           <span className="text-gray-900 dark:text-white uppercase font-bold">
