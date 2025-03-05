@@ -6,61 +6,34 @@ import "../app/hero-section.css";
 const ScrollingWords = ({ language }) => {
   // Objeto de tradução para as palavras
   const translations = {
-    pt: {
-      creativity: "CRIATIVIDADE",
-      innovation: "INOVAÇÃO",
-      empathy: "EMPATIA",
-      intention: "INTENÇÃO",
-      adaptability: "ADAPTABILIDADE",
-    },
-    es: {
-      creativity: "CREATIVIDAD",
-      innovation: "INNOVACIÓN",
-      empathy: "EMPATÍA",
-      intention: "INTENCIÓN",
-      adaptability: "ADAPTABILIDAD",
-    },
-    en: {
-      creativity: "CREATIVITY",
-      innovation: "INNOVATION",
-      empathy: "EMPATHY",
-      intention: "INTENTION",
-      adaptability: "ADAPTABILITY",
-    },
+    pt: ["CRIATIVIDADE", "INOVAÇÃO", "EMPATIA", "INTENÇÃO", "ADAPTABILIDADE"],
+    es: ["CREATIVIDAD", "INNOVACIÓN", "EMPATÍA", "INTENCIÓN", "ADAPTABILIDAD"],
+    en: ["CREATIVITY", "INNOVATION", "EMPATHY", "INTENTION", "ADAPTABILITY"],
   };
 
-  // Seleciona as palavras com base no idioma
-  const { creativity, innovation, empathy, intention, adaptability } = translations[language];
+  const words = translations[language] || translations.en; // Fallback para inglês
 
   return (
-    <div className="relative h-12 w-full bg-gradient-to-r from-purple-900 via-purple-700 to-blue-800 overflow-hidden flex items-center font-bold">
+    <div className="relative w-full h-12 overflow-hidden flex items-center font-bold bg-gradient-to-r from-purple-900 via-purple-700 to-blue-800">
       <div className="relative flex overflow-x-hidden w-full">
-        {/* Primeira linha de rolagem */}
-        <div className="py-12 animate-marquee whitespace-nowrap left-0">
-          <span className="text-2xl mx-4">{creativity}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{innovation}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{empathy}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{intention}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{adaptability}</span>
-          <span className="text-2xl mx-4">•</span>
+        {/* Texto rolando */}
+        <div className="py-12 animate-marquee whitespace-nowrap flex">
+          {words.map((word, index) => (
+            <React.Fragment key={index}>
+              <span className="text-2xl mx-8">{word}</span>
+              <span className="text-2xl mx-8">•</span>
+            </React.Fragment>
+          ))}
         </div>
 
-        {/* Segunda linha de rolagem (inicia após a primeira) */}
-        <div className="absolute top-0 py-12 animate-marquee2 whitespace-nowrap left-0">
-          <span className="text-2xl mx-4">{creativity}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{innovation}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{empathy}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{intention}</span>
-          <span className="text-2xl mx-4">•</span>
-          <span className="text-2xl mx-4">{adaptability}</span>
-          <span className="text-2xl mx-4">•</span>
+        {/* Segunda linha para rolagem contínua */}
+        <div className="absolute top-0 py-12 animate-marquee2 whitespace-nowrap flex">
+          {words.map((word, index) => (
+            <React.Fragment key={index}>
+              <span className="text-2xl mx-8">{word}</span>
+              <span className="text-2xl mx-8">•</span>
+            </React.Fragment>
+          ))}
         </div>
       </div>
     </div>
