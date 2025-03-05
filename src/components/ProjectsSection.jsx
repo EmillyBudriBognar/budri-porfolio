@@ -102,7 +102,7 @@ const ProjectsSection = ({ language }) => {
         </p>
 
         {/* Linha decorativa */}
-        <div className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mt-12 mb-12"></div>
+        <div className="w-24 h-1 bg-gray-600 dark:bg-gray-200 mx-auto mt-12 mb-12 transition-colors duration-300"></div>
 
         {/* Exibição dos projetos */}
         <div>

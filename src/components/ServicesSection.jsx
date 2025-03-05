@@ -103,7 +103,7 @@ const ServicesSection = ({ language }) => {
           initial={{ opacity: 0, scaleX: 0.5 }}
           animate={inView ? { opacity: 1, scaleX: 1 } : {}}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-          className="w-16 h-1 bg-gray-600 dark:bg-gray-200 mx-auto my-6 mb-10 transition-colors duration-300"
+          className="w-24 h-1 bg-gray-600 dark:bg-gray-200 mx-auto my-6 mb-10 transition-colors duration-300"
         ></motion.div>
 
         {/* Subtítulo com delay maior */}
