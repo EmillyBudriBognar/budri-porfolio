@@ -11,6 +11,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Nav = ({ language, onLanguageChange }) => {
   const [open, setOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isHeroSection, setIsHeroSection] = useState(true); // Estado para verificar se está na hero-section
 
   // Objeto de tradução
   const translations = {
@@ -67,6 +70,30 @@ const Nav = ({ language, onLanguageChange }) => {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [open]);
 
+  // Efeito de rolagem para mostrar/esconder o Nav e verificar se está na hero-section
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const heroSection = document.getElementById("hero-section");
+
+      if (heroSection) {
+        const heroSectionHeight = heroSection.offsetHeight;
+        setIsHeroSection(currentScrollY < heroSectionHeight); // Verifica se está na hero-section
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // Esconde o Nav ao rolar para baixo
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true); // Mostra o Nav ao rolar para cima
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -76,7 +103,16 @@ const Nav = ({ language, onLanguageChange }) => {
   };
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50">
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${!isHeroSection ? "shadow-lg" : ""}`} // Adiciona a sombra apenas se não estiver na hero-section
+      style={{
+        boxShadow: !isHeroSection
+          ? "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+          : "none",
+      }}
+    >
       {open && <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity" />}
 
       <div className="relative flex items-center justify-between py-4 md:px-10 px-7 transition-colors bg-purple-50 dark:bg-gray-900 text-gray-800 dark:text-white z-50 transition-colors duration-300">
