@@ -279,7 +279,7 @@ const Formacao = ({ language = "pt" }) => {
       >
         <ButtonAllPurple
           onClick={() => setExpanded(!expanded)}
-          className={`mt-8 dark:bg-[#ffffff30] dark:border-gray-200 dark:hover:bg-gray-200 dark:hover:text-purple-800`}
+          className={`mt-8 dark:bg-[#ffffff30] dark:border-gray-100 dark:hover:bg-gray-200 dark:hover:text-purple-800`}
         >
           {expanded ? seeLess : seeMore}
         </ButtonAllPurple>
