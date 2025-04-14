@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectItem from "./ProjectItem";
 import Teste from "../assets/img/teste.jpg";
@@ -203,6 +203,24 @@ const Portfolio = ({ language }) => {
     return "Todos"; // Para "pt"
   });
 
+  // Estado para verificar se é mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // 768px é o breakpoint comum para tablet/mobile
+    };
+
+    // Verifica no carregamento inicial
+    handleResize();
+    
+    // Adiciona listener para redimensionamento
+    window.addEventListener('resize', handleResize);
+    
+    // Remove listener ao desmontar
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Filtrar projetos com base na categoria selecionada
   const filteredProjects =
     selectedCategory === "All" || selectedCategory === translatedCategories[0]
@@ -211,22 +229,40 @@ const Portfolio = ({ language }) => {
 
   return (
     <section className="w-full px-6">
-      {/* Filtros - Modificado para alinhar à esquerda em telas pequenas */}
-      <div className="flex justify-start md:justify-center gap-3 mb-10 flex-wrap overflow-x-auto py-2 scrollbar-hide">
-        {translatedCategories.map((category, index) => (
-          <motion.button
-            key={index}
-            onClick={() => setSelectedCategory(category)}
-            className={`px-5 py-2 text-l font-semibold rounded-lg transition-all whitespace-nowrap ${
-              selectedCategory === category
-                ? "bg-purple-600 text-white dark:bg-purple-700 dark:text-white"
-                : "bg-purple-50 text-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white"
-            }`}
-            whileTap={{ scale: 0.95 }}
+      {/* Filtros */}
+      <div className="mb-10">
+        {isMobile ? (
+          // Dropdown para mobile
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="w-full p-3 text-lg font-semibold rounded-lg bg-purple-50 text-gray-700 dark:bg-purple-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600"
           >
-            {category}
-          </motion.button>
-        ))}
+            {translatedCategories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        ) : (
+          // Botões para desktop/tablet
+          <div className="flex justify-start md:justify-center gap-3 flex-wrap overflow-x-auto py-2 scrollbar-hide">
+            {translatedCategories.map((category, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-5 py-2 text-l font-semibold rounded-lg transition-all whitespace-nowrap ${
+                  selectedCategory === category
+                    ? "bg-purple-600 text-white dark:bg-purple-700 dark:text-white"
+                    : "bg-purple-50 text-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white"
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                {category}
+              </motion.button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Grid de Projetos */}
