@@ -203,7 +203,7 @@ const Footer = ({ language = "pt" }) => {
         <span>{copyright}</span>
         <span>{rights}</span>
         <div className="place-self-center">
-          <SocialIcons />
+          <SocialIcons/>
         </div>
       </motion.div>
     </footer>
