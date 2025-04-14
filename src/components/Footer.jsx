@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { SocialIcons, Icons } from "./SocialIcons";
+import { SocialIcons } from "./SocialIcons";
 import LogoWhite from "../assets/img/logo/all-white.svg"; // Logo para o modo escuro
 import LogoBlack from "../assets/img/logo/all-black.svg"; // Logo para o modo claro
 import Image from "next/image";
@@ -203,7 +203,7 @@ const Footer = ({ language = "pt" }) => {
         <span>{copyright}</span>
         <span>{rights}</span>
         <div className="place-self-center">
-          <SocialIcons Icons={Icons} />
+          <SocialIcons />
         </div>
       </motion.div>
     </footer>
