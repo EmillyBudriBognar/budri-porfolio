@@ -1,38 +1,3 @@
-// src/app/page.jsx
-export const metadata = {
-  title: "Budri - UX Design, Front-End e Mobile | Creative Solutions",
-  description:
-    "Budri is a creative studio specializing in UX Design, Front-End, and Mobile. We transform ideas into intuitive and functional interfaces. Let's innovate together?",
-  authors: [{ name: "Budri", url: "https://www.budri.com.br" }],
-  robots: "index, follow",
-  openGraph: {
-    title: "Budri - UX Design, Front-End e Mobile | Creative Solutions",
-    description: "Creative studio specializing in UX, Front-End, and Mobile.",
-    url: "https://www.budri.com.br",
-    siteName: "Budri",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Budri - Creative Portfolio",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Budri - UX Design, Front-End e Mobile",
-    description:
-      "Budri is a creative studio specializing in UX, Front-End, and Mobile.",
-    images: ["/og-image.jpg"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-  },
-  metadataBase: new URL("https://www.budri.com.br"),
-};
-
 "use client";
 
 import React, { useState } from "react";

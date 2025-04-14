@@ -1,21 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Budri - UX Design, Front-End e Mobile | Creative Solutions",
-  description:
-    "Budri is a creative studio specializing in UX Design, Front-End, and Mobile. We transform ideas into intuitive and functional interfaces. Let's innovate together?",
+  description: "Budri is a creative studio specializing in UX Design, Front-End, and Mobile. We transform ideas into intuitive and functional interfaces. Let's innovate together?",
   authors: [{ name: "Budri", url: "https://www.budri.com.br" }],
   robots: "index, follow",
   openGraph: {
@@ -32,25 +20,25 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Budri - UX Design, Front-End e Mobile",
-    description:
-      "Budri is a creative studio specializing in UX, Front-End, and Mobile.",
-    images: ["/og-image.jpg"],
+    locale: "en_US",
   },
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png", // Optional: add shortcut icon
+    apple: "/apple-touch-icon.png", // Optional: add apple touch icon
   },
   metadataBase: new URL("https://www.budri.com.br"),
+  alternates: {
+    canonical: "/", // Add canonical URL
+  },
+  keywords: ["UX Design", "Front-End", "Mobile", "Creative Studio", "Budri"], // Add relevant keywords
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
       <head>
@@ -63,8 +51,8 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Budri",
               url: "https://www.budri.com.br",
-              description:
-                "Creative studio specializing in UX, Front-End, and Mobile.",
+              logo: "https://www.budri.com.br/logo.png", // Add your logo URL
+              description: "Creative studio specializing in UX, Front-End, and Mobile.",
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+55-11-99998-6102",
@@ -81,16 +69,20 @@ export default function RootLayout({
                     "Thursday",
                     "Friday",
                   ],
-                  opens: "09:00",
-                  closes: "18:00",
+                  opens: "14:00",
+                  closes: "20:00",
                 },
-                contactPage: "https://www.budri.com.br/",
+                contactPage: "https://www.budri.com.br/contact", // Better to have a specific contact page
               },
+              sameAs: [ // Add your social media profiles if available
+                "https://www.linkedin.com/in/emilly-budri-bognar/",
+                "https://www.instagram.com/emillybudri/",
+              ],
             }),
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased">
         {children}
       </body>
     </html>
