@@ -7,7 +7,7 @@ import Image from "next/image";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const HeroSection = ({ language = "pt" }) => { // Fallback para "pt" caso language seja undefined
+const HeroSection = ({ language = "pt" }) => { 
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -25,11 +25,10 @@ const HeroSection = ({ language = "pt" }) => { // Fallback para "pt" caso langua
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, delay: i * 0.2 } // Atraso crescente para cada elemento
+      transition: { duration: 0.6, delay: i * 0.2 }
     }),
   };
 
-  // Textos traduzidos para cada idioma
   const translations = {
     pt: {
       greeting: "Olá, eu sou a Emilly, mas pode me chamar de",
@@ -54,59 +53,62 @@ const HeroSection = ({ language = "pt" }) => { // Fallback para "pt" caso langua
     },
   };
 
-  // Seleciona o texto com base no idioma
   const { greeting, name, headline, altMobile, altDesktop } = translations[language];
 
   return (
-    <section className="flex flex-col items-center justify-start h-[93.5vh] text-center py-10 px-4 relative bg-purple-50 dark:bg-gray-900 transition-colors duration-300">
+    <section className="flex flex-col pt-24 items-center justify-between min-h-[93.5vh] text-center pt-10 px-4 relative bg-purple-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-circle z-0"></div>
 
+      <div className="z-10 w-full">
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          custom={0}
+          variants={staggerVariants}
+          className="flex flex-col items-center"
+        >
+          <h3 className="text-gray-700 dark:text-gray-200 text-lg transition-colors duration-300">
+            <span className="text-3xl font-semibold animate-wave">👋</span> <span className="text-xl font-semibold">{greeting}{' '}</span>
+            <span className="text-purple-600 dark:text-purple-400 text-2xl font-bold transition-colors duration-300">{name}</span>
+          </h3>
+        </motion.div>
+
+        <motion.h1
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          custom={1}
+          variants={staggerVariants}
+          className="text-3xl md:text-4xl font-bold text-purple-700 dark:text-purple-200 my-6 transition-colors duration-300"
+        >
+          {headline}
+        </motion.h1>
+      </div>
+
       <motion.div
         ref={ref}
         initial="hidden"
         animate={controls}
-        custom={0} // Sem atraso para este elemento
+        custom={2}
         variants={staggerVariants}
-        className="flex flex-col items-center z-10 mt-16"
-      >
-        <h3 className="text-gray-700 dark:text-gray-200 text-lg transition-colors duration-300">
-          <span className="text-3xl font-semibold animate-wave">👋</span> <span className="text-xl font-semibold">{greeting}{' '}</span>
-          <span className="text-purple-600 dark:text-purple-400 text-2xl font-bold transition-colors duration-300">{name}</span>
-        </h3>
-      </motion.div>
-
-      <motion.h1
-        ref={ref}
-        initial="hidden"
-        animate={controls}
-        custom={1} // Pequeno atraso para este elemento
-        variants={staggerVariants}
-        className="text-3xl md:text-4xl font-bold text-purple-700 dark:text-purple-200 my-6 transition-colors duration-300"
-      >
-        {headline}
-      </motion.h1>
-
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={controls}
-        custom={2} // Maior atraso para este elemento
-        variants={staggerVariants}
-        className="relative w-full h-[87%] z-20 mb-[-40px]"
+        className="relative w-full h-[60vh] md:h-[70vh] z-20 flex items-end"
       >
         <Image
           src={Me}
           alt={altMobile}
           layout="fill"
           objectFit="contain"
-          className="absolute bottom-0 left-0 w-full md:hidden"
+          objectPosition="bottom"
+          className="md:hidden"
         />
         <Image
           src={Emilly}
           alt={altDesktop}
           layout="fill"
           objectFit="contain"
-          className="absolute bottom-0 left-0 w-full hidden md:block"
+          objectPosition="bottom"
+          className="hidden md:block"
         />
       </motion.div>
     </section>

@@ -137,7 +137,7 @@ const Portfolio = ({ language }) => {
         "WEB Development",
         "Mobile Development",
         "Usability Research",
-        "HTML Emails", // Corrigido para "HTML Emails"
+        "HTML Emails",
         "Graphic Design",
       ],
       projects: [
@@ -177,7 +177,7 @@ const Portfolio = ({ language }) => {
           title: "Meu Aumigo – Email Marketing Campaign",
           description:
             "Creation of a responsive and interactive email template for the Meu Aumigo marketing campaign.",
-          category: "HTML Emails", // Corrigido para "HTML Emails"
+          category: "HTML Emails",
           image: Teste,
           link: "/projetos/",
         },
@@ -198,10 +198,10 @@ const Portfolio = ({ language }) => {
 
   // Estado inicial dinâmico com base no idioma
   const [selectedCategory, setSelectedCategory] = useState(() => {
-  if (language === "en") return "All";
-  if (language === "es") return "Todos";
-  return "Todos"; // Para "pt"
-});
+    if (language === "en") return "All";
+    if (language === "es") return "Todos";
+    return "Todos"; // Para "pt"
+  });
 
   // Filtrar projetos com base na categoria selecionada
   const filteredProjects =
@@ -211,16 +211,16 @@ const Portfolio = ({ language }) => {
 
   return (
     <section className="w-full px-6">
-      {/* Filtros */}
-      <div className="flex justify-center gap-3 mb-10 flex-wrap">
+      {/* Filtros - Modificado para alinhar à esquerda em telas pequenas */}
+      <div className="flex justify-start md:justify-center gap-3 mb-10 flex-wrap overflow-x-auto py-2 scrollbar-hide">
         {translatedCategories.map((category, index) => (
           <motion.button
             key={index}
             onClick={() => setSelectedCategory(category)}
-            className={`px-5 py-2 text-l font-semibold rounded-lg transition-all ${
+            className={`px-5 py-2 text-l font-semibold rounded-lg transition-all whitespace-nowrap ${
               selectedCategory === category
-                ? "bg-purple-600 text-white dark:bg-purple-700 dark:text-white" // Ativo
-                : "bg-purple-50 text-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white" // Inativo
+                ? "bg-purple-600 text-white dark:bg-purple-700 dark:text-white"
+                : "bg-purple-50 text-gray-700 dark:bg-gray-800 dark:text-gray-200 hover:bg-purple-500 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white"
             }`}
             whileTap={{ scale: 0.95 }}
           >

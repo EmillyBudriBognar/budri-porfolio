@@ -19,7 +19,7 @@ const ProfileCard = ({ language }) => {
       greeting: "Olá, eu sou a Emilly Budri Bognar!",
       roles: ["UX Designer", "Desenvolvedora Front-End", "Desenvolvedora Mobile"],
       description1:
-        "Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional – ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.",
+        "Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional - ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.",
       description2:
         "Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia, sempre com <b>comunicação clara</b> e foco nas <b>necessidades reais</b> dos usuários. Sou curiosa e estou sempre explorando <b>novas perspectivas</b> para aprimorar cada detalhe do design.",
       description3: "Seria um prazer ajudar sua empresa a crescer com soluções digitais que realmente fazem a diferença.",
@@ -41,7 +41,7 @@ const ProfileCard = ({ language }) => {
       greeting: "Hi, I'm Emilly Budri Bognar!",
       roles: ["UX Designer", "Front-End Developer", "Mobile Developer"],
       description1:
-        "I am passionate about <b>technology</b> and <b>UX Design</b>, where <b>psychology</b>, <b>art</b>, and <b>user experience</b> come together. I believe that <b>design</b> should be more than functional – it needs to create an <b>intuitive experience</b> aligned with the <b>real demands</b> of people.",
+        "I am passionate about <b>technology</b> and <b>UX Design</b>, where <b>psychology</b>, <b>art</b>, and <b>user experience</b> come together. I believe that <b>design</b> should be more than functional - it needs to create an <b>intuitive experience</b> aligned with the <b>real demands</b> of people.",
       description2:
         "My goal is to develop <b>digital solutions</b> that make a difference in everyday life, always with <b>clear communication</b> and a focus on the <b>real needs</b> of users. I am curious and always exploring <b>new perspectives</b> to enhance every detail of design.",
       description3: "It would be a pleasure to help your company grow with digital solutions that truly make a difference.",
@@ -84,8 +84,8 @@ const ProfileCard = ({ language }) => {
 
   // Hook useInView para a animação da seção
   const { ref: sectionRef, inView: sectionInView } = useInView({
-    triggerOnce: true, // Dispara a animação uma vez
-    threshold: 0.1, // A animação começa quando 10% da seção estiver visível
+    triggerOnce: true,
+    threshold: 0.1,
   });
 
   return (
@@ -107,7 +107,7 @@ const ProfileCard = ({ language }) => {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.5 }} // Delay maior para aparecer após o título
+        transition={{ duration: 0.7, delay: 0.5 }}
         className="text-2xl font-bold text-center mb-6 sm:mb-16 max-w-4xl mx-auto pb-6 sm:pb-10 text-purple-600 dark:text-purple-400"
       >
         {displayedText}
@@ -120,7 +120,7 @@ const ProfileCard = ({ language }) => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={sectionInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.9 }} // Delay maior para aparecer após o subtítulo
+          transition={{ duration: 0.7, delay: 0.9 }}
           className="flex flex-col items-center w-full md:w-1/3 mb-6 sm:mb-0"
         >
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 sm:-mt-16 mb-6 sm:mb-8">
@@ -139,7 +139,7 @@ const ProfileCard = ({ language }) => {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={sectionInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.7, delay: 1.3 }} // Delay maior para aparecer após a imagem
+          transition={{ duration: 0.7, delay: 1.3 }}
           className="flex flex-col w-full md:w-2/3 text-center md:text-left"
         >
           <motion.p
@@ -155,12 +155,12 @@ const ProfileCard = ({ language }) => {
             dangerouslySetInnerHTML={{ __html: description3 }}
           />
 
-          {/* Botão animado */}
+          {/* Botão animado - Modificado para adicionar espaço em mobile */}
           <motion.div
-            className="flex justify-center lg:mt-6 items-center mt-0 pb-8 sm:pb-12"
+            className="flex justify-center lg:mt-6 items-center mt-6 pb-8 sm:pb-12" // Adicionei mt-6 aqui
             initial={{ opacity: 0, y: 20 }}
             animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 1.7 }} // Delay maior para aparecer após o texto
+            transition={{ duration: 0.7, delay: 1.7 }}
           >
             <Button
               className="transition-all duration-300"
