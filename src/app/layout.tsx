@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png", // Optional: add shortcut icon
-    apple: "/apple-touch-icon.png", // Optional: add apple touch icon
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
   metadataBase: new URL("https://www.budri.com.br"),
   alternates: {
-    canonical: "/", // Add canonical URL
+    canonical: "/",
   },
-  keywords: ["UX Design", "Front-End", "Mobile", "Creative Studio", "Budri"], // Add relevant keywords
+  keywords: ["UX Design", "Front-End", "Mobile", "Creative Studio", "Budri"],
 };
 
 export default function RootLayout({
@@ -40,8 +40,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
+        {/* Meta Viewport ESSENCIAL para corrigir problemas de zoom no mobile */}
+        <meta 
+          name="viewport" 
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" 
+        />
+        
+        {/* Previne zoom automático em inputs no iOS */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="date=no" />
+        <meta name="format-detection" content="address=no" />
+        <meta name="format-detection" content="email=no" />
+
         {/* SEO Extra para Google Structured Data */}
         <script
           type="application/ld+json"
@@ -51,7 +63,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Budri",
               url: "https://www.budri.com.br",
-              logo: "https://www.budri.com.br/logo.png", // Add your logo URL
+              logo: "https://www.budri.com.br/logo.png",
               description: "Creative studio specializing in UX, Front-End, and Mobile.",
               contactPoint: {
                 "@type": "ContactPoint",
@@ -72,17 +84,47 @@ export default function RootLayout({
                   opens: "14:00",
                   closes: "20:00",
                 },
-                contactPage: "https://www.budri.com.br/contact", // Better to have a specific contact page
+                contactPage: "https://www.budri.com.br/contact",
               },
-              sameAs: [ // Add your social media profiles if available
+              sameAs: [
                 "https://www.linkedin.com/in/emilly-budri-bognar/",
                 "https://www.instagram.com/emillybudri/",
               ],
             }),
           }}
         />
+
+        {/* Script para prevenir double-tap zoom no mobile */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('DOMContentLoaded', function() {
+                let lastTouchEnd = 0;
+                document.addEventListener('touchend', function(event) {
+                  const now = (new Date()).getTime();
+                  if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                  }
+                  lastTouchEnd = now;
+                }, { passive: false });
+                
+                // Previne zoom em inputs
+                document.addEventListener('focusin', function(e) {
+                  if (window.innerWidth <= 768) {
+                    const target = e.target;
+                    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT') {
+                      setTimeout(() => {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }, 300);
+                    }
+                  }
+                });
+              });
+            `,
+          }}
+        />
       </head>
-      <body className="antialiased">
+      <body className="antialiased min-h-screen w-full overflow-x-hidden">
         {children}
       </body>
     </html>

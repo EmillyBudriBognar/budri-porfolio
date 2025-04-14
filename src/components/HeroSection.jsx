@@ -97,7 +97,7 @@ const HeroSection = ({ language = "pt" }) => {
         animate={controls}
         custom={2}
         variants={staggerVariants}
-        className="relative w-full h-[40vh] md:h-[50vh] z-20 flex items-center justify-center"
+        className="relative w-full h-[50vh] md:h-[50vh] z-20 flex items-center justify-center"
       >
         <Image
           src={Me}
