@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Emilly from "../assets/img/me-bg.svg"; 
 import Me from "../assets/img/me.svg"; 
 import Image from "next/image";
@@ -56,34 +56,39 @@ const HeroSection = ({ language = "pt" }) => {
   const { greeting, name, headline, altMobile, altDesktop } = translations[language];
 
   return (
-    <section className="flex flex-col pt-24 items-center justify-between min-h-[93.5vh] text-center pt-10 px-4 relative bg-purple-50 dark:bg-gray-900 transition-colors duration-300">
+    <section className="flex flex-col items-center justify-between min-h-[93.5vh] text-center px-4 relative bg-purple-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="absolute inset-0 bg-gradient-circle z-0"></div>
 
-      <div className="z-10 w-full">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          custom={0}
-          variants={staggerVariants}
-          className="flex flex-col items-center"
-        >
-          <h3 className="text-gray-700 dark:text-gray-200 text-lg transition-colors duration-300">
-            <span className="text-3xl font-semibold animate-wave">👋</span> <span className="text-xl font-semibold">{greeting}{' '}</span>
-            <span className="text-purple-600 dark:text-purple-400 text-2xl font-bold transition-colors duration-300">{name}</span>
-          </h3>
-        </motion.div>
+      <div className="z-10 w-full flex flex-col items-center justify-center flex-1 py-8">
+        <div className="w-full max-w-2xl">
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            custom={0}
+            variants={staggerVariants}
+            className="flex flex-col items-center"
+          >
+            <h3 className="text-gray-700 dark:text-gray-200 text-lg transition-colors duration-300">
+              <span className="text-3xl font-semibold animate-wave">👋</span>{' '}
+              <span className="text-xl font-semibold">{greeting}{' '}</span>
+              <span className="text-purple-600 dark:text-purple-400 text-2xl font-bold transition-colors duration-300">
+                {name}
+              </span>
+            </h3>
+          </motion.div>
 
-        <motion.h1
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          custom={1}
-          variants={staggerVariants}
-          className="text-3xl md:text-4xl font-bold text-purple-700 dark:text-purple-200 my-6 transition-colors duration-300"
-        >
-          {headline}
-        </motion.h1>
+          <motion.h1
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            custom={1}
+            variants={staggerVariants}
+            className="text-3xl md:text-4xl font-bold text-purple-700 dark:text-purple-200 mt-4 mb-8 transition-colors duration-300"
+          >
+            {headline}
+          </motion.h1>
+        </div>
       </div>
 
       <motion.div
@@ -92,23 +97,25 @@ const HeroSection = ({ language = "pt" }) => {
         animate={controls}
         custom={2}
         variants={staggerVariants}
-        className="relative w-full h-[60vh] md:h-[70vh] z-20 flex items-end"
+        className="relative w-full h-[40vh] md:h-[50vh] z-20 flex items-center justify-center"
       >
         <Image
           src={Me}
           alt={altMobile}
           layout="fill"
           objectFit="contain"
-          objectPosition="bottom"
+          objectPosition="center"
           className="md:hidden"
+          priority
         />
         <Image
           src={Emilly}
           alt={altDesktop}
           layout="fill"
           objectFit="contain"
-          objectPosition="bottom"
+          objectPosition="center"
           className="hidden md:block"
+          priority
         />
       </motion.div>
     </section>

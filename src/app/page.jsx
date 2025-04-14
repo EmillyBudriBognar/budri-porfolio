@@ -20,34 +20,40 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen">
-      <header>
+    <div className="min-h-screen w-full flex flex-col">
+      <header className="w-full">
         <Nav language={language} onLanguageChange={handleLanguageChange} />
       </header>
 
-      <main>
-        <section id="hero-section" aria-label="Main section">
+      <main className="flex-grow w-full">
+        <section id="hero-section" aria-label="Main section" className="w-full">
           <HeroSection language={language} />
         </section>
+        
         <ScrollingWords language={language} />
-        <section id="services-section" aria-label="Services section">
+        
+        <section id="services-section" aria-label="Services section" className="w-full">
           <ServicesSection language={language} />
         </section>
-        <section id="projects-section" aria-label="Projects section">
+        
+        <section id="projects-section" aria-label="Projects section" className="w-full">
           <ProjectsSection language={language} />
         </section>
-        <section id="aboutme-section" aria-label="About me">
+        
+        <section id="aboutme-section" aria-label="About me" className="w-full">
           <AboutMeSection language={language} />
         </section>
-        <section id="formation-section" aria-label="Formation">
+        
+        <section id="formation-section" aria-label="Formation" className="w-full">
           <FormationSection language={language} />
         </section>
-        <section id="contact-section" aria-label="Contact">
+        
+        <section id="contact-section" aria-label="Contact" className="w-full">
           <ContactSection language={language} />
         </section>
       </main>
 
-      <Footer language={language} />
+      <Footer language={language} className="w-full" />
     </div>
   );
 }
