@@ -20,6 +20,9 @@ const ProjectItem = ({ project, index }) => {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.2 }}
       whileHover={{ scale: 1.05 }}
+      aria-label={`Ver projeto ${project.title}`}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {/* Imagem do Projeto */}
       <Image
@@ -28,6 +31,7 @@ const ProjectItem = ({ project, index }) => {
         width={600}
         height={400}
         className="w-full h-60 object-cover transition-all duration-500"
+        priority={index < 3} // Prioriza o carregamento das primeiras imagens
       />
 
       {/* Efeito ao Hover */}
