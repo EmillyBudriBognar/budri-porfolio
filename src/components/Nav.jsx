@@ -13,7 +13,7 @@ const Nav = ({ language, onLanguageChange }) => {
   const [open, setOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isHeroSection, setIsHeroSection] = useState(true);
+  const [isHeroSection, setIsHeroSection] = useState(true); // Estado para verificar se está na hero-section
 
   // Objeto de tradução
   const translations = {
@@ -63,16 +63,11 @@ const Nav = ({ language, onLanguageChange }) => {
 
     if (open) {
       document.addEventListener("mousedown", handleOutsideClick);
-      document.body.classList.add("overflow-hidden");
     } else {
       document.removeEventListener("mousedown", handleOutsideClick);
-      document.body.classList.remove("overflow-hidden");
     }
 
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-      document.body.classList.remove("overflow-hidden");
-    };
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [open]);
 
   // Efeito de rolagem para mostrar/esconder o Nav e verificar se está na hero-section
@@ -83,13 +78,13 @@ const Nav = ({ language, onLanguageChange }) => {
 
       if (heroSection) {
         const heroSectionHeight = heroSection.offsetHeight;
-        setIsHeroSection(currentScrollY < heroSectionHeight);
+        setIsHeroSection(currentScrollY < heroSectionHeight); // Verifica se está na hero-section
       }
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
+        setIsVisible(false); // Esconde o Nav ao rolar para baixo
       } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
+        setIsVisible(true); // Mostra o Nav ao rolar para cima
       }
 
       setLastScrollY(currentScrollY);
@@ -108,103 +103,90 @@ const Nav = ({ language, onLanguageChange }) => {
   };
 
   return (
-    <>
-      {/* Overlay escurecido quando o menu mobile está aberto */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${!isHeroSection ? "shadow-lg" : ""}`} // Adiciona a sombra apenas se não estiver na hero-section
+      style={{
+        boxShadow: !isHeroSection
+          ? "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+          : "none",
+      }}
+    >
+      {open && <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity" />}
 
-      <nav
-        className={`w-full fixed top-0 left-0 z-50 transition-transform duration-300 ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        } ${!isHeroSection ? "shadow-lg" : ""}`}
-        style={{
-          boxShadow: !isHeroSection
-            ? "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-            : "none",
-        }}
-      >
-        <div className="relative flex items-center justify-between py-4 md:px-10 px-7 transition-colors bg-purple-50 dark:bg-gray-900 text-gray-800 dark:text-white z-50 transition-colors duration-300">
-          <div
-            onClick={() => scrollToSection("hero-section")}
-            className="flex items-center cursor-pointer flex-shrink-0"
-            style={{ fontFamily: "Jost, sans-serif" }}
-          >
-            <Image src={LogoLight} alt="Budri Logo" width={40} height={40} className="h-10 w-auto dark:hidden" />
-            <Image src={LogoDark} alt="Budri Logo" width={40} height={40} className="h-10 w-auto hidden dark:block" />
-            <span className="font-bold text-2xl ml-3 min-w-max">Budri</span>
-          </div>
-
-          <ul className="hidden md:flex md:gap-8">
-            {Links.map((link) => (
-              <li key={link.name} className="text-lg">
-                <a
-                  href={`#${link.link}`}
-                  className="hover:text-gray-400 transition duration-300"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.link);
-                  }}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div onClick={() => setOpen(!open)} className="text-3xl cursor-pointer md:hidden z-50">
-            {open ? <X size={30} /> : <Menu size={30} />}
-          </div>
-
-          <AnimatePresence>
-            {open && (
-              <motion.ul
-                id="mobile-menu"
-                initial={{ y: -20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -20, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-16 left-0 w-full flex flex-col items-center py-6 bg-purple-50 dark:bg-gray-900 text-gray-800 dark:text-white z-50"
-              >
-                {Links.map((link) => (
-                  <li key={link.name} className="text-xl my-2">
-                    <motion.a
-                      href={`#${link.link}`}
-                      className="hover:text-gray-400 duration-500"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(link.link);
-                      }}
-                    >
-                      {link.name}
-                    </motion.a>
-                  </li>
-                ))}
-                <div className="flex flex-row items-center gap-4 pt-4 pb-4">
-                  <ThemeToggle language={language} />
-                  <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
-                </div>
-              </motion.ul>
-            )}
-          </AnimatePresence>
-
-          <div className="hidden md:flex items-center gap-4">
-            <ThemeToggle language={language} />
-            <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
-          </div>
+      <div className="relative flex items-center justify-between py-4 md:px-10 px-7 transition-colors bg-purple-50 dark:bg-gray-900 text-gray-800 dark:text-white z-50 transition-colors duration-300">
+        <div
+          onClick={() => scrollToSection("hero-section")}
+          className="flex items-center cursor-pointer flex-shrink-0"
+          style={{ fontFamily: "Jost, sans-serif" }}
+        >
+          <Image src={LogoLight} alt="Budri Logo" width={40} height={40} className="h-10 w-auto dark:hidden" />
+          <Image src={LogoDark} alt="Budri Logo" width={40} height={40} className="h-10 w-auto hidden dark:block" />
+          <span className="font-bold text-2xl ml-3 min-w-max">Budri</span>
         </div>
-      </nav>
-    </>
+
+        <ul className="hidden md:flex md:gap-8">
+          {Links.map((link) => (
+            <li key={link.name} className="text-lg">
+              <a
+                href={`#${link.link}`}
+                className="hover:text-gray-400 transition duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.link);
+                }}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div onClick={() => setOpen(!open)} className="text-3xl cursor-pointer md:hidden z-50">
+          {open ? <X size={30} /> : <Menu size={30} />}
+        </div>
+
+        <AnimatePresence>
+          {open && (
+            <motion.ul
+              id="mobile-menu"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-16 left-0 w-full flex flex-col items-center py-6 bg-purple-50 dark:bg-gray-900 text-gray-800 dark:text-white z-50"
+            >
+              {Links.map((link) => (
+                <li key={link.name} className="text-xl my-2">
+                  <motion.a
+                    href={`#${link.link}`}
+                    className="hover:text-gray-400 duration-500"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.link);
+                    }}
+                  >
+                    {link.name}
+                  </motion.a>
+                </li>
+              ))}
+              <div className="flex flex-row items-center gap-4 pt-4 pb-4">
+                <ThemeToggle language={language} />
+                <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
+              </div>
+            </motion.ul>
+          )}
+        </AnimatePresence>
+
+        <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle language={language} />
+          <LanguageSelector language={language} onLanguageChange={onLanguageChange} />
+        </div>
+      </div>
+    </nav>
   );
 };
 
