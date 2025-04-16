@@ -10,7 +10,7 @@ import ToolsUsed from '@/components/ToolsUsed';
 import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
-import TesteImage from "../assets/img/teste.jpg";
+import TesteImage from "@/assets/img/teste.jpg";
 import { useRouter } from 'next/navigation';
 
 const ProjectPage = ({ language = 'en' }) => {

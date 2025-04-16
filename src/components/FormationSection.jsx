@@ -38,18 +38,18 @@ const Formacao = ({ language = "pt" }) => {
         { nome: "Profissional em Criação de Sites e Plataformas Digitais - SENAI", ano: "2022" }
       ],
       tecnologias: [
-        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900" /> },
-        { nome: "REACT", icone: <FaReact className="text-gray-900" /> },
-        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900" /> },
-        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900" /> },
-        { nome: "SASS", icone: <FaSass className="text-gray-900" /> },
-        { nome: "EXPO", icone: <SiExpo className="text-gray-900" /> },
-        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900" /> },
-        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900" /> },
-        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900" /> },
-        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900" /> },
-        { nome: "FIGMA", icone: <SiFigma className="text-gray-900" /> },
-        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900" /> }
+        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "REACT", icone: <FaReact className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "SASS", icone: <FaSass className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "EXPO", icone: <SiExpo className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "FIGMA", icone: <SiFigma className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900 dark:text-gray-100" /> }
       ],
       certificacoes: [
         { nome: "Google UX Design", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
@@ -89,18 +89,18 @@ const Formacao = ({ language = "pt" }) => {
         { nome: "Profesional en Creación de Sitios y Plataformas Digitales - SENAI", ano: "2022" }
       ],
       tecnologias: [
-        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900" /> },
-        { nome: "REACT", icone: <FaReact className="text-gray-900" /> },
-        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900" /> },
-        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900" /> },
-        { nome: "SASS", icone: <FaSass className="text-gray-900" /> },
-        { nome: "EXPO", icone: <SiExpo className="text-gray-900" /> },
-        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900" /> },
-        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900" /> },
-        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900" /> },
-        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900" /> },
-        { nome: "FIGMA", icone: <SiFigma className="text-gray-900" /> },
-        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900" /> }
+        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "REACT", icone: <FaReact className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "SASS", icone: <FaSass className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "EXPO", icone: <SiExpo className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "FIGMA", icone: <SiFigma className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900 dark:text-gray-100" /> }
       ],
       certificacoes: [
         { nome: "Google UX Design", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
@@ -140,18 +140,18 @@ const Formacao = ({ language = "pt" }) => {
         { nome: "Professional in Website and Digital Platforms Creation - SENAI", ano: "2022" }
       ],
       tecnologias: [
-        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900" /> },
-        { nome: "REACT", icone: <FaReact className="text-gray-900" /> },
-        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900" /> },
-        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900" /> },
-        { nome: "SASS", icone: <FaSass className="text-gray-900" /> },
-        { nome: "EXPO", icone: <SiExpo className="text-gray-900" /> },
-        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900" /> },
-        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900" /> },
-        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900" /> },
-        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900" /> },
-        { nome: "FIGMA", icone: <SiFigma className="text-gray-900" /> },
-        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900" /> }
+        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "REACT", icone: <FaReact className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "SASS", icone: <FaSass className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "EXPO", icone: <SiExpo className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "FIGMA", icone: <SiFigma className="text-gray-900 dark:text-gray-100" /> },
+        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900 dark:text-gray-100" /> }
       ],
       certificacoes: [
         { nome: "Google UX Design", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
