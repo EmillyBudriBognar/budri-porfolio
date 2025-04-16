@@ -155,9 +155,9 @@ const ProfileCard = ({ language }) => {
             dangerouslySetInnerHTML={{ __html: description3 }}
           />
 
-          {/* Botão animado - Modificado para adicionar espaço em mobile */}
+          {/* Botão animado */}
           <motion.div
-            className="flex justify-center lg:mt-6 items-center mt-6 pb-8 sm:pb-12" // Adicionei mt-6 aqui
+            className="flex justify-center lg:mt-6 items-center mt-6 pb-8 sm:pb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={sectionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 1.7 }}

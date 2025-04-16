@@ -217,8 +217,8 @@ const ContactForm = ({ language = "pt" }) => {
 
   // Hook useInView para detectar quando a seção está visível
   const { ref: sectionRef, inView: sectionInView } = useInView({
-    triggerOnce: true, // Dispara a animação uma vez
-    threshold: 0.1, // A animação começa quando 10% da seção estiver visível
+    triggerOnce: true,
+    threshold: 0.1,
   });
 
   return (

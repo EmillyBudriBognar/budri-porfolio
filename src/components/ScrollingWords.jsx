@@ -11,7 +11,7 @@ const ScrollingWords = ({ language }) => {
     en: ["CREATIVITY", "INNOVATION", "EMPATHY", "INTENTION", "ADAPTABILITY"],
   };
 
-  const words = translations[language] || translations.en; // Fallback para inglês
+  const words = translations[language] || translations.en; 
 
   return (
     <div className="relative w-full h-12 overflow-hidden flex items-center font-bold bg-gradient-to-r from-purple-900 via-purple-700 to-blue-800">

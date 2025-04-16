@@ -51,12 +51,10 @@ const ProjectsSection = ({ language }) => {
     secondText,
   } = translations[language];
 
-  // Hook useInView para animações
   const { ref: titleRef, inView: titleInView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const { ref: subtitleRef, inView: subtitleInView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const { ref: firstTextRef, inView: firstTextInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  // Função para gerar classes de animação
   const getAnimationClasses = (inView) => 
     inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10";
 

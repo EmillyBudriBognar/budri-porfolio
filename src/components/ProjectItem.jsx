@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import Link from "next/link"; // Usando o Link do Next.js
+import Link from "next/link"; 
 
 const ProjectItem = ({ project, index }) => {
   const { ref, inView } = useInView({

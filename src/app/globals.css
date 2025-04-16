@@ -23,7 +23,6 @@
   }
 }
 
-/* Correções para o problema de zoom e bordas brancas */
 html, body {
   width: 100%;
   max-width: 100%;

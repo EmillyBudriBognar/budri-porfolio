@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react"; // Ícones do Lucide React
+import { Menu, X } from "lucide-react"; 
 import Image from "next/image";
 import LogoLight from "../assets/img/logo/black-and-purple.svg";
 import LogoDark from "../assets/img/logo/white-and-purple.svg";
@@ -78,13 +78,13 @@ const Nav = ({ language, onLanguageChange }) => {
 
       if (heroSection) {
         const heroSectionHeight = heroSection.offsetHeight;
-        setIsHeroSection(currentScrollY < heroSectionHeight); // Verifica se está na hero-section
+        setIsHeroSection(currentScrollY < heroSectionHeight);
       }
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // Esconde o Nav ao rolar para baixo
+        setIsVisible(false); 
       } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true); // Mostra o Nav ao rolar para cima
+        setIsVisible(true); 
       }
 
       setLastScrollY(currentScrollY);
@@ -106,7 +106,7 @@ const Nav = ({ language, onLanguageChange }) => {
     <nav
       className={`w-full fixed top-0 left-0 z-50 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${!isHeroSection ? "shadow-lg" : ""}`} // Adiciona a sombra apenas se não estiver na hero-section
+      } ${!isHeroSection ? "shadow-lg" : ""}`} 
       style={{
         boxShadow: !isHeroSection
           ? "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"

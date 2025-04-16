@@ -41,8 +41,8 @@ const ServicesSection = ({ language }) => {
 
   // Detecta quando a seção entra na tela
   const { ref, inView } = useInView({
-    triggerOnce: true, // A animação ocorre apenas uma vez
-    threshold: 0.2, // Ativa quando 20% do elemento está visível
+    triggerOnce: true,
+    threshold: 0.2, 
   });
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import ButtonAllPurple from "@/components/ButtonAllPurple"; // Importando o novo botão
+import ButtonAllPurple from "@/components/ButtonAllPurple";
 import { useInView } from "react-intersection-observer";
 
 const Formacao = ({ language = "pt" }) => {
@@ -144,8 +144,8 @@ const Formacao = ({ language = "pt" }) => {
 
   // Hook useInView para detectar quando a seção está visível
   const { ref: sectionRef, inView: sectionInView } = useInView({
-    triggerOnce: true, // Dispara a animação uma vez
-    threshold: 0.1, // A animação começa quando 10% da seção estiver visível
+    triggerOnce: true,
+    threshold: 0.1,
   });
 
   return (
@@ -197,7 +197,7 @@ const Formacao = ({ language = "pt" }) => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }} // Delay progressivo
+              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }}
               className="flex justify-between mb-2"
             >
               <span>{item.nome}</span>
@@ -218,7 +218,7 @@ const Formacao = ({ language = "pt" }) => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }} // Delay progressivo
+              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }} 
               className="flex justify-between"
             >
               <span>
@@ -251,7 +251,7 @@ const Formacao = ({ language = "pt" }) => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: index * 0.1 }} // Delay progressivo
+              transition={{ duration: 0.7, delay: index * 0.1 }} 
               className="flex justify-between mb-2"
             >
               <span>
@@ -274,7 +274,7 @@ const Formacao = ({ language = "pt" }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 1.5 }} // Delay maior para aparecer por último
+        transition={{ duration: 0.7, delay: 1.5 }} 
         className="mt-2 text-center"
       >
         <ButtonAllPurple

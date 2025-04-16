@@ -101,22 +101,22 @@ const Footer = ({ language = "pt" }) => {
   const LogoComponent = () => (
     <div className="flex items-center justify-center">
       <Image
-        src={LogoWhite} // Logo para o modo escuro
+        src={LogoWhite}
         alt="Budri Logo"
-        className="w-40 h-auto hidden dark:block" // Exibe no modo escuro
+        className="w-40 h-auto hidden dark:block"
       />
       <Image
-        src={LogoBlack} // Logo para o modo claro
+        src={LogoBlack} 
         alt="Budri Logo"
-        className="w-40 h-auto block dark:hidden" // Exibe no modo claro
+        className="w-40 h-auto block dark:hidden"
       />
     </div>
   );
 
   // Hook useInView para detectar quando a seção está visível
   const { ref: footerRef, inView: footerInView } = useInView({
-    triggerOnce: true, // Dispara a animação uma vez
-    threshold: 0.1, // A animação começa quando 10% da seção estiver visível
+    triggerOnce: true, 
+    threshold: 0.1, 
   });
 
   return (
@@ -130,7 +130,7 @@ const Footer = ({ language = "pt" }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={footerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }} // Logo aparece primeiro
+          transition={{ duration: 0.7, delay: 0.1 }} 
         >
           <LogoComponent />
         </motion.div>
@@ -139,7 +139,7 @@ const Footer = ({ language = "pt" }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={footerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.3 }} // Delay maior para aparecer após a logo
+          transition={{ duration: 0.7, delay: 0.3 }} 
         >
           <ul className="text-left text-justify">
             <h1 className="mb-1 font-semibold">{aboutTitle}</h1>
@@ -153,7 +153,7 @@ const Footer = ({ language = "pt" }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={footerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.5 }} // Delay maior para aparecer após "SOBRE"
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="lg:ml-20"
         >
           <h1 className="mb-1 font-semibold">{linksTitle}</h1>
@@ -163,8 +163,8 @@ const Footer = ({ language = "pt" }) => {
               href={`#${link.link}`}
               className="text-gray-700 dark:text-gray-200 hover:text-purple-600 dark:hover:text-purple-300 duration-300 text-l leading-6 cursor-pointer block mb-2"
               onClick={(e) => {
-                e.preventDefault(); // Previne o comportamento padrão do link
-                scrollToSection(link.link); // Chama a função de rolagem suave
+                e.preventDefault(); 
+                scrollToSection(link.link); 
               }}
             >
               {link.name}
@@ -176,7 +176,7 @@ const Footer = ({ language = "pt" }) => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={footerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.7 }} // Delay maior para aparecer após "LINKS"
+          transition={{ duration: 0.7, delay: 0.7 }} 
           className="lg:-ml-10"
         >
           <h1 className="mb-1 font-semibold">{contactTitle}</h1>
@@ -197,7 +197,7 @@ const Footer = ({ language = "pt" }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={footerInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.9 }} // Delay maior para aparecer por último
+        transition={{ duration: 0.7, delay: 0.9 }} 
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center pt-2 text-gray-700 dark:text-gray-200 text-l pb-10"
       >
         <span>{copyright}</span>

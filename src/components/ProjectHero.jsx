@@ -12,7 +12,7 @@ const ProjectHero = ({
   darkGradientTo = 'to-pink-700',
   colorText = 'text-gray-900',
   darkColorText = 'text-gray-100',
-  language = 'en' // Adicionando suporte a idiomas
+  language = 'en' 
 }) => {
   // Objeto de tradução para os textos
   const translations = {

@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { Languages } from "lucide-react"; // Ícone de tradutor
+import { Languages } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LanguageSelector = ({ onLanguageChange, language = "pt" }) => {
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(false);
-  const dropdownRef = useRef(null); // Referência para o dropdown
+  const dropdownRef = useRef(null); 
 
   // Textos traduzidos para cada idioma
   const translations = {
@@ -47,7 +47,7 @@ const LanguageSelector = ({ onLanguageChange, language = "pt" }) => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setOpen(false); // Fecha o dropdown se o clique foi fora
+        setOpen(false); 
       }
     };
 

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram } from "lucide-react"; // Ícones do lucide-react
+import { Github, Linkedin, Instagram } from "lucide-react"; 
 
 const Icons = [
   { name: "GitHub", icon: Github, link: "https://github.com/EmillyBudriBognar" },
@@ -13,7 +13,7 @@ const SocialIcons = () => {
   return (
     <div className="text-purple-300 flex space-x-3">
       {Icons.map((icon) => {
-        const IconComponent = icon.icon; // Armazena o componente do ícone
+        const IconComponent = icon.icon; 
         return (
           <motion.div key={icon.name} className="relative flex items-center justify-center group">
             <motion.a
