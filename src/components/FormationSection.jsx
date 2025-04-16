@@ -2,6 +2,22 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ButtonAllPurple from "@/components/ButtonAllPurple";
 import { useInView } from "react-intersection-observer";
+import { 
+  FaHtml5, 
+  FaCss3Alt, 
+  FaSass, 
+  FaJs, 
+  FaReact,
+  FaPython,
+  FaBootstrap
+} from "react-icons/fa";
+import { 
+  SiTypescript, 
+  SiTailwindcss,
+  SiFigma,
+  SiAdobephotoshop,
+  SiExpo
+} from "react-icons/si";
 
 const Formacao = ({ language = "pt" }) => {
   const [expanded, setExpanded] = useState(false);
@@ -12,20 +28,28 @@ const Formacao = ({ language = "pt" }) => {
       title: "FORMAÇÃO",
       description: "Aqui você encontra um resumo das minhas formações acadêmicas, cursos e certificações.",
       academicTitle: "Formações Acadêmicas",
-      languagesTitle: "Idiomas",
+      technologiesTitle: "Tecnologias",
       certificationsTitle: "Certificações",
       seeMore: "VER MAIS",
       seeLess: "VER MENOS",
       formacoesAcademicas: [
         { nome: "Tecnólogo em Desenvolvimento de Softwares Multiplataforma - FATEC", ano: "2027" },
-        { nome: "Ensino Médio - Colégio COB", ano: "2024" },
         { nome: "Técnico em Informática para Internet - ETEC", ano: "2024" },
         { nome: "Profissional em Criação de Sites e Plataformas Digitais - SENAI", ano: "2022" }
       ],
-      idiomas: [
-        { nome: "Português", nivel: "Nativo" },
-        { nome: "Inglês", nivel: "Intermediário" },
-        { nome: "Espanhol", nivel: "Básico" }
+      tecnologias: [
+        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900" /> },
+        { nome: "REACT", icone: <FaReact className="text-gray-900" /> },
+        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900" /> },
+        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900" /> },
+        { nome: "SASS", icone: <FaSass className="text-gray-900" /> },
+        { nome: "EXPO", icone: <SiExpo className="text-gray-900" /> },
+        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900" /> },
+        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900" /> },
+        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900" /> },
+        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900" /> },
+        { nome: "FIGMA", icone: <SiFigma className="text-gray-900" /> },
+        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900" /> }
       ],
       certificacoes: [
         { nome: "Google UX Design", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
@@ -55,24 +79,32 @@ const Formacao = ({ language = "pt" }) => {
       title: "FORMACIÓN",
       description: "Aquí encuentras un resumen de mis formaciones académicas, cursos y certificaciones.",
       academicTitle: "Formaciones Académicas",
-      languagesTitle: "Idiomas",
+      technologiesTitle: "Tecnologías",
       certificationsTitle: "Certificaciones",
       seeMore: "VER MÁS",
       seeLess: "VER MENOS",
       formacoesAcademicas: [
         { nome: "Tecnólogo en Desarrollo de Software Multiplataforma - FATEC", ano: "2027" },
-        { nome: "Educación Secundaria - Colegio COB", ano: "2024" },
         { nome: "Técnico en Informática para Internet - ETEC", ano: "2024" },
         { nome: "Profesional en Creación de Sitios y Plataformas Digitales - SENAI", ano: "2022" }
       ],
-      idiomas: [
-        { nome: "Portugués", nivel: "Nativo" },
-        { nome: "Inglés", nivel: "Intermedio" },
-        { nome: "Español", nivel: "Básico" }
+      tecnologias: [
+        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900" /> },
+        { nome: "REACT", icone: <FaReact className="text-gray-900" /> },
+        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900" /> },
+        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900" /> },
+        { nome: "SASS", icone: <FaSass className="text-gray-900" /> },
+        { nome: "EXPO", icone: <SiExpo className="text-gray-900" /> },
+        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900" /> },
+        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900" /> },
+        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900" /> },
+        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900" /> },
+        { nome: "FIGMA", icone: <SiFigma className="text-gray-900" /> },
+        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900" /> }
       ],
       certificacoes: [
-        { nome: "Diseño de UX de Google", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
-        { nome: "Diseño de una experiencia de usuario para el bien social y preparación para el mercado - Google", ano: "2024", link: "https://www.coursera.org/verify/YY9UASZKBGNT" },
+        { nome: "Google UX Design", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
+        { nome: "Design de una experiencia de usuario para el bien social y preparación para el mercado - Google", ano: "2024", link: "https://www.coursera.org/verify/YY9UASZKBGNT" },
         { nome: "Crear interfaces de usuario (UI) dinámicas para sitios web - Google", ano: "2024", link: "https://coursera.org/verify/XQBNSZ83VLYG" },
         { nome: "Crear diseños y prototipos de alta fidelidad en Figma - Google", ano: "2024", link: "https://coursera.org/verify/JKDHW34UCZHZ" },
         { nome: "Realizar investigaciones de UX y probar primeros conceptos - Google", ano: "2024", link: "https://www.coursera.org/verify/KQRD5UTP7B9E" },
@@ -98,20 +130,28 @@ const Formacao = ({ language = "pt" }) => {
       title: "EDUCATION",
       description: "Here you can find a summary of my academic background, courses, and certifications.",
       academicTitle: "Academic Background",
-      languagesTitle: "Languages",
+      technologiesTitle: "Technologies",
       certificationsTitle: "Certifications",
       seeMore: "SEE MORE",
       seeLess: "SEE LESS",
       formacoesAcademicas: [
         { nome: "Technologist in Multiplatform Software Development - FATEC", ano: "2027" },
-        { nome: "High School - Colégio COB", ano: "2024" },
         { nome: "Technical in Internet Computing - ETEC", ano: "2024" },
         { nome: "Professional in Website and Digital Platforms Creation - SENAI", ano: "2022" }
       ],
-      idiomas: [
-        { nome: "Portuguese", nivel: "Native" },
-        { nome: "English", nivel: "Intermediate" },
-        { nome: "Spanish", nivel: "Basic" }
+      tecnologias: [
+        { nome: "HTML 5", icone: <FaHtml5 className="text-gray-900" /> },
+        { nome: "REACT", icone: <FaReact className="text-gray-900" /> },
+        { nome: "CSS 3", icone: <FaCss3Alt className="text-gray-900" /> },
+        { nome: "REACT NATIVE", icone: <FaReact className="text-gray-900" /> },
+        { nome: "SASS", icone: <FaSass className="text-gray-900" /> },
+        { nome: "EXPO", icone: <SiExpo className="text-gray-900" /> },
+        { nome: "JAVASCRIPT", icone: <FaJs className="text-gray-900" /> },
+        { nome: "TAILWIND CSS", icone: <SiTailwindcss className="text-gray-900" /> },
+        { nome: "TYPESCRIPT", icone: <SiTypescript className="text-gray-900" /> },
+        { nome: "BOOTSTRAP", icone: <FaBootstrap className="text-gray-900" /> },
+        { nome: "FIGMA", icone: <SiFigma className="text-gray-900" /> },
+        { nome: "PHOTOSHOP", icone: <SiAdobephotoshop className="text-gray-900" /> }
       ],
       certificacoes: [
         { nome: "Google UX Design", ano: "2024", link: "https://www.coursera.org/verify/professional-cert/NF9AFJHZW6DZ" },
@@ -140,7 +180,7 @@ const Formacao = ({ language = "pt" }) => {
   };
 
   // Seleciona o texto com base no idioma
-  const { title, description, academicTitle, languagesTitle, certificationsTitle, seeMore, seeLess, formacoesAcademicas, idiomas, certificacoes } = translations[language];
+  const { title, description, academicTitle, technologiesTitle, certificationsTitle, seeMore, seeLess, formacoesAcademicas, tecnologias, certificacoes } = translations[language];
 
   // Hook useInView para detectar quando a seção está visível
   const { ref: sectionRef, inView: sectionInView } = useInView({
@@ -166,7 +206,7 @@ const Formacao = ({ language = "pt" }) => {
         </p>
       </motion.div>
 
-      {/* Formações Acadêmicas e Idiomas */}
+      {/* Formações Acadêmicas e Tecnologias */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Coluna 1: Formações Acadêmicas */}
         <div>
@@ -187,23 +227,25 @@ const Formacao = ({ language = "pt" }) => {
           ))}
         </div>
 
-        {/* Coluna 2: Idiomas */}
+        {/* Coluna 2: Tecnologias */}
         <div>
           <h3 className="font-semibold text-lg border-b border-gray-900 dark:border-white pb-2 mb-4">
-            {languagesTitle}
+            {technologiesTitle}
           </h3>
-          {idiomas.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={sectionInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }}
-              className="flex justify-between mb-2"
-            >
-              <span>{item.nome}</span>
-              <span>{item.nivel}</span>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-2 gap-4">
+            {tecnologias.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={sectionInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }}
+                className="flex items-center gap-2"
+              >
+                <span className="text-xl">{item.icone}</span>
+                <span>{item.nome}</span>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
