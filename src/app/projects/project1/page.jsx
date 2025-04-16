@@ -40,14 +40,14 @@ const ProjectPage = ({ language = 'en' }) => {
         ],
         feedback: "O redesign transformou completamente nossa plataforma, tornando-a muito mais acessível.",
         gallery: [
-          { src: TesteImage, caption: "Tela inicial do aplicativo" },
-          { src: TesteImage, caption: "Fluxo de aprendizado" },
-          { src: TesteImage, caption: "Detalhe do curso" }
+          { src: TesteImage, alt: "Tela inicial do aplicativo", caption: "Tela inicial do aplicativo" },
+          { src: TesteImage, alt: "Fluxo de aprendizado", caption: "Fluxo de aprendizado" },
+          { src: TesteImage, alt: "Detalhe do curso", caption: "Detalhe do curso" }
         ]
       },
       tools: [
-        { name: "Figma", icon: "✏️", color: "bg-purple-100", darkColor: "bg-purple-900" },
-        { name: "React", icon: "⚛️", color: "bg-blue-100", darkColor: "bg-blue-900" }
+        { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" }
       ],
       lessons: [
         { title: "Importância dos testes de usabilidade", description: "Descobri que pequenas mudanças baseadas em feedback podem ter um grande impacto na experiência geral." },
@@ -76,14 +76,14 @@ const ProjectPage = ({ language = 'en' }) => {
         ],
         feedback: "The redesign completely transformed our platform, making it much more accessible.",
         gallery: [
-          { src: TesteImage, caption: "App home screen" },
-          { src: TesteImage, caption: "Learning flow" },
-          { src: TesteImage, caption: "Course detail" }
+          { src: TesteImage, alt: "App home screen", caption: "App home screen" },
+          { src: TesteImage, alt: "Learning flow", caption: "Learning flow" },
+          { src: TesteImage, alt: "Course detail", caption: "Course detail" }
         ]
       },
       tools: [
-        { name: "Figma", icon: "✏️", color: "bg-purple-100", darkColor: "bg-purple-900" },
-        { name: "React", icon: "⚛️", color: "bg-blue-100", darkColor: "bg-blue-900" }
+        { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" }
       ],
       lessons: [
         { title: "Importance of usability testing", description: "I discovered that small changes based on feedback can greatly improve the overall experience." },
@@ -112,14 +112,14 @@ const ProjectPage = ({ language = 'en' }) => {
         ],
         feedback: "El rediseño transformó completamente nuestra plataforma, haciéndola mucho más accesible.",
         gallery: [
-          { src: TesteImage, caption: "Pantalla de inicio de la aplicación" },
-          { src: TesteImage, caption: "Flujo de aprendizaje" },
-          { src: TesteImage, caption: "Detalle del curso" }
+          { src: TesteImage, alt: "Pantalla de inicio de la aplicación", caption: "Pantalla de inicio de la aplicación" },
+          { src: TesteImage, alt: "Flujo de aprendizaje", caption: "Flujo de aprendizaje" },
+          { src: TesteImage, alt: "Detalle del curso", caption: "Detalle del curso" }
         ]
       },
       tools: [
-        { name: "Figma", icon: "✏️", color: "bg-purple-100", darkColor: "bg-purple-900" },
-        { name: "React", icon: "⚛️", color: "bg-blue-100", darkColor: "bg-blue-900" }
+        { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" }
       ],
       lessons: [
         { title: "Importancia de las pruebas de usabilidad", description: "Descubrí que pequeños cambios basados en comentarios pueden tener un gran impacto en la experiencia general." },
@@ -161,15 +161,18 @@ const ProjectPage = ({ language = 'en' }) => {
       />
       
       <CreativeProcess
-      steps={t.process}
-      language={currentLanguage} />
+        steps={t.process}
+        language={currentLanguage}
+      />
       
       <ResultsImpact 
         metrics={t.results.metrics}
         feedback={t.results.feedback}
         beforeAfterImages={{
           before: TesteImage,
-          after: TesteImage
+          after: TesteImage,
+          beforeAlt: "Before redesign",
+          afterAlt: "After redesign"
         }}
         language={currentLanguage}
       />
@@ -180,15 +183,18 @@ const ProjectPage = ({ language = 'en' }) => {
       />
       
       <ToolsUsed
-      tools={t.tools}
-      language={currentLanguage}/>
+        tools={t.tools}
+        language={currentLanguage}
+      />
       
       <LessonsLearned
-      language={currentLanguage}
-      lessons={t.lessons} />
+        language={currentLanguage}
+        lessons={t.lessons}
+      />
       
       <ProjectCTA
-      language={currentLanguage} />
+        language={currentLanguage}
+      />
     </div>
   );
 };
