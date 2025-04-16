@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 
 const LessonsLearned = ({ 
@@ -5,13 +7,30 @@ const LessonsLearned = ({
   bgColor = 'bg-gray-50',
   darkBgColor = 'bg-gray-800',
   textColor = 'text-gray-800',
-  darkTextColor = 'text-gray-100'
+  darkTextColor = 'text-gray-100',
+  language = 'en'
 }) => {
+  const translations = {
+    pt: {
+      sectionTitle: "O que Aprendi"
+    },
+    es: {
+      sectionTitle: "Lo que Aprendí"
+    },
+    en: {
+      sectionTitle: "Lessons Learned"
+    }
+  };
+
+  const { sectionTitle } = translations[language] || translations['en'];
+
   return (
     <section className={`${bgColor} dark:${darkBgColor} py-16 px-4`}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center dark:text-white">O que Aprendi</h2>
-        
+        <h2 className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}>
+          {sectionTitle}
+        </h2>
+
         <ul className="space-y-6">
           {lessons.map((lesson, index) => (
             <li 

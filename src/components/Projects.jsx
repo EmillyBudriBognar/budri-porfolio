@@ -25,7 +25,7 @@ const Portfolio = ({ language }) => {
             "Aprimoramento da experiência do usuário e da interface para orientar o desenvolvimento do aplicativo MárcioPhone.",
           category: "UX/UI Design",
           image: Teste,
-          link: "/projetos/",
+          link: "../app/projects/project1/page",
         },
         {
           title: "Orça$imples – Sistema de Gestão Financeira",

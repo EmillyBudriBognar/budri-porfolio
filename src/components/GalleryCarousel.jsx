@@ -1,38 +1,63 @@
+"use client";
+
 import React, { useState } from 'react';
 
-const GalleryCarousel = ({ images = [] }) => {
+const GalleryCarousel = ({
+  images = [],
+  bgColor = 'bg-gray-50',
+  darkBgColor = 'bg-gray-800',
+  textColor = 'text-gray-800',
+  darkTextColor = 'text-gray-100',
+  language = 'en'
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const translations = {
+    pt: {
+      sectionTitle: "Galeria"
+    },
+    es: {
+      sectionTitle: "Galería"
+    },
+    en: {
+      sectionTitle: "Gallery"
+    }
+  };
+
+  const { sectionTitle } = translations[language] || translations['en'];
+
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-800 py-16 px-4">
+    <section className={`${bgColor} dark:${darkBgColor} py-16 px-4`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center dark:text-white">Galeria</h2>
-        
+        <h2 className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}>
+          {sectionTitle}
+        </h2>
+
         <div className="relative">
           <div className="overflow-hidden rounded-2xl shadow-xl">
-            <div 
+            <div
               className="flex transition-transform duration-300 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {images.map((image, index) => (
-                <div 
+                <div
                   key={index}
                   className="w-full flex-shrink-0 relative group"
                 >
-                  <img 
-                    src={image.src} 
+                  <img
+                    src={image.src}
                     alt={image.alt || `Project screenshot ${index + 1}`}
                     className="w-full h-auto object-cover"
                   />
@@ -45,21 +70,21 @@ const GalleryCarousel = ({ images = [] }) => {
               ))}
             </div>
           </div>
-          
-          <button 
+
+          <button
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-600 transition-colors"
           >
             ❮
           </button>
-          <button 
+          <button
             onClick={nextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-600 transition-colors"
           >
             ❯
           </button>
         </div>
-        
+
         <div className="flex justify-center mt-6 gap-2">
           {images.map((_, index) => (
             <button
