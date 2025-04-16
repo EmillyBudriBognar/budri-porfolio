@@ -1,6 +1,8 @@
 "use client";
 
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
 const ToolsUsed = ({
   tools = [],
@@ -10,6 +12,11 @@ const ToolsUsed = ({
   darkTextColor = 'text-gray-100',
   language = 'en'
 }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const translations = {
     pt: {
       sectionTitle: "Ferramentas Usadas"
@@ -24,28 +31,73 @@ const ToolsUsed = ({
 
   const { sectionTitle } = translations[language] || translations['en'];
 
-  return (
-    <section className={`${bgColor} dark:${darkBgColor} py-16 px-4`}>
-      <div className="max-w-4xl mx-auto">
-        <h2 className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}>
-          {sectionTitle}
-        </h2>
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.05,
+      }
+    }
+  };
 
-        <div className="flex flex-wrap justify-center gap-8">
+  const item = {
+    hidden: { y: 20, opacity: 0, scale: 0.8 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    }
+  };
+
+  return (
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={container}
+      className={`${bgColor} dark:${darkBgColor} py-16 px-4`}
+    >
+      <div className="max-w-4xl mx-auto">
+        <motion.h2 
+          initial={{ y: -20, opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 1 } : {}}
+          transition={{ type: "spring", stiffness: 100 }}
+          className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}
+        >
+          {sectionTitle}
+        </motion.h2>
+
+        <motion.div 
+          variants={container}
+          className="flex flex-wrap justify-center gap-6"
+        >
           {tools.map((tool, index) => (
-            <ToolCard
+            <motion.div
               key={index}
-              name={tool.name}
-              icon={tool.icon}
-              color={tool.color}
-              darkColor={tool.darkColor}
-              textColor={textColor}
-              darkTextColor={darkTextColor}
-            />
+              variants={item}
+              custom={index}
+            >
+              <ToolCard
+                name={tool.name}
+                icon={tool.icon}
+                color={tool.color}
+                darkColor={tool.darkColor}
+                textColor={textColor}
+                darkTextColor={darkTextColor}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
@@ -58,14 +110,37 @@ const ToolCard = ({
   darkTextColor = 'text-gray-100'
 }) => {
   return (
-    <div className={`${color} dark:${darkColor} p-6 rounded-xl flex flex-col items-center justify-center w-24 h-24 shadow-md hover:shadow-lg transition-shadow`}>
-      <div className={`text-3xl mb-2 ${textColor} dark:${darkTextColor}`}>
+    <motion.div 
+      whileHover={{ 
+        y: -5,
+        scale: 1.05,
+        transition: { type: "spring", stiffness: 300 }
+      }}
+      whileTap={{ scale: 0.95 }}
+      className={`${color} dark:${darkColor} p-6 rounded-xl flex flex-col items-center justify-center w-24 h-24 shadow-md hover:shadow-lg cursor-default`}
+    >
+      <motion.div 
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ 
+          type: "spring",
+          stiffness: 500,
+          damping: 15,
+          delay: 0.1
+        }}
+        className={`text-3xl mb-2 ${textColor} dark:${darkTextColor}`}
+      >
         {icon}
-      </div>
-      <p className={`text-sm font-medium text-center ${textColor} dark:${darkTextColor}`}>
+      </motion.div>
+      <motion.p 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className={`text-sm font-medium text-center ${textColor} dark:${darkTextColor}`}
+      >
         {name}
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 };
 

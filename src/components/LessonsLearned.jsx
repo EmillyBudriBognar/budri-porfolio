@@ -1,6 +1,8 @@
 "use client";
 
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 
 const LessonsLearned = ({ 
   lessons = [],
@@ -10,6 +12,11 @@ const LessonsLearned = ({
   darkTextColor = 'text-gray-100',
   language = 'en'
 }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const translations = {
     pt: {
       sectionTitle: "O que Aprendi"
@@ -24,26 +31,95 @@ const LessonsLearned = ({
 
   const { sectionTitle } = translations[language] || translations['en'];
 
-  return (
-    <section className={`${bgColor} dark:${darkBgColor} py-16 px-4`}>
-      <div className="max-w-4xl mx-auto">
-        <h2 className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}>
-          {sectionTitle}
-        </h2>
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.15,
+      }
+    }
+  };
 
-        <ul className="space-y-6">
+  const item = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const lessonCard = {
+    hidden: { x: -20, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 120,
+        damping: 10
+      }
+    }
+  };
+
+  return (
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={container}
+      className={`${bgColor} dark:${darkBgColor} py-16 px-4`}
+    >
+      <div className="max-w-4xl mx-auto">
+        <motion.h2 
+          variants={item}
+          className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}
+        >
+          {sectionTitle}
+        </motion.h2>
+
+        <motion.ul 
+          variants={container}
+          className="space-y-6"
+        >
           {lessons.map((lesson, index) => (
-            <li 
+            <motion.li
               key={index}
-              className={`p-6 rounded-xl bg-white dark:bg-gray-700 shadow-md ${textColor} dark:${darkTextColor}`}
+              variants={lessonCard}
+              whileHover={{
+                x: 5,
+                transition: { type: "spring", stiffness: 300 }
+              }}
+              className={`p-6 rounded-xl bg-white dark:bg-gray-700 shadow-md hover:shadow-lg ${textColor} dark:${darkTextColor} cursor-default`}
             >
-              <h3 className="font-semibold mb-2">{lesson.title}</h3>
-              <p className="opacity-90">{lesson.description}</p>
-            </li>
+              <motion.h3 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="font-semibold mb-2"
+              >
+                {lesson.title}
+              </motion.h3>
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.9 }}
+                transition={{ delay: 0.2 }}
+                className=""
+              >
+                {lesson.description}
+              </motion.p>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
