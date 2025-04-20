@@ -8,7 +8,6 @@ import {
   FaSass, 
   FaJs, 
   FaReact,
-  FaPython,
   FaBootstrap
 } from "react-icons/fa";
 import { 
@@ -286,7 +285,7 @@ const Formacao = ({ language = "pt" }) => {
           animate={{ opacity: 1, maxHeight: 1000 }}
           exit={{ opacity: 0, maxHeight: 0 }}
           transition={{ duration: 0.3 }}
-          className="mt-2 w-full text-center overflow-hidden"
+          className="mt-2 w-full overflow-hidden"
         >
           {certificacoes.slice(5).map((item, index) => (
             <motion.div
