@@ -140,61 +140,81 @@ const ProjectPage = ({ language = 'en' }) => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <ProjectsNav 
-        language={currentLanguage} 
-        onLanguageChange={handleLanguageChange}
-        onBackToMain={handleBackToMain}
-      />
+      <header id="project-header">
+        <ProjectsNav 
+          language={currentLanguage} 
+          onLanguageChange={handleLanguageChange}
+          onBackToMain={handleBackToMain}
+        />
+      </header>
       
-      <ProjectHero 
-        title={t.title}
-        subtitle={t.subtitle}
-        image={TesteImage}
-        language={currentLanguage}
-      />
-      
-      <ProjectOverview 
-        objective={t.overview.objective}
-        challenge={t.overview.challenge}
-        solution={t.overview.solution}
-        language={currentLanguage}
-      />
-      
-      <CreativeProcess
-        steps={t.process}
-        language={currentLanguage}
-      />
-      
-      <ResultsImpact 
-        metrics={t.results.metrics}
-        feedback={t.results.feedback}
-        beforeAfterImages={{
-          before: TesteImage,
-          after: TesteImage,
-          beforeAlt: "Before redesign",
-          afterAlt: "After redesign"
-        }}
-        language={currentLanguage}
-      />
-      
-      <GalleryCarousel 
-        images={t.results.gallery}
-        language={currentLanguage}
-      />
-      
-      <ToolsUsed
-        tools={t.tools}
-        language={currentLanguage}
-      />
-      
-      <LessonsLearned
-        language={currentLanguage}
-        lessons={t.lessons}
-      />
-      
-      <ProjectCTA
-        language={currentLanguage}
-      />
+      <main id="project-main">
+        <section id="project-hero">
+          <ProjectHero 
+            title={t.title}
+            subtitle={t.subtitle}
+            image={TesteImage}
+            language={currentLanguage}
+          />
+        </section>
+        
+        <section id="project-overview">
+          <ProjectOverview 
+            objective={t.overview.objective}
+            challenge={t.overview.challenge}
+            solution={t.overview.solution}
+            language={currentLanguage}
+          />
+        </section>
+        
+        <section id="creative-process">
+          <CreativeProcess
+            steps={t.process}
+            language={currentLanguage}
+          />
+        </section>
+        
+        <section id="results-impact">
+          <ResultsImpact 
+            metrics={t.results.metrics}
+            feedback={t.results.feedback}
+            beforeAfterImages={{
+              before: TesteImage,
+              after: TesteImage,
+              beforeAlt: "Before redesign",
+              afterAlt: "After redesign"
+            }}
+            language={currentLanguage}
+          />
+        </section>
+        
+        <section id="project-gallery">
+          <GalleryCarousel 
+            images={t.results.gallery}
+            language={currentLanguage}
+          />
+        </section>
+        
+        <section id="tools-used">
+          <ToolsUsed
+            tools={t.tools}
+            language={currentLanguage}
+          />
+        </section>
+        
+        <section id="lessons-learned">
+          <LessonsLearned
+            language={currentLanguage}
+            lessons={t.lessons}
+          />
+        </section>
+        
+        <section id="project-cta">
+          <ProjectCTA
+            language={currentLanguage}
+          />
+        </section>
+      </main>
     </div>
   );
 };

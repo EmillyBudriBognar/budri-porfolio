@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Link from 'next/link';
 
 const ProjectCTA = ({
   title,
@@ -105,20 +106,21 @@ const ProjectCTA = ({
         </motion.p>
         
         <motion.div variants={item}>
-          <motion.button
-            onClick={onClick}
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-white text-purple-600 dark:text-purple-700 px-8 py-3 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-gray-200 transition-all shadow-lg hover:shadow-xl"
-          >
-            {buttonText || localizedButton}
-          </motion.button>
+          <Link href="/#contact-section" passHref legacyBehavior>
+            <motion.a
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="inline-block bg-white text-purple-600 dark:text-purple-700 px-8 py-3 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-gray-200 transition-all shadow-lg hover:shadow-xl"
+            >
+              {buttonText || localizedButton}
+            </motion.a>
+          </Link>
         </motion.div>
       </div>
     </motion.section>

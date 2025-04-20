@@ -15,6 +15,9 @@ const GalleryCarousel = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -53,7 +56,29 @@ const GalleryCarousel = ({
     setCurrentIndex(index);
   };
 
-  // Animation variants
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.changedTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.changedTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    const swipeThreshold = 50;
+
+    if (distance > swipeThreshold) {
+      nextSlide();
+    } else if (distance < -swipeThreshold) {
+      prevSlide();
+    }
+
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   const container = {
     hidden: { opacity: 0 },
     visible: {
@@ -127,6 +152,9 @@ const GalleryCarousel = ({
               animate="center"
               exit="exit"
               className="absolute inset-0 w-full h-full"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               <div className="relative w-full h-full group">
                 <Image
@@ -151,8 +179,6 @@ const GalleryCarousel = ({
           </AnimatePresence>
 
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 1 }}
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-600 transition-all z-10"
             aria-label="Previous image"
@@ -161,8 +187,6 @@ const GalleryCarousel = ({
             <span className="block">❮</span>
           </motion.button>
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 1 }}
             onClick={nextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-600 transition-all z-10"
             aria-label="Next image"

@@ -39,6 +39,17 @@ const ProjectsNav = ({ language, onLanguageChange, onBackToMain }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Função para scroll suave até o project-hero
+  const scrollToProjects = () => {
+    const projectHero = document.getElementById("project-hero");
+    if (projectHero) {
+      projectHero.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  };
+
   return (
     <nav
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
@@ -61,24 +72,27 @@ const ProjectsNav = ({ language, onLanguageChange, onBackToMain }) => {
           </span>
         </button>
 
-        {/* Logo central */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
-          <div className="flex items-center">
+        {/* Logo central - agora clicável */}
+        <div 
+          className="absolute left-1/2 transform -translate-x-1/2 hidden md:block cursor-pointer"
+          onClick={scrollToProjects}
+        >
+          <div className="flex items-center group">
             <Image 
               src={LogoLight} 
               alt="Logo" 
               width={32} 
               height={32} 
-              className="h-8 w-auto dark:hidden" 
+              className="h-8 w-auto dark:hidden group-hover:scale-110 transition-transform duration-300" 
             />
             <Image 
               src={LogoDark} 
               alt="Logo" 
               width={32} 
               height={32} 
-              className="h-8 w-auto hidden dark:block" 
+              className="h-8 w-auto hidden dark:block group-hover:scale-110 transition-transform duration-300" 
             />
-            <span className="font-bold text-xl ml-2">
+            <span className="font-bold text-xl ml-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
               {translations[language].projects}
             </span>
           </div>

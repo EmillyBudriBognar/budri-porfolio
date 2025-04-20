@@ -25,7 +25,7 @@ const Portfolio = ({ language }) => {
             "Aprimoramento da experiência do usuário e da interface para orientar o desenvolvimento do aplicativo MárcioPhone.",
           category: "UX/UI Design",
           image: Teste,
-          link: "../app/projects/project1/page",
+          link: "/projects/project1",
         },
         {
           title: "Orça$imples – Sistema de Gestão Financeira",
@@ -33,7 +33,7 @@ const Portfolio = ({ language }) => {
             "Desenvolvimento de interfaces modernas e intuitivas para um sistema de gestão financeira (Projeto Integrador – Tecnólogo em Desenvolvimento de Software Multiplataforma).",
           category: "Desenvolvimento WEB",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Aplicativo WorkingBrain – Educação Mobile",
@@ -41,7 +41,7 @@ const Portfolio = ({ language }) => {
             "Desenvolvimento de um aplicativo educacional focado na experiência do usuário e acessibilidade (TCC – Técnico em Informática para Internet).",
           category: "Desenvolvimento Mobile",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Estudo de Caso: WorkingBrain",
@@ -49,7 +49,7 @@ const Portfolio = ({ language }) => {
             "Pesquisa e testes de usabilidade para otimização da experiência do usuário no aplicativo educacional WorkingBrain (TCC – Técnico em Informática para Internet).",
           category: "Pesquisas de Usabilidade",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Meu Aumigo – Campanha de E-mail Marketing",
@@ -57,7 +57,7 @@ const Portfolio = ({ language }) => {
             "Criação de um template de e-mail responsivo e interativo para a campanha de marketing do Meu Aumigo.",
           category: "E-mails HTML",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Identidade Visual – WorkingBrain",
@@ -65,7 +65,7 @@ const Portfolio = ({ language }) => {
             "Desenvolvimento da identidade visual e branding para o aplicativo educacional WorkingBrain (TCC – Técnico em Informática para Internet).",
           category: "Design Gráfico",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
       ],
     },
@@ -86,7 +86,7 @@ const Portfolio = ({ language }) => {
             "Mejora de la experiencia del usuario y la interfaz para guiar el desarrollo de la aplicación MárcioPhone.",
           category: "Diseño UX/UI",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Orça$imples – Sistema de Gestión Financiera",
@@ -94,7 +94,7 @@ const Portfolio = ({ language }) => {
             "Desarrollo de interfaces modernas e intuitivas para un sistema de gestión financiera (Proyecto Integrador – Tecnólogo en Desarrollo de Software Multiplataforma).",
           category: "Desarrollo WEB",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Aplicación WorkingBrain – Educación Mobile",
@@ -102,7 +102,7 @@ const Portfolio = ({ language }) => {
             "Desarrollo de una aplicación educativa centrada en la experiencia del usuario y la accesibilidad (TCC – Técnico en Informática para Internet).",
           category: "Desarrollo Mobile",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Estudio de Caso: WorkingBrain",
@@ -110,7 +110,7 @@ const Portfolio = ({ language }) => {
             "Investigación y pruebas de usabilidad para optimizar la experiencia del usuario en la aplicación educativa WorkingBrain (TCC – Técnico en Informática para Internet).",
           category: "Investigación de Usabilidad",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Meu Aumigo – Campaña de Email Marketing",
@@ -118,7 +118,7 @@ const Portfolio = ({ language }) => {
             "Creación de una plantilla de correo electrónico responsiva e interactiva para la campaña de marketing de Meu Aumigo.",
           category: "E-mails HTML",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Identidad Visual – WorkingBrain",
@@ -126,7 +126,7 @@ const Portfolio = ({ language }) => {
             "Desarrollo de la identidad visual y branding para la aplicación educativa WorkingBrain (TCC – Técnico en Informática para Internet).",
           category: "Diseño Gráfico",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
       ],
     },
@@ -147,7 +147,7 @@ const Portfolio = ({ language }) => {
             "Enhancement of user experience and interface to guide the development of the MárcioPhone app.",
           category: "UX/UI Design",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Orça$imples – Financial Management System",
@@ -155,7 +155,7 @@ const Portfolio = ({ language }) => {
             "Development of modern and intuitive interfaces for a financial management system (Integrator Project – Technologist in Multiplatform Software Development).",
           category: "WEB Development",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "WorkingBrain App – Mobile Education",
@@ -163,7 +163,7 @@ const Portfolio = ({ language }) => {
             "Development of an educational app focused on user experience and accessibility (TCC – Technician in Internet Informatics).",
           category: "Mobile Development",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Case Study: WorkingBrain",
@@ -171,7 +171,7 @@ const Portfolio = ({ language }) => {
             "Research and usability testing to optimize user experience in the WorkingBrain educational app (TCC – Technician in Internet Informatics).",
           category: "Usability Research",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Meu Aumigo – Email Marketing Campaign",
@@ -179,7 +179,7 @@ const Portfolio = ({ language }) => {
             "Creation of a responsive and interactive email template for the Meu Aumigo marketing campaign.",
           category: "HTML Emails",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
         {
           title: "Visual Identity – WorkingBrain",
@@ -187,7 +187,7 @@ const Portfolio = ({ language }) => {
             "Development of visual identity and branding for the WorkingBrain educational app (TCC – Technician in Internet Informatics).",
           category: "Graphic Design",
           image: Teste,
-          link: "/projetos/",
+          link: "/projects/project1",
         },
       ],
     },
