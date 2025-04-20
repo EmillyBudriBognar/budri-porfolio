@@ -10,6 +10,21 @@
   font-display: swap;
 }
 
+
+nav {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.fixed {
+  backface-visibility: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -53,12 +68,20 @@ body {
   flex-direction: column;
 }
 
-/* Garante que todos os elementos herdem o box-sizing */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* Previne zoom em inputs no mobile */
 input, textarea, select {
   font-size: 16px !important;
+}
+
+.bg-purple-50, .dark\:bg-gray-900 {
+  transition: background-color 0.3s ease;
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
 }
