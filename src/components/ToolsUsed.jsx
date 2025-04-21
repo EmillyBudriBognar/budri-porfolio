@@ -4,7 +4,7 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 
-const ToolsUsed = ({
+const ResourcesBehindProject = ({
   tools = [],
   bgColor = 'bg-white',
   darkBgColor = 'bg-gray-900',
@@ -19,17 +19,20 @@ const ToolsUsed = ({
 
   const translations = {
     pt: {
-      sectionTitle: "Ferramentas Usadas"
+      sectionTitle: "Recursos por trás do projeto",
+      resourceLabel: "Recurso"
     },
     es: {
-      sectionTitle: "Herramientas Utilizadas"
+      sectionTitle: "Recursos detrás del proyecto",
+      resourceLabel: "Recurso"
     },
     en: {
-      sectionTitle: "Tools Used"
+      sectionTitle: "Resources behind the project",
+      resourceLabel: "Resource"
     }
   };
 
-  const { sectionTitle } = translations[language] || translations['en'];
+  const { sectionTitle, resourceLabel } = translations[language] || translations['en'];
 
   // Animation variants
   const container = {
@@ -85,13 +88,14 @@ const ToolsUsed = ({
               variants={item}
               custom={index}
             >
-              <ToolCard
+              <ResourceCard
                 name={tool.name}
                 icon={tool.icon}
                 color={tool.color}
                 darkColor={tool.darkColor}
                 textColor={textColor}
                 darkTextColor={darkTextColor}
+                label={resourceLabel}
               />
             </motion.div>
           ))}
@@ -101,13 +105,14 @@ const ToolsUsed = ({
   );
 };
 
-const ToolCard = ({
+const ResourceCard = ({
   name,
   icon,
   color = 'bg-gray-100',
   darkColor = 'bg-gray-800',
   textColor = 'text-gray-800',
-  darkTextColor = 'text-gray-100'
+  darkTextColor = 'text-gray-100',
+  label = "Resource"
 }) => {
   return (
     <motion.div 
@@ -118,6 +123,7 @@ const ToolCard = ({
       }}
       whileTap={{ scale: 0.95 }}
       className={`${color} dark:${darkColor} p-6 rounded-xl flex flex-col items-center justify-center w-24 h-24 shadow-md hover:shadow-lg cursor-default`}
+      aria-label={`${label}: ${name}`}
     >
       <motion.div 
         initial={{ scale: 0 }}
@@ -144,4 +150,4 @@ const ToolCard = ({
   );
 };
 
-export default ToolsUsed;
+export default ResourcesBehindProject;

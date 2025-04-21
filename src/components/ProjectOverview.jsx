@@ -56,7 +56,7 @@ const ProjectOverview = ({
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.5, // 👈 atraso geral
+        delayChildren: 0.5,
         staggerChildren: 0.25,
         when: "beforeChildren"
       }
@@ -82,7 +82,7 @@ const ProjectOverview = ({
       scale: 1,
       opacity: 1,
       transition: {
-        delay: i * 0.3, // 👈 atraso progressivo por card
+        delay: i * 0.3,
         type: "spring",
         stiffness: 80,
         damping: 10
@@ -110,7 +110,7 @@ const ProjectOverview = ({
           variants={container}
           className="grid md:grid-cols-3 gap-8"
         >
-          <motion.div variants={cardItem} custom={0}>
+          <motion.div variants={cardItem} custom={0} className="flex">
             <OverviewCard 
               emoji="🎯"
               title={objectiveTitle}
@@ -120,7 +120,7 @@ const ProjectOverview = ({
             />
           </motion.div>
           
-          <motion.div variants={cardItem} custom={1}>
+          <motion.div variants={cardItem} custom={1} className="flex">
             <OverviewCard 
               emoji="🧩"
               title={challengeTitle}
@@ -130,7 +130,7 @@ const ProjectOverview = ({
             />
           </motion.div>
           
-          <motion.div variants={cardItem} custom={2}>
+          <motion.div variants={cardItem} custom={2} className="flex">
             <OverviewCard 
               emoji="💡"
               title={solutionTitle}
@@ -149,7 +149,7 @@ const OverviewCard = ({ emoji, title, content, textColor, darkTextColor }) => {
   return (
     <motion.div 
       whileHover={{ y: -5 }}
-      className={`p-6 rounded-xl shadow-md hover:shadow-lg transition-all ${textColor} dark:${darkTextColor} bg-white dark:bg-gray-800`}
+      className={`p-6 rounded-xl shadow-md hover:shadow-lg transition-all ${textColor} dark:${darkTextColor} bg-white dark:bg-gray-800 flex flex-col h-full`}
     >
       <motion.span 
         initial={{ scale: 0 }}
@@ -161,7 +161,9 @@ const OverviewCard = ({ emoji, title, content, textColor, darkTextColor }) => {
         {emoji}
       </motion.span>
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="opacity-90">{content}</p>
+      <div className="flex-grow">
+        <p className="opacity-90">{content}</p>
+      </div>
     </motion.div>
   );
 };

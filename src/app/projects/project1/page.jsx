@@ -10,7 +10,9 @@ import ToolsUsed from '@/components/ToolsUsed';
 import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
-import TesteImage from "@/assets/img/teste.jpg";
+import WorkingBrainLogo from "@/assets/img/logoworkingbrain.svg";
+import BrianMascot from "@/assets/img/teste.jpg";
+import ColorPalette from "@/assets/img/teste.jpg";
 import { useRouter } from 'next/navigation';
 
 const ProjectPage = ({ language = 'en' }) => {
@@ -19,111 +21,111 @@ const ProjectPage = ({ language = 'en' }) => {
 
   const translations = {
     pt: {
-      title: "App Educacional",
-      subtitle: "UX Case para plataforma de cursos online | Design centrado no usuário",
+      title: "WorkingBrain - Identidade Visual e Gamificação",
+      subtitle: "Design de marca e personagem para aplicativo educacional | TCC ETEC",
       overview: {
-        objective: "Criar uma experiência intuitiva para uma plataforma de cursos online.",
-        challenge: "Interface confusa e baixa taxa de conversão de usuários.",
-        solution: "Aplicação de UX Writing, hierarquia visual clara e testes de usabilidade."
+        objective: "Criar uma identidade visual atraente e um mascote gamificado para um aplicativo de aprendizagem que promove o pensamento crítico.",
+        challenge: "Desenvolver uma marca que comunique simultaneamente seriedade acadêmica e abordagem lúdica à educação.",
+        solution: "Sistema visual baseado em formas geométricas com mascote personificado para criar conexão emocional com os usuários."
       },
       process: [
-        { emoji: "🔍", title: "Pesquisa", description: "Entrevistas com usuários e análise de dados" },
-        { emoji: "🛣️", title: "Jornada", description: "Mapeamento da jornada do usuário" },
-        { emoji: "✏️", title: "Wireframes", description: "Criação de esboços e fluxos" },
-        { emoji: "🎨", title: "Design", description: "Desenvolvimento da interface visual" },
-        { emoji: "🧪", title: "Testes", description: "Validação com usuários reais" }
+        { emoji: "🧠", title: "Conceptualização", description: "Definição do conceito central 'pensar fora da caixa'" },
+        { emoji: "🎨", title: "Design da Logo", description: "Criação da logo com cérebro saindo da caixa usando formas geométricas" },
+        { emoji: "🌈", title: "Paleta de Cores", description: "Seleção de cores psicologicamente alinhadas aos valores do projeto" },
+        { emoji: "🧑‍🎨", title: "Design do Mascote", description: "Desenvolvimento do Brian, o cérebro personificado" },
+        { emoji: "🔄", title: "Testes e Iteração", description: "Validação com colegas e orientadores" }
       ],
       results: {
         metrics: [
-          { value: "+40%", description: "Aumento no engajamento", icon: "📈" },
-          { value: "85%", description: "Satisfação do usuário", icon: "😊" }
+          { value: "100%", description: "Aprovação na banca", icon: "🎓" },
+          { value: "+85", description: "Interessados no app", icon: "👥" }
         ],
-        feedback: "O redesign transformou completamente nossa plataforma, tornando-a muito mais acessível.",
+        feedback: "A identidade visual e o mascote foram fundamentais para comunicar o propósito do WorkingBrain de forma imediata e memorável.",
         gallery: [
-          { src: TesteImage, alt: "Tela inicial do aplicativo", caption: "Tela inicial do aplicativo" },
-          { src: TesteImage, alt: "Fluxo de aprendizado", caption: "Fluxo de aprendizado" },
-          { src: TesteImage, alt: "Detalhe do curso", caption: "Detalhe do curso" }
+          { src: WorkingBrainLogo, alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
+          { src: BrianMascot, alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
+          { src: ColorPalette, alt: "Paleta de cores", caption: "Sistema de cores da marca" }
         ]
       },
       tools: [
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
-        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" }
+        { name: "Design Thinking", icon: "💡", color: "bg-blue-100 dark:bg-blue-900" }
       ],
       lessons: [
-        { title: "Importância dos testes de usabilidade", description: "Descobri que pequenas mudanças baseadas em feedback podem ter um grande impacto na experiência geral." },
-        { title: "Design inclusivo", description: "Aprendi a criar interfaces que funcionam para todos os tipos de usuários." }
+        { title: "Psicologia das cores", description: "Aprendi como cores específicas podem influenciar a percepção e emoções dos usuários em contextos educacionais." },
+        { title: "Balanceamento visual", description: "Desenvolvi habilidades para equilibrar elementos geométricos rígidos com toques orgânicos e acolhedores." }
       ]
     },
     en: {
-      title: "Educational App",
-      subtitle: "UX Case for an online course platform | User-centered design",
+      title: "WorkingBrain - Visual Identity & Gamification",
+      subtitle: "Brand and character design for educational app | Final Project",
       overview: {
-        objective: "Create an intuitive experience for an online course platform.",
-        challenge: "Confusing interface and low user conversion rate.",
-        solution: "UX Writing, clear visual hierarchy, and usability testing."
+        objective: "Create an appealing visual identity and gamified mascot for a learning app that promotes critical thinking.",
+        challenge: "Develop a brand that simultaneously communicates academic seriousness and playful approach to education.",
+        solution: "Visual system based on geometric shapes with personified mascot to create emotional connection with users."
       },
       process: [
-        { emoji: "🔍", title: "Research", description: "User interviews and data analysis" },
-        { emoji: "🛣️", title: "Journey", description: "User journey mapping" },
-        { emoji: "✏️", title: "Wireframes", description: "Sketching and flow creation" },
-        { emoji: "🎨", title: "Design", description: "Development of the visual interface" },
-        { emoji: "🧪", title: "Testing", description: "Validation with real users" }
+        { emoji: "🧠", title: "Conceptualization", description: "Defining the core 'thinking outside the box' concept" },
+        { emoji: "🎨", title: "Logo Design", description: "Creating the brain-out-of-box logo using geometric shapes" },
+        { emoji: "🌈", title: "Color Palette", description: "Selecting psychologically aligned colors for project values" },
+        { emoji: "🧑‍🎨", title: "Mascot Design", description: "Development of Brian, the personified brain" },
+        { emoji: "🔄", title: "Testing & Iteration", description: "Validation with peers and advisors" }
       ],
       results: {
         metrics: [
-          { value: "+40%", description: "Increase in engagement", icon: "📈" },
-          { value: "85%", description: "User satisfaction", icon: "😊" }
+          { value: "100%", description: "Approval by evaluators", icon: "🎓" },
+          { value: "85+", description: "Interested users", icon: "👥" }
         ],
-        feedback: "The redesign completely transformed our platform, making it much more accessible.",
+        feedback: "The visual identity and mascot were crucial to immediately and memorably communicate WorkingBrain's purpose.",
         gallery: [
-          { src: TesteImage, alt: "App home screen", caption: "App home screen" },
-          { src: TesteImage, alt: "Learning flow", caption: "Learning flow" },
-          { src: TesteImage, alt: "Course detail", caption: "Course detail" }
+          { src: WorkingBrainLogo, alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
+          { src: BrianMascot, alt: "Brian mascot", caption: "Brian, the brain mascot" },
+          { src: ColorPalette, alt: "Color palette", caption: "Brand color system" }
         ]
       },
       tools: [
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
-        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" }
+        { name: "Design Thinking", icon: "💡", color: "bg-blue-100 dark:bg-blue-900" }
       ],
       lessons: [
-        { title: "Importance of usability testing", description: "I discovered that small changes based on feedback can greatly improve the overall experience." },
-        { title: "Inclusive design", description: "I learned to create interfaces that work for all types of users." }
+        { title: "Color psychology", description: "I learned how specific colors can influence user perception and emotions in educational contexts." },
+        { title: "Visual balancing", description: "Developed skills to balance rigid geometric elements with organic and welcoming touches." }
       ]
     },
     es: {
-      title: "Aplicación Educativa",
-      subtitle: "Caso UX para una plataforma de cursos en línea | Diseño centrado en el usuario",
+      title: "WorkingBrain - Identidad Visual y Gamificación",
+      subtitle: "Diseño de marca y personaje para aplicación educativa | Proyecto Final",
       overview: {
-        objective: "Crear una experiencia intuitiva para una plataforma de cursos en línea.",
-        challenge: "Interfaz confusa y baja tasa de conversión de usuarios.",
-        solution: "UX Writing, jerarquía visual clara y pruebas de usabilidad."
+        objective: "Crear una identidad visual atractiva y una mascota gamificada para una aplicación de aprendizaje que promueve el pensamiento crítico.",
+        challenge: "Desarrollar una marca que comunique simultáneamente seriedad académica y enfoque lúdico de la educación.",
+        solution: "Sistema visual basado en formas geométricas con mascota personificada para crear conexión emocional con los usuarios."
       },
       process: [
-        { emoji: "🔍", title: "Investigación", description: "Entrevistas a usuarios y análisis de datos" },
-        { emoji: "🛣️", title: "Viaje", description: "Mapeo del recorrido del usuario" },
-        { emoji: "✏️", title: "Wireframes", description: "Creación de bocetos y flujos" },
-        { emoji: "🎨", title: "Diseño", description: "Desarrollo de la interfaz visual" },
-        { emoji: "🧪", title: "Pruebas", description: "Validación con usuarios reales" }
+        { emoji: "🧠", title: "Conceptualización", description: "Definición del concepto central 'pensar fuera de la caja'" },
+        { emoji: "🎨", title: "Diseño de Logo", description: "Creación del logo con cerebro saliendo de la caja usando formas geométricas" },
+        { emoji: "🌈", title: "Paleta de Colores", description: "Selección de colores psicológicamente alineados con los valores del proyecto" },
+        { emoji: "🧑‍🎨", title: "Diseño de Mascota", description: "Desarrollo de Brian, el cerebro personificado" },
+        { emoji: "🔄", title: "Pruebas e Iteración", description: "Validación con compañeros y asesores" }
       ],
       results: {
         metrics: [
-          { value: "+40%", description: "Incremento en el compromiso", icon: "📈" },
-          { value: "85%", description: "Satisfacción del usuario", icon: "😊" }
+          { value: "100%", description: "Aprobación del tribunal", icon: "🎓" },
+          { value: "+85", description: "Interesados en la app", icon: "👥" }
         ],
-        feedback: "El rediseño transformó completamente nuestra plataforma, haciéndola mucho más accesible.",
+        feedback: "La identidad visual y la mascota fueron fundamentales para comunicar el propósito de WorkingBrain de manera inmediata y memorable.",
         gallery: [
-          { src: TesteImage, alt: "Pantalla de inicio de la aplicación", caption: "Pantalla de inicio de la aplicación" },
-          { src: TesteImage, alt: "Flujo de aprendizaje", caption: "Flujo de aprendizaje" },
-          { src: TesteImage, alt: "Detalle del curso", caption: "Detalle del curso" }
+          { src: WorkingBrainLogo, alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
+          { src: BrianMascot, alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
+          { src: ColorPalette, alt: "Paleta de colores", caption: "Sistema de colores de la marca" }
         ]
       },
       tools: [
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
-        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" }
+        { name: "Design Thinking", icon: "💡", color: "bg-blue-100 dark:bg-blue-900" }
       ],
       lessons: [
-        { title: "Importancia de las pruebas de usabilidad", description: "Descubrí que pequeños cambios basados en comentarios pueden tener un gran impacto en la experiencia general." },
-        { title: "Diseño inclusivo", description: "Aprendí a crear interfaces que funcionan para todo tipo de usuarios." }
+        { title: "Psicología del color", description: "Aprendí cómo colores específicos pueden influir en la percepción y emociones de los usuarios en contextos educativos." },
+        { title: "Equilibrio visual", description: "Desarrollé habilidades para equilibrar elementos geométricos rígidos con toques orgánicos y acogedores." }
       ]
     }
   };
@@ -153,7 +155,7 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={TesteImage}
+            image={WorkingBrainLogo}
             language={currentLanguage}
           />
         </section>
@@ -179,10 +181,10 @@ const ProjectPage = ({ language = 'en' }) => {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: TesteImage,
-              after: TesteImage,
-              beforeAlt: "Before redesign",
-              afterAlt: "After redesign"
+              before: WorkingBrainLogo,
+              after: BrianMascot,
+              beforeAlt: "Logo design",
+              afterAlt: "Final mascot"
             }}
             language={currentLanguage}
           />

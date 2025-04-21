@@ -53,7 +53,7 @@ const ProjectsNav = ({ language, onLanguageChange, onBackToMain }) => {
   return (
     <nav
       className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-lg bg-purple-50/90 dark:bg-gray-900/90 backdrop-blur-sm" : "bg-purple-50 dark:bg-gray-900"
+        isScrolled ? "shadow-lg bg-gray-50/90 dark:bg-gray-900/90 backdrop-blur-sm" : "bg-gray-50 dark:bg-gray-900"
       }`}
     >
       <div className="relative flex items-center justify-between py-4 md:px-10 px-7 text-gray-800 dark:text-white z-50">
@@ -72,7 +72,7 @@ const ProjectsNav = ({ language, onLanguageChange, onBackToMain }) => {
           </span>
         </button>
 
-        {/* Logo central - agora clicável */}
+        {/* Logo central - clicável */}
         <div 
           className="absolute left-1/2 transform -translate-x-1/2 hidden md:block cursor-pointer"
           onClick={scrollToProjects}
