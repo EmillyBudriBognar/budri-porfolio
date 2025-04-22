@@ -92,13 +92,14 @@ const ProjectHero = ({
       initial="hidden"
       animate={isInView ? "show" : "hidden"}
       variants={container}
-      className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} ${darkGradientFrom} ${darkGradientTo} mt-[70px] md:py-32 px-4 pt-[calc(70px+1rem)] overflow-hidden`}
+      className={`bg-gradient-to-r ${gradientFrom} ${gradientTo} ${darkGradientFrom} ${darkGradientTo} mt-[70px] py-12 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden`}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
-        <motion.div className="md:w-1/2 space-y-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+        {/* Text Content */}
+        <motion.div className="w-full md:w-1/2 space-y-4 md:space-y-6">
           <motion.h1 
             variants={textItem}
-            className={`text-4xl md:text-6xl font-bold ${colorText} ${darkColorText}`}
+            className={`text-4xl sm:text-5xl md:text-6xl font-bold ${colorText} ${darkColorText}`}
           >
             {displayTitle}
           </motion.h1>
@@ -110,11 +111,12 @@ const ProjectHero = ({
           </motion.p>
         </motion.div>
         
+        {/* Image Container */}
         <motion.div 
-          className="md:w-1/2 flex justify-center pb-10 md:pb-0"
+          className="w-full md:w-1/2 mt-8 md:mt-0"
           variants={imageItem}
         >
-          <div className="relative w-full aspect-video">
+          <div className="relative w-full aspect-video max-w-[600px] mx-auto">
             <div className="block dark:hidden">
               <Image 
                 src={image}

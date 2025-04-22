@@ -21,8 +21,8 @@ import Slide3EN from "@/assets/img/slide3-workingbrain-en.svg";
 import Slide1ES from "@/assets/img/slide1-workingbrain-es.svg";
 import Slide2ES from "@/assets/img/slide2-workingbrain-es.svg";
 import Slide3ES from "@/assets/img/slide3-workingbrain-es.svg";
-import BrianMascot from "@/assets/img/teste.jpg";
-import ColorPalette from "@/assets/img/teste.jpg";
+import Depois from "@/assets/img/depois-workingbrain.svg";
+import Antes from "@/assets/img/teste.jpg"
 import { useRouter } from 'next/navigation';
 
 const ProjectPage = ({ language = 'en' }) => {
@@ -139,17 +139,18 @@ const ProjectPage = ({ language = 'en' }) => {
     pt: [
       { src: Slide1PT, alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
       { src: Slide2PT, alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
-      { src: Slide3PT, alt: "Paleta de cores", caption: "Sistema de cores da marca" }
+      { src: Slide3PT, alt: "Paleta de cores e Tipografia", caption: "Sistema de cores e de Tipografia da marca" }
     ],
     en: [
       { src: Slide1EN, alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
       { src: Slide2EN, alt: "Brian mascot", caption: "Brian, the brain mascot" },
-      { src: Slide3EN, alt: "Color palette", caption: "Brand color system" }
+      { src: Slide3EN, alt: "Color palette and Typography", caption: "Brand color and typography system" }
+
     ],
     es: [
       { src: Slide1ES, alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
       { src: Slide2ES, alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
-      { src: Slide3ES, alt: "Paleta de colores", caption: "Sistema de colores de la marca" }
+      { src: Slide3ES, alt: "Paleta de colores y Tipografía", caption: "Sistema de colores y tipografía de la marca" }
     ]
   };
 
@@ -195,8 +196,8 @@ const ProjectPage = ({ language = 'en' }) => {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: WorkingBrainLogoLight,
-              after: BrianMascot,
+              before: Antes,
+              after: Depois,
               beforeAlt: "Logo design",
               afterAlt: "Final mascot"
             }}
