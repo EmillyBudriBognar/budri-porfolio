@@ -10,7 +10,17 @@ import ToolsUsed from '@/components/ToolsUsed';
 import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
-import WorkingBrainLogo from "@/assets/img/logoworkingbrain.svg";
+import WorkingBrainLogoDark from "@/assets/img/logoworkingbrain-white.svg"; 
+import WorkingBrainLogoLight from "@/assets/img/logoworkingbrain-black.svg"; 
+import Slide1PT from "@/assets/img/slide1-workingbrain-pt.svg";
+import Slide2PT from "@/assets/img/slide2-workingbrain-pt.svg";
+import Slide3PT from "@/assets/img/slide3-workingbrain-pt.svg";
+import Slide1EN from "@/assets/img/slide1-workingbrain-en.svg";
+import Slide2EN from "@/assets/img/slide2-workingbrain-en.svg";
+import Slide3EN from "@/assets/img/slide3-workingbrain-en.svg";
+import Slide1ES from "@/assets/img/slide1-workingbrain-es.svg";
+import Slide2ES from "@/assets/img/slide2-workingbrain-es.svg";
+import Slide3ES from "@/assets/img/slide3-workingbrain-es.svg";
 import BrianMascot from "@/assets/img/teste.jpg";
 import ColorPalette from "@/assets/img/teste.jpg";
 import { useRouter } from 'next/navigation';
@@ -40,12 +50,7 @@ const ProjectPage = ({ language = 'en' }) => {
           { value: "100%", description: "Aprovação na banca", icon: "🎓" },
           { value: "+85", description: "Interessados no app", icon: "👥" }
         ],
-        feedback: "A identidade visual e o mascote foram fundamentais para comunicar o propósito do WorkingBrain de forma imediata e memorável.",
-        gallery: [
-          { src: WorkingBrainLogo, alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
-          { src: BrianMascot, alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
-          { src: ColorPalette, alt: "Paleta de cores", caption: "Sistema de cores da marca" }
-        ]
+        feedback: "A identidade visual e o mascote foram fundamentais para comunicar o propósito do WorkingBrain de forma imediata e memorável."
       },
       tools: [
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
@@ -76,12 +81,7 @@ const ProjectPage = ({ language = 'en' }) => {
           { value: "100%", description: "Approval by evaluators", icon: "🎓" },
           { value: "85+", description: "Interested users", icon: "👥" }
         ],
-        feedback: "The visual identity and mascot were crucial to immediately and memorably communicate WorkingBrain's purpose.",
-        gallery: [
-          { src: WorkingBrainLogo, alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
-          { src: BrianMascot, alt: "Brian mascot", caption: "Brian, the brain mascot" },
-          { src: ColorPalette, alt: "Color palette", caption: "Brand color system" }
-        ]
+        feedback: "The visual identity and mascot were crucial to immediately and memorably communicate WorkingBrain's purpose."
       },
       tools: [
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
@@ -112,12 +112,7 @@ const ProjectPage = ({ language = 'en' }) => {
           { value: "100%", description: "Aprobación del tribunal", icon: "🎓" },
           { value: "+85", description: "Interesados en la app", icon: "👥" }
         ],
-        feedback: "La identidad visual y la mascota fueron fundamentales para comunicar el propósito de WorkingBrain de manera inmediata y memorable.",
-        gallery: [
-          { src: WorkingBrainLogo, alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
-          { src: BrianMascot, alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
-          { src: ColorPalette, alt: "Paleta de colores", caption: "Sistema de colores de la marca" }
-        ]
+        feedback: "La identidad visual y la mascota fueron fundamentales para comunicar el propósito de WorkingBrain de manera inmediata y memorable."
       },
       tools: [
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" },
@@ -140,6 +135,24 @@ const ProjectPage = ({ language = 'en' }) => {
     setCurrentLanguage(newLanguage);
   };
 
+  const galleryImages = {
+    pt: [
+      { src: Slide1PT, alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
+      { src: Slide2PT, alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
+      { src: Slide3PT, alt: "Paleta de cores", caption: "Sistema de cores da marca" }
+    ],
+    en: [
+      { src: Slide1EN, alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
+      { src: Slide2EN, alt: "Brian mascot", caption: "Brian, the brain mascot" },
+      { src: Slide3EN, alt: "Color palette", caption: "Brand color system" }
+    ],
+    es: [
+      { src: Slide1ES, alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
+      { src: Slide2ES, alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
+      { src: Slide3ES, alt: "Paleta de colores", caption: "Sistema de colores de la marca" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <header id="project-header">
@@ -155,7 +168,8 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={WorkingBrainLogo}
+            image={WorkingBrainLogoLight}
+            darkImage={WorkingBrainLogoDark}
             language={currentLanguage}
           />
         </section>
@@ -181,7 +195,7 @@ const ProjectPage = ({ language = 'en' }) => {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: WorkingBrainLogo,
+              before: WorkingBrainLogoLight,
               after: BrianMascot,
               beforeAlt: "Logo design",
               afterAlt: "Final mascot"
@@ -192,8 +206,8 @@ const ProjectPage = ({ language = 'en' }) => {
         
         <section id="project-gallery">
           <GalleryCarousel 
-            images={t.results.gallery}
             language={currentLanguage}
+            images={galleryImages}
           />
         </section>
         

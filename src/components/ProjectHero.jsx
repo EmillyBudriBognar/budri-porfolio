@@ -8,6 +8,7 @@ const ProjectHero = ({
   title, 
   subtitle, 
   image, 
+  darkImage,
   gradientFrom = 'from-purple-400', 
   gradientTo = 'to-pink-500',
   darkGradientFrom = 'dark:from-purple-600',
@@ -16,7 +17,13 @@ const ProjectHero = ({
   darkColorText = 'dark:text-gray-100',
   language = 'en' 
 }) => {
-  // Translation object
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px",
+    amount: 0.3
+  });
+
   const translations = {
     pt: {
       defaultTitle: "Meus Projetos",
@@ -32,20 +39,10 @@ const ProjectHero = ({
     }
   };
 
-  // Animation refs
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    margin: "-100px",
-    amount: 0.3
-  });
-
-  // Get translations based on language
   const { defaultTitle, defaultSubtitle } = translations[language];
   const displayTitle = title || defaultTitle;
   const displaySubtitle = subtitle || defaultSubtitle;
 
-  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -86,14 +83,6 @@ const ProjectHero = ({
         damping: 15,
         delay: 0.4
       }
-    },
-    hover: {
-      scale: 1.05,
-      transition: { 
-        type: "spring", 
-        stiffness: 400,
-        damping: 10
-      }
     }
   };
 
@@ -122,24 +111,32 @@ const ProjectHero = ({
         </motion.div>
         
         <motion.div 
-          className="md:w-1/2 flex justify-center pb-10 md:pb-0" // Added pb-10 for mobile and md:pb-0 to remove on desktop
+          className="md:w-1/2 flex justify-center pb-10 md:pb-0"
           variants={imageItem}
-          whileHover="hover"
         >
-          {image && (
-            <motion.div 
-              className="relative rounded-2xl overflow-hidden shadow-2xl w-full aspect-video"
-            >
+          <div className="relative w-full aspect-video">
+            <div className="block dark:hidden">
               <Image 
                 src={image}
                 alt={displayTitle}
-                width={800}
-                height={450}
-                className="object-cover w-full h-full"
+                fill
+                className="object-contain"
                 priority
               />
-            </motion.div>
-          )}
+            </div>
+            
+            {darkImage && (
+              <div className="hidden dark:block">
+                <Image 
+                  src={darkImage}
+                  alt={displayTitle}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            )}
+          </div>
         </motion.div>
       </div>
     </motion.section>

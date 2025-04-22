@@ -6,7 +6,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const GalleryCarousel = ({
-  images = [],
+  images = {
+    en: [],
+    pt: [],
+    es: []
+  },
   bgColor = 'bg-gray-50',
   darkBgColor = 'dark:bg-gray-800',
   textColor = 'text-gray-800',
@@ -36,18 +40,19 @@ const GalleryCarousel = ({
   };
 
   const { sectionTitle } = translations[language] || translations['en'];
+  const currentImages = images[language] || images['en'];
 
   const nextSlide = () => {
     setDirection(1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === currentImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? currentImages.length - 1 : prevIndex - 1
     );
   };
 
@@ -142,75 +147,89 @@ const GalleryCarousel = ({
           {sectionTitle}
         </motion.h2>
 
-        <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-xl">
-          <AnimatePresence custom={direction} initial={false}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="absolute inset-0 w-full h-full"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              <div className="relative w-full h-full group">
-                <Image
-                  src={images[currentIndex]?.src}
-                  alt={images[currentIndex]?.alt || `Project screenshot ${currentIndex + 1}`}
-                  fill
-                  className="object-cover"
-                  priority={currentIndex === 0}
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                />
-                {images[currentIndex]?.caption && (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent text-white p-6"
+        {currentImages.length > 0 ? (
+          <>
+            <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-xl">
+              <AnimatePresence custom={direction} initial={false}>
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="absolute inset-0 w-full h-full"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  <div className="relative w-full h-full group">
+                    <Image
+                      src={currentImages[currentIndex]?.src}
+                      alt={currentImages[currentIndex]?.alt}
+                      fill
+                      className="object-cover"
+                      priority={currentIndex === 0}
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                    />
+                    {currentImages[currentIndex]?.caption && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent text-white p-6"
+                      >
+                        <p className="text-sm md:text-base">{currentImages[currentIndex].caption}</p>
+                      </motion.div>
+                    )}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {currentImages.length > 1 && (
+                <>
+                  <motion.button
+                    onClick={prevSlide}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-600 transition-all z-10"
+                    aria-label="Previous image"
+                    style={{ transformOrigin: 'center' }}
                   >
-                    <p className="text-sm md:text-base">{images[currentIndex].caption}</p>
-                  </motion.div>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                    <span className="block">❮</span>
+                  </motion.button>
+                  <motion.button
+                    onClick={nextSlide}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-600 transition-all z-10"
+                    aria-label="Next image"
+                    style={{ transformOrigin: 'center' }}
+                  >
+                    <span className="block">❯</span>
+                  </motion.button>
+                </>
+              )}
+            </div>
 
-          <motion.button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-600 transition-all z-10"
-            aria-label="Previous image"
-            style={{ transformOrigin: 'center' }}
-          >
-            <span className="block">❮</span>
-          </motion.button>
-          <motion.button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-gray-700/80 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-600 transition-all z-10"
-            aria-label="Next image"
-            style={{ transformOrigin: 'center' }}
-          >
-            <span className="block">❯</span>
-          </motion.button>
-        </div>
-
-        <motion.div 
-          variants={item}
-          className="flex justify-center mt-6 gap-2"
-        >
-          {images.map((_, index) => (
-            <motion.button
-              key={index}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 1 }}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${currentIndex === index ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-600'}`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </motion.div>
+            {currentImages.length > 1 && (
+              <motion.div 
+                variants={item}
+                className="flex justify-center mt-6 gap-2"
+              >
+                {currentImages.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 1 }}
+                    onClick={() => goToSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-colors ${currentIndex === index ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-600'}`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </>
+        ) : (
+          <div className="h-[400px] md:h-[500px] flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-2xl">
+            <p className="text-gray-500 dark:text-gray-400">No images available</p>
+          </div>
+        )}
       </div>
     </motion.section>
   );
