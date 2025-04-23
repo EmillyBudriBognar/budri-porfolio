@@ -22,7 +22,7 @@ import Slide1ES from "@/assets/img/slide1-workingbrain-es.svg";
 import Slide2ES from "@/assets/img/slide2-workingbrain-es.svg";
 import Slide3ES from "@/assets/img/slide3-workingbrain-es.svg";
 import Depois from "@/assets/img/depois-workingbrain.svg";
-import Antes from "@/assets/img/teste.jpg"
+import Antes from "@/assets/img/antes-workingbrain.svg"
 import { useRouter } from 'next/navigation';
 
 const ProjectPage = ({ language = 'en' }) => {
@@ -32,7 +32,7 @@ const ProjectPage = ({ language = 'en' }) => {
   const translations = {
     pt: {
       title: "WorkingBrain - Identidade Visual e Gamificação",
-      subtitle: "Design de marca e personagem para aplicativo educacional | TCC ETEC",
+      subtitle: "Design de marca e personagem para aplicativo educacional | TCC do Técnico em Informática para Internet",
       overview: {
         objective: "Criar uma identidade visual atraente e um mascote gamificado para um aplicativo de aprendizagem que promove o pensamento crítico.",
         challenge: "Desenvolver uma marca que comunique simultaneamente seriedade acadêmica e abordagem lúdica à educação.",
@@ -63,7 +63,7 @@ const ProjectPage = ({ language = 'en' }) => {
     },
     en: {
       title: "WorkingBrain - Visual Identity & Gamification",
-      subtitle: "Brand and character design for educational app | Final Project",
+      subtitle: "Brand and character design for educational app | Internet Computing Technical Final Project",
       overview: {
         objective: "Create an appealing visual identity and gamified mascot for a learning app that promotes critical thinking.",
         challenge: "Develop a brand that simultaneously communicates academic seriousness and playful approach to education.",
@@ -94,7 +94,7 @@ const ProjectPage = ({ language = 'en' }) => {
     },
     es: {
       title: "WorkingBrain - Identidad Visual y Gamificación",
-      subtitle: "Diseño de marca y personaje para aplicación educativa | Proyecto Final",
+      subtitle: "Diseño de marca y personaje para aplicación educativa | Proyecto Final del Técnico en Informática para Internet",
       overview: {
         objective: "Crear una identidad visual atractiva y una mascota gamificada para una aplicación de aprendizaje que promueve el pensamiento crítico.",
         challenge: "Desarrollar una marca que comunique simultáneamente seriedad académica y enfoque lúdico de la educación.",
