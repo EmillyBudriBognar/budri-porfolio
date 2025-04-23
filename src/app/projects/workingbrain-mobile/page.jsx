@@ -1,6 +1,9 @@
 "use client";
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
+
+// Components
 import ProjectHero from '@/components/ProjectHero';
 import ProjectOverview from '@/components/ProjectOverview';
 import CreativeProcess from '@/components/CreativeProcess';
@@ -10,20 +13,29 @@ import ToolsUsed from '@/components/ToolsUsed';
 import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
-import WorkingBrainLogoDark from "@/assets/img/logoworkingbrain-white.svg"; 
-import WorkingBrainLogoLight from "@/assets/img/logoworkingbrain-black.svg"; 
-import Slide1PT from "@/assets/img/slide1-workingbrain-pt.svg";
-import Slide2PT from "@/assets/img/slide2-workingbrain-pt.svg";
-import Slide3PT from "@/assets/img/slide3-workingbrain-pt.svg";
-import Slide1EN from "@/assets/img/slide1-workingbrain-en.svg";
-import Slide2EN from "@/assets/img/slide2-workingbrain-en.svg";
-import Slide3EN from "@/assets/img/slide3-workingbrain-en.svg";
-import Slide1ES from "@/assets/img/slide1-workingbrain-es.svg";
-import Slide2ES from "@/assets/img/slide2-workingbrain-es.svg";
-import Slide3ES from "@/assets/img/slide3-workingbrain-es.svg";
-import Depois from "@/assets/img/depois-workingbrain.svg";
-import Antes from "@/assets/img/antes-workingbrain.svg"
-import { useRouter } from 'next/navigation';
+
+// Assets - Logos
+import WorkingBrainLogoDark from "@/assets/img/project-workingbrain/logoworkingbrain-white.svg"; 
+import WorkingBrainLogoLight from "@/assets/img/project-workingbrain/logoworkingbrain-black.svg";
+
+// Assets - Before/After
+import Antes from "@/assets/img/project-workingbrain/antes.svg";
+import Depois from "@/assets/img/project-workingbrain/depois.svg";
+
+// Assets - Slides (PT)
+import Slide1PT from "@/assets/img/project-workingbrain/slide1-pt.svg";
+import Slide2PT from "@/assets/img/project-workingbrain/slide2-pt.svg";
+import Slide3PT from "@/assets/img/project-workingbrain/slide3-pt.svg";
+
+// Assets - Slides (EN)
+import Slide1EN from "@/assets/img/project-workingbrain/slide1-en.svg";
+import Slide2EN from "@/assets/img/project-workingbrain/slide2-en.svg";
+import Slide3EN from "@/assets/img/project-workingbrain/slide3-en.svg";
+
+// Assets - Slides (ES)
+import Slide1ES from "@/assets/img/project-workingbrain/slide1-es.svg";
+import Slide2ES from "@/assets/img/project-workingbrain/slide2-es.svg";
+import Slide3ES from "@/assets/img/project-workingbrain/slide3-es.svg";
 
 const ProjectPage = ({ language = 'en' }) => {
   const router = useRouter();
