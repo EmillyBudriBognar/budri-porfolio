@@ -34,7 +34,7 @@ const Portfolio = ({ language }) => {
             "Desenvolvimento de interfaces modernas e intuitivas para a landing page de um sistema de marketplace entre brechós (Projeto Integrador – Tecnólogo em Desenvolvimento de Software Multiplataforma).",
           category: "Desenvolvimento Web",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/breshopp",
         },
         {
           title: "Aplicativo WorkingBrain – Educação Mobile",
@@ -95,7 +95,7 @@ const Portfolio = ({ language }) => {
             "Desarrollo de interfaces modernas e intuitivas para la página de destino de un sistema de marketplace entre tiendas de segunda mano (Proyecto Integrador – Tecnólogo en Desarrollo de Software Multiplataforma).",
           category: "Desarrollo Web",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/breshopp",
         },
         {
           title: "Aplicación WorkingBrain – Educación Mobile",
@@ -156,7 +156,7 @@ const Portfolio = ({ language }) => {
             "Development of modern and intuitive interfaces for a secondhand marketplace landing page (Integrator Project – Technologist in Multiplatform Software Development).",
           category: "Web Development",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/breshopp",
         },
         {
           title: "WorkingBrain App – Mobile Education",
