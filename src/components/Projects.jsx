@@ -26,7 +26,7 @@ const Portfolio = ({ language }) => {
             "Aprimoramento da experiência do usuário e interface para orientar o desenvolvimento do aplicativo MárcioPhone.",
           category: "UX/UI Design",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/marciophone",
         },
         {
           title: "BreShopp – Marketplace Entre Brechós",
@@ -50,7 +50,7 @@ const Portfolio = ({ language }) => {
             "Pesquisa e testes de usabilidade para otimização da experiência do usuário no aplicativo educacional WorkingBrain (TCC – Técnico em Informática para Internet).",
           category: "Pesquisas de Usabilidade",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/usability-research-workingbrain",
         },
         {
           title: "Meu Aumigo – Campanha de E-mail Marketing",
@@ -58,7 +58,7 @@ const Portfolio = ({ language }) => {
             "Criação de template de e-mail responsivo e interativo para a campanha de marketing do Meu Aumigo.",
           category: "E-mails HTML",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/meu-aumigo",
         },
         {
           title: "Identidade Visual – WorkingBrain",
@@ -87,7 +87,7 @@ const Portfolio = ({ language }) => {
             "Mejora de la experiencia del usuario y la interfaz para guiar el desarrollo de la aplicación MárcioPhone.",
           category: "Diseño UX/UI",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/marciophone",
         },
         {
           title: "BreShopp – Marketplace Entre Tiendas de Segunda Mano",
@@ -111,7 +111,7 @@ const Portfolio = ({ language }) => {
             "Investigación y pruebas de usabilidad para optimizar la experiencia del usuario en la aplicación educativa WorkingBrain (TCC – Técnico en Informática para Internet).",
           category: "Investigación de Usabilidad",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/usability-research-workingbrain",
         },
         {
           title: "Meu Aumigo – Campaña de Email Marketing",
@@ -119,7 +119,7 @@ const Portfolio = ({ language }) => {
             "Creación de una plantilla de correo electrónico responsiva e interactiva para la campaña de marketing de Meu Aumigo.",
           category: "E-mails HTML",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/meu-aumigo",
         },
         {
           title: "Identidad Visual – WorkingBrain",
@@ -148,7 +148,7 @@ const Portfolio = ({ language }) => {
             "Enhancement of user experience and interface to guide the development of the MárcioPhone app.",
           category: "UX/UI Design",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/marciophone",
         },
         {
           title: "BreShopp – Secondhand Marketplace",
@@ -172,7 +172,7 @@ const Portfolio = ({ language }) => {
             "Research and usability testing to optimize user experience in the WorkingBrain educational app (Final Project – Technician in Internet Informatics).",
           category: "Usability Research",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/usability-research-workingbrain",
         },
         {
           title: "Meu Aumigo – Email Marketing Campaign",
@@ -180,7 +180,7 @@ const Portfolio = ({ language }) => {
             "Creation of a responsive and interactive email template for the Meu Aumigo marketing campaign.",
           category: "HTML Emails",
           image: Teste,
-          link: "/projects/",
+          link: "/projects/meu-aumigo",
         },
         {
           title: "Visual Identity – WorkingBrain",
