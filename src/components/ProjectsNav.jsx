@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import LogoLight from "../assets/img/logo/black-and-purple.svg";
-import LogoDark from "../assets/img/logo/white-and-purple.svg";
+import LogoLight from "@/assets/img/logo/black-and-purple.svg";
+import LogoDark from "@/assets/img/logo/white-and-purple.svg";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
 import { motion, AnimatePresence } from "framer-motion";

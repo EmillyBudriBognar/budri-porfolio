@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectItem from "./ProjectItem";
-import Teste from "../assets/img/teste.jpg";
-import WorkingBrainIdentity from "../assets/img/logoworkingbrain.svg";
+import Teste from "@/assets/img/teste.jpg";
+import WorkingBrainIdentity from "@/assets/img/logoworkingbrain.svg";
 
 const Portfolio = ({ language }) => {
   // Objeto de tradução para os textos

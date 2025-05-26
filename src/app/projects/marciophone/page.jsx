@@ -185,6 +185,7 @@ const ProjectPage = ({ language = 'en' }) => {
             subtitle={t.subtitle}
             image={MarcioPhoneLogoLight}
             darkImage={MarcioPhoneLogoDark}
+            imagePosition="bottom"
             language={currentLanguage}
           />
         </section>

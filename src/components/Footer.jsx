@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { SocialIcons } from "./SocialIcons";
-import LogoBlack from "../assets/img/logo/all-black.svg";
-import LogoWhite from "../assets/img/logo/all-white.svg";
+import LogoBlack from "@/assets/img/logo/all-black.svg";
+import LogoWhite from "@/assets/img/logo/all-white.svg";
 import Image from "next/image";
 
 const Footer = ({ language = "pt" }) => {

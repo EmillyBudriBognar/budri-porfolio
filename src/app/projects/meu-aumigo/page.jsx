@@ -14,18 +14,24 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets
-import MeuAumigoLogoDark from "@/assets/img/project-meuaumigo/logoworkingbrain-white.svg";
-import MeuAumigoLogoLight from "@/assets/img/project-meuaumigo/logoworkingbrain-black.svg";
+// Assets - Capa
+import Capa from "@/assets/img/project-meuaumigo/capa.svg";
 
+// Assets - Before/After
+import Antes from "@/assets/img/project-meuaumigo/antes.svg";
+import Depois from "@/assets/img/project-meuaumigo/depois.svg";
+
+// Assets - Slides (PT)
 import Slide1PT from "@/assets/img/project-meuaumigo/slide1-pt.svg";
 import Slide2PT from "@/assets/img/project-meuaumigo/slide2-pt.svg";
 import Slide3PT from "@/assets/img/project-meuaumigo/slide3-pt.svg";
 
+// Assets - Slides (EN)
 import Slide1EN from "@/assets/img/project-meuaumigo/slide1-en.svg";
 import Slide2EN from "@/assets/img/project-meuaumigo/slide2-en.svg";
 import Slide3EN from "@/assets/img/project-meuaumigo/slide3-en.svg";
 
+// Assets - Slides (ES)
 import Slide1ES from "@/assets/img/project-meuaumigo/slide1-es.svg";
 import Slide2ES from "@/assets/img/project-meuaumigo/slide2-es.svg";
 import Slide3ES from "@/assets/img/project-meuaumigo/slide3-es.svg";
@@ -176,23 +182,60 @@ const ProjectPage = ({ language = 'pt' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-  const galleryImages = {
-    pt: [
-      { src: Slide1PT, alt: "Banner da Pet Friday", caption: "Promoções imperdíveis para seu melhor amigo" },
-      { src: Slide2PT, alt: "Produtos em destaque", caption: "Cuidados e acessórios com até 50% off" },
-      { src: Slide3PT, alt: "Ambiente pet friendly", caption: "Amor, cuidado e diversão garantida" }
-    ],
-    en: [
-      { src: Slide1EN, alt: "Pet Friday Banner", caption: "Unmissable deals for your best friend" },
-      { src: Slide2EN, alt: "Featured products", caption: "Care and accessories up to 50% off" },
-      { src: Slide3EN, alt: "Pet-friendly space", caption: "Love, care, and guaranteed fun" }
-    ],
-    es: [
-      { src: Slide1ES, alt: "Banner de Pet Friday", caption: "Ofertas imperdibles para tu mejor amigo" },
-      { src: Slide2ES, alt: "Productos destacados", caption: "Cuidado y accesorios con hasta 50% de descuento" },
-      { src: Slide3ES, alt: "Ambiente amigable para mascotas", caption: "Amor, cuidado y diversión garantizada" }
-    ]
-  };
+const galleryImages = {
+  pt: [
+    {
+      src: Slide1PT,
+      alt: "Estrutura do cabeçalho do e-mail promocional",
+      caption: "Parte 1: Cabeçalho com logo, título e destaque visual da campanha"
+    },
+    {
+      src: Slide2PT,
+      alt: "Seção intermediária com produtos em destaque",
+      caption: "Parte 2: Grid de produtos com preços e descrições"
+    },
+    {
+      src: Slide3PT,
+      alt: "Rodapé com links e informações adicionais",
+      caption: "Parte 3: Rodapé com botão CTA, redes sociais e dados institucionais"
+    }
+  ],
+  en: [
+    {
+      src: Slide1EN,
+      alt: "Promotional email header layout structure",
+      caption: "Part 1: Header with logo, title, and campaign highlight"
+    },
+    {
+      src: Slide2EN,
+      alt: "Middle section with featured products",
+      caption: "Part 2: Product grid with prices, and descriptions"
+    },
+    {
+      src: Slide3EN,
+      alt: "Footer section with links and extra information",
+      caption: "Part 3: Footer with CTA button, social links, and company details"
+    }
+  ],
+  es: [
+    {
+      src: Slide1ES,
+      alt: "Estructura del encabezado del correo promocional",
+      caption: "Parte 1: Encabezado con logotipo, título y destaque visual"
+    },
+    {
+      src: Slide2ES,
+      alt: "Sección intermedia con productos destacados",
+      caption: "Parte 2: Cuadrícula de productos con precios y descripciones"
+    },
+    {
+      src: Slide3ES,
+      alt: "Pie de página con enlaces e información adicional",
+      caption: "Parte 3: Pie con botón CTA, redes sociales y datos de la empresa"
+    }
+  ]
+};
+
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -209,8 +252,9 @@ const ProjectPage = ({ language = 'pt' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={MeuAumigoLogoLight}
-            darkImage={MeuAumigoLogoDark}
+            image={Capa}
+            darkImage={Capa}
+            imagePosition="bottom"
             language={currentLanguage}
           />
         </section>
@@ -235,6 +279,12 @@ const ProjectPage = ({ language = 'pt' }) => {
           <ResultsImpact 
             metrics={t.results.metrics}
             feedback={t.results.feedback}
+            beforeAfterImages={{
+              before: Antes,
+              after: Depois,
+              beforeAlt: "Initial HTML email layout",
+              afterAlt: "Final version with design refinements and responsive adjustments"
+            }}
             language={currentLanguage}
           />
         </section>

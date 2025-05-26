@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Emilly from "../assets/img/emilly-budri.jpeg";
+import Emilly from "@/assets/img/emilly-budri.jpeg";
 import { SocialIcons } from "../components/SocialIcons";
 import Image from "next/image";
 import Button from "./ButtonAllPurple";

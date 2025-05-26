@@ -14,13 +14,12 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Logos
-import WorkingBrainLogoDark from "@/assets/img/project-workingbrain/logoworkingbrain-white.svg"; 
-import WorkingBrainLogoLight from "@/assets/img/project-workingbrain/logoworkingbrain-black.svg";
+// Assets - Cover
+import Capa from "@/assets/img/project-workingbrain-mobile/capa.svg";
 
 // Assets - Before/After
-import Antes from "@/assets/img/project-workingbrain/antes.svg";
-import Depois from "@/assets/img/project-workingbrain/depois.svg";
+import Antes from "@/assets/img/project-workingbrain-mobile/antes.svg";
+import Depois from "@/assets/img/project-workingbrain-mobile/depois.svg";
 
 // Assets - Slides (PT)
 import Slide1PT from "@/assets/img/project-workingbrain/slide1-pt.svg";
@@ -213,18 +212,18 @@ const ProjectPage = ({ language = 'en' }) => {
   const galleryImages = {
     pt: [
       { src: Slide1PT, alt: "Interface do aplicativo", caption: "Tela principal com navegação intuitiva" },
-      { src: Slide2PT, alt: "Recursos para professores", caption: "Painel de controle para educadores" },
-      { src: Slide3PT, alt: "Sistema de interação", caption: "Exemplo de quiz com gamificação" }
+      // { src: Slide2PT, alt: "Recursos para professores", caption: "Painel de controle para educadores" },
+      // { src: Slide3PT, alt: "Sistema de interação", caption: "Exemplo de quiz com gamificação" }
     ],
     en: [
       { src: Slide1EN, alt: "App interface", caption: "Main screen with intuitive navigation" },
-      { src: Slide2EN, alt: "Teacher features", caption: "Educator control panel" },
-      { src: Slide3EN, alt: "Interaction system", caption: "Gamified quiz example" }
+      // { src: Slide2EN, alt: "Teacher features", caption: "Educator control panel" },
+      // { src: Slide3EN, alt: "Interaction system", caption: "Gamified quiz example" }
     ],
     es: [
       { src: Slide1ES, alt: "Interfaz de la aplicación", caption: "Pantalla principal con navegación intuitiva" },
-      { src: Slide2ES, alt: "Recursos para profesores", caption: "Panel de control para educadores" },
-      { src: Slide3ES, alt: "Sistema de interacción", caption: "Ejemplo de quiz con gamificación" }
+      // { src: Slide2ES, alt: "Recursos para profesores", caption: "Panel de control para educadores" },
+      // { src: Slide3ES, alt: "Sistema de interacción", caption: "Ejemplo de quiz con gamificación" }
     ]
   };
 
@@ -243,8 +242,9 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={WorkingBrainLogoLight}
-            darkImage={WorkingBrainLogoDark}
+            image={Capa}
+            darkImage={Capa}
+            imagePosition="bottom"
             language={currentLanguage}
           />
         </section>

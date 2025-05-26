@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import Emilly from "../assets/img/me-bg.svg"; 
-import Me from "../assets/img/me.svg"; 
+import Emilly from "@/assets/img/me-bg.svg"; 
+import Me from "@/assets/img/me.svg"; 
 import Image from "next/image";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';

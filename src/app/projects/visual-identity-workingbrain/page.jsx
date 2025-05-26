@@ -14,9 +14,8 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Logos
-import WorkingBrainLogoDark from "@/assets/img/project-workingbrain/logoworkingbrain-white.svg"; 
-import WorkingBrainLogoLight from "@/assets/img/project-workingbrain/logoworkingbrain-black.svg";
+// Assets - Cover
+import Capa from "@/assets/img/project-workingbrain/brian.svg"; 
 
 // Assets - Before/After
 import Antes from "@/assets/img/project-workingbrain/antes.svg";
@@ -181,8 +180,9 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={WorkingBrainLogoLight}
-            darkImage={WorkingBrainLogoDark}
+            image={Capa}
+            darkImage={Capa}
+            imagePosition="center"
             language={currentLanguage}
           />
         </section>

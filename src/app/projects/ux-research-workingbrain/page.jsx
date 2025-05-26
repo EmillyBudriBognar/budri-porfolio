@@ -15,27 +15,29 @@ import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
 // Assets - Logos
-import WorkingBrainLogoDark from "@/assets/img/project-workingbrain/logoworkingbrain-white.svg"; 
-import WorkingBrainLogoLight from "@/assets/img/project-workingbrain/logoworkingbrain-black.svg";
-
-// Assets - Before/After
-import Antes from "@/assets/img/project-workingbrain/antes.svg";
-import Depois from "@/assets/img/project-workingbrain/depois.svg";
+import WorkingBrainLogoDark from "@/assets/img/project-ux-research-workingbrain/logoworkingbrain-white.svg"; 
+import WorkingBrainLogoLight from "@/assets/img/project-ux-research-workingbrain/logoworkingbrain-black.svg";
 
 // Assets - Slides (PT)
-import Slide1PT from "@/assets/img/project-workingbrain/slide1-pt.svg";
-import Slide2PT from "@/assets/img/project-workingbrain/slide2-pt.svg";
-import Slide3PT from "@/assets/img/project-workingbrain/slide3-pt.svg";
+import Slide1PT from "@/assets/img/project-ux-research-workingbrain/slide1-pt.svg";
+import Slide2PT from "@/assets/img/project-ux-research-workingbrain/slide2-pt.svg";
+import Slide3PT from "@/assets/img/project-ux-research-workingbrain/slide3-pt.svg";
+import Slide4PT from "@/assets/img/project-ux-research-workingbrain/slide4-pt.svg";
+import Slide5PT from "@/assets/img/project-ux-research-workingbrain/slide5-pt.svg";
 
 // Assets - Slides (EN)
-import Slide1EN from "@/assets/img/project-workingbrain/slide1-en.svg";
-import Slide2EN from "@/assets/img/project-workingbrain/slide2-en.svg";
-import Slide3EN from "@/assets/img/project-workingbrain/slide3-en.svg";
+import Slide1EN from "@/assets/img/project-ux-research-workingbrain/slide1-en.svg";
+import Slide2EN from "@/assets/img/project-ux-research-workingbrain/slide2-en.svg";
+import Slide3EN from "@/assets/img/project-ux-research-workingbrain/slide3-en.svg";
+import Slide4EN from "@/assets/img/project-ux-research-workingbrain/slide4-en.svg";
+import Slide5EN from "@/assets/img/project-ux-research-workingbrain/slide5-en.svg";
 
 // Assets - Slides (ES)
-import Slide1ES from "@/assets/img/project-workingbrain/slide1-es.svg";
-import Slide2ES from "@/assets/img/project-workingbrain/slide2-es.svg";
-import Slide3ES from "@/assets/img/project-workingbrain/slide3-es.svg";
+import Slide1ES from "@/assets/img/project-ux-research-workingbrain/slide1-es.svg";
+import Slide2ES from "@/assets/img/project-ux-research-workingbrain/slide2-es.svg";
+import Slide3ES from "@/assets/img/project-ux-research-workingbrain/slide3-es.svg";
+import Slide4ES from "@/assets/img/project-ux-research-workingbrain/slide4-es.svg";
+import Slide5ES from "@/assets/img/project-ux-research-workingbrain/slide5-es.svg";
 
 const ProjectPage = ({ language = 'en' }) => {
   const router = useRouter();
@@ -43,7 +45,7 @@ const ProjectPage = ({ language = 'en' }) => {
 
   const translations = {
     pt: {
-      title: "WorkingBrain - Pesquisa de Usabilidade Educacional",
+      title: "WorkingBrain - Pesquisa de UX Educacional",
       subtitle: "Análise das necessidades de alunos e professores no Novo Ensino Médio | TCC do Técnico em Informática para Internet",
       overview: {
         objective: "Identificar as principais dificuldades de alunos e professores na adaptação ao Novo Ensino Médio, com foco nas disparidades entre redes pública e privada.",
@@ -60,7 +62,7 @@ const ProjectPage = ({ language = 'en' }) => {
       results: {
         metrics: [
           { value: "12", description: "Entrevistas realizadas", icon: "🎤" },
-          { value: "4", description: "Personas criadas", icon: "👥" },
+          { value: "2", description: "Personas criadas", icon: "👥" },
           { value: "85%", description: "Relataram defasagem", icon: "📉" }
         ],
         feedback: "A pesquisa revelou a profunda desigualdade na adaptação ao novo currículo, com alunos da rede pública em desvantagem significativa na preparação para vestibulares."
@@ -77,7 +79,7 @@ const ProjectPage = ({ language = 'en' }) => {
       ]
     },
     en: {
-      title: "WorkingBrain - Educational Usability Research",
+      title: "WorkingBrain - Educational UX Research",
       subtitle: "Analysis of students and teachers needs in the New High School System | Internet Computing Technical Final Project",
       overview: {
         objective: "Identify the main difficulties of students and teachers in adapting to the New High School system, focusing on disparities between public and private networks.",
@@ -94,7 +96,7 @@ const ProjectPage = ({ language = 'en' }) => {
       results: {
         metrics: [
           { value: "12", description: "Interviews conducted", icon: "🎤" },
-          { value: "4", description: "Personas created", icon: "👥" },
+          { value: "2", description: "Personas created", icon: "👥" },
           { value: "85%", description: "Reported gap", icon: "📉" }
         ],
         feedback: "The research revealed the profound inequality in adapting to the new curriculum, with public school students at a significant disadvantage in preparing for college entrance exams."
@@ -111,7 +113,7 @@ const ProjectPage = ({ language = 'en' }) => {
       ]
     },
     es: {
-      title: "WorkingBrain - Investigación de Usabilidad Educativa",
+      title: "WorkingBrain - Investigación de UX Educativa",
       subtitle: "Análisis de necesidades de estudiantes y profesores en el Nuevo Sistema de Secundaria | Proyecto Final del Técnico en Informática para Internet",
       overview: {
         objective: "Identificar las principales dificultades de estudiantes y profesores en la adaptación al Nuevo Sistema de Secundaria, con enfoque en las disparidades entre redes públicas y privadas.",
@@ -128,7 +130,7 @@ const ProjectPage = ({ language = 'en' }) => {
       results: {
         metrics: [
           { value: "12", description: "Entrevistas realizadas", icon: "🎤" },
-          { value: "4", description: "Personas creadas", icon: "👥" },
+          { value: "2", description: "Personas creadas", icon: "👥" },
           { value: "85%", description: "Reportaron desfase", icon: "📉" }
         ],
         feedback: "La investigación reveló la profunda desigualdad en la adaptación al nuevo currículo, con estudiantes de escuelas públicas en desventaja significativa en la preparación para exámenes de ingreso a la universidad."
@@ -157,22 +159,89 @@ const ProjectPage = ({ language = 'en' }) => {
   };
 
   const galleryImages = {
-    pt: [
-      { src: Slide1PT, alt: "Mapa de empatia de aluno", caption: "Análise das dores e necessidades dos alunos" },
-      { src: Slide2PT, alt: "Persona de professor", caption: "Perfil detalhado de professor da rede pública" },
-      { src: Slide3PT, alt: "Comparativo curricular", caption: "Disparidades entre escolas públicas e privadas" }
-    ],
-    en: [
-      { src: Slide1EN, alt: "Student empathy map", caption: "Analysis of student pains and needs" },
-      { src: Slide2EN, alt: "Teacher persona", caption: "Detailed profile of public school teacher" },
-      { src: Slide3EN, alt: "Curriculum comparison", caption: "Disparities between public and private schools" }
-    ],
-    es: [
-      { src: Slide1ES, alt: "Mapa de empatía de estudiante", caption: "Análisis de las dificultades y necesidades de los estudiantes" },
-      { src: Slide2ES, alt: "Persona de profesor", caption: "Perfil detallado de profesor de escuela pública" },
-      { src: Slide3ES, alt: "Comparativo curricular", caption: "Disparidades entre escuelas públicas y privadas" }
-    ]
-  };
+  pt: [
+    {
+      src: Slide1PT,
+      alt: "Persona do aluno",
+      caption: "Persona do aluno: Análise das dores e necessidades dos alunos"
+    },
+    {
+      src: Slide2PT,
+      alt: "Persona do professor",
+      caption: "Persona do professor: Perfil detalhado de professor da rede pública"
+    },
+    {
+      src: Slide3PT,
+      alt: "Mapa da Empatia",
+      caption: "Mapa da Empatia: Compreensão profunda dos desafios e sentimentos dos usuários"
+    },
+    {
+      src: Slide4PT,
+      alt: "Mapa da Jornada do Usuário",
+      caption: "Mapa da Jornada do Usuário: Etapas da experiência do aluno e do professor com oportunidades de melhoria"
+    },
+    {
+      src: Slide5PT,
+      alt: "Insights Finais",
+      caption: "Insights Finais: Principais aprendizados para guiar soluções mais eficazes"
+    }
+  ],
+  en: [
+    {
+      src: Slide1EN,
+      alt: "Student persona",
+      caption: "Student persona: Analysis of students' pains and needs"
+    },
+    {
+      src: Slide2EN,
+      alt: "Teacher persona",
+      caption: "Teacher persona: Detailed profile of a public school teacher"
+    },
+    {
+      src: Slide3EN,
+      alt: "Empathy Map",
+      caption: "Empathy Map: Deep understanding of users' challenges and emotions"
+    },
+    {
+      src: Slide4EN,
+      alt: "User Journey Map",
+      caption: "User Journey Map: Experience stages of students and teachers with opportunity areas"
+    },
+    {
+      src: Slide5EN,
+      alt: "Final Insights",
+      caption: "Final Insights: Key takeaways to guide more effective solutions"
+    }
+  ],
+  es: [
+    {
+      src: Slide1ES,
+      alt: "Persona del estudiante",
+      caption: "Persona del estudiante: Análisis de las dificultades y necesidades de los estudiantes"
+    },
+    {
+      src: Slide2ES,
+      alt: "Persona del profesor",
+      caption: "Persona del profesor: Perfil detallado de un docente de escuela pública"
+    },
+    {
+      src: Slide3ES,
+      alt: "Mapa de Empatía",
+      caption: "Mapa de Empatía: Comprensión profunda de los desafíos y emociones de los usuarios"
+    },
+    {
+      src: Slide4ES,
+      alt: "Mapa de la Jornada del Usuario",
+      caption: "Mapa de la Jornada del Usuario: Etapas de la experiencia de estudiantes y profesores con áreas de oportunidad"
+    },
+    {
+      src: Slide5ES,
+      alt: "Insights Finales",
+      caption: "Insights Finales: Aprendizajes clave para guiar soluciones más efectivas"
+    }
+  ]
+};
+
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -191,6 +260,7 @@ const ProjectPage = ({ language = 'en' }) => {
             subtitle={t.subtitle}
             image={WorkingBrainLogoLight}
             darkImage={WorkingBrainLogoDark}
+            imagePosition="center"
             language={currentLanguage}
           />
         </section>
@@ -215,12 +285,6 @@ const ProjectPage = ({ language = 'en' }) => {
           <ResultsImpact 
             metrics={t.results.metrics}
             feedback={t.results.feedback}
-            beforeAfterImages={{
-              before: Antes,
-              after: Depois,
-              beforeAlt: "Sistema educacional tradicional",
-              afterAlt: "Desafios do novo ensino médio"
-            }}
             language={currentLanguage}
           />
         </section>

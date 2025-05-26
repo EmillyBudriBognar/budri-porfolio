@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useState, useEffect } from "react";
-import LogoBlack from "../assets/img/logo/black-and-purple.svg";
-import LogoWhite from "../assets/img/logo/white-and-purple.svg";
+import LogoBlack from "@/assets/img/logo/black-and-purple.svg";
+import LogoWhite from "@/assets/img/logo/white-and-purple.svg";
 import Image from "next/image";
 import Services from "@/components/Services";
 

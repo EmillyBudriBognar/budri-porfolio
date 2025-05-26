@@ -245,6 +245,7 @@ const ProjectPage = ({ language = 'pt' }) => {
             subtitle={t.subtitle}
             image={BreShoppLogoLight}
             darkImage={BreShoppLogoDark}
+            imagePosition="bottom"
             language={currentLanguage}
           />
         </section>
