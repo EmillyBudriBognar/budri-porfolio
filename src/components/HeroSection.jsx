@@ -1,8 +1,6 @@
 "use client";
 
 import React from 'react';
-import Emilly from "@/assets/img/me-bg.svg"; 
-import Me from "@/assets/img/me.svg"; 
 import Image from "next/image";
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -100,7 +98,7 @@ const HeroSection = ({ language = "pt" }) => {
         className="relative w-full h-[50vh] md:h-[50vh] z-20 flex items-center justify-center"
       >
         <Image
-          src={Me}
+          src="/images/me.svg"
           alt={altMobile}
           layout="fill"
           objectFit="contain"
@@ -109,7 +107,7 @@ const HeroSection = ({ language = "pt" }) => {
           priority
         />
         <Image
-          src={Emilly}
+          src="/images/me-bg.svg"
           alt={altDesktop}
           layout="fill"
           objectFit="contain"

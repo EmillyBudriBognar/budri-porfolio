@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectItem from "./ProjectItem";
-import Teste from "@/assets/img/teste.jpg";
-import WorkingBrainIdentity from "@/assets/img/logoworkingbrain.svg";
 
 const Portfolio = ({ language }) => {
   // Objeto de tradução para os textos
@@ -25,7 +23,7 @@ const Portfolio = ({ language }) => {
           description:
             "Aprimoramento da experiência do usuário e interface para orientar o desenvolvimento do aplicativo MárcioPhone.",
           category: "UX/UI Design",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/marciophone",
         },
         {
@@ -33,7 +31,7 @@ const Portfolio = ({ language }) => {
           description:
             "Desenvolvimento de interfaces modernas e intuitivas para a landing page de um sistema de marketplace entre brechós (Projeto Integrador – Tecnólogo em Desenvolvimento de Software Multiplataforma).",
           category: "Desenvolvimento Web",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/breshopp",
         },
         {
@@ -41,7 +39,7 @@ const Portfolio = ({ language }) => {
           description:
             "Desenvolvimento de um aplicativo educacional completo com funcionalidades para professores e alunos (TCC – Técnico em Informática para Internet).",
           category: "Desenvolvimento Mobile",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/workingbrain-mobile",
         },
         {
@@ -49,7 +47,7 @@ const Portfolio = ({ language }) => {
           description:
             "Pesquisa e testes de usabilidade para otimização da experiência do usuário no aplicativo educacional WorkingBrain (TCC – Técnico em Informática para Internet).",
           category: "Pesquisas de Usabilidade",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/usability-research-workingbrain",
         },
         {
@@ -57,7 +55,7 @@ const Portfolio = ({ language }) => {
           description:
             "Criação de template de e-mail responsivo e interativo para a campanha de marketing do Meu Aumigo.",
           category: "E-mails HTML",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/meu-aumigo",
         },
         {
@@ -65,7 +63,7 @@ const Portfolio = ({ language }) => {
           description:
             "Desenvolvimento da identidade visual completa para o aplicativo educacional WorkingBrain (TCC – Técnico em Informática para Internet).",
           category: "Design Gráfico",
-          image: WorkingBrainIdentity,
+          image: "/images/logoworkingbrain.svg",
           link: "/projects/visual-identity-workingbrain",
         },
       ],
@@ -86,7 +84,7 @@ const Portfolio = ({ language }) => {
           description:
             "Mejora de la experiencia del usuario y la interfaz para guiar el desarrollo de la aplicación MárcioPhone.",
           category: "Diseño UX/UI",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/marciophone",
         },
         {
@@ -94,7 +92,7 @@ const Portfolio = ({ language }) => {
           description:
             "Desarrollo de interfaces modernas e intuitivas para la página de destino de un sistema de marketplace entre tiendas de segunda mano (Proyecto Integrador – Tecnólogo en Desarrollo de Software Multiplataforma).",
           category: "Desarrollo Web",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/breshopp",
         },
         {
@@ -102,7 +100,7 @@ const Portfolio = ({ language }) => {
           description:
             "Desarrollo de una aplicación educativa completa con funcionalidades para profesores y alumnos (TCC – Técnico en Informática para Internet).",
           category: "Desarrollo Mobile",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/workingbrain-mobile",
         },
         {
@@ -110,7 +108,7 @@ const Portfolio = ({ language }) => {
           description:
             "Investigación y pruebas de usabilidad para optimizar la experiencia del usuario en la aplicación educativa WorkingBrain (TCC – Técnico en Informática para Internet).",
           category: "Investigación de Usabilidad",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/usability-research-workingbrain",
         },
         {
@@ -118,7 +116,7 @@ const Portfolio = ({ language }) => {
           description:
             "Creación de una plantilla de correo electrónico responsiva e interactiva para la campaña de marketing de Meu Aumigo.",
           category: "E-mails HTML",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/meu-aumigo",
         },
         {
@@ -126,7 +124,7 @@ const Portfolio = ({ language }) => {
           description:
             "Desarrollo de la identidad visual completa para la aplicación educativa WorkingBrain (TCC – Técnico en Informática para Internet).",
           category: "Diseño Gráfico",
-          image: WorkingBrainIdentity,
+          image: "/images/logoworkingbrain.svg",
           link: "/projects/visual-identity-workingbrain",
         },
       ],
@@ -147,7 +145,7 @@ const Portfolio = ({ language }) => {
           description:
             "Enhancement of user experience and interface to guide the development of the MárcioPhone app.",
           category: "UX/UI Design",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/marciophone",
         },
         {
@@ -155,7 +153,7 @@ const Portfolio = ({ language }) => {
           description:
             "Development of modern and intuitive interfaces for a secondhand marketplace landing page (Integrator Project – Technologist in Multiplatform Software Development).",
           category: "Web Development",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/breshopp",
         },
         {
@@ -163,7 +161,7 @@ const Portfolio = ({ language }) => {
           description:
             "Development of a complete educational app with features for teachers and students (Final Project – Technician in Internet Informatics).",
           category: "Mobile Development",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/workingbrain-mobile",
         },
         {
@@ -171,7 +169,7 @@ const Portfolio = ({ language }) => {
           description:
             "Research and usability testing to optimize user experience in the WorkingBrain educational app (Final Project – Technician in Internet Informatics).",
           category: "Usability Research",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/usability-research-workingbrain",
         },
         {
@@ -179,7 +177,7 @@ const Portfolio = ({ language }) => {
           description:
             "Creation of a responsive and interactive email template for the Meu Aumigo marketing campaign.",
           category: "HTML Emails",
-          image: Teste,
+          image: "/images/teste.jpg",
           link: "/projects/meu-aumigo",
         },
         {
@@ -187,7 +185,7 @@ const Portfolio = ({ language }) => {
           description:
             "Development of complete visual identity for the WorkingBrain educational app (Final Project – Technician in Internet Informatics).",
           category: "Graphic Design",
-          image: WorkingBrainIdentity,
+          image: "/images/logoworkingbrain.svg",
           link: "/projects/visual-identity-workingbrain",
         },
       ],

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Emilly from "@/assets/img/emilly-budri.jpeg";
 import { SocialIcons } from "../components/SocialIcons";
 import Image from "next/image";
 import Button from "./ButtonAllPurple";
@@ -13,7 +12,6 @@ const ProfileCard = ({ language }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Objeto de tradução para os textos e links
   const translations = {
     pt: {
       greeting: "Olá, eu sou a Emilly Budri Bognar!",
@@ -22,9 +20,10 @@ const ProfileCard = ({ language }) => {
         "Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional - ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.",
       description2:
         "Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia, sempre com <b>comunicação clara</b> e foco nas <b>necessidades reais</b> dos usuários. Sou curiosa e estou sempre explorando <b>novas perspectivas</b> para aprimorar cada detalhe do design.",
-      description3: "Seria um prazer ajudar sua empresa a crescer com soluções digitais que realmente fazem a diferença.",
+      description3:
+        "Seria um prazer ajudar sua empresa a crescer com soluções digitais que realmente fazem a diferença.",
       buttonText: "BAIXAR CV",
-      cvLink: "https://drive.google.com/file/", // Link para o CV em português
+      cvLink: "https://drive.google.com/file/",
     },
     es: {
       greeting: "¡Hola, soy Emilly Budri Bognar!",
@@ -33,9 +32,10 @@ const ProfileCard = ({ language }) => {
         "Me apasiona la <b>tecnología</b> y el <b>Diseño UX</b>, donde se encuentran la <b>psicología</b>, el <b>arte</b> y la <b>experiencia del usuario</b>. Creo que el <b>diseño</b> debe ser más que funcional: debe crear una <b>experiencia intuitiva</b> y alineada con las <b>necesidades reales</b> de las personas.",
       description2:
         "Mi objetivo es desarrollar <b>soluciones digitales</b> que marquen la diferencia en el día a día, siempre con <b>comunicación clara</b> y enfoque en las <b>necesidades reales</b> de los usuarios. Soy curiosa y siempre estoy explorando <b>nuevas perspectivas</b> para mejorar cada detalle del diseño.",
-      description3: "Sería un placer ayudar a su empresa a crecer con soluciones digitales que realmente marcan la diferencia.",
+      description3:
+        "Sería un placer ayudar a su empresa a crecer con soluciones digitales que realmente marcan la diferencia.",
       buttonText: "DESCARGAR CV",
-      cvLink: "https://drive.google.com/file/", // Link para o CV em espanhol
+      cvLink: "https://drive.google.com/file/",
     },
     en: {
       greeting: "Hi, I'm Emilly Budri Bognar!",
@@ -44,13 +44,13 @@ const ProfileCard = ({ language }) => {
         "I am passionate about <b>technology</b> and <b>UX Design</b>, where <b>psychology</b>, <b>art</b>, and <b>user experience</b> come together. I believe that <b>design</b> should be more than functional - it needs to create an <b>intuitive experience</b> aligned with the <b>real demands</b> of people.",
       description2:
         "My goal is to develop <b>digital solutions</b> that make a difference in everyday life, always with <b>clear communication</b> and a focus on the <b>real needs</b> of users. I am curious and always exploring <b>new perspectives</b> to enhance every detail of design.",
-      description3: "It would be a pleasure to help your company grow with digital solutions that truly make a difference.",
+      description3:
+        "It would be a pleasure to help your company grow with digital solutions that truly make a difference.",
       buttonText: "DOWNLOAD CV",
-      cvLink: "https://drive.google.com/file/", // Link para o CV em inglês
+      cvLink: "https://drive.google.com/file/",
     },
   };
 
-  // Seleciona os textos e links com base no idioma
   const {
     greeting,
     roles: translatedRoles,
@@ -61,7 +61,6 @@ const ProfileCard = ({ language }) => {
     cvLink,
   } = translations[language];
 
-  // Efeito para a animação de digitação
   useEffect(() => {
     const fullText = translatedRoles[roleIndex];
     let timer;
@@ -82,7 +81,6 @@ const ProfileCard = ({ language }) => {
     return () => clearTimeout(timer);
   }, [displayedText, isDeleting, roleIndex, translatedRoles]);
 
-  // Hook useInView para a animação da seção
   const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -93,7 +91,6 @@ const ProfileCard = ({ language }) => {
       ref={sectionRef}
       className="flex flex-col items-center justify-center min-h-screen w-full p-4 sm:p-8 transition-all duration-300 bg-purple-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100"
     >
-      {/* Título principal */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
@@ -103,7 +100,6 @@ const ProfileCard = ({ language }) => {
         {greeting}
       </motion.h2>
 
-      {/* Subtítulo animado */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
@@ -114,7 +110,6 @@ const ProfileCard = ({ language }) => {
         <span className="text-current">|</span>
       </motion.h2>
 
-      {/* Conteúdo principal */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto gap-6 sm:gap-12">
         {/* Imagem e ícones sociais */}
         <motion.div
@@ -125,9 +120,10 @@ const ProfileCard = ({ language }) => {
         >
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 sm:-mt-16 mb-6 sm:mb-8">
             <Image
-              src={Emilly}
+              src="/images/emilly-budri.jpeg"
               alt="Emilly Budri"
-              className="w-full h-full rounded-full border-4 border-purple-600 sm:mt-2 dark:border-purple-400 shadow-xl transform hover:scale-105 transition-all duration-300"
+              fill
+              className="rounded-full border-4 border-purple-600 sm:mt-2 dark:border-purple-400 shadow-xl transform hover:scale-105 transition-all duration-300 object-cover"
             />
           </div>
           <div className="flex gap-6 lg:mb-10 justify-center items-center">
@@ -155,7 +151,6 @@ const ProfileCard = ({ language }) => {
             dangerouslySetInnerHTML={{ __html: description3 }}
           />
 
-          {/* Botão animado */}
           <motion.div
             className="flex justify-center lg:mt-6 items-center mt-6 pb-8 sm:pb-12"
             initial={{ opacity: 0, y: 20 }}

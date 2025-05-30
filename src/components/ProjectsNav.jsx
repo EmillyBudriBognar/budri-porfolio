@@ -3,11 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import LogoLight from "@/assets/img/logo/black-and-purple.svg";
-import LogoDark from "@/assets/img/logo/white-and-purple.svg";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
-import { motion, AnimatePresence } from "framer-motion";
 
 const ProjectsNav = ({ language, onLanguageChange, onBackToMain }) => {
   const [open, setOpen] = useState(false);
@@ -79,14 +76,14 @@ const ProjectsNav = ({ language, onLanguageChange, onBackToMain }) => {
         >
           <div className="flex items-center group">
             <Image 
-              src={LogoLight} 
+              src="/images/logo/black-and-purple.svg"
               alt="Logo" 
               width={32} 
               height={32} 
               className="h-8 w-auto dark:hidden group-hover:scale-110 transition-transform duration-300" 
             />
             <Image 
-              src={LogoDark} 
+              src="/images/logo/white-and-purple.svg"
               alt="Logo" 
               width={32} 
               height={32} 

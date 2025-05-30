@@ -14,31 +14,6 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Logos
-import WorkingBrainLogoDark from "@/assets/img/project-ux-research-workingbrain/logoworkingbrain-white.svg"; 
-import WorkingBrainLogoLight from "@/assets/img/project-ux-research-workingbrain/logoworkingbrain-black.svg";
-
-// Assets - Slides (PT)
-import Slide1PT from "@/assets/img/project-ux-research-workingbrain/slide1-pt.svg";
-import Slide2PT from "@/assets/img/project-ux-research-workingbrain/slide2-pt.svg";
-import Slide3PT from "@/assets/img/project-ux-research-workingbrain/slide3-pt.svg";
-import Slide4PT from "@/assets/img/project-ux-research-workingbrain/slide4-pt.svg";
-import Slide5PT from "@/assets/img/project-ux-research-workingbrain/slide5-pt.svg";
-
-// Assets - Slides (EN)
-import Slide1EN from "@/assets/img/project-ux-research-workingbrain/slide1-en.svg";
-import Slide2EN from "@/assets/img/project-ux-research-workingbrain/slide2-en.svg";
-import Slide3EN from "@/assets/img/project-ux-research-workingbrain/slide3-en.svg";
-import Slide4EN from "@/assets/img/project-ux-research-workingbrain/slide4-en.svg";
-import Slide5EN from "@/assets/img/project-ux-research-workingbrain/slide5-en.svg";
-
-// Assets - Slides (ES)
-import Slide1ES from "@/assets/img/project-ux-research-workingbrain/slide1-es.svg";
-import Slide2ES from "@/assets/img/project-ux-research-workingbrain/slide2-es.svg";
-import Slide3ES from "@/assets/img/project-ux-research-workingbrain/slide3-es.svg";
-import Slide4ES from "@/assets/img/project-ux-research-workingbrain/slide4-es.svg";
-import Slide5ES from "@/assets/img/project-ux-research-workingbrain/slide5-es.svg";
-
 const ProjectPage = ({ language = 'en' }) => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = React.useState(language);
@@ -161,81 +136,81 @@ const ProjectPage = ({ language = 'en' }) => {
   const galleryImages = {
   pt: [
     {
-      src: Slide1PT,
+      src: "/images/project-ux-research-workingbrain/slide1-pt.svg",
       alt: "Persona do aluno",
       caption: "Persona do aluno: Análise das dores e necessidades dos alunos"
     },
     {
-      src: Slide2PT,
+      src: "/images/project-ux-research-workingbrain/slide2-pt.svg",
       alt: "Persona do professor",
       caption: "Persona do professor: Perfil detalhado de professor da rede pública"
     },
     {
-      src: Slide3PT,
+      src: "/images/project-ux-research-workingbrain/slide3-pt.svg",
       alt: "Mapa da Empatia",
       caption: "Mapa da Empatia: Compreensão profunda dos desafios e sentimentos dos usuários"
     },
     {
-      src: Slide4PT,
+      src: "/images/project-ux-research-workingbrain/slide4-pt.svg",
       alt: "Mapa da Jornada do Usuário",
       caption: "Mapa da Jornada do Usuário: Etapas da experiência do aluno e do professor com oportunidades de melhoria"
     },
     {
-      src: Slide5PT,
+      src: "/images/project-ux-research-workingbrain/slide5-pt.svg",
       alt: "Insights Finais",
       caption: "Insights Finais: Principais aprendizados para guiar soluções mais eficazes"
     }
   ],
   en: [
     {
-      src: Slide1EN,
+      src: "/images/project-ux-research-workingbrain/slide1-en.svg",
       alt: "Student persona",
       caption: "Student persona: Analysis of students' pains and needs"
     },
     {
-      src: Slide2EN,
+      src: "/images/project-ux-research-workingbrain/slide2-en.svg",
       alt: "Teacher persona",
       caption: "Teacher persona: Detailed profile of a public school teacher"
     },
     {
-      src: Slide3EN,
+      src: "/images/project-ux-research-workingbrain/slide3-en.svg",
       alt: "Empathy Map",
       caption: "Empathy Map: Deep understanding of users' challenges and emotions"
     },
     {
-      src: Slide4EN,
+      src: "/images/project-ux-research-workingbrain/slide4-en.svg",
       alt: "User Journey Map",
       caption: "User Journey Map: Experience stages of students and teachers with opportunity areas"
     },
     {
-      src: Slide5EN,
+      src: "/images/project-ux-research-workingbrain/slide5-en.svg",
       alt: "Final Insights",
       caption: "Final Insights: Key takeaways to guide more effective solutions"
     }
   ],
   es: [
     {
-      src: Slide1ES,
+      src: "/images/project-ux-research-workingbrain/slide1-es.svg",
       alt: "Persona del estudiante",
       caption: "Persona del estudiante: Análisis de las dificultades y necesidades de los estudiantes"
     },
     {
-      src: Slide2ES,
+      src: "/images/project-ux-research-workingbrain/slide2-es.svg",
       alt: "Persona del profesor",
       caption: "Persona del profesor: Perfil detallado de un docente de escuela pública"
     },
     {
-      src: Slide3ES,
+      src: "/images/project-ux-research-workingbrain/slide3-es.svg",
       alt: "Mapa de Empatía",
       caption: "Mapa de Empatía: Comprensión profunda de los desafíos y emociones de los usuarios"
     },
     {
-      src: Slide4ES,
+      src: "/images/project-ux-research-workingbrain/slide4-es.svg",
       alt: "Mapa de la Jornada del Usuario",
       caption: "Mapa de la Jornada del Usuario: Etapas de la experiencia de estudiantes y profesores con áreas de oportunidad"
     },
     {
-      src: Slide5ES,
+      src: "/images/project-ux-research-workingbrain/slide5-es.svg",
       alt: "Insights Finales",
       caption: "Insights Finales: Aprendizajes clave para guiar soluciones más efectivas"
     }
@@ -258,8 +233,8 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={WorkingBrainLogoLight}
-            darkImage={WorkingBrainLogoDark}
+            image="/images/project-ux-research-workingbrain/logoworkingbrain-black.svg"
+            darkImage="/images/project-ux-research-workingbrain/logoworkingbrain-white.svg"
             imagePosition="center"
             language={currentLanguage}
           />

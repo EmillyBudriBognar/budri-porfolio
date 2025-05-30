@@ -2,8 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { SocialIcons } from "./SocialIcons";
-import LogoBlack from "@/assets/img/logo/all-black.svg";
-import LogoWhite from "@/assets/img/logo/all-white.svg";
 import Image from "next/image";
 
 const Footer = ({ language = "pt" }) => {
@@ -100,17 +98,21 @@ const Footer = ({ language = "pt" }) => {
   // Componente para exibir a logo (alterna entre logo clara e escura)
   const LogoComponent = () => (
     <div className="flex items-center justify-center">
-      <Image
-        src={LogoWhite}
-        alt="Budri Logo"
-        className="w-40 h-auto hidden dark:block"
-      />
-      <Image
-        src={LogoBlack} 
-        alt="Budri Logo"
-        className="w-40 h-auto block dark:hidden"
-      />
-    </div>
+    <Image
+      src="/images/logo/all-white.svg"
+      alt="Budri Logo"
+      width={160} 
+      height={40} 
+      className="hidden dark:block h-auto"
+    />
+    <Image
+      src="/images/logo/all-black.svg"
+      alt="Budri Logo"
+      width={160}
+      height={40}
+      className="block dark:hidden h-auto"
+    />
+  </div>
   );
 
   // Hook useInView para detectar quando a seção está visível

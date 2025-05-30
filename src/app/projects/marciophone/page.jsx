@@ -14,29 +14,6 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Logos
-import MarcioPhoneLogoDark from "@/assets/img/project-marciophone/logoworkingbrain-white.svg"; 
-import MarcioPhoneLogoLight from "@/assets/img/project-marciophone/logoworkingbrain-black.svg";
-
-// Assets - Before/After
-import Antes from "@/assets/img/project-marciophone/antes.svg";
-import Depois from "@/assets/img/project-marciophone/depois.svg";
-
-// Assets - Slides (PT)
-import Slide1PT from "@/assets/img/project-marciophone/slide1-pt.svg";
-import Slide2PT from "@/assets/img/project-marciophone/slide2-pt.svg";
-import Slide3PT from "@/assets/img/project-marciophone/slide3-pt.svg";
-
-// Assets - Slides (EN)
-import Slide1EN from "@/assets/img/project-marciophone/slide1-en.svg";
-import Slide2EN from "@/assets/img/project-marciophone/slide2-en.svg";
-import Slide3EN from "@/assets/img/project-marciophone/slide3-en.svg";
-
-// Assets - Slides (ES)
-import Slide1ES from "@/assets/img/project-marciophone/slide1-es.svg";
-import Slide2ES from "@/assets/img/project-marciophone/slide2-es.svg";
-import Slide3ES from "@/assets/img/project-marciophone/slide3-es.svg";
-
 const ProjectPage = ({ language = 'en' }) => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = React.useState(language);
@@ -152,19 +129,19 @@ const ProjectPage = ({ language = 'en' }) => {
 
   const galleryImages = {
     pt: [
-      { src: Slide1PT, alt: "Tela de cadastro de cliente", caption: "Formulário digital para cadastro de clientes" },
-      { src: Slide2PT, alt: "Tela de histórico de serviços", caption: "Registro completo de serviços realizados" },
-      { src: Slide3PT, alt: "Tela de acompanhamento", caption: "Status atual dos aparelhos em reparo" }
+      { src: "/images/project-marciophone/slide1-pt.svg", alt: "Tela de cadastro de cliente", caption: "Formulário digital para cadastro de clientes" },
+      { src: "/images/project-marciophone/slide2-pt.svg", alt: "Tela de histórico de serviços", caption: "Registro completo de serviços realizados" },
+      { src: "/images/project-marciophone/slide3-pt.svg", alt: "Tela de acompanhamento", caption: "Status atual dos aparelhos em reparo" }
     ],
     en: [
-      { src: Slide1EN, alt: "Customer registration screen", caption: "Digital form for customer registration" },
-      { src: Slide2EN, alt: "Service history screen", caption: "Complete record of services performed" },
-      { src: Slide3EN, alt: "Tracking screen", caption: "Current status of devices under repair" }
+      { src: "/images/project-marciophone/slide1-en.svg", alt: "Customer registration screen", caption: "Digital form for customer registration" },
+      { src: "/images/project-marciophone/slide2-en.svg", alt: "Service history screen", caption: "Complete record of services performed" },
+      { src: "/images/project-marciophone/slide3-en.svg", alt: "Tracking screen", caption: "Current status of devices under repair" }
     ],
     es: [
-      { src: Slide1ES, alt: "Pantalla de registro de clientes", caption: "Formulario digital para registro de clientes" },
-      { src: Slide2ES, alt: "Pantalla de historial de servicios", caption: "Registro completo de servicios realizados" },
-      { src: Slide3ES, alt: "Pantalla de seguimiento", caption: "Estado actual de dispositivos en reparación" }
+      { src: "/images/project-marciophone/slide1-es.svg", alt: "Pantalla de registro de clientes", caption: "Formulario digital para registro de clientes" },
+      { src: "/images/project-marciophone/slide2-es.svg", alt: "Pantalla de historial de servicios", caption: "Registro completo de servicios realizados" },
+      { src: "/images/project-marciophone/slide3-es.svg", alt: "Pantalla de seguimiento", caption: "Estado actual de dispositivos en reparación" }
     ]
   };
 
@@ -183,8 +160,8 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={MarcioPhoneLogoLight}
-            darkImage={MarcioPhoneLogoDark}
+            image="/images/project-marciophone/logoworkingbrain-white.svg"
+            darkImage="/images/project-marciophone/logoworkingbrain-white.svg"
             imagePosition="bottom"
             language={currentLanguage}
           />
@@ -211,8 +188,8 @@ const ProjectPage = ({ language = 'en' }) => {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: Antes,
-              after: Depois,
+              before: "/images/project-marciophone/antes.svg",
+              after: "/images/project-marciophone/depois.svg",
               beforeAlt: "Sistema antigo com fichas de papel",
               afterAlt: "Novo sistema digital"
             }}

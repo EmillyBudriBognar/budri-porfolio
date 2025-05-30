@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import LogoLight from "@/assets/img/logo/black-and-purple.svg";
-import LogoDark from "@/assets/img/logo/white-and-purple.svg";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
 import { motion, AnimatePresence } from "framer-motion";
@@ -134,14 +132,12 @@ const Nav = ({ language, onLanguageChange }) => {
         }`}
       >
         <div className="relative flex items-center justify-between py-4 md:px-10 px-7 bg-purple-50 dark:bg-gray-900 text-gray-800 dark:text-white">
-          {/* Conteúdo do nav... (mantenha todo o conteúdo existente) */}
           <div
             onClick={() => scrollToSection("hero-section")}
             className="flex items-center cursor-pointer flex-shrink-0"
-            style={{ fontFamily: "Jost, sans-serif" }}
           >
-            <Image src={LogoLight} alt="Budri Logo" width={40} height={40} className="h-10 w-auto dark:hidden" />
-            <Image src={LogoDark} alt="Budri Logo" width={40} height={40} className="h-10 w-auto hidden dark:block" />
+            <Image src="/images/logo/black-and-purple.svg" alt="Budri Logo" width={40} height={40} className="h-10 w-auto dark:hidden" />
+            <Image src="/images/logo/white-and-purple.svg" alt="Budri Logo" width={40} height={40} className="h-10 w-auto hidden dark:block" />
             <span className="font-bold text-2xl ml-3 min-w-max">Budri</span>
           </div>
 

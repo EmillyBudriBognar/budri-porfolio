@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useState, useEffect } from "react";
-import LogoBlack from "@/assets/img/logo/black-and-purple.svg";
-import LogoWhite from "@/assets/img/logo/white-and-purple.svg";
 import Image from "next/image";
 import Services from "@/components/Services";
 
@@ -75,14 +73,14 @@ const ServicesSection = ({ language }) => {
         >
           <div className="flex justify-center items-center">
             <Image
-              src={LogoBlack}
+              src="/images/logo/black-and-purple.svg"
               alt="Logo Budri"
               width={40}
               height={40}
               className="w-40 dark:hidden"
             />
             <Image
-              src={LogoWhite}
+              src="/images/logo/white-and-purple.svg"
               alt="Logo Budri"
               width={40}
               height={40}

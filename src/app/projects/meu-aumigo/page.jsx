@@ -14,28 +14,6 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Capa
-import Capa from "@/assets/img/project-meuaumigo/capa.svg";
-
-// Assets - Before/After
-import Antes from "@/assets/img/project-meuaumigo/antes.svg";
-import Depois from "@/assets/img/project-meuaumigo/depois.svg";
-
-// Assets - Slides (PT)
-import Slide1PT from "@/assets/img/project-meuaumigo/slide1-pt.svg";
-import Slide2PT from "@/assets/img/project-meuaumigo/slide2-pt.svg";
-import Slide3PT from "@/assets/img/project-meuaumigo/slide3-pt.svg";
-
-// Assets - Slides (EN)
-import Slide1EN from "@/assets/img/project-meuaumigo/slide1-en.svg";
-import Slide2EN from "@/assets/img/project-meuaumigo/slide2-en.svg";
-import Slide3EN from "@/assets/img/project-meuaumigo/slide3-en.svg";
-
-// Assets - Slides (ES)
-import Slide1ES from "@/assets/img/project-meuaumigo/slide1-es.svg";
-import Slide2ES from "@/assets/img/project-meuaumigo/slide2-es.svg";
-import Slide3ES from "@/assets/img/project-meuaumigo/slide3-es.svg";
-
 const ProjectPage = ({ language = 'pt' }) => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = React.useState(language);
@@ -185,51 +163,51 @@ const ProjectPage = ({ language = 'pt' }) => {
 const galleryImages = {
   pt: [
     {
-      src: Slide1PT,
+      src: "/images/project-meuaumigo/slide1-pt.svg",
       alt: "Estrutura do cabeçalho do e-mail promocional",
       caption: "Parte 1: Cabeçalho com logo, título e destaque visual da campanha"
     },
     {
-      src: Slide2PT,
+      src: "/images/project-meuaumigo/slide2-pt.svg",
       alt: "Seção intermediária com produtos em destaque",
       caption: "Parte 2: Grid de produtos com preços e descrições"
     },
     {
-      src: Slide3PT,
+      src: "/images/project-meuaumigo/slide3-pt.svg",
       alt: "Rodapé com links e informações adicionais",
       caption: "Parte 3: Rodapé com botão CTA, redes sociais e dados institucionais"
     }
   ],
   en: [
     {
-      src: Slide1EN,
+      src: "/images/project-meuaumigo/slide1-en.svg",
       alt: "Promotional email header layout structure",
       caption: "Part 1: Header with logo, title, and campaign highlight"
     },
     {
-      src: Slide2EN,
+      src: "/images/project-meuaumigo/slide2-en.svg",
       alt: "Middle section with featured products",
       caption: "Part 2: Product grid with prices, and descriptions"
     },
     {
-      src: Slide3EN,
+      src: "/images/project-meuaumigo/slide3-en.svg",
       alt: "Footer section with links and extra information",
       caption: "Part 3: Footer with CTA button, social links, and company details"
     }
   ],
   es: [
     {
-      src: Slide1ES,
+      src: "/images/project-meuaumigo/slide1-es.svg",
       alt: "Estructura del encabezado del correo promocional",
       caption: "Parte 1: Encabezado con logotipo, título y destaque visual"
     },
     {
-      src: Slide2ES,
+      src: "/images/project-meuaumigo/slide2-es.svg",
       alt: "Sección intermedia con productos destacados",
       caption: "Parte 2: Cuadrícula de productos con precios y descripciones"
     },
     {
-      src: Slide3ES,
+      src: "/images/project-meuaumigo/slide3-es.svg",
       alt: "Pie de página con enlaces e información adicional",
       caption: "Parte 3: Pie con botón CTA, redes sociales y datos de la empresa"
     }
@@ -252,8 +230,8 @@ const galleryImages = {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={Capa}
-            darkImage={Capa}
+            image="/images/project-meuaumigo/capa.svg"
+            darkImage="/images/project-meuaumigo/capa.svg"
             imagePosition="bottom"
             language={currentLanguage}
           />
@@ -280,8 +258,8 @@ const galleryImages = {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: Antes,
-              after: Depois,
+              before: "/images/project-meuaumigo/antes.svg",
+              after: "/images/project-meuaumigo/depois.svg",
               beforeAlt: "Initial HTML email layout",
               afterAlt: "Final version with design refinements and responsive adjustments"
             }}

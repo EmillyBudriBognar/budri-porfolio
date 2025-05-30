@@ -14,28 +14,6 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Cover
-import Capa from "@/assets/img/project-workingbrain/brian.svg"; 
-
-// Assets - Before/After
-import Antes from "@/assets/img/project-workingbrain/antes.svg";
-import Depois from "@/assets/img/project-workingbrain/depois.svg";
-
-// Assets - Slides (PT)
-import Slide1PT from "@/assets/img/project-workingbrain/slide1-pt.svg";
-import Slide2PT from "@/assets/img/project-workingbrain/slide2-pt.svg";
-import Slide3PT from "@/assets/img/project-workingbrain/slide3-pt.svg";
-
-// Assets - Slides (EN)
-import Slide1EN from "@/assets/img/project-workingbrain/slide1-en.svg";
-import Slide2EN from "@/assets/img/project-workingbrain/slide2-en.svg";
-import Slide3EN from "@/assets/img/project-workingbrain/slide3-en.svg";
-
-// Assets - Slides (ES)
-import Slide1ES from "@/assets/img/project-workingbrain/slide1-es.svg";
-import Slide2ES from "@/assets/img/project-workingbrain/slide2-es.svg";
-import Slide3ES from "@/assets/img/project-workingbrain/slide3-es.svg";
-
 const ProjectPage = ({ language = 'en' }) => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = React.useState(language);
@@ -148,20 +126,20 @@ const ProjectPage = ({ language = 'en' }) => {
 
   const galleryImages = {
     pt: [
-      { src: Slide1PT, alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
-      { src: Slide2PT, alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
-      { src: Slide3PT, alt: "Paleta de cores e Tipografia", caption: "Sistema de cores e de Tipografia da marca" }
+      { src: "/images/project-workingbrain/slide1-pt.svg", alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
+      { src: "/images/project-workingbrain/slide2-pt.svg", alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
+      { src: "/images/project-workingbrain/slide3-pt.svg", alt: "Paleta de cores e Tipografia", caption: "Sistema de cores e de Tipografia da marca" }
     ],
     en: [
-      { src: Slide1EN, alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
-      { src: Slide2EN, alt: "Brian mascot", caption: "Brian, the brain mascot" },
-      { src: Slide3EN, alt: "Color palette and Typography", caption: "Brand color and typography system" }
+      { src: "/images/project-workingbrain/slide1-en.svg", alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
+      { src: "/images/project-workingbrain/slide2-en.svg", alt: "Brian mascot", caption: "Brian, the brain mascot" },
+      { src: "/images/project-workingbrain/slide3-en.svg", alt: "Color palette and Typography", caption: "Brand color and typography system" }
 
     ],
     es: [
-      { src: Slide1ES, alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
-      { src: Slide2ES, alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
-      { src: Slide3ES, alt: "Paleta de colores y Tipografía", caption: "Sistema de colores y tipografía de la marca" }
+      { src: "/images/project-workingbrain/slide1-es.svg", alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
+      { src: "/images/project-workingbrain/slide2-es.svg", alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
+      { src: "/images/project-workingbrain/slide3-es.svg", alt: "Paleta de colores y Tipografía", caption: "Sistema de colores y tipografía de la marca" }
     ]
   };
 
@@ -180,8 +158,8 @@ const ProjectPage = ({ language = 'en' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={Capa}
-            darkImage={Capa}
+            image="/images/project-workingbrain/brian.svg"
+            darkImage="/images/project-workingbrain/brian.svg"
             imagePosition="center"
             language={currentLanguage}
           />
@@ -208,8 +186,8 @@ const ProjectPage = ({ language = 'en' }) => {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: Antes,
-              after: Depois,
+              before: "/images/project-workingbrain/antes.svg",
+              after: "/images/project-workingbrain/depois.svg",
               beforeAlt: "Logo design",
               afterAlt: "Final mascot"
             }}

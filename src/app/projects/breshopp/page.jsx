@@ -14,29 +14,6 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-// Assets - Logos
-import BreShoppLogoDark from "@/assets/img/project-breshopp/logoworkingbrain-white.svg"; 
-import BreShoppLogoLight from "@/assets/img/project-breshopp/logoworkingbrain-black.svg";
-
-// Assets - Before/After
-import Antes from "@/assets/img/project-breshopp/antes.svg";
-import Depois from "@/assets/img/project-breshopp/depois.svg";
-
-// Assets - Slides (PT)
-import Slide1PT from "@/assets/img/project-breshopp/slide1-pt.svg";
-import Slide2PT from "@/assets/img/project-breshopp/slide2-pt.svg";
-import Slide3PT from "@/assets/img/project-breshopp/slide3-pt.svg";
-
-// Assets - Slides (EN)
-import Slide1EN from "@/assets/img/project-breshopp/slide1-en.svg";
-import Slide2EN from "@/assets/img/project-breshopp/slide2-en.svg";
-import Slide3EN from "@/assets/img/project-breshopp/slide3-en.svg";
-
-// Assets - Slides (ES)
-import Slide1ES from "@/assets/img/project-breshopp/slide1-es.svg";
-import Slide2ES from "@/assets/img/project-breshopp/slide2-es.svg";
-import Slide3ES from "@/assets/img/project-breshopp/slide3-es.svg";
-
 const ProjectPage = ({ language = 'pt' }) => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = React.useState(language);
@@ -212,19 +189,19 @@ const ProjectPage = ({ language = 'pt' }) => {
 
   const galleryImages = {
     pt: [
-      { src: Slide1PT, alt: "Interface do marketplace", caption: "Tela principal com navegação intuitiva" },
-      { src: Slide2PT, alt: "Painel de impacto", caption: "Painel de impacto" },
-      { src: Slide3PT, alt: "Perfil do vendedor", caption: "Perfil do vendedor" }
+      { src: "/images/project-breshopp/slide1-pt.svg", alt: "Interface do marketplace", caption: "Tela principal com navegação intuitiva" },
+      { src: "/images/project-breshopp/slide2-pt.svg", alt: "Painel de impacto", caption: "Painel de impacto" },
+      { src: "/images/project-breshopp/slide3-pt.svg", alt: "Perfil do vendedor", caption: "Perfil do vendedor" }
     ],
     en: [
-      { src: Slide1EN, alt: "Main screen of the landing page", caption: "Main screen with intuitive navigation" },
-      { src: Slide2EN, alt: "Highlight of social/environmental benefits", caption: "Highlight of social/environmental benefits" },
-      { src: Slide3EN, alt: "Humanized and inclusive brand presentation", caption: "Humanized and inclusive brand presentation" }
+      { src: "/images/project-breshopp/slide1-en.svg", alt: "Main screen of the landing page", caption: "Main screen with intuitive navigation" },
+      { src: "/images/project-breshopp/slide2-en.svg", alt: "Highlight of social/environmental benefits", caption: "Highlight of social/environmental benefits" },
+      { src: "/images/project-breshopp/slide3-en.svg", alt: "Humanized and inclusive brand presentation", caption: "Humanized and inclusive brand presentation" }
     ],
     es: [
-      { src: Slide1ES, alt: "Pantalla principal de la página de destino", caption: "Pantalla principal con navegación intuitiva" },
-      { src: Slide2ES, alt: "Destacado de beneficios sociales/ambientales", caption: "Destacado de beneficios sociales/ambientales" },
-      { src: Slide3ES, alt: "Presentación humanizada e inclusiva de la marca", caption: "Presentación humanizada e inclusiva de la marca" }
+      { src: "/images/project-breshopp/slide1-es.svg", alt: "Pantalla principal de la página de destino", caption: "Pantalla principal con navegación intuitiva" },
+      { src: "/images/project-breshopp/slide2-es.svg", alt: "Destacado de beneficios sociales/ambientales", caption: "Destacado de beneficios sociales/ambientales" },
+      { src: "/images/project-breshopp/slide3-es.svg", alt: "Presentación humanizada e inclusiva", caption: "Presentación humanizada e inclusiva" }
     ]
   };
 
@@ -243,8 +220,8 @@ const ProjectPage = ({ language = 'pt' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image={BreShoppLogoLight}
-            darkImage={BreShoppLogoDark}
+            image="/images/project-breshopp/logoworkingbrain-white.svg"
+            darkImage="/images/project-breshopp/logoworkingbrain-white.svg"
             imagePosition="bottom"
             language={currentLanguage}
           />
@@ -271,8 +248,8 @@ const ProjectPage = ({ language = 'pt' }) => {
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
-              before: Antes,
-              after: Depois,
+              before: "/images/project-breshopp/antes.svg",
+              after: "/images/project-breshopp/depois.svg",
               beforeAlt: currentLanguage === 'en' ? "Generic presentation" : 
                         currentLanguage === 'es' ? "Presentación genérica" : "Apresentação genérica",
               afterAlt: currentLanguage === 'en' ? "Emotional and purposeful design" : 
