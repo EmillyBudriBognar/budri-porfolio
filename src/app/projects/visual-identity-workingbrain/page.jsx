@@ -124,22 +124,33 @@ const ProjectPage = ({ language = 'en' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-  const galleryImages = {
+  const mediaItems = {
     pt: [
-      { src: "/images/project-workingbrain/slide1-pt.svg", alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
-      { src: "/images/project-workingbrain/slide2-pt.svg", alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
-      { src: "/images/project-workingbrain/slide3-pt.svg", alt: "Paleta de cores e Tipografia", caption: "Sistema de cores e de Tipografia da marca" }
+      { type: 'image', src: "/images/project-workingbrain/slide1-pt.png", alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
+      { type: 'image', src: "/images/project-workingbrain/slide2.svg", alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
+      { type: 'image', src: "/images/project-workingbrain/slide3-pt.svg", alt: "Paleta de cores e Tipografia", caption: "Sistema de cores e de Tipografia da marca" },
+      { type: 'image', src: "/images/project-workingbrain/slide4-pt.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide5-pt.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide6-pt.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide7-pt.svg", alt: "", caption: "" }
     ],
     en: [
-      { src: "/images/project-workingbrain/slide1-en.svg", alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
-      { src: "/images/project-workingbrain/slide2-en.svg", alt: "Brian mascot", caption: "Brian, the brain mascot" },
-      { src: "/images/project-workingbrain/slide3-en.svg", alt: "Color palette and Typography", caption: "Brand color and typography system" }
-
+      { type: 'image', src: "/images/project-workingbrain/slide1-en.png", alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
+      { type: 'image', src: "/images/project-workingbrain/slide2.svg", alt: "Brian mascot", caption: "Brian, the brain mascot" },
+      { type: 'image', src: "/images/project-workingbrain/slide3-en.svg", alt: "Color palette and Typography", caption: "Brand color and typography system" },
+      { type: 'image', src: "/images/project-workingbrain/slide4-en.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide5-en.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide6-en.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide7-en.svg", alt: "", caption: "" }
     ],
     es: [
-      { src: "/images/project-workingbrain/slide1-es.svg", alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
-      { src: "/images/project-workingbrain/slide2-es.svg", alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
-      { src: "/images/project-workingbrain/slide3-es.svg", alt: "Paleta de colores y Tipografía", caption: "Sistema de colores y tipografía de la marca" }
+      { type: 'image', src: "/images/project-workingbrain/slide1-es.png", alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
+      { type: 'image', src: "/images/project-workingbrain/slide2.svg", alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
+      { type: 'image', src: "/images/project-workingbrain/slide3-es.svg", alt: "Paleta de colores y Tipografía", caption: "Sistema de colores y tipografía de la marca" },
+      { type: 'image', src: "/images/project-workingbrain/slide4-es.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide5-es.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide6-es.svg", alt: "", caption: "" },
+      { type: 'image', src: "/images/project-workingbrain/slide7-es.svg", alt: "", caption: "" }
     ]
   };
 
@@ -198,7 +209,7 @@ const ProjectPage = ({ language = 'en' }) => {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            images={galleryImages}
+            mediaItems={mediaItems}
           />
         </section>
         

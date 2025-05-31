@@ -160,60 +160,141 @@ const ProjectPage = ({ language = 'pt' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-const galleryImages = {
-  pt: [
-    {
-      src: "/images/project-meuaumigo/slide1-pt.svg",
-      alt: "Estrutura do cabeçalho do e-mail promocional",
-      caption: "Parte 1: Cabeçalho com logo, título e destaque visual da campanha"
-    },
-    {
-      src: "/images/project-meuaumigo/slide2-pt.svg",
-      alt: "Seção intermediária com produtos em destaque",
-      caption: "Parte 2: Grid de produtos com preços e descrições"
-    },
-    {
-      src: "/images/project-meuaumigo/slide3-pt.svg",
-      alt: "Rodapé com links e informações adicionais",
-      caption: "Parte 3: Rodapé com botão CTA, redes sociais e dados institucionais"
-    }
-  ],
-  en: [
-    {
-      src: "/images/project-meuaumigo/slide1-en.svg",
-      alt: "Promotional email header layout structure",
-      caption: "Part 1: Header with logo, title, and campaign highlight"
-    },
-    {
-      src: "/images/project-meuaumigo/slide2-en.svg",
-      alt: "Middle section with featured products",
-      caption: "Part 2: Product grid with prices, and descriptions"
-    },
-    {
-      src: "/images/project-meuaumigo/slide3-en.svg",
-      alt: "Footer section with links and extra information",
-      caption: "Part 3: Footer with CTA button, social links, and company details"
-    }
-  ],
-  es: [
-    {
-      src: "/images/project-meuaumigo/slide1-es.svg",
-      alt: "Estructura del encabezado del correo promocional",
-      caption: "Parte 1: Encabezado con logotipo, título y destaque visual"
-    },
-    {
-      src: "/images/project-meuaumigo/slide2-es.svg",
-      alt: "Sección intermedia con productos destacados",
-      caption: "Parte 2: Cuadrícula de productos con precios y descripciones"
-    },
-    {
-      src: "/images/project-meuaumigo/slide3-es.svg",
-      alt: "Pie de página con enlaces e información adicional",
-      caption: "Parte 3: Pie con botón CTA, redes sociales y datos de la empresa"
-    }
-  ]
-};
-
+  // Combined media array with video as first element for each language
+  const mediaItems = {
+    pt: [
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide1-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide2-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide3-pt.svg",
+        alt: "Estrutura do cabeçalho do e-mail promocional",
+        caption: "Parte 1: Cabeçalho com logo, título e destaque visual da campanha"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide4-pt.svg",
+        alt: "Seção intermediária com produtos em destaque",
+        caption: "Parte 2: Grid de produtos com preços e descrições"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide5-pt.svg",
+        alt: "Rodapé com links e informações adicionais",
+        caption: "Parte 3: Rodapé com botão CTA, redes sociais e dados institucionais"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide6-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'video',
+        url: "/videos/video-aumigo.mp4",
+        alt: "Demonstração do e-mail Meu Aumigo em ação",
+        caption: "Demonstração interativa do e-mail"
+      }
+    ],
+    en: [
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide1-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide2-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide3-en.svg",
+        alt: "Promotional email header layout structure",
+        caption: "Part 1: Header with logo, title, and campaign highlight"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide4-en.svg",
+        alt: "Middle section with featured products",
+        caption: "Part 2: Product grid with prices, and descriptions"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide5-en.svg",
+        alt: "Footer section with links and extra information",
+        caption: "Part 3: Footer with CTA button, social links, and company details"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide6-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'video',
+        url: "/videos/video-aumigo.mp4",
+        alt: "Meu Aumigo email demonstration in action",
+        caption: "Interactive email demonstration"
+      }
+    ],
+    es: [
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide1-es.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide2-es.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide3-es.svg",
+        alt: "Estructura del encabezado del correo promocional",
+        caption: "Parte 1: Encabezado con logotipo, título y destaque visual"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide4-es.svg",
+        alt: "Sección intermedia con productos destacados",
+        caption: "Parte 2: Cuadrícula de productos con precios y descripciones"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide5-es.svg",
+        alt: "Pie de página con enlaces e información adicional",
+        caption: "Parte 3: Pie con botón CTA, redes sociales y datos de la empresa"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide6-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'video',
+        url: "/videos/video-aumigo.mp4",
+        alt: "Demostración del correo Meu Aumigo en acción",
+        caption: "Demostración interactiva del correo"
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -270,7 +351,9 @@ const galleryImages = {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            images={galleryImages}
+            mediaItems={mediaItems}
+            autoPlayVideos={true}
+            videoMuted={true}
           />
         </section>
 

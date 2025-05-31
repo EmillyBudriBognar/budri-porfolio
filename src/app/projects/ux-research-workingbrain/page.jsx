@@ -99,7 +99,7 @@ const ProjectPage = ({ language = 'en' }) => {
         { emoji: "🔍", title: "Definición del Problema", description: "Análisis de los cambios en el Nuevo Sistema de Secundaria y sus impactos" },
         { emoji: "👥", title: "Entrevistas", description: "Conversaciones con estudiantes y profesores de escuelas públicas y privadas" },
         { emoji: "📊", title: "Análisis de Datos", description: "Identificación de patrones y puntos críticos comunes" },
-        { emoji: "👤", title: "Creación de Personas", description: "Desarrollo de perfiles representativos de estudiantes y profesores" },
+        { emoji: "👤", title: "Creación de Personas", description: "Desarrollo de perfis representativos de estudiantes y profesores" },
         { emoji: "💡", title: "Conclusiones", description: "Extraer conclusiones valiosas para orientar soluciones tecnológicas" }
       ],
       results: {
@@ -133,90 +133,193 @@ const ProjectPage = ({ language = 'en' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-  const galleryImages = {
-  pt: [
-    {
-      src: "/images/project-ux-research-workingbrain/slide1-pt.svg",
-      alt: "Persona do aluno",
-      caption: "Persona do aluno: Análise das dores e necessidades dos alunos"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide2-pt.svg",
-      alt: "Persona do professor",
-      caption: "Persona do professor: Perfil detalhado de professor da rede pública"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide3-pt.svg",
-      alt: "Mapa da Empatia",
-      caption: "Mapa da Empatia: Compreensão profunda dos desafios e sentimentos dos usuários"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide4-pt.svg",
-      alt: "Mapa da Jornada do Usuário",
-      caption: "Mapa da Jornada do Usuário: Etapas da experiência do aluno e do professor com oportunidades de melhoria"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide5-pt.svg",
-      alt: "Insights Finais",
-      caption: "Insights Finais: Principais aprendizados para guiar soluções mais eficazes"
-    }
-  ],
-  en: [
-    {
-      src: "/images/project-ux-research-workingbrain/slide1-en.svg",
-      alt: "Student persona",
-      caption: "Student persona: Analysis of students' pains and needs"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide2-en.svg",
-      alt: "Teacher persona",
-      caption: "Teacher persona: Detailed profile of a public school teacher"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide3-en.svg",
-      alt: "Empathy Map",
-      caption: "Empathy Map: Deep understanding of users' challenges and emotions"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide4-en.svg",
-      alt: "User Journey Map",
-      caption: "User Journey Map: Experience stages of students and teachers with opportunity areas"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide5-en.svg",
-      alt: "Final Insights",
-      caption: "Final Insights: Key takeaways to guide more effective solutions"
-    }
-  ],
-  es: [
-    {
-      src: "/images/project-ux-research-workingbrain/slide1-es.svg",
-      alt: "Persona del estudiante",
-      caption: "Persona del estudiante: Análisis de las dificultades y necesidades de los estudiantes"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide2-es.svg",
-      alt: "Persona del profesor",
-      caption: "Persona del profesor: Perfil detallado de un docente de escuela pública"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide3-es.svg",
-      alt: "Mapa de Empatía",
-      caption: "Mapa de Empatía: Comprensión profunda de los desafíos y emociones de los usuarios"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide4-es.svg",
-      alt: "Mapa de la Jornada del Usuario",
-      caption: "Mapa de la Jornada del Usuario: Etapas de la experiencia de estudiantes y profesores con áreas de oportunidad"
-    },
-    {
-      src: "/images/project-ux-research-workingbrain/slide5-es.svg",
-      alt: "Insights Finales",
-      caption: "Insights Finales: Aprendizajes clave para guiar soluciones más efectivas"
-    }
-  ]
-};
-
+  const mediaItems = {
+    pt: [
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide1.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide2.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide3-pt.svg",
+        alt: "Persona do aluno",
+        caption: "Persona do aluno: Análise das dores e necessidades dos alunos"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide4-pt.svg",
+        alt: "Persona do professor",
+        caption: "Persona do professor: Perfil detalhado de professor da rede pública"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide5-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide6-pt.svg",
+        alt: "Mapa da Jornada do Usuário",
+        caption: "Mapa da Jornada do Usuário: Etapas da experiência do aluno e do professor com oportunidades de melhoria"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide7-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide8-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide9.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide10-pt.svg",
+        alt: "Insights Finais",
+        caption: "Insights Finais: Principais aprendizados para guiar soluções mais eficazes"
+      }
+    ],
+    en: [
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide1.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide2.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide3-en.svg",
+        alt: "Student persona",
+        caption: "Student persona: Analysis of students' pains and needs"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide4-en.svg",
+        alt: "Teacher persona",
+        caption: "Teacher persona: Detailed profile of a public school teacher"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide5-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide6-en.svg",
+        alt: "Empathy Map",
+        caption: "Empathy Map: Deep understanding of users' challenges and emotions"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide7-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide8-en.svg",
+        alt: "User Journey Map",
+        caption: "User Journey Map: Experience stages of students and teachers with opportunity areas"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide9.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide10-en.svg",
+        alt: "Final Insights",
+        caption: "Final Insights: Key takeaways to guide more effective solutions"
+      }
+    ],
+    es: [
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide1.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide2.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide3-es.svg",
+        alt: "Persona del estudiante",
+        caption: "Persona del estudiante: Análisis de las dificultades y necesidades de los estudiantes"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide4-es.svg",
+        alt: "Persona del profesor",
+        caption: "Persona del profesor: Perfil detallado de un docente de escuela pública"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide5-es.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide6-es.svg",
+        alt: "Mapa de Empatía",
+        caption: "Mapa de Empatía: Comprensión profunda de los desafíos y emociones de los usuarios"
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide7-es.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide8-es.svg",
+        alt: "Mapa de la Jornada del Usuario",
+        caption: "Mapa de la Jornada del Usuario: Etapas de la experiencia de estudiantes y profesores con áreas de oportunidad"
+      },{
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide9.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-ux-research-workingbrain/slide10-es.svg",
+        alt: "Insights Finales",
+        caption: "Insights Finales: Aprendizajes clave para guiar soluciones más efectivas"
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -267,7 +370,7 @@ const ProjectPage = ({ language = 'en' }) => {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            images={galleryImages}
+            mediaItems={mediaItems}
           />
         </section>
         

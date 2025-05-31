@@ -48,7 +48,7 @@ const Portfolio = ({ language }) => {
             "Pesquisa e testes de usabilidade para otimização da experiência do usuário no aplicativo educacional WorkingBrain (TCC – Técnico em Informática para Internet).",
           category: "Pesquisas de Usabilidade",
           image: "/images/teste.jpg",
-          link: "/projects/usability-research-workingbrain",
+          link: "/projects/ux-research-workingbrain",
         },
         {
           title: "Meu Aumigo – Campanha de E-mail Marketing",
@@ -109,7 +109,7 @@ const Portfolio = ({ language }) => {
             "Investigación y pruebas de usabilidad para optimizar la experiencia del usuario en la aplicación educativa WorkingBrain (TCC – Técnico en Informática para Internet).",
           category: "Investigación de Usabilidad",
           image: "/images/teste.jpg",
-          link: "/projects/usability-research-workingbrain",
+          link: "/projects/ux-research-workingbrain",
         },
         {
           title: "Meu Aumigo – Campaña de Email Marketing",
@@ -170,7 +170,7 @@ const Portfolio = ({ language }) => {
             "Research and usability testing to optimize user experience in the WorkingBrain educational app (Final Project – Technician in Internet Informatics).",
           category: "Usability Research",
           image: "/images/teste.jpg",
-          link: "/projects/usability-research-workingbrain",
+          link: "/projects/ux-research-workingbrain",
         },
         {
           title: "Meu Aumigo – Email Marketing Campaign",
