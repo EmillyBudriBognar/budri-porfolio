@@ -125,34 +125,139 @@ const ProjectPage = ({ language = 'en' }) => {
   };
 
   const mediaItems = {
-    pt: [
-      { type: 'image', src: "/images/project-workingbrain/slide1-pt.png", alt: "Logo do WorkingBrain", caption: "Logo com cérebro saindo da caixa" },
-      { type: 'image', src: "/images/project-workingbrain/slide2.svg", alt: "Mascote Brian", caption: "Brian, o mascote cerebral" },
-      { type: 'image', src: "/images/project-workingbrain/slide3-pt.svg", alt: "Paleta de cores e Tipografia", caption: "Sistema de cores e de Tipografia da marca" },
-      { type: 'image', src: "/images/project-workingbrain/slide4-pt.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide5-pt.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide6-pt.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide7-pt.svg", alt: "", caption: "" }
-    ],
-    en: [
-      { type: 'image', src: "/images/project-workingbrain/slide1-en.png", alt: "WorkingBrain logo", caption: "Brain-out-of-box logo" },
-      { type: 'image', src: "/images/project-workingbrain/slide2.svg", alt: "Brian mascot", caption: "Brian, the brain mascot" },
-      { type: 'image', src: "/images/project-workingbrain/slide3-en.svg", alt: "Color palette and Typography", caption: "Brand color and typography system" },
-      { type: 'image', src: "/images/project-workingbrain/slide4-en.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide5-en.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide6-en.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide7-en.svg", alt: "", caption: "" }
-    ],
-    es: [
-      { type: 'image', src: "/images/project-workingbrain/slide1-es.png", alt: "Logo de WorkingBrain", caption: "Logo con cerebro saliendo de la caja" },
-      { type: 'image', src: "/images/project-workingbrain/slide2.svg", alt: "Mascota Brian", caption: "Brian, la mascota cerebral" },
-      { type: 'image', src: "/images/project-workingbrain/slide3-es.svg", alt: "Paleta de colores y Tipografía", caption: "Sistema de colores y tipografía de la marca" },
-      { type: 'image', src: "/images/project-workingbrain/slide4-es.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide5-es.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide6-es.svg", alt: "", caption: "" },
-      { type: 'image', src: "/images/project-workingbrain/slide7-es.svg", alt: "", caption: "" }
-    ]
-  };
+  pt: [
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide1-pt.png",
+      alt: "Capa do WorkingBrain",
+      caption: "Identidade visual do aplicativo educacional WorkingBrain"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide2.svg",
+      alt: "Logo",
+      caption: "Logo principal do WorkingBrain"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide3-pt.svg",
+      alt: "Apresentação da logo",
+      caption: "Apresentação conceitual da marca e elementos que a compõem"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide4-pt.svg",
+      alt: "Mascote",
+      caption: "O mascote da plataforma"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide5-pt.svg",
+      alt: "Brian, o cérebro",
+      caption: "Brian, o cérebro: mascote carismático que conduz a gamificação"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide6-pt.svg",
+      alt: "Cores e Tipografia",
+      caption: "Cores e tipografias utilizadas na identidade visual"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide7-pt.svg",
+      alt: "Significado visual",
+      caption: "Significados por trás das escolhas cromáticas e tipográficas"
+    }
+  ],
+  en: [
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide1-en.png",
+      alt: "WorkingBrain Cover",
+      caption: "Visual identity of the educational app WorkingBrain"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide2.svg",
+      alt: "Logo",
+      caption: "Main logo of the WorkingBrain project"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide3-en.svg",
+      alt: "Logo presentation",
+      caption: "Conceptual presentation of the brand and its visual elements"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide4-en.svg",
+      alt: "Mascot",
+      caption: "Platform mascot design"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide5-en.svg",
+      alt: "Brian the brain",
+      caption: "Brian the brain: friendly mascot guiding the gamification experience"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide6-en.svg",
+      alt: "Colors and Typography",
+      caption: "Color palette and typographic choices for the visual identity"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide7-en.svg",
+      alt: "Visual meaning",
+      caption: "Meanings behind the selected colors and typography"
+    }
+  ],
+  es: [
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide1-es.png",
+      alt: "Portada de WorkingBrain",
+      caption: "Identidad visual de la aplicación educativa WorkingBrain"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide2.svg",
+      alt: "Logo",
+      caption: "Logo principal del proyecto WorkingBrain"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide3-es.svg",
+      alt: "Presentación del logo",
+      caption: "Presentación conceptual de la marca y sus elementos visuales"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide4-es.svg",
+      alt: "Mascota",
+      caption: "Diseño de la mascota de la plataforma"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide5-es.svg",
+      alt: "Brian, el cerebro",
+      caption: "Brian, el cerebro: mascota carismática que lidera la gamificación"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide6-es.svg",
+      alt: "Colores y tipografía",
+      caption: "Paleta de colores y tipografía utilizada en la identidad visual"
+    },
+    {
+      type: 'image',
+      src: "/images/project-workingbrain/slide7-es.svg",
+      alt: "Significado visual",
+      caption: "Significados detrás de los colores y tipografía elegidos"
+    }
+  ]
+};
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">

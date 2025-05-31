@@ -37,7 +37,7 @@ const ProjectPage = ({ language = 'en' }) => {
       results: {
         metrics: [
           { value: "100%", description: "Aprovação com louvor", icon: "🎓" },
-          { value: "⚡", description: "Desenvolvimento eficiente", icon: "⏱️" },
+          { value: "+85", description: "Interessados no app", icon: "👥" },
           { value: "📲", description: "Funciona em iOS e Android", icon: "✔️" }
         ],
         feedback: "O projeto demonstrou maturidade técnica ao integrar diversas tecnologias de forma harmoniosa, resultando em uma ferramenta educacional completa e acessível."
@@ -89,7 +89,7 @@ const ProjectPage = ({ language = 'en' }) => {
       results: {
         metrics: [
           { value: "100%", description: "Approved with distinction", icon: "🎓" },
-          { value: "⚡", description: "Efficient development", icon: "⏱️" },
+          { value: "85+", description: "Interested users", icon: "👥" },
           { value: "📲", description: "Works on iOS and Android", icon: "✔️" }
         ],
         feedback: "The project demonstrated technical maturity by harmoniously integrating various technologies, resulting in a complete and accessible educational tool."
@@ -141,7 +141,7 @@ const ProjectPage = ({ language = 'en' }) => {
       results: {
         metrics: [
           { value: "100%", description: "Aprobado con distinción", icon: "🎓" },
-          { value: "⚡", description: "Desarrollo eficiente", icon: "⏱️" },
+          { value: "+85", description: "Interesados en la app", icon: "👥" },
           { value: "📲", description: "Funciona en iOS y Android", icon: "✔️" }
         ],
         feedback: "El proyecto demostró madurez técnica al integrar armoniosamente diversas tecnologías, resultando en una herramienta educativa completa y accesible."
@@ -187,176 +187,176 @@ const ProjectPage = ({ language = 'en' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-  const mediaItems = {
-    pt: [
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide1.svg", 
-        alt: "Tela inicial do aplicativo", 
-        caption: "Interface principal do aplicativo WorkingBrain" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide2-pt.svg", 
-        alt: "", 
-        caption: "" 
-      },
-      { 
-        type: 'video', 
-        url: "/videos/video-workingbrain.mp4", 
-        alt: "Demonstração do aplicativo", 
-        caption: "Vídeo demonstrativo das funcionalidades principais" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide4.svg", 
-        alt: "Sistema de recompensas", 
-        caption: "Interface do sistema de gamificação e conquistas" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide5-pt.svg", 
-        alt: "Integração com câmera", 
-        caption: "Funcionalidade de captura de imagens usando a câmera do dispositivo" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide6-pt.svg", 
-        alt: "Notificações push", 
-        caption: "Sistema de lembretes e notificações para engajar os usuários" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide7-pt.svg", 
-        alt: "Design responsivo", 
-        caption: "Adaptação da interface para diferentes tamanhos de tela" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide8-pt.svg", 
-        alt: "Arquitetura técnica", 
-        caption: "Diagrama da estrutura técnica do aplicativo" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide9-pt.svg", 
-        alt: "Tela de perfil", 
-        caption: "Área do usuário com progresso e conquistas" 
-      }
-    ],
-    en: [
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide1.svg", 
-        alt: "App home screen", 
-        caption: "WorkingBrain app main interface" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide2-en.svg", 
-        alt: "", 
-        caption: "" 
-      },
-      { 
-        type: 'video', 
-        url: "/videos/video-workingbrain.mp4", 
-        alt: "App demonstration", 
-        caption: "Video demo of main features" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide4.svg", 
-        alt: "Rewards system", 
-        caption: "Gamification and achievements interface" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
-        alt: "Camera integration", 
-        caption: "Image capture feature using device camera" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide6-en.svg", 
-        alt: "Push notifications", 
-        caption: "Reminders and notifications system to engage users" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide7-en.svg", 
-        alt: "Responsive design", 
-        caption: "Interface adaptation for different screen sizes" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide8-en.svg", 
-        alt: "Technical architecture", 
-        caption: "App technical structure diagram" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide9-en.svg", 
-        alt: "Profile screen", 
-        caption: "User area with progress and achievements" 
-      }
-    ],
-    es: [
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide1.svg", 
-        alt: "Pantalla principal de la aplicación", 
-        caption: "Interfaz principal de la aplicación WorkingBrain" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide2-es.svg", 
-        alt: "", 
-        caption: "" 
-      },
-      { 
-        type: 'video', 
-        url: "/videos/video-workingbrain.mp4", 
-        alt: "Demostración de la aplicación", 
-        caption: "Video demostrativo de las funcionalidades principales" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide4.svg", 
-        alt: "Sistema de recompensas", 
-        caption: "Interfaz de gamificación y logros" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
-        alt: "Integración con cámara", 
-        caption: "Función de captura de imágenes usando la cámara del dispositivo" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide6-es.svg", 
-        alt: "Notificaciones push", 
-        caption: "Sistema de recordatorios y notificaciones para involucrar a los usuarios" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide7-es.svg", 
-        alt: "Diseño responsivo", 
-        caption: "Adaptación de la interfaz para diferentes tamaños de pantalla" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide8-es.svg", 
-        alt: "Arquitectura técnica", 
-        caption: "Diagrama de la estructura técnica de la aplicación" 
-      },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide9-es.svg", 
-        alt: "Pantalla de perfil", 
-        caption: "Área de usuario con progreso y logros" 
-      }
-    ]
-  };
+const mediaItems = {
+  pt: [
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide1.svg", 
+      alt: "Capa do WorkingBrain", 
+      caption: "WorkingBrain Mobile: aplicativo educacional desenvolvido para estudantes e professores" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide2-pt.svg", 
+      alt: "Vídeo demonstrativo", 
+      caption: "Apresentação em vídeo com as principais funcionalidades" 
+    },
+    { 
+      type: 'video', 
+      url: "/videos/video-workingbrain.mp4", 
+      alt: "Demonstração do aplicativo", 
+      caption: "Demonstração em vídeo com foco na usabilidade e funcionalidades centrais" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide4.svg", 
+      alt: "Mockups", 
+      caption: "Mockups que ilustram o processo de concepção até a solução final" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide5-pt.svg", 
+      alt: "Mockups gerais", 
+      caption: "Visão geral: fluxos acessíveis a todos os tipos de usuários" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide6-pt.svg", 
+      alt: "Mockups do aluno", 
+      caption: "Fluxo do aluno: introdução e navegação inicial no aplicativo" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide7-pt.svg", 
+      alt: "Mockups do aluno", 
+      caption: "Fluxo do aluno: telas principais da jornada educacional"  
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide8-pt.svg", 
+      alt: "Mockups do aluno", 
+      caption: "Fluxo do aluno: continuidade e conclusão da navegação" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide9-pt.svg", 
+      alt: "Mockups do professor", 
+      caption: "Fluxo do professor: telas-chave para acompanhamento e gestão"  
+    }
+  ],
+  en: [
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide1.svg", 
+      alt: "WorkingBrain cover", 
+      caption: "WorkingBrain Mobile: an educational app designed for students and teachers" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide2-en.svg", 
+      alt: "Demo video", 
+      caption: "Video presentation showcasing key features" 
+    },
+    { 
+      type: 'video', 
+      url: "/videos/video-workingbrain.mp4", 
+      alt: "App demonstration", 
+      caption: "App demonstration video focused on usability and main features" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide4.svg", 
+      alt: "Mockups", 
+      caption: "Mockups illustrating the design process to the final solution" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
+      alt: "General mockups", 
+      caption: "Overview: flows accessible to all user types" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide6-en.svg", 
+      alt: "Student mockups", 
+      caption: "Student flow: introduction and initial navigation in the app" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide7-en.svg", 
+      alt: "Student mockups", 
+      caption: "Student flow: main screens of the educational journey" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide8-en.svg", 
+      alt: "Student mockups", 
+      caption: "Student flow: continuity and end of navigation" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide9-en.svg", 
+      alt: "Teacher mockups", 
+      caption: "Teacher flow: key screens for tracking and management" 
+    }
+  ],
+  es: [
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide1.svg", 
+      alt: "Portada de WorkingBrain", 
+      caption: "WorkingBrain Mobile: una aplicación educativa para estudiantes y docentes" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide2-es.svg", 
+      alt: "Video de demostración", 
+      caption: "Presentación en video con las principales funcionalidades" 
+    },
+    { 
+      type: 'video', 
+      url: "/videos/video-workingbrain.mp4", 
+      alt: "Demostración de la app", 
+      caption: "Video de demostración centrado en la usabilidad y funciones clave" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide4.svg", 
+      alt: "Mockups", 
+      caption: "Mockups que muestran el proceso desde el diseño hasta la solución final" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
+      alt: "Mockups generales", 
+      caption: "Vista general: flujos accesibles para todos los tipos de usuarios" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide6-es.svg", 
+      alt: "Mockups del estudiante", 
+      caption: "Flujo del estudiante: introducción y navegación inicial en la app" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide7-es.svg", 
+      alt: "Mockups del estudiante", 
+      caption: "Flujo del estudiante: pantallas principales del recorrido educativo" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide8-es.svg", 
+      alt: "Mockups del estudiante", 
+      caption: "Flujo del estudiante: continuidad y finalización de la navegación" 
+    },
+    { 
+      type: 'image', 
+      src: "/images/project-workingbrain-mobile/slide9-es.svg", 
+      alt: "Mockups del docente", 
+      caption: "Flujo del docente: pantallas clave para el seguimiento y la gestión" 
+    }
+  ]
+};
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">

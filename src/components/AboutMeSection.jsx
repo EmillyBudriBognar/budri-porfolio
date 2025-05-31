@@ -17,11 +17,11 @@ const ProfileCard = ({ language }) => {
       greeting: "Olá, eu sou a Emilly Budri Bognar!",
       roles: ["UX Designer", "Desenvolvedora Front-End", "Desenvolvedora Mobile"],
       description1:
-        "Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram. Acredito que o <b>design</b> deve ser mais do que funcional - ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas.",
+        "Competidora do <b>InterFatecs</b>, segundo maior campeonato de programação do Brasil, e participante <b>sênior</b> na Olimpíada Brasileira de Informática. Sou apaixonada por <b>tecnologia</b> e <b>UX Design</b>, onde <b>psicologia</b>, <b>arte</b> e <b>experiência do usuário</b> se encontram.",
       description2:
-        "Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia, sempre com <b>comunicação clara</b> e foco nas <b>necessidades reais</b> dos usuários. Sou curiosa e estou sempre explorando <b>novas perspectivas</b> para aprimorar cada detalhe do design.",
+        "Acredito que o <b>design</b> deve ser mais do que funcional - ele precisa criar uma <b>experiência intuitiva</b> e alinhada às <b>demandas reais</b> das pessoas. Meu objetivo é desenvolver <b>soluções digitais</b> que fazem a diferença no dia a dia.",
       description3:
-        "Seria um prazer ajudar sua empresa a crescer com soluções digitais que realmente fazem a diferença.",
+        "Com <b>comunicação clara</b> e foco nas <b>necessidades reais</b>, seria um prazer ajudar sua empresa a crescer com soluções que realmente impactam.",
       buttonText: "BAIXAR CV",
       cvLink: "https://drive.google.com/file/",
     },
@@ -29,11 +29,11 @@ const ProfileCard = ({ language }) => {
       greeting: "¡Hola, soy Emilly Budri Bognar!",
       roles: ["Diseñadora UX", "Desarrolladora Front-End", "Desarrolladora Mobile"],
       description1:
-        "Me apasiona la <b>tecnología</b> y el <b>Diseño UX</b>, donde se encuentran la <b>psicología</b>, el <b>arte</b> y la <b>experiencia del usuario</b>. Creo que el <b>diseño</b> debe ser más que funcional: debe crear una <b>experiencia intuitiva</b> y alineada con las <b>necesidades reales</b> de las personas.",
+        "Competidora del <b>InterFatecs</b>, segundo mayor campeonato de programación de Brasil, y participante <b>sénior</b> en la Olimpiada Brasileña de Informática. Me apasiona la <b>tecnología</b> y el <b>Diseño UX</b>, donde se encuentran la <b>psicología</b>, el <b>arte</b> y la <b>experiencia del usuario</b>.",
       description2:
-        "Mi objetivo es desarrollar <b>soluciones digitales</b> que marquen la diferencia en el día a día, siempre con <b>comunicación clara</b> y enfoque en las <b>necesidades reales</b> de los usuarios. Soy curiosa y siempre estoy explorando <b>nuevas perspectivas</b> para mejorar cada detalle del diseño.",
+        "Creo que el <b>diseño</b> debe ser más que funcional: debe crear una <b>experiencia intuitiva</b> y alineada con las <b>necesidades reales</b> de las personas. Mi objetivo es desarrollar <b>soluciones digitales</b> que marquen la diferencia en el día a día.",
       description3:
-        "Sería un placer ayudar a su empresa a crecer con soluciones digitales que realmente marcan la diferencia.",
+        "Con <b>comunicación clara</b> y enfoque en las <b>necesidades reales</b>, sería un placer ayudar a su empresa a crecer con soluciones que realmente impactan.",
       buttonText: "DESCARGAR CV",
       cvLink: "https://drive.google.com/file/",
     },
@@ -41,11 +41,11 @@ const ProfileCard = ({ language }) => {
       greeting: "Hi, I'm Emilly Budri Bognar!",
       roles: ["UX Designer", "Front-End Developer", "Mobile Developer"],
       description1:
-        "I am passionate about <b>technology</b> and <b>UX Design</b>, where <b>psychology</b>, <b>art</b>, and <b>user experience</b> come together. I believe that <b>design</b> should be more than functional - it needs to create an <b>intuitive experience</b> aligned with the <b>real demands</b> of people.",
+        "Competitor in <b>InterFatecs</b>, Brazil's second largest programming championship, and <b>senior</b> participant in the Brazilian Informatics Olympiad. I am passionate about <b>technology</b> and <b>UX Design</b>, where <b>psychology</b>, <b>art</b>, and <b>user experience</b> come together.",
       description2:
-        "My goal is to develop <b>digital solutions</b> that make a difference in everyday life, always with <b>clear communication</b> and a focus on the <b>real needs</b> of users. I am curious and always exploring <b>new perspectives</b> to enhance every detail of design.",
+        "I believe that <b>design</b> should be more than functional - it needs to create an <b>intuitive experience</b> aligned with the <b>real demands</b> of people. My goal is to develop <b>digital solutions</b> that make a difference in everyday life.",
       description3:
-        "It would be a pleasure to help your company grow with digital solutions that truly make a difference.",
+        "With <b>clear communication</b> and focus on <b>real needs</b>, it would be a pleasure to help your company grow with solutions that truly impact.",
       buttonText: "DOWNLOAD CV",
       cvLink: "https://drive.google.com/file/",
     },

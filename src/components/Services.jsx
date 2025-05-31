@@ -36,7 +36,7 @@ export default function Services({ language }) {
             "Desenvolvo sites funcionais e impactantes, utilizando tecnologias modernas para criar experiências envolventes.",
           methodology: `O desenvolvimento front-end WEB abrange a criação de interfaces modernas, escaláveis e responsivas para oferecer experiências digitais excepcionais. A metodologia utilizada consiste em:
 
-          💻 Tecnologias modernas: Trabalho com HTML, CSS, Styled Components, SASS, React, Bootstrap, Tailwind, JavaScript, TypeScript e outras para desenvolver soluções escaláveis.
+          💻 Tecnologias modernas: Trabalho com HTML, CSS, SASS, React, Bootstrap, Tailwind, JavaScript, TypeScript e outras para desenvolver soluções escaláveis.
 
           🎨 Design responsivo: Garanto que as interfaces sejam adaptáveis a diferentes dispositivos, proporcionando uma experiência consistente.
 
@@ -137,7 +137,7 @@ export default function Services({ language }) {
             "Desarrollo sitios web funcionales e impactantes, utilizando tecnologías modernas para crear experiencias envolventes.",
           methodology: `El desarrollo front-end WEB abarca la creación de interfaces modernas, escalables y responsivas para ofrecer experiencias digitales excepcionales. La metodología utilizada consiste en:
 
-          💻 Tecnologías modernas: Trabajo con HTML, CSS, Styled Components, SASS, React, Bootstrap, Tailwind, JavaScript, TypeScript y otras para desarrollar soluciones escalables.
+          💻 Tecnologías modernas: Trabajo con HTML, CSS, SASS, React, Bootstrap, Tailwind, JavaScript, TypeScript y otras para desarrollar soluciones escalables.
 
           🎨 Diseño responsivo: Garantizo que las interfaces sean adaptables a diferentes dispositivos, proporcionando una experiencia consistente.
 
@@ -238,7 +238,7 @@ export default function Services({ language }) {
             "I develop functional and impactful websites using modern technologies to create engaging experiences.",
           methodology: `Front-end WEB development involves creating modern, scalable, and responsive interfaces to deliver exceptional digital experiences. The methodology used consists of:
 
-          💻 Modern technologies: I work with HTML, CSS, Styled Components, SASS, React, Bootstrap, Tailwind, JavaScript, TypeScript, and others to develop scalable solutions.
+          💻 Modern technologies: I work with HTML, CSS, SASS, React, Bootstrap, Tailwind, JavaScript, TypeScript, and others to develop scalable solutions.
 
           🎨 Responsive design: I ensure interfaces are adaptable to different devices, providing a consistent experience.
 

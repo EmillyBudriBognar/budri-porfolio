@@ -29,22 +29,23 @@ const ProjectPage = ({ language = 'pt' }) => {
       },
       process: [
         { emoji: "🧠", title: "Pesquisa de Benchmark", description: "Análise de landing pages de marketplaces e marcas sustentáveis" },
-        { emoji: "🎯", title: "Definição de Persona", description: "Foco em consumidores preocupados com sustentabilidade e estilo" },
-        { emoji: "🎨", title: "Design Visual", description: "Exploração de cores, tipografia e imagens alinhadas à proposta jovem e consciente" },
+        { emoji: "🔍", title: "Otimização SEO", description: "Estratégia de palavras-chave e estrutura semântica para melhor ranqueamento e conversão" },
         { emoji: "📢", title: "Copywriting Estratégico", description: "Mensagens diretas com CTA claras e benefícios destacados" },
-        { emoji: "📱", title: "Responsividade", description: "Adaptação total para dispositivos móveis, mantendo apelo visual" }
+        { emoji: "📱", title: "Responsividade", description: "Adaptação total para dispositivos móveis, mantendo apelo visual" },
+        { emoji: "🛠️", title: "Design System", description: "Criação de um sistema de componentes para garantir consistência visual e agilidade no desenvolvimento" }
       ],
       results: {
         metrics: [
           { value: "+75%", description: "de tempo médio na página", icon: "⏱️" },
-          { value: "↑ Conversão", description: "Aumento nas interações com o botão de ação", icon: "🔁" },
+          { value: "↑ SEO", description: "Melhor posicionamento orgânico com estratégias de conteúdo otimizado", icon: "🔍" },
           { value: "💡", description: "Clareza na proposta de valor", icon: "✨" }
         ],
         feedback: "O design da landing page combina apelo visual com estratégias de marketing, promovendo o propósito do projeto de forma clara e envolvente."
       },
       tools: [
         { name: "Next.js", icon: "⚡", color: "bg-gray-100 dark:bg-gray-800" },
-        { name: "TypeScript", icon: "📘", color: "bg-blue-100 dark:bg-blue-900" },
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" },
+        { name: "JavaScript", icon: "📘", color: "bg-yellow-100 dark:bg-yellow-900" },
         { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900" },
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" }
       ],
@@ -52,6 +53,10 @@ const ProjectPage = ({ language = 'pt' }) => {
         {
           title: "Design com foco em marketing",
           description: "Aprendi a criar interfaces persuasivas que despertam interesse e levam à ação."
+        },
+        {
+          title: "React e SEO",
+          description: "Aplicações React tradicionais têm limitações de SEO devido ao carregamento client-side. Com Next.js (SSR e SSG), tornou-se possível ter melhor indexação e ranqueamento."
         },
         {
           title: "Clareza na comunicação visual",
@@ -62,8 +67,12 @@ const ProjectPage = ({ language = 'pt' }) => {
           description: "Apliquei técnicas de escaneabilidade, contraste e hierarquia para guiar o usuário."
         },
         {
-          title: "Apresentação de valor",
-          description: "A landing apresenta claramente o que é o BreShopp e por que ele importa."
+          title: "Efeito Parallax e Interatividade",
+          description: "Aprendi a implementar parallax na primeira seção para criar profundidade visual e engajar os usuários imediatamente, aumentando o tempo de permanência na página."
+        },
+        {
+          title: "Design System",
+          description: "Implementar um sistema de design garantiu consistência visual, identidade de marca forte e facilitou a componentização e manutenção do código."
         },
         {
           title: "Pensamento estratégico",
@@ -81,22 +90,23 @@ const ProjectPage = ({ language = 'pt' }) => {
       },
       process: [
         { emoji: "🧠", title: "Investigación de Benchmark", description: "Análisis de páginas de destino de marketplaces y marcas sostenibles" },
-        { emoji: "🎯", title: "Definición de Persona", description: "Enfoque en consumidores preocupados por sostenibilidad y estilo" },
         { emoji: "🎨", title: "Diseño Visual", description: "Exploración de colores, tipografía e imágenes alineadas con una propuesta joven y consciente" },
         { emoji: "📢", title: "Copywriting Estratégico", description: "Mensajes directos con CTAs claros y beneficios destacados" },
-        { emoji: "📱", title: "Responsividad", description: "Adaptación total para dispositivos móviles manteniendo atractivo visual" }
+        { emoji: "📱", title: "Responsividad", description: "Adaptación total para dispositivos móviles manteniendo atractivo visual" },
+        { emoji: "🛠️", title: "Design System", description: "Creación de un sistema de componentes para garantizar consistencia visual y agilidad en el desarrollo" }
       ],
       results: {
         metrics: [
           { value: "+75%", description: "de tiempo promedio en la página", icon: "⏱️" },
-          { value: "↑ Conversión", description: "Aumento en interacciones con el botón de acción", icon: "🔁" },
+          { value: "↑ SEO", description: "Mejor posicionamiento orgánico con estrategias de contenido optimizado", icon: "🔍" },
           { value: "💡", description: "Claridad en la propuesta de valor", icon: "✨" }
         ],
         feedback: "El diseño de la página de destino combina atractivo visual con estrategias de marketing, promoviendo el propósito del proyecto de forma clara y envolvente."
       },
       tools: [
         { name: "Next.js", icon: "⚡", color: "bg-gray-100 dark:bg-gray-800" },
-        { name: "TypeScript", icon: "📘", color: "bg-blue-100 dark:bg-blue-900" },
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" },
+        { name: "JavaScript", icon: "📘", color: "bg-yellow-100 dark:bg-yellow-900" },
         { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900" },
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" }
       ],
@@ -104,6 +114,10 @@ const ProjectPage = ({ language = 'pt' }) => {
         {
           title: "Diseño con enfoque en marketing",
           description: "Aprendí a crear interfaces persuasivas que despiertan interés y llevan a la acción."
+        },
+        {
+          title: "React y SEO",
+          description: "Las aplicaciones React tradicionales tienen limitaciones de SEO debido a la renderización del lado del cliente. Con Next.js (SSR y SSG), se hizo posible una mejor indexación y posicionamiento."
         },
         {
           title: "Claridad en comunicación visual",
@@ -114,8 +128,12 @@ const ProjectPage = ({ language = 'pt' }) => {
           description: "Apliqué técnicas de escaneabilidad, contraste y jerarquía para guiar al usuario."
         },
         {
-          title: "Presentación de valor",
-          description: "La página de destino presenta claramente qué es BreShopp y por qué es importante."
+          title: "Efecto Parallax e Interactividad",
+          description: "Aprendí a implementar parallax en la primera sección para crear profundidad visual y captar la atención de los usuarios inmediatamente, aumentando el tiempo de permanencia en la página."
+        },
+        {
+          title: "Design System",
+          description: "Implementar un sistema de diseño garantizó consistencia visual, identidad de marca fuerte y facilitó la componentización y mantenimiento del código."
         },
         {
           title: "Pensamiento estratégico",
@@ -133,22 +151,23 @@ const ProjectPage = ({ language = 'pt' }) => {
       },
       process: [
         { emoji: "🧠", title: "Benchmark Research", description: "Analysis of landing pages from sustainable brands and marketplaces" },
-        { emoji: "🎯", title: "Persona Definition", description: "Targeting consumers who care about sustainability and style" },
-        { emoji: "🎨", title: "Visual Design", description: "Exploration of colors, typography and imagery aligned with a young, conscious identity" },
+        { emoji: "🔍", title: "SEO Optimization", description: "Keyword strategy and semantic structure for better ranking and conversion" },
         { emoji: "📢", title: "Strategic Copywriting", description: "Clear messaging with strong CTAs and highlighted benefits" },
-        { emoji: "📱", title: "Responsive Layout", description: "Fully optimized for mobile without losing visual impact" }
+        { emoji: "📱", title: "Responsive Layout", description: "Fully optimized for mobile without losing visual impact" },
+        { emoji: "🛠️", title: "Design System", description: "Created a component system to ensure visual consistency and development efficiency" }
       ],
       results: {
         metrics: [
           { value: "+75%", description: "average time spent on the page", icon: "⏱️" },
-          { value: "↑ Conversion", description: "Increased engagement with CTA button", icon: "🔁" },
+          { value: "↑ SEO", description: "Better organic ranking with optimized content strategy", icon: "🔍" },
           { value: "💡", description: "Clear brand value communication", icon: "✨" }
         ],
         feedback: "The landing page design blends visual appeal with marketing strategies, clearly and compellingly promoting the project's purpose."
       },
       tools: [
         { name: "Next.js", icon: "⚡", color: "bg-gray-100 dark:bg-gray-800" },
-        { name: "TypeScript", icon: "📘", color: "bg-blue-100 dark:bg-blue-900" },
+        { name: "React", icon: "⚛️", color: "bg-blue-100 dark:bg-blue-900" },
+        { name: "JavaScript", icon: "📘", color: "bg-yellow-100 dark:bg-yellow-900" },
         { name: "Tailwind CSS", icon: "🎨", color: "bg-cyan-100 dark:bg-cyan-900" },
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" }
       ],
@@ -156,6 +175,10 @@ const ProjectPage = ({ language = 'pt' }) => {
         {
           title: "Design with marketing focus",
           description: "I learned to create persuasive interfaces that drive attention and action."
+        },
+        {
+          title: "React and SEO",
+          description: "Traditional React applications have SEO limitations due to client-side rendering. With Next.js (SSR and SSG), it became possible to achieve better indexing and ranking."
         },
         {
           title: "Visual communication clarity",
@@ -166,8 +189,12 @@ const ProjectPage = ({ language = 'pt' }) => {
           description: "I applied techniques like scannability, contrast and hierarchy to guide users."
         },
         {
-          title: "Value proposition presentation",
-          description: "The landing clearly communicates what BreShopp is and why it matters."
+          title: "Parallax Effect and Interactivity",
+          description: "I learned to implement parallax in the first section to create visual depth and immediately engage users, increasing time spent on the page."
+        },
+        {
+          title: "Design System",
+          description: "Implementing a design system ensured visual consistency, strong brand identity and facilitated componentization and code maintenance."
         },
         {
           title: "Strategic thinking",
@@ -187,21 +214,120 @@ const ProjectPage = ({ language = 'pt' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-  const galleryImages = {
+  const mediaItems = {
     pt: [
-      { src: "/images/project-breshopp/slide1-pt.svg", alt: "Interface do marketplace", caption: "Tela principal com navegação intuitiva" },
-      { src: "/images/project-breshopp/slide2-pt.svg", alt: "Painel de impacto", caption: "Painel de impacto" },
-      { src: "/images/project-breshopp/slide3-pt.svg", alt: "Perfil do vendedor", caption: "Perfil do vendedor" }
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide1.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-breshopp/slide2-pt.svg",
+         alt: "",
+         caption: ""
+      },
+      {
+        type: 'video',
+        url: "/videos/video-breshopp.mp4",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide4-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide5-pt.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide6.svg",
+        alt: "",
+        caption: ""
+      }
     ],
     en: [
-      { src: "/images/project-breshopp/slide1-en.svg", alt: "Main screen of the landing page", caption: "Main screen with intuitive navigation" },
-      { src: "/images/project-breshopp/slide2-en.svg", alt: "Highlight of social/environmental benefits", caption: "Highlight of social/environmental benefits" },
-      { src: "/images/project-breshopp/slide3-en.svg", alt: "Humanized and inclusive brand presentation", caption: "Humanized and inclusive brand presentation" }
+      {
+        type: 'image',
+        src: "/images/project-breshopp/slide1.svg", 
+        alt: "", 
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-breshopp/slide2-en.svg", 
+        alt: "", 
+        caption: ""
+      },
+      {
+        type: 'video',
+        url: "/videos/video-breshopp.mp4",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide4-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide5-en.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide6.svg",
+        alt: "",
+        caption: ""
+      }
     ],
     es: [
-      { src: "/images/project-breshopp/slide1-es.svg", alt: "Pantalla principal de la página de destino", caption: "Pantalla principal con navegación intuitiva" },
-      { src: "/images/project-breshopp/slide2-es.svg", alt: "Destacado de beneficios sociales/ambientales", caption: "Destacado de beneficios sociales/ambientales" },
-      { src: "/images/project-breshopp/slide3-es.svg", alt: "Presentación humanizada e inclusiva", caption: "Presentación humanizada e inclusiva" }
+      {
+        type: 'image',
+        src: "/images/project-breshopp/slide1.svg", 
+        alt: "", 
+        caption: ""
+      },
+      {
+        type: 'image',
+        src: "/images/project-breshopp/slide2-es.svg", 
+        alt: "", 
+        caption: ""
+      },
+      {
+        type: 'video',
+        url: "/videos/video-breshopp.mp4",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide4-es.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide5-es.svg",
+        alt: "",
+        caption: ""
+      },
+      {
+        type: 'image', 
+        src: "/images/project-breshopp/slide6.svg",
+        alt: "",
+        caption: ""
+      }
     ]
   };
 
@@ -262,7 +388,9 @@ const ProjectPage = ({ language = 'pt' }) => {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            images={galleryImages}
+            mediaItems={mediaItems}
+            autoPlayVideos={true}
+            videoMuted={true}
           />
         </section>
 

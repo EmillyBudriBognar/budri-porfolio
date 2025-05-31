@@ -38,7 +38,7 @@ const ProjectPage = ({ language = 'en' }) => {
         metrics: [
           { value: "12", description: "Entrevistas realizadas", icon: "🎤" },
           { value: "2", description: "Personas criadas", icon: "👥" },
-          { value: "85%", description: "Relataram defasagem", icon: "📉" }
+          { value: "90%", description: "Relataram defasagem", icon: "📉" }
         ],
         feedback: "A pesquisa revelou a profunda desigualdade na adaptação ao novo currículo, com alunos da rede pública em desvantagem significativa na preparação para vestibulares."
       },
@@ -72,7 +72,7 @@ const ProjectPage = ({ language = 'en' }) => {
         metrics: [
           { value: "12", description: "Interviews conducted", icon: "🎤" },
           { value: "2", description: "Personas created", icon: "👥" },
-          { value: "85%", description: "Reported gap", icon: "📉" }
+          { value: "90%", description: "Reported gap", icon: "📉" }
         ],
         feedback: "The research revealed the profound inequality in adapting to the new curriculum, with public school students at a significant disadvantage in preparing for college entrance exams."
       },
@@ -106,7 +106,7 @@ const ProjectPage = ({ language = 'en' }) => {
         metrics: [
           { value: "12", description: "Entrevistas realizadas", icon: "🎤" },
           { value: "2", description: "Personas creadas", icon: "👥" },
-          { value: "85%", description: "Reportaron desfase", icon: "📉" }
+          { value: "90%", description: "Reportaron desfase", icon: "📉" }
         ],
         feedback: "La investigación reveló la profunda desigualdad en la adaptación al nuevo currículo, con estudiantes de escuelas públicas en desventaja significativa en la preparación para exámenes de ingreso a la universidad."
       },
@@ -134,192 +134,193 @@ const ProjectPage = ({ language = 'en' }) => {
   };
 
   const mediaItems = {
-    pt: [
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide1.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide2.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide3-pt.svg",
-        alt: "Persona do aluno",
-        caption: "Persona do aluno: Análise das dores e necessidades dos alunos"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide4-pt.svg",
-        alt: "Persona do professor",
-        caption: "Persona do professor: Perfil detalhado de professor da rede pública"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide5-pt.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide6-pt.svg",
-        alt: "Mapa da Jornada do Usuário",
-        caption: "Mapa da Jornada do Usuário: Etapas da experiência do aluno e do professor com oportunidades de melhoria"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide7-pt.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide8-pt.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide9.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide10-pt.svg",
-        alt: "Insights Finais",
-        caption: "Insights Finais: Principais aprendizados para guiar soluções mais eficazes"
-      }
-    ],
-    en: [
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide1.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide2.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide3-en.svg",
-        alt: "Student persona",
-        caption: "Student persona: Analysis of students' pains and needs"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide4-en.svg",
-        alt: "Teacher persona",
-        caption: "Teacher persona: Detailed profile of a public school teacher"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide5-en.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide6-en.svg",
-        alt: "Empathy Map",
-        caption: "Empathy Map: Deep understanding of users' challenges and emotions"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide7-en.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide8-en.svg",
-        alt: "User Journey Map",
-        caption: "User Journey Map: Experience stages of students and teachers with opportunity areas"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide9.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide10-en.svg",
-        alt: "Final Insights",
-        caption: "Final Insights: Key takeaways to guide more effective solutions"
-      }
-    ],
-    es: [
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide1.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide2.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide3-es.svg",
-        alt: "Persona del estudiante",
-        caption: "Persona del estudiante: Análisis de las dificultades y necesidades de los estudiantes"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide4-es.svg",
-        alt: "Persona del profesor",
-        caption: "Persona del profesor: Perfil detallado de un docente de escuela pública"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide5-es.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide6-es.svg",
-        alt: "Mapa de Empatía",
-        caption: "Mapa de Empatía: Comprensión profunda de los desafíos y emociones de los usuarios"
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide7-es.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide8-es.svg",
-        alt: "Mapa de la Jornada del Usuario",
-        caption: "Mapa de la Jornada del Usuario: Etapas de la experiencia de estudiantes y profesores con áreas de oportunidad"
-      },{
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide9.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image',
-        src: "/images/project-ux-research-workingbrain/slide10-es.svg",
-        alt: "Insights Finales",
-        caption: "Insights Finales: Aprendizajes clave para guiar soluciones más efectivas"
-      }
-    ]
-  };
+  pt: [
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide1.svg",
+      alt: "Capa da Pesquisa de UX do WorkingBrain",
+      caption: "WorkingBrain: UX Research e Estudo de Caso para resolução de problemas do novo ensino médio brasileiro"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide2.svg",
+      alt: "Personas",
+      caption: "As Personas"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide3-pt.svg",
+      alt: "Persona do aluno",
+      caption: "Persona do aluno: Análise das dores e necessidades dos alunos da rede pública"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide4-pt.svg",
+      alt: "Persona do professor",
+      caption: "Persona do professor: Perfil detalhado de professor da rede pública"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide5-pt.svg",
+      alt: "Mapa da Empatia",
+      caption: "Mapa da Empatia"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide6-pt.svg",
+      alt: "Mapa da Empatia",
+      caption: "Mapa da Empatia: identificação para empatizar"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide7-pt.svg",
+      alt: "Mapa da Jornada do Usuário",
+      caption: "Mapa da Jornada do Usuário"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide8-pt.svg",
+      alt: "Mapa da Jornada do Usuário",
+      caption: "Mapa da Jornada do Usuário: Etapas da experiência do aluno e do professor com oportunidades de melhoria"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide9.svg",
+      alt: "Insights Finais",
+      caption: "Insights Finais"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide10-pt.svg",
+      alt: "Insights Finais",
+      caption: "Insights Finais: Principais aprendizados para guiar soluções mais eficazes"
+    }
+  ],
+  en: [
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide1.svg",
+      alt: "Cover of the UX Research project for WorkingBrain",
+      caption: "WorkingBrain: UX Research and Case Study to address Brazil’s new high school model"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide2.svg",
+      alt: "Personas",
+      caption: "The Personas"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide3-en.svg",
+      alt: "Student persona",
+      caption: "Student persona: Analysis of students' pains and needs"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide4-en.svg",
+      alt: "Teacher persona",
+      caption: "Teacher persona: Detailed profile of a public school teacher"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide5-en.svg",
+      alt: "Empathy Map",
+      caption: "Empathy Map"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide6-en.svg",
+      alt: "Empathy Map",
+      caption: "Empathy Map: Deep understanding of users' challenges and emotions"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide7-en.svg",
+      alt: "User Journey Map",
+      caption: "User Journey Map"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide8-en.svg",
+      alt: "User Journey Map",
+      caption: "User Journey Map: Experience stages of students and teachers with opportunity areas"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide9.svg",
+      alt: "Final Insights",
+      caption: "Final Insights"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide10-en.svg",
+      alt: "Final Insights",
+      caption: "Final Insights: Key takeaways to guide more effective solutions"
+    }
+  ],
+  es: [
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide1.svg",
+      alt: "Portada de la investigación UX de WorkingBrain",
+      caption: "WorkingBrain: Investigación UX y estudio de caso sobre el nuevo modelo educativo brasileño"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide2.svg",
+      alt: "Personas",
+      caption: "Las Personas"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide3-es.svg",
+      alt: "Persona del estudiante",
+      caption: "Persona del estudiante: Análisis de las dificultades y necesidades de los estudiantes"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide4-es.svg",
+      alt: "Persona del profesor",
+      caption: "Persona del profesor: Perfil detallado de un docente de escuela pública"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide5-es.svg",
+      alt: "Mapa de Empatía",
+      caption: "Mapa de Empatía"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide6-es.svg",
+      alt: "Mapa de Empatía",
+      caption: "Mapa de Empatía: Comprensión profunda de los desafíos y emociones de los usuarios"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide7-es.svg",
+      alt: "Mapa de la Jornada del Usuario",
+      caption: "Mapa de la Jornada del Usuario"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide8-es.svg",
+      alt: "Mapa de la Jornada del Usuario",
+      caption: "Mapa de la Jornada del Usuario: Etapas de la experiencia de estudiantes y profesores con áreas de oportunidad"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide9.svg",
+      alt: "Insights Finales",
+      caption: "Insights Finales"
+    },
+    {
+      type: 'image',
+      src: "/images/project-ux-research-workingbrain/slide10-es.svg",
+      alt: "Insights Finales",
+      caption: "Insights Finales: Aprendizajes clave para guiar soluciones más efectivas"
+    }
+  ]
+};
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
