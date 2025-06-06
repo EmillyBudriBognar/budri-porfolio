@@ -47,8 +47,8 @@ const ProjectItem = ({ project, isActive }) => {
         </div>
 
         {/* Conteúdo - layout mais compacto no mobile */}
-        <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col">
-          <div className="flex-grow">
+        <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col h-full">
+          <div className="flex-grow overflow-y-auto">
             <div className="mb-3 md:mb-6">
               <span className="text-xs md:text-sm text-purple-600 dark:text-purple-400 font-medium">
                 {project.section}
@@ -76,8 +76,8 @@ const ProjectItem = ({ project, isActive }) => {
             </div>
           </div>
 
-          {/* Botão com tamanho adaptável */}
-          <div className="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
+          {/* Botão fixo na parte inferior - mobile */}
+          <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800 sticky bottom-0 bg-white dark:bg-gray-900 pb-2 md:pb-0">
             <a
               href={project.link}
               className="w-full flex items-center justify-center px-3 py-2 md:px-6 md:py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm"
