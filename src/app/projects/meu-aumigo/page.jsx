@@ -1,22 +1,44 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 // Components
-import ProjectHero from '@/components/ProjectHero';
-import ProjectOverview from '@/components/ProjectOverview';
-import CreativeProcess from '@/components/CreativeProcess';
-import ResultsImpact from '@/components/ResultsImpact';
-import GalleryCarousel from '@/components/GalleryCarousel';
-import ToolsUsed from '@/components/ToolsUsed';
-import LessonsLearned from '@/components/LessonsLearned';
-import ProjectCTA from '@/components/ProjectCTA';
-import ProjectsNav from '@/components/ProjectsNav';
+import ProjectHero from "@/components/ProjectHero";
+import ProjectOverview from "@/components/ProjectOverview";
+import CreativeProcess from "@/components/CreativeProcess";
+import ResultsImpact from "@/components/ResultsImpact";
+import GalleryCarousel from "@/components/GalleryCarousel";
+import ToolsUsed from "@/components/ToolsUsed";
+import LessonsLearned from "@/components/LessonsLearned";
+import ProjectCTA from "@/components/ProjectCTA";
+import ProjectsNav from "@/components/ProjectsNav";
 
-const ProjectPage = ({ language = 'pt' }) => {
+export default function ProjectPage({ searchParams }) {
   const router = useRouter();
-  const [currentLanguage, setCurrentLanguage] = React.useState(language);
+  const [currentLanguage, setCurrentLanguage] = useState("pt");
+
+  useEffect(() => {
+    // Verificar se há um parâmetro de idioma na URL
+    const urlLanguage = searchParams?.lang;
+    
+    if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
+      setCurrentLanguage(urlLanguage);
+      return;
+    }
+
+    // Verificar o idioma do navegador
+    const browserLanguage = navigator.language || navigator.userLanguage;
+    const primaryLanguage = browserLanguage.split('-')[0];
+    
+    // Definir o idioma padrão com base no navegador
+    if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
+      setCurrentLanguage(primaryLanguage);
+    } else {
+      // Padrão para inglês se não for um dos idiomas suportados
+      setCurrentLanguage('en');
+    }
+  }, [searchParams]);
 
   const translations = {
     pt: {
@@ -161,140 +183,139 @@ const ProjectPage = ({ language = 'pt' }) => {
   };
 
   const mediaItems = {
-  pt: [
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide1-pt.svg",
-      alt: "Capa do Meu Aumigo",
-      caption: "Meu Aumigo: Email HTML responsivo e interativo desenvolvido para uma campanha de marketing"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide2-pt.svg",
-      alt: "Email HTML",
-      caption: "Estrutura geral do email promocional em HTML"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide3-pt.svg",
-      alt: "Estrutura do cabeçalho do e-mail promocional",
-      caption: "Parte 1: Cabeçalho com logo, título e destaque visual da campanha"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide4-pt.svg",
-      alt: "Seção intermediária com produtos em destaque",
-      caption: "Parte 2: Lista de produtos comprados com detalhes e rastreamento"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide5-pt.svg",
-      alt: "Rodapé com links e informações adicionais",
-      caption: "Parte 3: Rodapé com botão de ação, redes sociais e dados da empresa"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide6-pt.svg",
-      alt: "Vídeo demonstrativo do email",
-      caption: "Demonstração visual das interatividades e funcionamento do email"
-    },
-    {
-      type: 'video',
-      url: "/videos/video-aumigo.mp4",
-      alt: "Demonstração do e-mail Meu Aumigo em ação",
-      caption: "Demonstração interativa do e-mail em funcionamento real"
-    }
-  ],
-  en: [
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide1-en.svg",
-      alt: "Meu Aumigo Email Cover",
-      caption: "Meu Aumigo: Responsive and interactive HTML email created for a marketing campaign"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide2-en.svg",
-      alt: "HTML Email Structure",
-      caption: "General layout of the promotional HTML email"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide3-en.svg",
-      alt: "Promotional email header layout structure",
-      caption: "Part 1: Header with logo, title, and campaign visual highlight"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide4-en.svg",
-      alt: "Middle section with featured products",
-      caption: "Part 2: Product list with details and purchase tracking"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide5-en.svg",
-      alt: "Footer section with links and extra information",
-      caption: "Part 3: Footer with CTA button, social media, and company info"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide6-en.svg",
-      alt: "Demonstrative video of the email",
-      caption: "Visual demonstration of email interactivity and behavior"
-    },
-    {
-      type: 'video',
-      url: "/videos/video-aumigo.mp4",
-      alt: "Meu Aumigo email demonstration in action",
-      caption: "Interactive demonstration of the real email experience"
-    }
-  ],
-  es: [
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide1-es.svg",
-      alt: "Portada del correo Meu Aumigo",
-      caption: "Meu Aumigo: Correo HTML responsivo e interactivo para una campaña de marketing"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide2-es.svg",
-      alt: "Estructura del correo HTML",
-      caption: "Diseño general del correo promocional en HTML"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide3-es.svg",
-      alt: "Estructura del encabezado del correo promocional",
-      caption: "Parte 1: Encabezado con logotipo, título y destaque visual de la campaña"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide4-es.svg",
-      alt: "Sección intermedia con productos destacados",
-      caption: "Parte 2: Lista de productos con detalles y seguimiento de compra"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide5-es.svg",
-      alt: "Pie de página con enlaces e información adicional",
-      caption: "Parte 3: Pie con botón de acción, redes sociales y datos de la empresa"
-    },
-    {
-      type: 'image',
-      src: "/images/project-meuaumigo/slide6-en.svg",
-      alt: "Video demostrativo del correo",
-      caption: "Demostración visual de la interactividad y funcionalidad del correo"
-    },
-    {
-      type: 'video',
-      url: "/videos/video-aumigo.mp4",
-      alt: "Demostración del correo Meu Aumigo en acción",
-      caption: "Demostración interactiva del correo funcionando en la práctica"
-    }
-  ]
-};
-
+    pt: [
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide1-pt.svg",
+        alt: "Capa do Meu Aumigo",
+        caption: "Meu Aumigo: Email HTML responsivo e interativo desenvolvido para uma campanha de marketing"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide2-pt.svg",
+        alt: "Email HTML",
+        caption: "Estrutura geral do email promocional em HTML"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide3-pt.svg",
+        alt: "Estrutura do cabeçalho do e-mail promocional",
+        caption: "Parte 1: Cabeçalho com logo, título e destaque visual da campanha"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide4-pt.svg",
+        alt: "Seção intermediária com produtos em destaque",
+        caption: "Parte 2: Lista de produtos comprados com detalhes e rastreamento"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide5-pt.svg",
+        alt: "Rodapé com links e informações adicionais",
+        caption: "Parte 3: Rodapé com botão de ação, redes sociais e dados da empresa"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide6-pt.svg",
+        alt: "Vídeo demonstrativo do email",
+        caption: "Demonstração visual das interatividades e funcionamento do email"
+      },
+      {
+        type: 'video',
+        url: "/videos/video-aumigo.mp4",
+        alt: "Demonstração do e-mail Meu Aumigo em ação",
+        caption: "Demonstração interativa do e-mail em funcionamento real"
+      }
+    ],
+    en: [
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide1-en.svg",
+        alt: "Meu Aumigo Email Cover",
+        caption: "Meu Aumigo: Responsive and interactive HTML email created for a marketing campaign"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide2-en.svg",
+        alt: "HTML Email Structure",
+        caption: "General layout of the promotional HTML email"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide3-en.svg",
+        alt: "Promotional email header layout structure",
+        caption: "Part 1: Header with logo, title, and campaign visual highlight"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide4-en.svg",
+        alt: "Middle section with featured products",
+        caption: "Part 2: Product list with details and purchase tracking"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide5-en.svg",
+        alt: "Footer section with links and extra information",
+        caption: "Part 3: Footer with CTA button, social media, and company info"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide6-en.svg",
+        alt: "Demonstrative video of the email",
+        caption: "Visual demonstration of email interactivity and behavior"
+      },
+      {
+        type: 'video',
+        url: "/videos/video-aumigo.mp4",
+        alt: "Meu Aumigo email demonstration in action",
+        caption: "Interactive demonstration of the real email experience"
+      }
+    ],
+    es: [
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide1-es.svg",
+        alt: "Portada del correo Meu Aumigo",
+        caption: "Meu Aumigo: Correo HTML responsivo e interactivo para una campaña de marketing"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide2-es.svg",
+        alt: "Estructura del correo HTML",
+        caption: "Diseño general del correo promocional en HTML"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide3-es.svg",
+        alt: "Estructura del encabezado del correo promocional",
+        caption: "Parte 1: Encabezado con logotipo, título y destaque visual de la campaña"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide4-es.svg",
+        alt: "Sección intermedia con productos destacados",
+        caption: "Parte 2: Lista de productos con detalles y seguimiento de compra"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide5-es.svg",
+        alt: "Pie de página con enlaces e información adicional",
+        caption: "Parte 3: Pie con botón de acción, redes sociales y datos de la empresa"
+      },
+      {
+        type: 'image',
+        src: "/images/project-meuaumigo/slide6-en.svg",
+        alt: "Video demostrativo del correo",
+        caption: "Demostración visual de la interactividad y funcionalidad del correo"
+      },
+      {
+        type: 'video',
+        url: "/videos/video-aumigo.mp4",
+        alt: "Demostración del correo Meu Aumigo en acción",
+        caption: "Demostración interactiva del correo funcionando en la práctica"
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -351,9 +372,7 @@ const ProjectPage = ({ language = 'pt' }) => {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            mediaItems={mediaItems}
-            autoPlayVideos={true}
-            videoMuted={true}
+            mediaItems={mediaItems} 
           />
         </section>
 
@@ -379,6 +398,4 @@ const ProjectPage = ({ language = 'pt' }) => {
       </main>
     </div>
   );
-};
-
-export default ProjectPage;
+}

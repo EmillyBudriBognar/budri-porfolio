@@ -1,22 +1,44 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 // Components
-import ProjectHero from '@/components/ProjectHero';
-import ProjectOverview from '@/components/ProjectOverview';
-import CreativeProcess from '@/components/CreativeProcess';
-import ResultsImpact from '@/components/ResultsImpact';
-import GalleryCarousel from '@/components/GalleryCarousel';
-import ToolsUsed from '@/components/ToolsUsed';
-import LessonsLearned from '@/components/LessonsLearned';
-import ProjectCTA from '@/components/ProjectCTA';
-import ProjectsNav from '@/components/ProjectsNav';
+import ProjectHero from "@/components/ProjectHero";
+import ProjectOverview from "@/components/ProjectOverview";
+import CreativeProcess from "@/components/CreativeProcess";
+import ResultsImpact from "@/components/ResultsImpact";
+import GalleryCarousel from "@/components/GalleryCarousel";
+import ToolsUsed from "@/components/ToolsUsed";
+import LessonsLearned from "@/components/LessonsLearned";
+import ProjectCTA from "@/components/ProjectCTA";
+import ProjectsNav from "@/components/ProjectsNav";
 
-const ProjectPage = ({ language = 'pt' }) => {
+export default function ProjectPage({ searchParams }) {
   const router = useRouter();
-  const [currentLanguage, setCurrentLanguage] = React.useState(language);
+  const [currentLanguage, setCurrentLanguage] = useState("pt");
+
+  useEffect(() => {
+    // Verificar se há um parâmetro de idioma na URL
+    const urlLanguage = searchParams?.lang;
+    
+    if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
+      setCurrentLanguage(urlLanguage);
+      return;
+    }
+
+    // Verificar o idioma do navegador
+    const browserLanguage = navigator.language || navigator.userLanguage;
+    const primaryLanguage = browserLanguage.split('-')[0];
+    
+    // Definir o idioma padrão com base no navegador
+    if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
+      setCurrentLanguage(primaryLanguage);
+    } else {
+      // Padrão para inglês se não for um dos idiomas suportados
+      setCurrentLanguage('en');
+    }
+  }, [searchParams]);
 
   const translations = {
     pt: {
@@ -192,10 +214,10 @@ const ProjectPage = ({ language = 'pt' }) => {
     }
   };
 
-  const t = translations[currentLanguage] || translations['pt'];
+  const t = translations[currentLanguage] || translations["pt"];
 
   const handleBackToMain = () => {
-    router.push('/');
+    router.push("/");
   };
 
   const handleLanguageChange = (newLanguage) => {
@@ -304,8 +326,8 @@ const ProjectPage = ({ language = 'pt' }) => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <header id="project-header">
-        <ProjectsNav 
-          language={currentLanguage} 
+        <ProjectsNav
+          language={currentLanguage}
           onLanguageChange={handleLanguageChange}
           onBackToMain={handleBackToMain}
         />
@@ -313,7 +335,7 @@ const ProjectPage = ({ language = 'pt' }) => {
 
       <main id="project-main">
         <section id="project-hero">
-          <ProjectHero 
+          <ProjectHero
             title={t.title}
             subtitle={t.subtitle}
             image="/images/project-breshopp/capa.svg"
@@ -324,7 +346,7 @@ const ProjectPage = ({ language = 'pt' }) => {
         </section>
 
         <section id="project-overview">
-          <ProjectOverview 
+          <ProjectOverview
             objective={t.overview.objective}
             challenge={t.overview.challenge}
             solution={t.overview.solution}
@@ -333,14 +355,11 @@ const ProjectPage = ({ language = 'pt' }) => {
         </section>
 
         <section id="creative-process">
-          <CreativeProcess
-            steps={t.process}
-            language={currentLanguage}
-          />
+          <CreativeProcess steps={t.process} language={currentLanguage} />
         </section>
 
         <section id="results-impact">
-          <ResultsImpact 
+          <ResultsImpact
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             language={currentLanguage}
@@ -350,34 +369,22 @@ const ProjectPage = ({ language = 'pt' }) => {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            mediaItems={mediaItems}
-            autoPlayVideos={true}
-            videoMuted={true}
+            mediaItems={mediaItems} 
           />
         </section>
 
         <section id="tools-used">
-          <ToolsUsed
-            tools={t.tools}
-            language={currentLanguage}
-          />
+          <ToolsUsed tools={t.tools} language={currentLanguage} />
         </section>
 
         <section id="lessons-learned">
-          <LessonsLearned
-            language={currentLanguage}
-            lessons={t.lessons}
-          />
+          <LessonsLearned language={currentLanguage} lessons={t.lessons} />
         </section>
 
         <section id="project-cta">
-          <ProjectCTA
-            language={currentLanguage}
-          />
+          <ProjectCTA language={currentLanguage} />
         </section>
       </main>
     </div>
   );
-};
-
-export default ProjectPage;
+}

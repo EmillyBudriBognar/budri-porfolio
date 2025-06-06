@@ -1,22 +1,44 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 // Components
-import ProjectHero from '@/components/ProjectHero';
-import ProjectOverview from '@/components/ProjectOverview';
-import CreativeProcess from '@/components/CreativeProcess';
-import ResultsImpact from '@/components/ResultsImpact';
-import GalleryCarousel from '@/components/GalleryCarousel';
-import ToolsUsed from '@/components/ToolsUsed';
-import LessonsLearned from '@/components/LessonsLearned';
-import ProjectCTA from '@/components/ProjectCTA';
-import ProjectsNav from '@/components/ProjectsNav';
+import ProjectHero from "@/components/ProjectHero";
+import ProjectOverview from "@/components/ProjectOverview";
+import CreativeProcess from "@/components/CreativeProcess";
+import ResultsImpact from "@/components/ResultsImpact";
+import GalleryCarousel from "@/components/GalleryCarousel";
+import ToolsUsed from "@/components/ToolsUsed";
+import LessonsLearned from "@/components/LessonsLearned";
+import ProjectCTA from "@/components/ProjectCTA";
+import ProjectsNav from "@/components/ProjectsNav";
 
-const ProjectPage = ({ language = 'pt' }) => {
+export default function ProjectPage({ searchParams }) {
   const router = useRouter();
-  const [currentLanguage, setCurrentLanguage] = React.useState(language);
+  const [currentLanguage, setCurrentLanguage] = useState("pt");
+
+  useEffect(() => {
+    // Verificar se há um parâmetro de idioma na URL
+    const urlLanguage = searchParams?.lang;
+    
+    if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
+      setCurrentLanguage(urlLanguage);
+      return;
+    }
+
+    // Verificar o idioma do navegador
+    const browserLanguage = navigator.language || navigator.userLanguage;
+    const primaryLanguage = browserLanguage.split('-')[0];
+    
+    // Definir o idioma padrão com base no navegador
+    if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
+      setCurrentLanguage(primaryLanguage);
+    } else {
+      // Padrão para inglês se não for um dos idiomas suportados
+      setCurrentLanguage('en');
+    }
+  }, [searchParams]);
 
   const translations = {
     pt: {
@@ -114,7 +136,7 @@ const ProjectPage = ({ language = 'pt' }) => {
     }
   };
 
-  const t = translations[currentLanguage] || translations['en'];
+  const t = translations[currentLanguage] || translations['pt'];
 
   const handleBackToMain = () => {
     router.push('/');
@@ -125,139 +147,139 @@ const ProjectPage = ({ language = 'pt' }) => {
   };
 
   const mediaItems = {
-  pt: [
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide1-pt.png",
-      alt: "Capa do WorkingBrain",
-      caption: "Identidade visual do aplicativo educacional WorkingBrain"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide2.svg",
-      alt: "Logo",
-      caption: "Logo principal do WorkingBrain"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide3-pt.svg",
-      alt: "Apresentação da logo",
-      caption: "Apresentação conceitual da marca e elementos que a compõem"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide4-pt.svg",
-      alt: "Mascote",
-      caption: "O mascote da plataforma"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide5-pt.svg",
-      alt: "Brian, o cérebro",
-      caption: "Brian, o cérebro: mascote carismático que conduz a gamificação"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide6-pt.svg",
-      alt: "Cores e Tipografia",
-      caption: "Cores e tipografias utilizadas na identidade visual"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide7-pt.svg",
-      alt: "Significado visual",
-      caption: "Significados por trás das escolhas cromáticas e tipográficas"
-    }
-  ],
-  en: [
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide1-en.png",
-      alt: "WorkingBrain Cover",
-      caption: "Visual identity of the educational app WorkingBrain"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide2.svg",
-      alt: "Logo",
-      caption: "Main logo of the WorkingBrain project"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide3-en.svg",
-      alt: "Logo presentation",
-      caption: "Conceptual presentation of the brand and its visual elements"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide4-en.svg",
-      alt: "Mascot",
-      caption: "Platform mascot design"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide5-en.svg",
-      alt: "Brian the brain",
-      caption: "Brian the brain: friendly mascot guiding the gamification experience"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide6-en.svg",
-      alt: "Colors and Typography",
-      caption: "Color palette and typographic choices for the visual identity"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide7-en.svg",
-      alt: "Visual meaning",
-      caption: "Meanings behind the selected colors and typography"
-    }
-  ],
-  es: [
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide1-es.png",
-      alt: "Portada de WorkingBrain",
-      caption: "Identidad visual de la aplicación educativa WorkingBrain"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide2.svg",
-      alt: "Logo",
-      caption: "Logo principal del proyecto WorkingBrain"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide3-es.svg",
-      alt: "Presentación del logo",
-      caption: "Presentación conceptual de la marca y sus elementos visuales"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide4-es.svg",
-      alt: "Mascota",
-      caption: "Diseño de la mascota de la plataforma"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide5-es.svg",
-      alt: "Brian, el cerebro",
-      caption: "Brian, el cerebro: mascota carismática que lidera la gamificación"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide6-es.svg",
-      alt: "Colores y tipografía",
-      caption: "Paleta de colores y tipografía utilizada en la identidad visual"
-    },
-    {
-      type: 'image',
-      src: "/images/project-workingbrain/slide7-es.svg",
-      alt: "Significado visual",
-      caption: "Significados detrás de los colores y tipografía elegidos"
-    }
-  ]
-};
+    pt: [
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide1-pt.png",
+        alt: "Capa do WorkingBrain",
+        caption: "Identidade visual do aplicativo educacional WorkingBrain"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide2.svg",
+        alt: "Logo",
+        caption: "Logo principal do WorkingBrain"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide3-pt.svg",
+        alt: "Apresentação da logo",
+        caption: "Apresentação conceitual da marca e elementos que a compõem"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide4-pt.svg",
+        alt: "Mascote",
+        caption: "O mascote da plataforma"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide5-pt.svg",
+        alt: "Brian, o cérebro",
+        caption: "Brian, o cérebro: mascote carismático que conduz a gamificação"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide6-pt.svg",
+        alt: "Cores e Tipografia",
+        caption: "Cores e tipografias utilizadas na identidade visual"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide7-pt.svg",
+        alt: "Significado visual",
+        caption: "Significados por trás das escolhas cromáticas e tipográficas"
+      }
+    ],
+    en: [
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide1-en.png",
+        alt: "WorkingBrain Cover",
+        caption: "Visual identity of the educational app WorkingBrain"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide2.svg",
+        alt: "Logo",
+        caption: "Main logo of the WorkingBrain project"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide3-en.svg",
+        alt: "Logo presentation",
+        caption: "Conceptual presentation of the brand and its visual elements"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide4-en.svg",
+        alt: "Mascot",
+        caption: "Platform mascot design"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide5-en.svg",
+        alt: "Brian the brain",
+        caption: "Brian the brain: friendly mascot guiding the gamification experience"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide6-en.svg",
+        alt: "Colors and Typography",
+        caption: "Color palette and typographic choices for the visual identity"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide7-en.svg",
+        alt: "Visual meaning",
+        caption: "Meanings behind the selected colors and typography"
+      }
+    ],
+    es: [
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide1-es.png",
+        alt: "Portada de WorkingBrain",
+        caption: "Identidad visual de la aplicación educativa WorkingBrain"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide2.svg",
+        alt: "Logo",
+        caption: "Logo principal del proyecto WorkingBrain"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide3-es.svg",
+        alt: "Presentación del logo",
+        caption: "Presentación conceptual de la marca y sus elementos visuales"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide4-es.svg",
+        alt: "Mascota",
+        caption: "Diseño de la mascota de la plataforma"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide5-es.svg",
+        alt: "Brian, el cerebro",
+        caption: "Brian, el cerebro: mascota carismática que lidera la gamificación"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide6-es.svg",
+        alt: "Colores y tipografía",
+        caption: "Paleta de colores y tipografía utilizada en la identidad visual"
+      },
+      {
+        type: 'image',
+        src: "/images/project-workingbrain/slide7-es.svg",
+        alt: "Significado visual",
+        caption: "Significados detrás de los colores y tipografía elegidos"
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -314,7 +336,7 @@ const ProjectPage = ({ language = 'pt' }) => {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            mediaItems={mediaItems}
+            mediaItems={mediaItems} 
           />
         </section>
         
@@ -340,6 +362,4 @@ const ProjectPage = ({ language = 'pt' }) => {
       </main>
     </div>
   );
-};
-
-export default ProjectPage;
+}

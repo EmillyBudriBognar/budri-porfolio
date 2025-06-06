@@ -1,22 +1,44 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 // Components
-import ProjectHero from '@/components/ProjectHero';
-import ProjectOverview from '@/components/ProjectOverview';
-import CreativeProcess from '@/components/CreativeProcess';
-import ResultsImpact from '@/components/ResultsImpact';
-import GalleryCarousel from '@/components/GalleryCarousel';
-import ToolsUsed from '@/components/ToolsUsed';
-import LessonsLearned from '@/components/LessonsLearned';
-import ProjectCTA from '@/components/ProjectCTA';
-import ProjectsNav from '@/components/ProjectsNav';
+import ProjectHero from "@/components/ProjectHero";
+import ProjectOverview from "@/components/ProjectOverview";
+import CreativeProcess from "@/components/CreativeProcess";
+import ResultsImpact from "@/components/ResultsImpact";
+import GalleryCarousel from "@/components/GalleryCarousel";
+import ToolsUsed from "@/components/ToolsUsed";
+import LessonsLearned from "@/components/LessonsLearned";
+import ProjectCTA from "@/components/ProjectCTA";
+import ProjectsNav from "@/components/ProjectsNav";
 
-const ProjectPage = ({ language = 'pt' }) => {
+export default function ProjectPage({ searchParams }) {
   const router = useRouter();
-  const [currentLanguage, setCurrentLanguage] = React.useState(language);
+  const [currentLanguage, setCurrentLanguage] = useState("pt");
+
+  useEffect(() => {
+    // Verificar se há um parâmetro de idioma na URL
+    const urlLanguage = searchParams?.lang;
+    
+    if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
+      setCurrentLanguage(urlLanguage);
+      return;
+    }
+
+    // Verificar o idioma do navegador
+    const browserLanguage = navigator.language || navigator.userLanguage;
+    const primaryLanguage = browserLanguage.split('-')[0];
+    
+    // Definir o idioma padrão com base no navegador
+    if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
+      setCurrentLanguage(primaryLanguage);
+    } else {
+      // Padrão para inglês se não for um dos idiomas suportados
+      setCurrentLanguage('en');
+    }
+  }, [searchParams]);
 
   const translations = {
     pt: {
@@ -177,7 +199,7 @@ const ProjectPage = ({ language = 'pt' }) => {
     }
   };
 
-  const t = translations[currentLanguage] || translations['en'];
+  const t = translations[currentLanguage] || translations['pt'];
 
   const handleBackToMain = () => {
     router.push('/');
@@ -187,176 +209,176 @@ const ProjectPage = ({ language = 'pt' }) => {
     setCurrentLanguage(newLanguage);
   };
 
-const mediaItems = {
-  pt: [
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide1.svg", 
-      alt: "Capa do WorkingBrain", 
-      caption: "WorkingBrain Mobile: aplicativo educacional desenvolvido para estudantes e professores" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide2-pt.svg", 
-      alt: "Vídeo demonstrativo", 
-      caption: "Apresentação em vídeo com as principais funcionalidades" 
-    },
-    { 
-      type: 'video', 
-      url: "/videos/video-workingbrain.mp4", 
-      alt: "Demonstração do aplicativo", 
-      caption: "Demonstração em vídeo com foco na usabilidade e funcionalidades centrais" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide4.svg", 
-      alt: "Mockups", 
-      caption: "Mockups que ilustram o processo de concepção até a solução final" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide5-pt.svg", 
-      alt: "Mockups gerais", 
-      caption: "Visão geral: fluxos acessíveis a todos os tipos de usuários" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide6-pt.svg", 
-      alt: "Mockups do aluno", 
-      caption: "Fluxo do aluno: introdução e navegação inicial no aplicativo" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide7-pt.svg", 
-      alt: "Mockups do aluno", 
-      caption: "Fluxo do aluno: telas principais da jornada educacional"  
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide8-pt.svg", 
-      alt: "Mockups do aluno", 
-      caption: "Fluxo do aluno: continuidade e conclusão da navegação" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide9-pt.svg", 
-      alt: "Mockups do professor", 
-      caption: "Fluxo do professor: telas-chave para acompanhamento e gestão"  
-    }
-  ],
-  en: [
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide1.svg", 
-      alt: "WorkingBrain cover", 
-      caption: "WorkingBrain Mobile: an educational app designed for students and teachers" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide2-en.svg", 
-      alt: "Demo video", 
-      caption: "Video presentation showcasing key features" 
-    },
-    { 
-      type: 'video', 
-      url: "/videos/video-workingbrain.mp4", 
-      alt: "App demonstration", 
-      caption: "App demonstration video focused on usability and main features" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide4.svg", 
-      alt: "Mockups", 
-      caption: "Mockups illustrating the design process to the final solution" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
-      alt: "General mockups", 
-      caption: "Overview: flows accessible to all user types" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide6-en.svg", 
-      alt: "Student mockups", 
-      caption: "Student flow: introduction and initial navigation in the app" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide7-en.svg", 
-      alt: "Student mockups", 
-      caption: "Student flow: main screens of the educational journey" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide8-en.svg", 
-      alt: "Student mockups", 
-      caption: "Student flow: continuity and end of navigation" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide9-en.svg", 
-      alt: "Teacher mockups", 
-      caption: "Teacher flow: key screens for tracking and management" 
-    }
-  ],
-  es: [
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide1.svg", 
-      alt: "Portada de WorkingBrain", 
-      caption: "WorkingBrain Mobile: una aplicación educativa para estudiantes y docentes" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide2-es.svg", 
-      alt: "Video de demostración", 
-      caption: "Presentación en video con las principales funcionalidades" 
-    },
-    { 
-      type: 'video', 
-      url: "/videos/video-workingbrain.mp4", 
-      alt: "Demostración de la app", 
-      caption: "Video de demostración centrado en la usabilidad y funciones clave" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide4.svg", 
-      alt: "Mockups", 
-      caption: "Mockups que muestran el proceso desde el diseño hasta la solución final" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
-      alt: "Mockups generales", 
-      caption: "Vista general: flujos accesibles para todos los tipos de usuarios" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide6-es.svg", 
-      alt: "Mockups del estudiante", 
-      caption: "Flujo del estudiante: introducción y navegación inicial en la app" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide7-es.svg", 
-      alt: "Mockups del estudiante", 
-      caption: "Flujo del estudiante: pantallas principales del recorrido educativo" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide8-es.svg", 
-      alt: "Mockups del estudiante", 
-      caption: "Flujo del estudiante: continuidad y finalización de la navegación" 
-    },
-    { 
-      type: 'image', 
-      src: "/images/project-workingbrain-mobile/slide9-es.svg", 
-      alt: "Mockups del docente", 
-      caption: "Flujo del docente: pantallas clave para el seguimiento y la gestión" 
-    }
-  ]
-};
+  const mediaItems = {
+    pt: [
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide1.svg", 
+        alt: "Capa do WorkingBrain", 
+        caption: "WorkingBrain Mobile: aplicativo educacional desenvolvido para estudantes e professores" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide2-pt.svg", 
+        alt: "Vídeo demonstrativo", 
+        caption: "Apresentação em vídeo com as principais funcionalidades" 
+      },
+      { 
+        type: 'video', 
+        url: "/videos/video-workingbrain.mp4", 
+        alt: "Demonstração do aplicativo", 
+        caption: "Demonstração em vídeo com foco na usabilidade e funcionalidades centrais" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide4.svg", 
+        alt: "Mockups", 
+        caption: "Mockups que ilustram o processo de concepção até a solução final" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide5-pt.svg", 
+        alt: "Mockups gerais", 
+        caption: "Visão geral: fluxos acessíveis a todos os tipos de usuários" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide6-pt.svg", 
+        alt: "Mockups do aluno", 
+        caption: "Fluxo do aluno: introdução e navegação inicial no aplicativo" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide7-pt.svg", 
+        alt: "Mockups do aluno", 
+        caption: "Fluxo do aluno: telas principais da jornada educacional"  
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide8-pt.svg", 
+        alt: "Mockups do aluno", 
+        caption: "Fluxo do aluno: continuidade e conclusão da navegação" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide9-pt.svg", 
+        alt: "Mockups do professor", 
+        caption: "Fluxo do professor: telas-chave para acompanhamento e gestão"  
+      }
+    ],
+    en: [
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide1.svg", 
+        alt: "WorkingBrain cover", 
+        caption: "WorkingBrain Mobile: an educational app designed for students and teachers" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide2-en.svg", 
+        alt: "Demo video", 
+        caption: "Video presentation showcasing key features" 
+      },
+      { 
+        type: 'video', 
+        url: "/videos/video-workingbrain.mp4", 
+        alt: "App demonstration", 
+        caption: "App demonstration video focused on usability and main features" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide4.svg", 
+        alt: "Mockups", 
+        caption: "Mockups illustrating the design process to the final solution" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
+        alt: "General mockups", 
+        caption: "Overview: flows accessible to all user types" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide6-en.svg", 
+        alt: "Student mockups", 
+        caption: "Student flow: introduction and initial navigation in the app" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide7-en.svg", 
+        alt: "Student mockups", 
+        caption: "Student flow: main screens of the educational journey" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide8-en.svg", 
+        alt: "Student mockups", 
+        caption: "Student flow: continuity and end of navigation" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide9-en.svg", 
+        alt: "Teacher mockups", 
+        caption: "Teacher flow: key screens for tracking and management" 
+      }
+    ],
+    es: [
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide1.svg", 
+        alt: "Portada de WorkingBrain", 
+        caption: "WorkingBrain Mobile: una aplicación educativa para estudiantes y docentes" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide2-es.svg", 
+        alt: "Video de demostración", 
+        caption: "Presentación en video con las principales funcionalidades" 
+      },
+      { 
+        type: 'video', 
+        url: "/videos/video-workingbrain.mp4", 
+        alt: "Demostración de la app", 
+        caption: "Video de demostración centrado en la usabilidad y funciones clave" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide4.svg", 
+        alt: "Mockups", 
+        caption: "Mockups que muestran el proceso desde el diseño hasta la solución final" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
+        alt: "Mockups generales", 
+        caption: "Vista general: flujos accesibles para todos los tipos de usuarios" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide6-es.svg", 
+        alt: "Mockups del estudiante", 
+        caption: "Flujo del estudiante: introducción y navegación inicial en la app" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide7-es.svg", 
+        alt: "Mockups del estudiante", 
+        caption: "Flujo del estudiante: pantallas principales del recorrido educativo" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide8-es.svg", 
+        alt: "Mockups del estudiante", 
+        caption: "Flujo del estudiante: continuidad y finalización de la navegación" 
+      },
+      { 
+        type: 'image', 
+        src: "/images/project-workingbrain-mobile/slide9-es.svg", 
+        alt: "Mockups del docente", 
+        caption: "Flujo del docente: pantallas clave para el seguimiento y la gestión" 
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -413,7 +435,7 @@ const mediaItems = {
         <section id="project-gallery">
           <GalleryCarousel 
             language={currentLanguage}
-            mediaItems={mediaItems}
+            mediaItems={mediaItems} 
           />
         </section>
         
@@ -439,6 +461,4 @@ const mediaItems = {
       </main>
     </div>
   );
-};
-
-export default ProjectPage;
+}

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const GalleryCarousel = ({
-  mediaItems = {},
+  mediaItems = {}, // Agora recebe o objeto completo
   bgColor = 'bg-gray-50',
   darkBgColor = 'dark:bg-gray-800',
   textColor = 'text-gray-800',
@@ -33,10 +33,10 @@ const GalleryCarousel = ({
   }, [inView, currentIndex]);
 
   const handleVideoPlayback = () => {
-    if (!autoPlayVideos || !mediaItems[language] || !mediaItems[language][currentIndex]) return;
+    if (!autoPlayVideos || !mediaItems[language]) return;
     
     const currentMedia = mediaItems[language][currentIndex];
-    if (currentMedia?.type !== 'video') return;
+    if (!currentMedia || currentMedia?.type !== 'video') return;
 
     const videoRef = videoRefs.current[currentIndex];
     if (!videoRef) return;
@@ -67,7 +67,8 @@ const GalleryCarousel = ({
 
   const { sectionTitle } = translations[language] || translations['en'];
   
-  const currentMedia = ((mediaItems[language] || mediaItems['en'] || []))
+  // Acesse os mediaItems corretamente para o idioma selecionado
+  const currentMedia = (mediaItems[language] || mediaItems['pt'] || [])
     .filter(item => item && (item.type === 'image' || item.type === 'video'))
     .map(item => ({
       ...item,
