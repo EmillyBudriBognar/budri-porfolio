@@ -23,7 +23,7 @@ const ProfileCard = ({ language }) => {
       description3:
         "Com <b>comunicação clara</b> e foco nas <b>necessidades reais</b>, seria um prazer ajudar sua empresa a crescer com soluções que realmente impactam.",
       buttonText: "BAIXAR CV",
-      cvLink: "https://drive.google.com/file/",
+      cvLink: "https://docs.google.com/document/d/1H7_aH-NyoqNIUuRG0EnQNOj6_9n7PHjR/edit?usp=sharing&ouid=107642192742902543413&rtpof=true&sd=true",
     },
     es: {
       greeting: "¡Hola, soy Emilly Budri Bognar!",
@@ -35,7 +35,7 @@ const ProfileCard = ({ language }) => {
       description3:
         "Con <b>comunicación clara</b> y enfoque en las <b>necesidades reales</b>, sería un placer ayudar a su empresa a crecer con soluciones que realmente impactan.",
       buttonText: "DESCARGAR CV",
-      cvLink: "https://drive.google.com/file/",
+      cvLink: "https://docs.google.com/document/d/1Ny_GQbOLBQ6wj0X0j3nNAjpSLHejhQxX/edit?usp=sharing&ouid=107642192742902543413&rtpof=true&sd=true",
     },
     en: {
       greeting: "Hi, I'm Emilly Budri Bognar!",
@@ -47,7 +47,7 @@ const ProfileCard = ({ language }) => {
       description3:
         "With <b>clear communication</b> and focus on <b>real needs</b>, it would be a pleasure to help your company grow with solutions that truly impact.",
       buttonText: "DOWNLOAD CV",
-      cvLink: "https://drive.google.com/file/",
+      cvLink: "https://docs.google.com/document/d/195dhkZSfskG7wDIYI1DwUNJmXTpYWQD0/edit?usp=sharing&ouid=107642192742902543413&rtpof=true&sd=true",
     },
   };
 

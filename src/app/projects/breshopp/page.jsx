@@ -28,11 +28,11 @@ const ProjectPage = ({ language = 'pt' }) => {
         solution: "Design responsivo focado em hierarquia visual, prova social e apelo emocional, com base em princípios de marketing digital."
       },
       process: [
-        { emoji: "🧠", title: "Pesquisa de Benchmark", description: "Análise de landing pages de marketplaces e marcas sustentáveis" },
+        { emoji: "🧠", title: "Pesquisa de Benchmark", description: "Análise detalhada de landing pages de marketplaces e marcas sustentáveis para identificar melhores práticas" },
+        { emoji: "🎨", title: "Design de Interface", description: "Criação de wireframes e protótipos focados na experiência do usuário e identidade visual da marca" },
         { emoji: "🔍", title: "Otimização SEO", description: "Estratégia de palavras-chave e estrutura semântica para melhor ranqueamento e conversão" },
-        { emoji: "📢", title: "Copywriting Estratégico", description: "Mensagens diretas com CTA claras e benefícios destacados" },
-        { emoji: "📱", title: "Responsividade", description: "Adaptação total para dispositivos móveis, mantendo apelo visual" },
-        { emoji: "🛠️", title: "Design System", description: "Criação de um sistema de componentes para garantir consistência visual e agilidade no desenvolvimento" }
+        { emoji: "📢", title: "Copywriting Estratégico", description: "Mensagens diretas com CTAs claras e benefícios destacados para maximizar a conversão" },
+        { emoji: "📱", title: "Responsividade", description: "Adaptação total para dispositivos móveis, garantindo usabilidade e apelo visual em todas as plataformas" }
       ],
       results: {
         metrics: [
@@ -71,10 +71,6 @@ const ProjectPage = ({ language = 'pt' }) => {
           description: "Aprendi a implementar parallax na primeira seção para criar profundidade visual e engajar os usuários imediatamente, aumentando o tempo de permanência na página."
         },
         {
-          title: "Design System",
-          description: "Implementar um sistema de design garantiu consistência visual, identidade de marca forte e facilitou a componentização e manutenção do código."
-        },
-        {
           title: "Pensamento estratégico",
           description: "Pensei além do layout e conectei cada decisão visual ao objetivo de engajamento."
         }
@@ -89,11 +85,11 @@ const ProjectPage = ({ language = 'pt' }) => {
         solution: "Diseño responsive enfocado en jerarquía visual, prueba social y apelación emocional basado en principios de marketing digital."
       },
       process: [
-        { emoji: "🧠", title: "Investigación de Benchmark", description: "Análisis de páginas de destino de marketplaces y marcas sostenibles" },
-        { emoji: "🎨", title: "Diseño Visual", description: "Exploración de colores, tipografía e imágenes alineadas con una propuesta joven y consciente" },
-        { emoji: "📢", title: "Copywriting Estratégico", description: "Mensajes directos con CTAs claros y beneficios destacados" },
-        { emoji: "📱", title: "Responsividad", description: "Adaptación total para dispositivos móviles manteniendo atractivo visual" },
-        { emoji: "🛠️", title: "Design System", description: "Creación de un sistema de componentes para garantizar consistencia visual y agilidad en el desarrollo" }
+        { emoji: "🧠", title: "Investigación de Benchmark", description: "Análisis detallado de páginas de destino de marketplaces y marcas sostenibles para identificar mejores prácticas" },
+        { emoji: "🎨", title: "Diseño de Interfaz", description: "Creación de wireframes y prototipos centrados en la experiencia del usuario e identidad visual de la marca" },
+        { emoji: "🔍", title: "Optimización SEO", description: "Estrategia de palabras clave y estructura semántica para mejor posicionamiento y conversión" },
+        { emoji: "📢", title: "Copywriting Estratégico", description: "Mensajes directos con CTAs claros y beneficios destacados para maximizar la conversión" },
+        { emoji: "📱", title: "Responsividad", description: "Adaptación completa para dispositivos móviles, garantizando usabilidad y atractivo visual en todas las plataformas" }
       ],
       results: {
         metrics: [
@@ -132,10 +128,6 @@ const ProjectPage = ({ language = 'pt' }) => {
           description: "Aprendí a implementar parallax en la primera sección para crear profundidad visual y captar la atención de los usuarios inmediatamente, aumentando el tiempo de permanencia en la página."
         },
         {
-          title: "Design System",
-          description: "Implementar un sistema de diseño garantizó consistencia visual, identidad de marca fuerte y facilitó la componentización y mantenimiento del código."
-        },
-        {
           title: "Pensamiento estratégico",
           description: "Pensé más allá del diseño y conecté cada decisión visual con el objetivo de compromiso."
         }
@@ -150,11 +142,11 @@ const ProjectPage = ({ language = 'pt' }) => {
         solution: "Responsive design focused on visual hierarchy, social proof and emotional appeal based on digital marketing principles."
       },
       process: [
-        { emoji: "🧠", title: "Benchmark Research", description: "Analysis of landing pages from sustainable brands and marketplaces" },
+        { emoji: "🧠", title: "Benchmark Research", description: "Detailed analysis of landing pages from sustainable brands and marketplaces to identify best practices" },
+        { emoji: "🎨", title: "Interface Design", description: "Creation of wireframes and prototypes focused on user experience and brand visual identity" },
         { emoji: "🔍", title: "SEO Optimization", description: "Keyword strategy and semantic structure for better ranking and conversion" },
-        { emoji: "📢", title: "Strategic Copywriting", description: "Clear messaging with strong CTAs and highlighted benefits" },
-        { emoji: "📱", title: "Responsive Layout", description: "Fully optimized for mobile without losing visual impact" },
-        { emoji: "🛠️", title: "Design System", description: "Created a component system to ensure visual consistency and development efficiency" }
+        { emoji: "📢", title: "Strategic Copywriting", description: "Clear messaging with strong CTAs and highlighted benefits to maximize conversion" },
+        { emoji: "📱", title: "Responsive Layout", description: "Full adaptation for mobile devices, ensuring usability and visual appeal across all platforms" }
       ],
       results: {
         metrics: [
@@ -193,10 +185,6 @@ const ProjectPage = ({ language = 'pt' }) => {
           description: "I learned to implement parallax in the first section to create visual depth and immediately engage users, increasing time spent on the page."
         },
         {
-          title: "Design System",
-          description: "Implementing a design system ensured visual consistency, strong brand identity and facilitated componentization and code maintenance."
-        },
-        {
           title: "Strategic thinking",
           description: "Every design decision was tied to the goal of engagement and conversion."
         }
@@ -219,114 +207,96 @@ const ProjectPage = ({ language = 'pt' }) => {
       {
         type: 'image', 
         src: "/images/project-breshopp/slide1.svg",
-        alt: "",
-        caption: ""
+        alt: "Visão geral do projeto BreShopp",
+        caption: "Visão geral da arquitetura da landing page e fluxo de conversão"
       },
       {
         type: 'image',
         src: "/images/project-breshopp/slide2-pt.svg",
-         alt: "",
-         caption: ""
+        alt: "Detalhes da estrutura de conteúdo",
+        caption: "Estrutura de conteúdo otimizada para conversão e engajamento"
       },
       {
         type: 'video',
         url: "/videos/video-breshopp.mp4",
-        alt: "",
-        caption: ""
+        alt: "Demonstração interativa da landing page",
+        caption: "Demonstração das funcionalidades e experiência do usuário"
       },
       {
         type: 'image', 
         src: "/images/project-breshopp/slide4-pt.svg",
-        alt: "",
-        caption: ""
+        alt: "Design responsivo em múltiplos dispositivos",
+        caption: "Adaptação perfeita para desktop, tablet e mobile"
       },
       {
         type: 'image', 
         src: "/images/project-breshopp/slide5-pt.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image', 
-        src: "/images/project-breshopp/slide6.svg",
-        alt: "",
-        caption: ""
+        alt: "Elementos de otimização SEO",
+        caption: "Estratégias implementadas para melhorar o ranqueamento orgânico"
       }
     ],
     en: [
       {
         type: 'image',
         src: "/images/project-breshopp/slide1.svg", 
-        alt: "", 
-        caption: ""
+        alt: "BreShopp project overview", 
+        caption: "Landing page architecture and conversion flow overview"
       },
       {
         type: 'image',
         src: "/images/project-breshopp/slide2-en.svg", 
-        alt: "", 
-        caption: ""
+        alt: "Content structure details", 
+        caption: "Content structure optimized for conversion and engagement"
       },
       {
         type: 'video',
         url: "/videos/video-breshopp.mp4",
-        alt: "",
-        caption: ""
+        alt: "Interactive landing page demonstration",
+        caption: "Functionality and user experience demonstration"
       },
       {
         type: 'image', 
         src: "/images/project-breshopp/slide4-en.svg",
-        alt: "",
-        caption: ""
+        alt: "Responsive design across devices",
+        caption: "Seamless adaptation for desktop, tablet and mobile"
       },
       {
         type: 'image', 
         src: "/images/project-breshopp/slide5-en.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image', 
-        src: "/images/project-breshopp/slide6.svg",
-        alt: "",
-        caption: ""
+        alt: "SEO optimization elements",
+        caption: "Implemented strategies to improve organic ranking"
       }
     ],
     es: [
       {
         type: 'image',
         src: "/images/project-breshopp/slide1.svg", 
-        alt: "", 
-        caption: ""
+        alt: "Visión general del proyecto BreShopp", 
+        caption: "Arquitectura de la página de destino y flujo de conversión"
       },
       {
         type: 'image',
         src: "/images/project-breshopp/slide2-es.svg", 
-        alt: "", 
-        caption: ""
+        alt: "Detalles de la estructura de contenido", 
+        caption: "Estructura de contenido optimizada para conversión y compromiso"
       },
       {
         type: 'video',
         url: "/videos/video-breshopp.mp4",
-        alt: "",
-        caption: ""
+        alt: "Demostración interactiva de la página de destino",
+        caption: "Demostración de funcionalidades y experiencia del usuario"
       },
       {
         type: 'image', 
         src: "/images/project-breshopp/slide4-es.svg",
-        alt: "",
-        caption: ""
+        alt: "Diseño responsive en múltiples dispositivos",
+        caption: "Adaptación perfecta para desktop, tablet y móvil"
       },
       {
         type: 'image', 
         src: "/images/project-breshopp/slide5-es.svg",
-        alt: "",
-        caption: ""
-      },
-      {
-        type: 'image', 
-        src: "/images/project-breshopp/slide6.svg",
-        alt: "",
-        caption: ""
+        alt: "Elementos de optimización SEO",
+        caption: "Estrategias implementadas para mejorar el posicionamiento orgánico"
       }
     ]
   };
@@ -346,9 +316,9 @@ const ProjectPage = ({ language = 'pt' }) => {
           <ProjectHero 
             title={t.title}
             subtitle={t.subtitle}
-            image="/images/project-breshopp/logoworkingbrain-white.svg"
-            darkImage="/images/project-breshopp/logoworkingbrain-white.svg"
-            imagePosition="bottom"
+            image="/images/project-breshopp/capa.svg"
+            darkImage="/images/project-breshopp/capa.svg"
+            imagePosition="center"
             language={currentLanguage}
           />
         </section>
@@ -373,14 +343,6 @@ const ProjectPage = ({ language = 'pt' }) => {
           <ResultsImpact 
             metrics={t.results.metrics}
             feedback={t.results.feedback}
-            beforeAfterImages={{
-              before: "/images/project-breshopp/antes.svg",
-              after: "/images/project-breshopp/depois.svg",
-              beforeAlt: currentLanguage === 'en' ? "Generic presentation" : 
-                        currentLanguage === 'es' ? "Presentación genérica" : "Apresentação genérica",
-              afterAlt: currentLanguage === 'en' ? "Emotional and purposeful design" : 
-                      currentLanguage === 'es' ? "Diseño emocional y con propósito" : "Design emocional e com propósito"
-            }}
             language={currentLanguage}
           />
         </section>

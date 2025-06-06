@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "@/app/globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -14,6 +14,22 @@ import ProjectsSection from "@/components/ProjectsSection";
 
 export default function Home() {
   const [language, setLanguage] = useState("en");
+
+  useEffect(() => {
+    // Verificar o idioma do navegador quando o componente montar
+    const browserLanguage = navigator.language || navigator.userLanguage;
+    
+    // Simplificando para pegar apenas os dois primeiros caracteres (ex: 'pt-BR' -> 'pt')
+    const primaryLanguage = browserLanguage.split('-')[0];
+    
+    // Definir o idioma padrão com base no navegador (apenas se for um idioma suportado)
+    if (primaryLanguage === 'pt' || primaryLanguage === 'es' || primaryLanguage === 'fr') {
+      setLanguage(primaryLanguage);
+    } else {
+      // Padrão para inglês se não for um dos idiomas suportados
+      setLanguage('en');
+    }
+  }, []);
 
   const handleLanguageChange = (code) => {
     setLanguage(code);

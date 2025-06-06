@@ -14,13 +14,22 @@ const ProjectItem = ({ project, isActive }) => {
       animate={{ opacity: isActive ? 1 : 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Layout diferente para mobile e desktop */}
       <div className="flex flex-col md:flex-row h-full">
-        {/* Imagem do projeto (lado esquerdo) */}
-        <div className="w-full md:w-1/2 h-64 md:h-auto bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-gray-800 dark:to-gray-800 relative overflow-hidden group">
+        {/* Imagem do projeto - mobile tem imagem menor e diferente */}
+        <div className="w-full md:w-1/2 h-48 md:h-auto bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-gray-800 dark:to-gray-800 relative overflow-hidden group">
+          {/* Imagem para mobile */}
+          <img
+            src={project.mobileImage || project.image}
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 md:hidden"
+            loading="lazy"
+          />
+          {/* Imagem para desktop */}
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hidden md:block"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-4 md:p-6 flex flex-col justify-end">
@@ -37,27 +46,28 @@ const ProjectItem = ({ project, isActive }) => {
           </div>
         </div>
 
-        {/* Ficha técnica (lado direito) */}
-        <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col h-full">
+        {/* Conteúdo - layout mais compacto no mobile */}
+        <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col">
           <div className="flex-grow">
-            <div className="mb-4 md:mb-6">
+            <div className="mb-3 md:mb-6">
               <span className="text-xs md:text-sm text-purple-600 dark:text-purple-400 font-medium">
                 {project.section}
               </span>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mt-1 mb-2 md:mb-3">
+              <h3 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white mt-1 mb-1 md:mb-3">
                 {project.title}
               </h3>
-              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-3 md:mb-4">
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3 md:line-clamp-none">
                 {project.description}
               </p>
               
-              <div className="grid grid-cols-2 gap-2 md:gap-4 mb-4 md:mb-6">
+              {/* Grid mais compacto no mobile */}
+              <div className="grid grid-cols-2 gap-2 mb-3 md:mb-6">
                 {project.details.map((detail, i) => (
                   <div key={i} className="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg">
-                    <span className="block text-xs text-gray-500 dark:text-gray-400 mb-1">
+                    <span className="block text-xs text-gray-500 dark:text-gray-400 mb-0 md:mb-1">
                       {detail.label}
                     </span>
-                    <span className="block text-xs md:text-sm font-medium text-gray-900 dark:text-white">
+                    <span className="block text-xs font-medium text-gray-900 dark:text-white truncate">
                       {detail.value}
                     </span>
                   </div>
@@ -66,16 +76,16 @@ const ProjectItem = ({ project, isActive }) => {
             </div>
           </div>
 
-          {/* Botão fixo na parte inferior */}
-          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+          {/* Botão com tamanho adaptável */}
+          <div className="mt-2 pt-3 border-t border-gray-100 dark:border-gray-800">
             <a
               href={project.link}
-              className="w-full flex items-center justify-center px-4 py-3 md:px-6 md:py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg md:rounded-xl hover:opacity-90 transition-opacity text-sm md:text-lg"
+              className="w-full flex items-center justify-center px-3 py-2 md:px-6 md:py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm"
               target="_blank"
               rel="noopener noreferrer"
             >
               {project.ctaText}
-              <FiExternalLink className="ml-2" size={16} />
+              <FiExternalLink className="ml-2" size={14} />
             </a>
           </div>
         </div>
@@ -100,53 +110,57 @@ const Portfolio = ({ language = "pt" }) => {
           title: "WorkingBrain - Plataforma Educacional",
           description: "Aplicativo educacional com gamificação e relatórios de desempenho, desenvolvido com React Native e Expo. Projeto acadêmico e pessoal focado na inclusão digital.",
           category: ["Mobile App", "UI Design", "UX Design", "Educação"],
-          image: "/images/project-workingbrain-mobile/slide1.svg",
+          image: "/images/project-workingbrain-mobile/capa-desktop.svg",
+          mobileImage: "/images/project-workingbrain-mobile/slide1.svg",
           link: "/projects/workingbrain-mobile",
-          ctaText: "Ver Projeto Completo",
+          ctaText: "Ver Projeto",
           year: "2024",
           details: [
             { label: "Tipo de projeto", value: "TCC – Técnico em Informática para Internet" },
             { label: "Ano", value: "2024" },
             { label: "Tecnologias", value: "React Native, Typescript, Expo" },
-            { label: "Resultado", value: "+85 usuários interessados" }
+            { label: "Resultado", value: "+85 usuários" }
           ]
         },
         {
           section: "Email Marketing",
           title: "Meu Aumigo - Email Marketing",
           description: "E-mail HTML responsivo com animações CSS e foco em conversão. Desenvolvido como projeto pessoal para simular uma campanha real.",
-          category: ["Email Marketing", "Motion Design", "Copywriting", "Campanhas Criativas"],
-          image: "/images/aumigo.jpg",
+          category: ["Email Marketing", "Motion Design", "Copywriting"],
+          image: "/images/project-meuaumigo/capa-desktop-pt.svg",
+          mobileImage: "/images/project-meuaumigo/capa-mobile-pt.svg",
           link: "/projects/meu-aumigo",
           ctaText: "Ver Campanha",
           year: "2025",
           details: [
             { label: "Tipo de projeto", value: "Projeto Pessoal" },
-            { label: "Formato", value: "E-mail HTML responsivo" },
+            { label: "Formato", value: "E-mail HTML Responsivo" },
             { label: "Ano", value: "2025" },
-            { label: "Conversão e Fidelização", value: "+60% média" }
+            { label: "Conversão", value: "+60% média" }
           ]
         },
         {
           section: "Website",
-          title: "Landing Page BreShopp - Marketplace de Brechós",
+          title: "BreShopp - Marketplace",
           description: "Página de apresentação com foco em usabilidade, design responsivo, SEO e conversão. Projeto acadêmico com estética jovem e sustentável.",
-          category: ["Web App", "UX Design", "UI Design", "SEO", "Design System", "E-commerce"],
-          image: "/images/breshopp.jpg",
+          category: ["Web App", "UX Design", "UI Design", "SEO"],
+          image: "/images/project-breshopp/capa-desktop.svg",
+          mobileImage: "/images/project-breshopp/slide1.svg",
           link: "/projects/breshopp",
-          ctaText: "Ver Projeto Completo",
+          ctaText: "Ver Projeto",
           year: "2025",
           details: [
-            { label: "Tipo de projeto", value: "Projeto Integrador – Superior em Desenvolvimento de Software Multiplataforma" },
+            { label: "Tipo de projeto", value: "Projeto Integrador - Tecnólogo em Desenvolvimento de Software Multiplataforma" },
             { label: "Ano", value: "2025" }
           ]
         },
         {
           section: "Identidade Visual",
-          title: "Identidade Visual e Gamificação WorkingBrain",
+          title: "WorkingBrain Brand",
           description: "Criação de identidade visual e mascote gamificado para aplicação multiplataforma. Projeto com direção criativa completa.",
-          category: ["Branding", "Design", "Ilustração", "Design Thinking"],
-          image: "/images/workingbrain-brand.jpg",
+          category: ["Branding", "Design", "Ilustração"],
+          image: "/images/project-workingbrain/capa-desktop-pt.png",
+          mobileImage: "/images/project-workingbrain/slide1-pt.png",
           link: "/projects/visual-identity-workingbrain",
           ctaText: "Ver Detalhes",
           year: "2024",
@@ -154,7 +168,7 @@ const Portfolio = ({ language = "pt" }) => {
             { label: "Tipo de projeto", value: "TCC – Técnico em Informática para Internet" },
             { label: "Ano", value: "2024" },
             { label: "Ferramentas", value: "Figma" },
-            { label: "Aprovação na Banca", value: "100%" }
+            { label: "Aprovação", value: "100%" }
           ]
         },
         {
@@ -162,15 +176,16 @@ const Portfolio = ({ language = "pt" }) => {
           title: "UX Research - WorkingBrain",
           description: "Pesquisa com estudantes e professores sobre educação digital. Inclui personas, mapa de empatia e jornada do usuário.",
           category: ["UX Research", "Testes de Usabilidade"],
-          image: "/images/ux-research.jpg",
+          image: "/images/project-ux-research-workingbrain/capa-desktop.svg",
+          mobileImage: "/images/project-ux-research-workingbrain/slide1.svg",
           link: "/projects/ux-research-workingbrain",
           ctaText: "Ver Metodologia",
           year: "2024",
           details: [
             { label: "Tipo de projeto", value: "TCC – Técnico em Informática para Internet" },
             { label: "Ano", value: "2024" },
-            { label: "Participantes", value: "Professores e Alunos da rede pública" },
-            { label: "Processos", value: "Empatização, Definição e Ideação" },
+            { label: "Participantes", value: "Professores e Alunos da Rede Pública" },
+            { label: "Processos", value: "Empatizar, Definir e Idear" },
           ]
         }
       ]
@@ -189,7 +204,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "WorkingBrain - Educational Platform",
           description: "Educational app with gamification and performance reports. Academic and personal project focused on digital inclusion.",
           category: ["Mobile App", "UI Design", "UX Design", "Education"],
-          image: "/images/project-workingbrain-mobile/slide1.svg",
+          image: "/images/project-workingbrain-mobile/capa-desktop.svg",
+          mobileImage: "/images/project-workingbrain-mobile/slide1.svg",
           link: "/projects/workingbrain-mobile",
           ctaText: "View Full Project",
           year: "2024",
@@ -205,7 +221,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "Meu Aumigo – Email Marketing",
           description: "Responsive HTML email with CSS animations focused on conversion. Developed as a personal project to simulate a real campaign.",
           category: ["Email Marketing", "Motion Design", "Copywriting", "Creative Campaigns"],
-          image: "/images/aumigo.jpg",
+          image: "/images/project-meuaumigo/capa-desktop-en.svg",
+          mobileImage: "/images/project-meuaumigo/capa-mobile-en.svg",
           link: "/projects/meu-aumigo",
           ctaText: "View Campaign",
           year: "2025",
@@ -220,8 +237,9 @@ const Portfolio = ({ language = "pt" }) => {
           section: "Website",
           title: "BreShopp Landing Page - Thrift Marketplace",
           description: "Landing page focused on usability, responsive design, SEO and conversions. Academic project with a youthful and sustainable style.",
-          category: ["Web App", "UX Design", "UI Design", "SEO", "Design System", "E-commerce"],
-          image: "/images/breshopp.jpg",
+          category: ["Web App", "UX Design", "UI Design", "SEO", "E-commerce"],
+          image: "/images/project-breshopp/capa-desktop.svg",
+          mobileImage: "/images/project-breshopp/slide1.svg",
           link: "/projects/breshopp",
           ctaText: "View Full Project",
           year: "2025",
@@ -235,7 +253,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "WorkingBrain Visual Identity & Mascot",
           description: "Visual identity creation and gamified mascot for a multi-platform application. Full creative direction.",
           category: ["Branding", "Design", "Illustration", "Design Thinking"],
-          image: "/images/workingbrain-brand.jpg",
+          image: "/images/project-workingbrain/capa-desktop-en.png",
+          mobileImage: "/images/project-workingbrain/slide1-en.png",
           link: "/projects/visual-identity-workingbrain",
           ctaText: "View Details",
           year: "2024",
@@ -251,7 +270,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "UX Research – WorkingBrain",
           description: "Research with students and teachers on digital education. Includes personas, empathy map, and user journey.",
           category: ["UX Research", "Usability Testing"],
-          image: "/images/ux-research.jpg",
+          image: "/images/project-ux-research-workingbrain/capa-desktop.svg",
+          mobileImage: "/images/project-ux-research-workingbrain/slide1.svg",
           link: "/projects/ux-research-workingbrain",
           ctaText: "View Methodology",
           year: "2024",
@@ -278,7 +298,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "WorkingBrain - Plataforma Educativa",
           description: "App educativa con gamificación e informes de desempeño. Proyecto académico y personal enfocado en inclusión digital.",
           category: ["Aplicación Móvil", "Diseño UI", "Diseño UX", "Educación"],
-          image: "/images/project-workingbrain-mobile/slide1.svg",
+          image: "/images/project-workingbrain-mobile/capa-desktop.svg",
+          mobileImage: "/images/project-workingbrain-mobile/slide1.svg",
           link: "/projects/workingbrain-mobile",
           ctaText: "Ver Proyecto Completo",
           year: "2024",
@@ -294,7 +315,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "Meu Aumigo – Email Marketing",
           description: "Correo electrónico HTML responsivo con animaciones CSS enfocado en conversión. Desarrollado como proyecto personal para simular una campaña real.",
           category: ["Email Marketing", "Motion Design", "Copywriting", "Campañas Creativas"],
-          image: "/images/aumigo.jpg",
+          image: "/images/project-meuaumigo/capa-desktop-es.svg",
+          mobileImage: "/images/project-meuaumigo/capa-mobile-es.svg",
           link: "/projects/meu-aumigo",
           ctaText: "Ver Campaña",
           year: "2025",
@@ -309,8 +331,9 @@ const Portfolio = ({ language = "pt" }) => {
           section: "Diseño Web",
           title: "Landing Page BreShopp - Marketplace de Ropa",
           description: "Página de presentación con enfoque en usabilidad, diseño responsivo, SEO y conversión. Proyecto académico con estilo sostenible.",
-          category: ["Aplicación Web", "Diseño UX", "Diseño UI", "SEO", "Design System", "E-commerce"],
-          image: "/images/breshopp.jpg",
+          category: ["Aplicación Web", "Diseño UX", "Diseño UI", "SEO", "E-commerce"],
+          image: "/images/project-breshopp/capa-desktop.svg",
+          mobileImage: "/images/project-breshopp/slide1.svg",
           link: "/projects/breshopp",
           ctaText: "Ver Proyecto Completo",
           year: "2025",
@@ -324,7 +347,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "Identidad Visual y Mascota WorkingBrain",
           description: "Creación de identidad visual y mascota gamificada para una app multiplataforma. Dirección creativa completa.",
           category: ["Branding", "Diseño", "Ilustración", "Design Thinking"],
-          image: "/images/workingbrain-brand.jpg",
+          image: "/images/project-workingbrain/capa-desktop-es.png",
+          mobileImage: "/images/project-workingbrain/slide1-es.png",
           link: "/projects/visual-identity-workingbrain",
           ctaText: "Ver Detalles",
           year: "2024",
@@ -340,7 +364,8 @@ const Portfolio = ({ language = "pt" }) => {
           title: "UX Research – WorkingBrain",
           description: "Investigación con estudiantes y docentes sobre educación digital. Incluye personas, mapa de empatía y recorrido del usuario.",
           category: ["Investigación UX", "Pruebas de Usabilidad"],
-          image: "/images/ux-research.jpg",
+          image: "/images/project-ux-research-workingbrain/capa-desktop.svg",
+          mobileImage: "/images/project-ux-research-workingbrain/slide1.svg",
           link: "/projects/ux-research-workingbrain",
           ctaText: "Ver Metodología",
           year: "2024",
@@ -401,7 +426,7 @@ const Portfolio = ({ language = "pt" }) => {
     setActiveSection(index);
   };
 
-  // Handlers para touch events
+  // Handlers para touch events melhorados
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -411,13 +436,9 @@ const Portfolio = ({ language = "pt" }) => {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 50) {
-      // Swipe left
+    if (touchStart - touchEnd > 75) {
       handleNext();
-    }
-
-    if (touchStart - touchEnd < -50) {
-      // Swipe right
+    } else if (touchStart - touchEnd < -75) {
       handlePrev();
     }
   };
@@ -448,13 +469,13 @@ const Portfolio = ({ language = "pt" }) => {
   return (
     <section className="w-full px-4 md:px-8 pb-12 md:pb-20 relative max-w-7xl mx-auto">
       {/* Seções do portfólio - Versão mobile scrollável */}
-      <div className="md:hidden overflow-x-auto py-4 mb-6 no-scrollbar">
+      <div className="md:hidden overflow-x-auto py-4 mb-4 no-scrollbar">
         <div className="flex space-x-2 px-2 w-max">
           {sections.map((section, index) => (
             <button
               key={index}
               onClick={() => goToSection(index)}
-              className={`px-4 py-2 text-xs font-medium rounded-lg transition-all whitespace-nowrap ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all whitespace-nowrap ${
                 activeSection === index
                   ? 'bg-white dark:bg-gray-900 shadow-sm text-purple-600 dark:text-purple-400'
                   : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700/50'
@@ -485,11 +506,11 @@ const Portfolio = ({ language = "pt" }) => {
         </div>
       </div>
 
-      {/* Carrossel */}
+      {/* Carrossel com altura adaptável */}
       <div className="relative overflow-hidden">
         <div 
           ref={carouselRef}
-          className="relative h-[700px] md:h-[500px] flex items-center"
+          className="relative h-[550px] md:h-[500px] flex items-center"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -512,52 +533,48 @@ const Portfolio = ({ language = "pt" }) => {
           </AnimatePresence>
         </div>
 
-        {/* Controles - Mobile */}
+        {/* Controles - Mobile mais acessíveis */}
         <div className="md:hidden flex justify-center space-x-4 mt-4">
           <motion.button
             onClick={handlePrev}
-            className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all"
+            className="p-2.5 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all"
             aria-label={language === 'en' ? 'Previous project' : 'Projeto anterior'}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <FiChevronLeft className="text-xl text-purple-600 dark:text-purple-400" />
+            <FiChevronLeft className="text-lg text-purple-600 dark:text-purple-400" />
           </motion.button>
           <motion.button
             onClick={handleNext}
-            className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all"
+            className="p-2.5 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all"
             aria-label={language === 'en' ? 'Next project' : 'Próximo projeto'}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <FiChevronRight className="text-xl text-purple-600 dark:text-purple-400" />
+            <FiChevronRight className="text-lg text-purple-600 dark:text-purple-400" />
           </motion.button>
         </div>
 
         {/* Controles - Desktop */}
         <motion.button
           onClick={handlePrev}
-          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
+          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
           aria-label={language === 'en' ? 'Previous project' : 'Projeto anterior'}
-          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FiChevronLeft className="text-2xl text-purple-600 dark:text-purple-400" />
+          <FiChevronLeft className="text-xl text-purple-600 dark:text-purple-400" />
         </motion.button>
         <motion.button
           onClick={handleNext}
-          className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
+          className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
           aria-label={language === 'en' ? 'Next project' : 'Próximo projeto'}
-          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
-          <FiChevronRight className="text-2xl text-purple-600 dark:text-purple-400" />
+          <FiChevronRight className="text-xl text-purple-600 dark:text-purple-400" />
         </motion.button>
       </div>
 
       {/* Indicadores de progresso */}
-      <div className="flex justify-center mt-8 md:mt-12">
-        <div className="w-full max-w-md bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+      <div className="flex justify-center mt-6 md:mt-10">
+        <div className="w-full max-w-md bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 md:h-2">
           <motion.div 
             className="bg-gradient-to-r from-purple-600 to-blue-600 h-full rounded-full"
             initial={{ width: 0 }}
@@ -569,13 +586,13 @@ const Portfolio = ({ language = "pt" }) => {
         </div>
       </div>
 
-      {/* Indicadores de pontos para mobile */}
-      <div className="md:hidden flex justify-center mt-6 space-x-2">
+      {/* Indicadores de pontos para mobile mais visíveis */}
+      <div className="md:hidden flex justify-center mt-4 space-x-2">
         {translatedProjects.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSection(index)}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`w-2.5 h-2.5 rounded-full transition-all ${
               currentIndex === index
                 ? 'bg-purple-600 w-4'
                 : 'bg-gray-300 dark:bg-gray-600'
