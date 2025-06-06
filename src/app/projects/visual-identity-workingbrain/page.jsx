@@ -14,7 +14,7 @@ import LessonsLearned from '@/components/LessonsLearned';
 import ProjectCTA from '@/components/ProjectCTA';
 import ProjectsNav from '@/components/ProjectsNav';
 
-const ProjectPage = ({ language = 'en' }) => {
+const ProjectPage = ({ language = 'pt' }) => {
   const router = useRouter();
   const [currentLanguage, setCurrentLanguage] = React.useState(language);
 
