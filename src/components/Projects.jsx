@@ -80,12 +80,10 @@ const ProjectItem = ({ project, isActive }) => {
           <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800 sticky bottom-0 bg-white dark:bg-gray-900 pb-2 md:pb-0">
             <a
               href={project.link}
-              className="w-full flex items-center justify-center px-3 py-2 md:px-6 md:py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm"
-              target="_blank"
-              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center px-3 py-4 md:px-6 md:py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-l"
             >
               {project.ctaText}
-              <FiExternalLink className="ml-2" size={14} />
+              <FiExternalLink className="ml-2" size={20} />
             </a>
           </div>
         </div>
@@ -388,8 +386,8 @@ const Portfolio = ({ language = "pt" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(null);
   const [activeSection, setActiveSection] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const [touchEndX, setTouchEndX] = useState(null);
   const carouselRef = useRef(null);
 
   // Configuração para auto-rotatividade
@@ -428,17 +426,25 @@ const Portfolio = ({ language = "pt" }) => {
 
   // Handlers para touch events melhorados
   const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(e.targetTouches[0].clientX); // Inicializa touchEndX também
   };
 
   const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    setTouchEndX(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
+    if (!touchStartX || !touchEndX) return;
+    
+    const diffX = touchStartX - touchEndX;
+    const threshold = 50; // Limite mínimo para considerar o swipe
+    
+    if (diffX > threshold) {
+      // Swipe para a esquerda (avançar)
       handleNext();
-    } else if (touchStart - touchEnd < -75) {
+    } else if (diffX < -threshold) {
+      // Swipe para a direita (voltar)
       handlePrev();
     }
   };
@@ -556,20 +562,19 @@ const Portfolio = ({ language = "pt" }) => {
         {/* Controles - Desktop */}
         <motion.button
           onClick={handlePrev}
-          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
+          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow transition-colors backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
           aria-label={language === 'en' ? 'Previous project' : 'Projeto anterior'}
-          whileTap={{ scale: 0.9 }}
         >
           <FiChevronLeft className="text-xl text-purple-600 dark:text-purple-400" />
         </motion.button>
         <motion.button
           onClick={handleNext}
-          className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
+          className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow transition-colors backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
           aria-label={language === 'en' ? 'Next project' : 'Próximo projeto'}
-          whileTap={{ scale: 0.9 }}
         >
           <FiChevronRight className="text-xl text-purple-600 dark:text-purple-400" />
         </motion.button>
+
       </div>
 
       {/* Indicadores de progresso */}

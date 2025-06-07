@@ -19,8 +19,10 @@ const GalleryCarousel = ({
   const [direction, setDirection] = useState(1);
   const [touchStartX, setTouchStartX] = useState(null);
   const [touchEndX, setTouchEndX] = useState(null);
+  const [swiping, setSwiping] = useState(false);
   const videoRefs = useRef([]);
   const [isInView, setIsInView] = useState(false);
+  const carouselRef = useRef(null);
 
   const [ref, inView] = useInView({
     triggerOnce: false,
@@ -97,15 +99,28 @@ const GalleryCarousel = ({
   };
 
   const handleTouchStart = (e) => {
-    setTouchStartX(e.changedTouches[0].clientX);
+    setTouchStartX(e.touches[0].clientX);
+    setTouchEndX(e.touches[0].clientX); // Initialize touchEndX as well
+    setSwiping(true);
+    
+    // Prevent background scroll when swiping
+    if (carouselRef.current) {
+      carouselRef.current.style.overflow = 'hidden';
+    }
   };
 
   const handleTouchMove = (e) => {
-    setTouchEndX(e.changedTouches[0].clientX);
+    if (!swiping) return;
+    setTouchEndX(e.touches[0].clientX);
+    
+    // Prevent page scroll when swiping horizontally
+    if (Math.abs(e.touches[0].clientX - touchStartX) > 10) {
+      e.preventDefault();
+    }
   };
 
   const handleTouchEnd = () => {
-    if (!touchStartX || !touchEndX) return;
+    if (!touchStartX || !touchEndX || !swiping) return;
     const distance = touchStartX - touchEndX;
     const swipeThreshold = 50;
 
@@ -117,6 +132,12 @@ const GalleryCarousel = ({
 
     setTouchStartX(null);
     setTouchEndX(null);
+    setSwiping(false);
+    
+    // Restore background scroll
+    if (carouselRef.current) {
+      carouselRef.current.style.overflow = '';
+    }
   };
 
   const slideVariants = {
@@ -159,7 +180,8 @@ const GalleryCarousel = ({
         {currentMedia.length > 0 ? (
           <>
             <div 
-              className="relative w-full overflow-hidden rounded-2xl shadow-xl"
+              ref={carouselRef}
+              className="relative w-full overflow-hidden rounded-2xl shadow-xl touch-none"
               style={{
                 paddingBottom: `${(1 / mediaRatio) * 100}%`,
                 minHeight: '300px'
@@ -173,26 +195,28 @@ const GalleryCarousel = ({
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="absolute inset-0 w-full h-full"
+                  className="absolute inset-0 w-full h-full touch-pan-y select-none"
                   onTouchStart={handleTouchStart}
                   onTouchMove={handleTouchMove}
                   onTouchEnd={handleTouchEnd}
+                  onTouchCancel={handleTouchEnd}
                 >
-                  <div className="relative w-full h-full flex items-center justify-center">
+                  <div className="relative w-full h-full flex items-center justify-center touch-none">
                     {currentMedia[currentIndex]?.type === 'image' ? (
                       <Image
                         src={currentMedia[currentIndex]?.src}
                         alt={currentMedia[currentIndex]?.alt || ''}
                         width={1739}
                         height={881}
-                        className="object-contain"
+                        className="object-contain touch-none"
                         priority={currentIndex === 0}
                         sizes="(max-width: 768px) 100vw, 80vw"
+                        draggable="false"
                       />
                     ) : (
                       <video 
                         ref={el => videoRefs.current[currentIndex] = el}
-                        className="object-contain w-full h-full"
+                        className="object-contain w-full h-full touch-none"
                         controls={!autoPlayVideos}
                         playsInline
                         muted={videoMuted}

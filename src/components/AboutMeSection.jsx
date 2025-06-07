@@ -158,7 +158,7 @@ const ProfileCard = ({ language }) => {
             transition={{ duration: 0.7, delay: 1.7 }}
           >
             <Button
-              className="transition-all duration-300"
+              className="transition-all duration-300 w-full"
               onClick={() => window.open(cvLink, "_blank")}
             >
               {buttonText}
