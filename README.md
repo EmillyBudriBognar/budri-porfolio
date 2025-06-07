@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 **Budri Portfolio**  
+_by Emilly Budri Bognar_
 
-## Getting Started
+**Tornando o digital simples, humano & inesquecível.**  
 
-First, run the development server:
+---
+
+<p align="center">
+✨ UX/UI • Front-End • Mobile • Pesquisa de Usabilidade • Design Gráfico • Email Marketing ✨
+</p>
+
+---
+
+## 🚀 **Sobre o Projeto**
+
+O **Budri Portfolio** é meu espaço digital como **UX/UI Designer e Desenvolvedora Front-End**, onde apresento meus projetos, serviços e visão de trabalho.  
+Mais do que criar interfaces, acredito em **criar experiências que conectem, inspirem e impactem**.  
+
+🧑‍🎨 A marca **Budri** nasce da fusão entre tecnologia, psicologia e arte — um convite para construir juntos um digital mais humano.
+
+---
+
+## ✨ **Principais Funcionalidades**
+
+✅ **UX/UI Design** — Criação de interfaces intuitivas para web e mobile  
+✅ **Desenvolvimento Front-End** — Sites modernos e responsivos com tecnologias de ponta  
+✅ **Desenvolvimento Mobile** — Apps nativos com navegação fluida  
+✅ **Pesquisa de Usabilidade** — Testes e validações com usuários reais  
+✅ **Design Gráfico** — Identidade visual, ilustrações, materiais de marca  
+✅ **Email Marketing** — Templates HTML responsivos e personalizados  
+
+---
+
+## 🛠️ **Tecnologias Utilizadas**
+
+| Categoria        | Tecnologias |
+|------------------|-------------|
+| **Front-End**    | React, Next.js, Tailwind CSS, Framer Motion, React Icons |
+| **Mobile**       | React Native, Expo |
+| **SEO**          | SEO com Next.js — _React puro não permite SEO server-side eficaz; com Next.js, utilizo SSR (Server Side Rendering) e SSG (Static Site Generation) para garantir metadados e indexação completa._ |
+| **Internacionalização** | i18next |
+| **Email**        | EmailJS |
+| **Outras**       | React Slick, React Swipeable, React Intersection Observer |
+
+---
+
+## 📁 **Navegação do Site**
+
+🔸 **Início** — Apresentação pessoal e manifesto da marca  
+🔸 **Serviços** — Catálogo dos serviços oferecidos  
+🔸 **Projetos** — Galeria com os projetos desenvolvidos  
+🔸 **Sobre** — Minha trajetória e visão profissional  
+🔸 **Formação** — Resumo acadêmico e certificações  
+🔸 **Contato** — Formulário integrado com EmailJS para contato direto  
+
+---
+
+## ⚙️ **Scripts disponíveis**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev        # Desenvolvimento local
+npm run build      # Build de produção
+npm run start      # Rodar aplicação em produção
+npm run lint       # Análise de código
+npm run deploy     # Deploy via GitHub Pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 👩‍💻 Sobre mim
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Emilly Budri Bognar**  
+Desenvolvedora Front-End | UX Designer | Competidora no InterFatecs 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Sou apaixonada por onde **arte, tecnologia e psicologia** se encontram.  
+Acredito que o design vai além da estética: ele deve **gerar experiências intuitivas e significativas** para quem interage.
 
-## Learn More
+✨ Minha missão é **criar soluções digitais que encantem e transformem a vida das pessoas**.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💌 Vamos construir algo incrível juntos?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📧 emillybudribognar@gmail.com  
+📱 +55 (11) 99998-6102  
+🌍 Brasil  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⚠️ Observação sobre SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto foi desenvolvido com **Next.js** para permitir **otimização de SEO server-side**.  
+📌 **Por que não React puro?**  
+O React puro (SPA - Single Page Application) não gera HTML renderizado no servidor, o que limita a indexação por mecanismos de busca.  
+**Next.js** permite utilizar SSR/SSG, proporcionando um SEO eficaz e metadados corretos para bots e crawlers.
+
+---
+
+## 📜 Licença
+
+© 2025. Budri - Por: Emilly Budri Bognar.  
+**Todos os direitos reservados.**
