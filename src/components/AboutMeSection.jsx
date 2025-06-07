@@ -147,7 +147,7 @@ const ProfileCard = ({ language }) => {
             dangerouslySetInnerHTML={{ __html: description2 }}
           />
           <motion.p
-            className="mx-auto sm:mb-12 sm:mt-2 text-l md:mx-0 lg:text-justify sm:text-center leading-relaxed text-gray-700 dark:text-gray-200"
+            className="mx-auto sm:mb-12 sm:mt-2 text-l md:mx-0 text-justify leading-relaxed text-gray-700 dark:text-gray-200"
             dangerouslySetInnerHTML={{ __html: description3 }}
           />
 
