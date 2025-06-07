@@ -36,7 +36,6 @@ Mais do que criar interfaces, acredito em **criar experiências que conectem, in
 | Categoria        | Tecnologias |
 |------------------|-------------|
 | **Front-End**    | React, Next.js, Tailwind CSS, Framer Motion, React Icons |
-| **Mobile**       | React Native, Expo |
 | **SEO**          | SEO com Next.js — _React puro não permite SEO server-side eficaz; com Next.js, utilizo SSR (Server Side Rendering) e SSG (Static Site Generation) para garantir metadados e indexação completa._ |
 | **Internacionalização** | i18next |
 | **Email**        | EmailJS |
