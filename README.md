@@ -1,4 +1,5 @@
-# 🌟 **Budri Portfolio**  
+
+# 🌟 Budri Portfolio  
 _by Emilly Budri Bognar_
 
 **Tornando o digital simples, humano & inesquecível.**  
@@ -11,72 +12,58 @@ _by Emilly Budri Bognar_
 
 ---
 
-## 🚀 **Sobre o Projeto**
+## 🚀 Sobre o Projeto
 
 O **Budri Portfolio** é meu espaço digital como **UX/UI Designer e Desenvolvedora Front-End**, onde apresento meus projetos, serviços e visão de trabalho.  
-Mais do que criar interfaces, acredito em **criar experiências que conectem, inspirem e impactem**.  
-
-🧑‍🎨 A marca **Budri** nasce da fusão entre tecnologia, psicologia e arte — um convite para construir juntos um digital mais humano.
+Mais do que criar interfaces, **crio experiências que conectam, inspiram e impactam.**  
 
 ---
 
-## ✨ **Principais Funcionalidades**
+## ✨ Principais Funcionalidades
 
-✅ **UX/UI Design** — Criação de interfaces intuitivas para web e mobile  
-✅ **Desenvolvimento Front-End** — Sites modernos e responsivos com tecnologias de ponta  
+✅ **UX/UI Design** — Interfaces intuitivas para web e mobile  
+✅ **Desenvolvimento Front-End** — Sites modernos, rápidos e responsivos  
 ✅ **Desenvolvimento Mobile** — Apps nativos com navegação fluida  
-✅ **Pesquisa de Usabilidade** — Testes e validações com usuários reais  
-✅ **Design Gráfico** — Identidade visual, ilustrações, materiais de marca  
+✅ **Pesquisa de Usabilidade** — Testes, validações e aprimoramento de produtos  
+✅ **Design Gráfico** — Identidade visual, ilustrações, materiais digitais  
 ✅ **Email Marketing** — Templates HTML responsivos e personalizados  
 
 ---
 
-## 🛠️ **Tecnologias Utilizadas**
+## 🛠️ Tecnologias Utilizadas
 
 | Categoria        | Tecnologias |
 |------------------|-------------|
 | **Front-End**    | React, Next.js, Tailwind CSS, Framer Motion, React Icons |
-| **SEO**          | SEO com Next.js — _React puro não permite SEO server-side eficaz; com Next.js, utilizo SSR (Server Side Rendering) e SSG (Static Site Generation) para garantir metadados e indexação completa._ |
+| **SEO**          | SSR/SSG com Next.js |
 | **Internacionalização** | i18next |
 | **Email**        | EmailJS |
 | **Outras**       | React Slick, React Swipeable, React Intersection Observer |
 
 ---
 
-## 📁 **Navegação do Site**
+## 📁 Navegação do Site
 
 🔸 **Início** — Apresentação pessoal e manifesto da marca  
 🔸 **Serviços** — Catálogo dos serviços oferecidos  
-🔸 **Projetos** — Galeria com os projetos desenvolvidos  
+🔸 **Projetos** — Galeria de projetos desenvolvidos  
 🔸 **Sobre** — Minha trajetória e visão profissional  
 🔸 **Formação** — Resumo acadêmico e certificações  
-🔸 **Contato** — Formulário integrado com EmailJS para contato direto  
+🔸 **Contato** — Formulário integrado via EmailJS  
 
 ---
 
-## ⚙️ **Scripts disponíveis**
-
-```bash
-npm run dev        # Desenvolvimento local
-npm run build      # Build de produção
-npm run start      # Rodar aplicação em produção
-npm run lint       # Análise de código
-npm run deploy     # Deploy via GitHub Pages
-```
-
-## 👩‍💻 Sobre mim
+## 👩‍💻 Sobre Mim
 
 **Emilly Budri Bognar**  
-Desenvolvedora Front-End | UX Designer | Competidora no InterFatecs 
+Desenvolvedora Front-End | UX/UI Designer  
 
-Sou apaixonada por onde **arte, tecnologia e psicologia** se encontram.  
-Acredito que o design vai além da estética: ele deve **gerar experiências intuitivas e significativas** para quem interage.
-
-✨ Minha missão é **criar soluções digitais que encantem e transformem a vida das pessoas**.
+Onde **arte, tecnologia e psicologia** se encontram, é onde eu atuo.  
+**Crio soluções digitais que encantam, facilitam e transformam experiências.**  
 
 ---
 
-## 💌 Vamos construir algo incrível juntos?
+## 💌 Vamos Construir Algo Incrível Juntos?
 
 📧 emillybudribognar@gmail.com  
 📱 +55 (11) 99998-6102  
@@ -84,16 +71,7 @@ Acredito que o design vai além da estética: ele deve **gerar experiências int
 
 ---
 
-## ⚠️ Observação sobre SEO
-
-Este projeto foi desenvolvido com **Next.js** para permitir **otimização de SEO server-side**.  
-📌 **Por que não React puro?**  
-O React puro (SPA - Single Page Application) não gera HTML renderizado no servidor, o que limita a indexação por mecanismos de busca.  
-**Next.js** permite utilizar SSR/SSG, proporcionando um SEO eficaz e metadados corretos para bots e crawlers.
-
----
-
 ## 📜 Licença
 
-© 2025. Budri - Por: Emilly Budri Bognar.  
+© 2025. Budri — Por: Emilly Budri Bognar.  
 **Todos os direitos reservados.**
