@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 
 // Components
 import ProjectHero from "@/components/ProjectHero";
@@ -15,13 +15,12 @@ import LessonsLearned from "@/components/LessonsLearned";
 import ProjectCTA from "@/components/ProjectCTA";
 import ProjectsNav from "@/components/ProjectsNav";
 
-export default function ProjectPage() {
+function ProjectWorkingBrainMobileContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentLanguage, setCurrentLanguage] = useState("pt");
 
   useEffect(() => {
-    // Verificar se há um parâmetro de idioma na URL
     const urlLanguage = searchParams.get('lang');
 
     if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
@@ -29,15 +28,12 @@ export default function ProjectPage() {
       return;
     }
 
-    // Verificar o idioma do navegador
     const browserLanguage = navigator.language || navigator.userLanguage;
     const primaryLanguage = browserLanguage.split('-')[0];
 
-    // Definir o idioma padrão com base no navegador
     if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
       setCurrentLanguage(primaryLanguage);
     } else {
-      // Padrão para inglês se não for um dos idiomas suportados
       setCurrentLanguage('en');
     }
   }, [searchParams]);
@@ -73,25 +69,25 @@ export default function ProjectPage() {
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" }
       ],
       lessons: [
-        { 
-          title: "Aprendizado autodidata", 
-          description: "Desenvolvi a capacidade de aprender tecnologias por conta própria, como React Native e TypeScript, que não faziam parte do currículo do curso." 
+        {
+          title: "Aprendizado autodidata",
+          description: "Desenvolvi a capacidade de aprender tecnologias por conta própria, como React Native e TypeScript, que não faziam parte do currículo do curso."
         },
-        { 
-          title: "Gestão de tempo eficiente", 
-          description: "Concluí todo o design em 1 mês e meio e o desenvolvimento em 3 meses, totalizando 4.5 meses de projeto." 
+        {
+          title: "Gestão de tempo eficiente",
+          description: "Concluí todo o design em 1 mês e meio e o desenvolvimento em 3 meses, totalizando 4.5 meses de projeto."
         },
-        { 
-          title: "Solução de problemas", 
-          description: "Adquiri experiência em resolver desafios técnicos complexos de forma independente, sem apoio institucional." 
+        {
+          title: "Solução de problemas",
+          description: "Adquiri experiência em resolver desafios técnicos complexos de forma independente, sem apoio institucional."
         },
-        { 
-          title: "Recursos nativos móveis", 
-          description: "Dominei a integração de câmera e notificações push para criar experiências mais ricas e engajadoras." 
+        {
+          title: "Recursos nativos móveis",
+          description: "Dominei a integração de câmera e notificações push para criar experiências mais ricas e engajadoras."
         },
-        { 
-          title: "Desenvolvimento multiplataforma", 
-          description: "Aprendi a criar componentes reutilizáveis e lidar com diferenças específicas de plataforma mantendo uma única base de código." 
+        {
+          title: "Desenvolvimento multiplataforma",
+          description: "Aprendi a criar componentes reutilizáveis e lidar com diferenças específicas de plataforma mantendo uma única base de código."
         }
       ]
     },
@@ -125,25 +121,25 @@ export default function ProjectPage() {
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" }
       ],
       lessons: [
-        { 
-          title: "Self-taught learning", 
-          description: "I developed the ability to learn technologies on my own, such as React Native and TypeScript, which were not part of the course curriculum." 
+        {
+          title: "Self-taught learning",
+          description: "I developed the ability to learn technologies on my own, such as React Native and TypeScript, which were not part of the course curriculum."
         },
-        { 
-          title: "Efficient time management", 
-          description: "I completed all the design in 1.5 months and development in 3 months, totaling 4.5 months for the project." 
+        {
+          title: "Efficient time management",
+          description: "I completed all the design in 1.5 months and development in 3 months, totaling 4.5 months for the project."
         },
-        { 
-          title: "Problem solving", 
-          description: "I gained experience in solving complex technical challenges independently, without institutional support." 
+        {
+          title: "Problem solving",
+          description: "I gained experience in solving complex technical challenges independently, without institutional support."
         },
-        { 
-          title: "Mobile native features", 
-          description: "Mastered the integration of camera and push notifications to create richer, more engaging experiences." 
+        {
+          title: "Mobile native features",
+          description: "Mastered the integration of camera and push notifications to create richer, more engaging experiences."
         },
-        { 
-          title: "Cross-platform development", 
-          description: "Learned to create reusable components and handle platform-specific differences while maintaining a single codebase." 
+        {
+          title: "Cross-platform development",
+          description: "Learned to create reusable components and handle platform-specific differences while maintaining a single codebase."
         }
       ]
     },
@@ -177,25 +173,25 @@ export default function ProjectPage() {
         { name: "Figma", icon: "✏️", color: "bg-purple-100 dark:bg-purple-900" }
       ],
       lessons: [
-        { 
-          title: "Aprendizaje autodidacta", 
-          description: "Desarrollé la capacidad de aprender tecnologías por mi cuenta, como React Native y TypeScript, que no formaban parte del currículo del curso." 
+        {
+          title: "Aprendizaje autodidacta",
+          description: "Desarrollé la capacidad de aprender tecnologías por mi cuenta, como React Native y TypeScript, que no formaban parte del currículo del curso."
         },
-        { 
-          title: "Gestión eficiente del tiempo", 
-          description: "Completé todo el diseño en 1 mes y medio y el desarrollo en 3 meses, totalizando 4.5 meses de proyecto." 
+        {
+          title: "Gestión eficiente del tiempo",
+          description: "Completé todo el diseño en 1 mes y medio y el desarrollo en 3 meses, totalizando 4.5 meses de proyecto."
         },
-        { 
-          title: "Solución de problemas", 
-          description: "Adquirí experiencia en resolver desafíos técnicos complejos de forma independiente, sin apoyo institucional." 
+        {
+          title: "Solución de problemas",
+          description: "Adquirí experiencia en resolver desafíos técnicos complejos de forma independiente, sin apoyo institucional."
         },
-        { 
-          title: "Funciones nativas móviles", 
-          description: "Dominé la integración de cámara y notificaciones push para crear experiencias más ricas y atractivas." 
+        {
+          title: "Funciones nativas móviles",
+          description: "Dominé la integración de cámara y notificaciones push para crear experiencias más ricas y atractivas."
         },
-        { 
-          title: "Desarrollo multiplataforma", 
-          description: "Aprendí a crear componentes reutilizables y manejar diferencias específicas de plataforma manteniendo una única base de código." 
+        {
+          title: "Desarrollo multiplataforma",
+          description: "Aprendí a crear componentes reutilizables y manejar diferencias específicas de plataforma manteniendo una única base de código."
         }
       ]
     }
@@ -213,171 +209,171 @@ export default function ProjectPage() {
 
   const mediaItems = {
     pt: [
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide1.svg", 
-        alt: "Capa do WorkingBrain", 
-        caption: "WorkingBrain Mobile: aplicativo educacional desenvolvido para estudantes e professores" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide1.svg",
+        alt: "Capa do WorkingBrain",
+        caption: "WorkingBrain Mobile: aplicativo educacional desenvolvido para estudantes e professores"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide2-pt.svg", 
-        alt: "Vídeo demonstrativo", 
-        caption: "Apresentação em vídeo com as principais funcionalidades" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide2-pt.svg",
+        alt: "Vídeo demonstrativo",
+        caption: "Apresentação em vídeo com as principais funcionalidades"
       },
-      { 
-        type: 'video', 
-        url: "/videos/video-workingbrain.mp4", 
-        alt: "Demonstração do aplicativo", 
-        caption: "Demonstração em vídeo com foco na usabilidade e funcionalidades centrais" 
+      {
+        type: 'video',
+        url: "/videos/video-workingbrain.mp4",
+        alt: "Demonstração do aplicativo",
+        caption: "Demonstração em vídeo com foco na usabilidade e funcionalidades centrais"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide4.svg", 
-        alt: "Mockups", 
-        caption: "Mockups que ilustram o processo de concepção até a solução final" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide4.svg",
+        alt: "Mockups",
+        caption: "Mockups que ilustram o processo de concepção até a solução final"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide5-pt.svg", 
-        alt: "Mockups gerais", 
-        caption: "Visão geral: fluxos acessíveis a todos os tipos de usuários" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide5-pt.svg",
+        alt: "Mockups gerais",
+        caption: "Visão geral: fluxos acessíveis a todos os tipos de usuários"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide6-pt.svg", 
-        alt: "Mockups do aluno", 
-        caption: "Fluxo do aluno: introdução e navegação inicial no aplicativo" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide6-pt.svg",
+        alt: "Mockups do aluno",
+        caption: "Fluxo do aluno: introdução e navegação inicial no aplicativo"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide7-pt.svg", 
-        alt: "Mockups do aluno", 
-        caption: "Fluxo do aluno: telas principais da jornada educacional"  
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide7-pt.svg",
+        alt: "Mockups do aluno",
+        caption: "Fluxo do aluno: telas principais da jornada educacional"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide8-pt.svg", 
-        alt: "Mockups do aluno", 
-        caption: "Fluxo do aluno: continuidade e conclusão da navegação" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide8-pt.svg",
+        alt: "Mockups do aluno",
+        caption: "Fluxo do aluno: continuidade e conclusão da navegação"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide9-pt.svg", 
-        alt: "Mockups do professor", 
-        caption: "Fluxo do professor: telas-chave para acompanhamento e gestão"  
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide9-pt.svg",
+        alt: "Mockups do professor",
+        caption: "Fluxo do professor: telas-chave para acompanhamento e gestão"
       }
     ],
     en: [
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide1.svg", 
-        alt: "WorkingBrain cover", 
-        caption: "WorkingBrain Mobile: an educational app designed for students and teachers" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide1.svg",
+        alt: "WorkingBrain cover",
+        caption: "WorkingBrain Mobile: an educational app designed for students and teachers"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide2-en.svg", 
-        alt: "Demo video", 
-        caption: "Video presentation showcasing key features" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide2-en.svg",
+        alt: "Demo video",
+        caption: "Video presentation showcasing key features"
       },
-      { 
-        type: 'video', 
-        url: "/videos/video-workingbrain.mp4", 
-        alt: "App demonstration", 
-        caption: "App demonstration video focused on usability and main features" 
+      {
+        type: 'video',
+        url: "/videos/video-workingbrain.mp4",
+        alt: "App demonstration",
+        caption: "App demonstration video focused on usability and main features"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide4.svg", 
-        alt: "Mockups", 
-        caption: "Mockups illustrating the design process to the final solution" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide4.svg",
+        alt: "Mockups",
+        caption: "Mockups illustrating the design process to the final solution"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
-        alt: "General mockups", 
-        caption: "Overview: flows accessible to all user types" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide5-en-es.svg",
+        alt: "General mockups",
+        caption: "Overview: flows accessible to all user types"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide6-en.svg", 
-        alt: "Student mockups", 
-        caption: "Student flow: introduction and initial navigation in the app" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide6-en.svg",
+        alt: "Student mockups",
+        caption: "Student flow: introduction and initial navigation in the app"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide7-en.svg", 
-        alt: "Student mockups", 
-        caption: "Student flow: main screens of the educational journey" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide7-en.svg",
+        alt: "Student mockups",
+        caption: "Student flow: main screens of the educational journey"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide8-en.svg", 
-        alt: "Student mockups", 
-        caption: "Student flow: continuity and end of navigation" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide8-en.svg",
+        alt: "Student mockups",
+        caption: "Student flow: continuity and end of navigation"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide9-en.svg", 
-        alt: "Teacher mockups", 
-        caption: "Teacher flow: key screens for tracking and management" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide9-en.svg",
+        alt: "Teacher mockups",
+        caption: "Teacher flow: key screens for tracking and management"
       }
     ],
     es: [
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide1.svg", 
-        alt: "Portada de WorkingBrain", 
-        caption: "WorkingBrain Mobile: una aplicación educativa para estudiantes y docentes" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide1.svg",
+        alt: "Portada de WorkingBrain",
+        caption: "WorkingBrain Mobile: una aplicación educativa para estudiantes y docentes"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide2-es.svg", 
-        alt: "Video de demostración", 
-        caption: "Presentación en video con las principales funcionalidades" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide2-es.svg",
+        alt: "Video de demostración",
+        caption: "Presentación en video con las principales funcionalidades"
       },
-      { 
-        type: 'video', 
-        url: "/videos/video-workingbrain.mp4", 
-        alt: "Demostración de la app", 
-        caption: "Video de demostración centrado en la usabilidad y funciones clave" 
+      {
+        type: 'video',
+        url: "/videos/video-workingbrain.mp4",
+        alt: "Demostración de la app",
+        caption: "Video de demostración centrado en la usabilidad y funciones clave"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide4.svg", 
-        alt: "Mockups", 
-        caption: "Mockups que muestran el proceso desde el diseño hasta la solución final" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide4.svg",
+        alt: "Mockups",
+        caption: "Mockups que muestran el proceso desde el diseño hasta la solución final"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide5-en-es.svg", 
-        alt: "Mockups generales", 
-        caption: "Vista general: flujos accesibles para todos los tipos de usuarios" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide5-en-es.svg",
+        alt: "Mockups generales",
+        caption: "Vista general: flujos accesibles para todos los tipos de usuarios"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide6-es.svg", 
-        alt: "Mockups del estudiante", 
-        caption: "Flujo del estudiante: introducción y navegación inicial en la app" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide6-es.svg",
+        alt: "Mockups del estudiante",
+        caption: "Flujo del estudiante: introducción y navegación inicial en la app"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide7-es.svg", 
-        alt: "Mockups del estudiante", 
-        caption: "Flujo del estudiante: pantallas principales del recorrido educativo" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide7-es.svg",
+        alt: "Mockups del estudiante",
+        caption: "Flujo del estudiante: pantallas principales del recorrido educativo"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide8-es.svg", 
-        alt: "Mockups del estudiante", 
-        caption: "Flujo del estudiante: continuidad y finalización de la navegación" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide8-es.svg",
+        alt: "Mockups del estudiante",
+        caption: "Flujo del estudiante: continuidad y finalización de la navegación"
       },
-      { 
-        type: 'image', 
-        src: "/images/project-workingbrain-mobile/slide9-es.svg", 
-        alt: "Mockups del docente", 
-        caption: "Flujo del docente: pantallas clave para el seguimiento y la gestión" 
+      {
+        type: 'image',
+        src: "/images/project-workingbrain-mobile/slide9-es.svg",
+        alt: "Mockups del docente",
+        caption: "Flujo del docente: pantallas clave para el seguimiento y la gestión"
       }
     ]
   };
@@ -385,16 +381,16 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <header id="project-header">
-        <ProjectsNav 
-          language={currentLanguage} 
+        <ProjectsNav
+          language={currentLanguage}
           onLanguageChange={handleLanguageChange}
           onBackToMain={handleBackToMain}
         />
       </header>
-      
+
       <main id="project-main">
         <section id="project-hero">
-          <ProjectHero 
+          <ProjectHero
             title={t.title}
             subtitle={t.subtitle}
             image="/images/project-workingbrain-mobile/capa.svg"
@@ -403,25 +399,25 @@ export default function ProjectPage() {
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="project-overview">
-          <ProjectOverview 
+          <ProjectOverview
             objective={t.overview.objective}
             challenge={t.overview.challenge}
             solution={t.overview.solution}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="creative-process">
           <CreativeProcess
             steps={t.process}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="results-impact">
-          <ResultsImpact 
+          <ResultsImpact
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
@@ -433,28 +429,28 @@ export default function ProjectPage() {
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="project-gallery">
-          <GalleryCarousel 
+          <GalleryCarousel
             language={currentLanguage}
-            mediaItems={mediaItems} 
+            mediaItems={mediaItems}
           />
         </section>
-        
+
         <section id="tools-used">
           <ToolsUsed
             tools={t.tools}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="lessons-learned">
           <LessonsLearned
             language={currentLanguage}
             lessons={t.lessons}
           />
         </section>
-        
+
         <section id="project-cta">
           <ProjectCTA
             language={currentLanguage}
@@ -462,5 +458,13 @@ export default function ProjectPage() {
         </section>
       </main>
     </div>
+  );
+}
+
+export default function ProjectPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <ProjectWorkingBrainMobileContent />
+    </Suspense>
   );
 }

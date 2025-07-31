@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 
-// Components
 import ProjectHero from "@/components/ProjectHero";
 import ProjectOverview from "@/components/ProjectOverview";
 import CreativeProcess from "@/components/CreativeProcess";
@@ -15,13 +14,12 @@ import LessonsLearned from "@/components/LessonsLearned";
 import ProjectCTA from "@/components/ProjectCTA";
 import ProjectsNav from "@/components/ProjectsNav";
 
-export default function ProjectPage() {
+function ProjectContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentLanguage, setCurrentLanguage] = useState("pt");
 
   useEffect(() => {
-    // Verificar se há um parâmetro de idioma na URL
     const urlLanguage = searchParams.get('lang');
 
     if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
@@ -29,15 +27,12 @@ export default function ProjectPage() {
       return;
     }
 
-    // Verificar o idioma do navegador
     const browserLanguage = navigator.language || navigator.userLanguage;
     const primaryLanguage = browserLanguage.split('-')[0];
 
-    // Definir o idioma padrão com base no navegador
     if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
       setCurrentLanguage(primaryLanguage);
     } else {
-      // Padrão para inglês se não for um dos idiomas suportados
       setCurrentLanguage('en');
     }
   }, [searchParams]);
@@ -244,176 +239,176 @@ export default function ProjectPage() {
     setCurrentLanguage(newLanguage);
   };
 
-const mediaItems = {
-  pt: [
-    {
-      type: 'image',
-      src: "/images/project-lks/slide1-pt.png",
-      alt: "Capa do projeto LKS Data",
-      caption: "Introdução ao projeto LKS Data – soluções inteligentes em análise de dados"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide2-pt.png",
-      alt: "Vídeo demonstrativo",
-      caption: "Conheça nossa solução em um vídeo introdutório dinâmico"
-    },
-    {
-      type: 'video',
-      url: "/videos/video-lks.mp4",
-      alt: "Demonstração do site LKS Data",
-      caption: "Tour completo pela plataforma – dados de forma clara e acessível"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide4-pt.png",
-      alt: "Email HTML",
-      caption: "Campanha de e-mail: design moderno, responsivo e interativo"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide5.png",
-      alt: "Email HTML",
-      caption: "Layout adaptável a qualquer dispositivo, com alta usabilidade"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide6.png",
-      alt: "Logo",
-      caption: "Identidade visual do LKS Data – inovação e tecnologia em destaque"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide7-pt.png",
-      alt: "Significado da Logo",
-      caption: "Conceito da logo: conexão, precisão e evolução constante"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide8-pt.png",
-      alt: "Cores e Tipografia",
-      caption: "Paleta e tipografia alinhadas à clareza e profissionalismo"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide9-pt.png",
-      alt: "Cores e Tipografia",
-      caption: "Escolhas visuais pensadas para legibilidade e impacto"
-    }
-  ],
-  en: [
-    {
-      type: 'image',
-      src: "/images/project-lks/slide1-en.png",
-      alt: "LKS Data Project Cover",
-      caption: "Introduction to the LKS Data Project – Smart data analysis solutions"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide2-en.png",
-      alt: "Demo Video",
-      caption: "Get to know our solution through this dynamic introduction video"
-    },
-    {
-      type: 'video',
-      url: "/videos/video-lks.mp4",
-      alt: "LKS Data Website Demo",
-      caption: "Full platform tour – Clear and accessible data visualization"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide4-en.png",
-      alt: "HTML Email",
-      caption: "Email campaign – Modern, responsive, and interactive design"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide5.png",
-      alt: "HTML Email",
-      caption: "Adaptive layout for any device, offering a seamless experience"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide6.png",
-      alt: "Logo",
-      caption: "LKS Data visual identity – Highlighting innovation and technology"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide7-en.png",
-      alt: "Logo Meaning",
-      caption: "Logo concept: connection, precision, and constant evolution"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide8-en.png",
-      alt: "Colors and Typography",
-      caption: "Palette and typography aligned with clarity and professionalism"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide9-en.png",
-      alt: "Colors and Typography",
-      caption: "Visual elements designed for readability and impact"
-    }
-  ],
-  es: [
-    {
-      type: 'image',
-      src: "/images/project-lks/slide1-es.png",
-      alt: "Portada del proyecto LKS Data",
-      caption: "Introducción al proyecto LKS Data – Soluciones inteligentes en análisis de datos"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide2-es.png",
-      alt: "Video Demostrativo",
-      caption: "Conoce nuestra solución a través de este video introductorio dinámico"
-    },
-    {
-      type: 'video',
-      url: "/videos/video-lks.mp4",
-      alt: "Demostración del sitio LKS Data",
-      caption: "Recorrido completo por la plataforma – Visualización de datos clara y accesible"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide4-es.png",
-      alt: "Email HTML",
-      caption: "Campaña de email – Diseño moderno, interactivo y adaptable"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide5.png",
-      alt: "Email HTML",
-      caption: "Diseño adaptable a cualquier dispositivo, con gran usabilidad"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide6.png",
-      alt: "Logo",
-      caption: "Identidad visual de LKS Data – Innovación y tecnología en primer plano"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide7-es.png",
-      alt: "Significado del Logo",
-      caption: "Concepto del logo: conexión, precisión y evolución constante"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide8-es.png",
-      alt: "Colores y Tipografía",
-      caption: "Paleta y tipografía enfocadas en claridad y profesionalismo"
-    },
-    {
-      type: 'image',
-      src: "/images/project-lks/slide9-es.png",
-      alt: "Colores y Tipografía",
-      caption: "Elementos visuales diseñados para legibilidad e impacto"
-    }
-  ]
-};
+  const mediaItems = {
+    pt: [
+      {
+        type: 'image',
+        src: "/images/project-lks/slide1-pt.png",
+        alt: "Capa do projeto LKS Data",
+        caption: "Introdução ao projeto LKS Data – soluções inteligentes em análise de dados"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide2-pt.png",
+        alt: "Vídeo demonstrativo",
+        caption: "Conheça nossa solução em um vídeo introdutório dinâmico"
+      },
+      {
+        type: 'video',
+        url: "/videos/video-lks.mp4",
+        alt: "Demonstração do site LKS Data",
+        caption: "Tour completo pela plataforma – dados de forma clara e acessível"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide4-pt.png",
+        alt: "Email HTML",
+        caption: "Campanha de e-mail: design moderno, responsivo e interativo"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide5.png",
+        alt: "Email HTML",
+        caption: "Layout adaptável a qualquer dispositivo, com alta usabilidade"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide6.png",
+        alt: "Logo",
+        caption: "Identidade visual do LKS Data – inovação e tecnologia em destaque"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide7-pt.png",
+        alt: "Significado da Logo",
+        caption: "Conceito da logo: conexão, precisão e evolução constante"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide8-pt.png",
+        alt: "Cores e Tipografia",
+        caption: "Paleta e tipografia alinhadas à clareza e profissionalismo"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide9-pt.png",
+        alt: "Cores e Tipografia",
+        caption: "Escolhas visuais pensadas para legibilidade e impacto"
+      }
+    ],
+    en: [
+      {
+        type: 'image',
+        src: "/images/project-lks/slide1-en.png",
+        alt: "LKS Data Project Cover",
+        caption: "Introduction to the LKS Data Project – Smart data analysis solutions"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide2-en.png",
+        alt: "Demo Video",
+        caption: "Get to know our solution through this dynamic introduction video"
+      },
+      {
+        type: 'video',
+        url: "/videos/video-lks.mp4",
+        alt: "LKS Data Website Demo",
+        caption: "Full platform tour – Clear and accessible data visualization"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide4-en.png",
+        alt: "HTML Email",
+        caption: "Email campaign – Modern, responsive, and interactive design"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide5.png",
+        alt: "HTML Email",
+        caption: "Adaptive layout for any device, offering a seamless experience"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide6.png",
+        alt: "Logo",
+        caption: "LKS Data visual identity – Highlighting innovation and technology"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide7-en.png",
+        alt: "Logo Meaning",
+        caption: "Logo concept: connection, precision, and constant evolution"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide8-en.png",
+        alt: "Colors and Typography",
+        caption: "Palette and typography aligned with clarity and professionalism"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide9-en.png",
+        alt: "Colors and Typography",
+        caption: "Visual elements designed for readability and impact"
+      }
+    ],
+    es: [
+      {
+        type: 'image',
+        src: "/images/project-lks/slide1-es.png",
+        alt: "Portada del proyecto LKS Data",
+        caption: "Introducción al proyecto LKS Data – Soluciones inteligentes en análisis de datos"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide2-es.png",
+        alt: "Video Demostrativo",
+        caption: "Conoce nuestra solución a través de este video introductorio dinámico"
+      },
+      {
+        type: 'video',
+        url: "/videos/video-lks.mp4",
+        alt: "Demostración del sitio LKS Data",
+        caption: "Recorrido completo por la plataforma – Visualización de datos clara y accesible"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide4-es.png",
+        alt: "Email HTML",
+        caption: "Campaña de email – Diseño moderno, interactivo y adaptable"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide5.png",
+        alt: "Email HTML",
+        caption: "Diseño adaptable a cualquier dispositivo, con gran usabilidad"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide6.png",
+        alt: "Logo",
+        caption: "Identidad visual de LKS Data – Innovación y tecnología en primer plano"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide7-es.png",
+        alt: "Significado del Logo",
+        caption: "Concepto del logo: conexión, precisión y evolución constante"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide8-es.png",
+        alt: "Colores y Tipografía",
+        caption: "Paleta y tipografía enfocadas en claridad y profesionalismo"
+      },
+      {
+        type: 'image',
+        src: "/images/project-lks/slide9-es.png",
+        alt: "Colores y Tipografía",
+        caption: "Elementos visuales diseñados para legibilidad e impacto"
+      }
+    ]
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -478,5 +473,13 @@ const mediaItems = {
         </section>
       </main>
     </div>
+  );
+}
+
+export default function ProjectPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <ProjectContent />
+    </Suspense>
   );
 }

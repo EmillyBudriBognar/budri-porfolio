@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 
 // Components
 import ProjectHero from "@/components/ProjectHero";
@@ -15,13 +15,12 @@ import LessonsLearned from "@/components/LessonsLearned";
 import ProjectCTA from "@/components/ProjectCTA";
 import ProjectsNav from "@/components/ProjectsNav";
 
-export default function ProjectPage() {
+function ProjectWorkingBrainContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentLanguage, setCurrentLanguage] = useState("pt");
 
   useEffect(() => {
-    // Verificar se há um parâmetro de idioma na URL
     const urlLanguage = searchParams.get('lang');
 
     if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
@@ -29,19 +28,16 @@ export default function ProjectPage() {
       return;
     }
 
-    // Verificar o idioma do navegador
     const browserLanguage = navigator.language || navigator.userLanguage;
     const primaryLanguage = browserLanguage.split('-')[0];
 
-    // Definir o idioma padrão com base no navegador
     if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
       setCurrentLanguage(primaryLanguage);
     } else {
-      // Padrão para inglês se não for um dos idiomas suportados
       setCurrentLanguage('en');
     }
   }, [searchParams]);
-  
+
   const translations = {
     pt: {
       title: "WorkingBrain - Pesquisa de UX Educacional",
@@ -56,7 +52,7 @@ export default function ProjectPage() {
         { emoji: "👥", title: "Entrevistas", description: "Conversas com alunos e professores de escolas públicas e privadas" },
         { emoji: "📊", title: "Análise de Dados", description: "Identificação de padrões e pontos críticos comuns" },
         { emoji: "👤", title: "Criação de Personas", description: "Desenvolvimento de perfis representativos de alunos e professores" },
-        { emoji: "💡", title: "Insights", description: "Extrair conclusões valiosas para orientar soluções tecnológicas" }
+        { emoji: "💡", title: "Insights", description: "Extrair conclusões valiosas para orientar o desenvolvimento de soluções tecnológicas" }
       ],
       results: {
         metrics: [
@@ -123,7 +119,7 @@ export default function ProjectPage() {
         { emoji: "🔍", title: "Definición del Problema", description: "Análisis de los cambios en el Nuevo Sistema de Secundaria y sus impactos" },
         { emoji: "👥", title: "Entrevistas", description: "Conversaciones con estudiantes y profesores de escuelas públicas y privadas" },
         { emoji: "📊", title: "Análisis de Datos", description: "Identificación de patrones y puntos críticos comunes" },
-        { emoji: "👤", title: "Creación de Personas", description: "Desarrollo de perfis representativos de estudiantes y profesores" },
+        { emoji: "👤", title: "Creación de Personas", description: "Desarrollo de perfiles representativos de estudiantes y profesores" },
         { emoji: "💡", title: "Conclusiones", description: "Extraer conclusiones valiosas para orientar soluciones tecnológicas" }
       ],
       results: {
@@ -349,16 +345,16 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <header id="project-header">
-        <ProjectsNav 
-          language={currentLanguage} 
+        <ProjectsNav
+          language={currentLanguage}
           onLanguageChange={handleLanguageChange}
           onBackToMain={handleBackToMain}
         />
       </header>
-      
+
       <main id="project-main">
         <section id="project-hero">
-          <ProjectHero 
+          <ProjectHero
             title={t.title}
             subtitle={t.subtitle}
             image="/images/project-ux-research-workingbrain/logoworkingbrain-black.svg"
@@ -367,52 +363,52 @@ export default function ProjectPage() {
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="project-overview">
-          <ProjectOverview 
+          <ProjectOverview
             objective={t.overview.objective}
             challenge={t.overview.challenge}
             solution={t.overview.solution}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="creative-process">
           <CreativeProcess
             steps={t.process}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="results-impact">
-          <ResultsImpact 
+          <ResultsImpact
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="project-gallery">
-          <GalleryCarousel 
+          <GalleryCarousel
             language={currentLanguage}
-            mediaItems={mediaItems} 
+            mediaItems={mediaItems}
           />
         </section>
-        
+
         <section id="tools-used">
           <ToolsUsed
             tools={t.tools}
             language={currentLanguage}
           />
         </section>
-        
+
         <section id="lessons-learned">
           <LessonsLearned
             language={currentLanguage}
             lessons={t.lessons}
           />
         </section>
-        
+
         <section id="project-cta">
           <ProjectCTA
             language={currentLanguage}
@@ -420,5 +416,13 @@ export default function ProjectPage() {
         </section>
       </main>
     </div>
+  );
+}
+
+export default function ProjectPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <ProjectWorkingBrainContent />
+    </Suspense>
   );
 }

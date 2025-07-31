@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 
 // Components
 import ProjectHero from "@/components/ProjectHero";
@@ -15,13 +15,13 @@ import LessonsLearned from "@/components/LessonsLearned";
 import ProjectCTA from "@/components/ProjectCTA";
 import ProjectsNav from "@/components/ProjectsNav";
 
-export default function ProjectPage() {
+// Create a separate component to handle the language logic that uses useSearchParams
+function ProjectMeuAumigoContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [currentLanguage, setCurrentLanguage] = useState("pt");
 
   useEffect(() => {
-    // Verificar se há um parâmetro de idioma na URL
     const urlLanguage = searchParams.get('lang');
 
     if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
@@ -29,18 +29,16 @@ export default function ProjectPage() {
       return;
     }
 
-    // Verificar o idioma do navegador
     const browserLanguage = navigator.language || navigator.userLanguage;
     const primaryLanguage = browserLanguage.split('-')[0];
 
-    // Definir o idioma padrão com base no navegador
     if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
       setCurrentLanguage(primaryLanguage);
     } else {
-      // Padrão para inglês se não for um dos idiomas suportados
       setCurrentLanguage('en');
     }
   }, [searchParams]);
+
   const translations = {
     pt: {
       title: "E-mail HTML Meu Aumigo",
@@ -55,7 +53,7 @@ export default function ProjectPage() {
         { emoji: "📱", title: "Design Responsivo", description: "Adaptação completa para leitura confortável em mobile e desktop." },
         { emoji: "🛍️", title: "Elementos Interativos", description: "Criação de áreas clicáveis e incentivo visual para retorno ao site." },
         { emoji: "🎯", title: "Copy Criativa", description: "Mensagens com tom leve, emocional e direto, despertando engajamento." },
-        { emoji: "🔍", title: "Testes A/B", description: "Validação de diferentes versões para otimização de conversão." } 
+        { emoji: "🔍", title: "Testes A/B", description: "Validação de diferentes versões para otimização de conversão." }
       ],
       results: {
         metrics: [
@@ -141,7 +139,7 @@ export default function ProjectPage() {
         { emoji: "📱", title: "Diseño Responsivo", description: "Adaptación total para lectura cómoda en móviles y escritorio." },
         { emoji: "🛍️", title: "Elementos Interactivos", description: "Zonas clicables y llamados visuales para regresar al sitio." },
         { emoji: "🎯", title: "Copy Creativo", description: "Mensajes con tono liviano, emocional y directo." },
-        { emoji: "🔍", title: "Pruebas A/B", description: "Validación de diferentes versiones para optimización de conversión." } 
+        { emoji: "🔍", title: "Pruebas A/B", description: "Validación de diferentes versiones para optimización de conversión." }
       ],
       results: {
         metrics: [
@@ -321,8 +319,8 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <header id="project-header">
-        <ProjectsNav 
-          language={currentLanguage} 
+        <ProjectsNav
+          language={currentLanguage}
           onLanguageChange={handleLanguageChange}
           onBackToMain={handleBackToMain}
         />
@@ -330,7 +328,7 @@ export default function ProjectPage() {
 
       <main id="project-main">
         <section id="project-hero">
-          <ProjectHero 
+          <ProjectHero
             title={t.title}
             subtitle={t.subtitle}
             image="/images/project-meuaumigo/capa.svg"
@@ -341,7 +339,7 @@ export default function ProjectPage() {
         </section>
 
         <section id="project-overview">
-          <ProjectOverview 
+          <ProjectOverview
             objective={t.overview.objective}
             challenge={t.overview.challenge}
             solution={t.overview.solution}
@@ -357,7 +355,7 @@ export default function ProjectPage() {
         </section>
 
         <section id="results-impact">
-          <ResultsImpact 
+          <ResultsImpact
             metrics={t.results.metrics}
             feedback={t.results.feedback}
             beforeAfterImages={{
@@ -371,9 +369,9 @@ export default function ProjectPage() {
         </section>
 
         <section id="project-gallery">
-          <GalleryCarousel 
+          <GalleryCarousel
             language={currentLanguage}
-            mediaItems={mediaItems} 
+            mediaItems={mediaItems}
           />
         </section>
 
@@ -398,5 +396,13 @@ export default function ProjectPage() {
         </section>
       </main>
     </div>
+  );
+}
+
+export default function ProjectPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <ProjectMeuAumigoContent />
+    </Suspense>
   );
 }
