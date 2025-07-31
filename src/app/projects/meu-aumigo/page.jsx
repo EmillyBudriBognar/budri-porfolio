@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from 'next/navigation'
 
 // Components
 import ProjectHero from "@/components/ProjectHero";
@@ -14,14 +15,15 @@ import LessonsLearned from "@/components/LessonsLearned";
 import ProjectCTA from "@/components/ProjectCTA";
 import ProjectsNav from "@/components/ProjectsNav";
 
-export default function ProjectPage({ searchParams }) {
+export default function ProjectPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [currentLanguage, setCurrentLanguage] = useState("pt");
 
   useEffect(() => {
     // Verificar se há um parâmetro de idioma na URL
-    const urlLanguage = searchParams?.lang;
-    
+    const urlLanguage = searchParams.get('lang');
+
     if (urlLanguage && ["pt", "es", "en"].includes(urlLanguage)) {
       setCurrentLanguage(urlLanguage);
       return;
@@ -30,7 +32,7 @@ export default function ProjectPage({ searchParams }) {
     // Verificar o idioma do navegador
     const browserLanguage = navigator.language || navigator.userLanguage;
     const primaryLanguage = browserLanguage.split('-')[0];
-    
+
     // Definir o idioma padrão com base no navegador
     if (primaryLanguage === 'pt' || primaryLanguage === 'es') {
       setCurrentLanguage(primaryLanguage);
@@ -39,7 +41,6 @@ export default function ProjectPage({ searchParams }) {
       setCurrentLanguage('en');
     }
   }, [searchParams]);
-
   const translations = {
     pt: {
       title: "E-mail HTML Meu Aumigo",

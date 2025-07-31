@@ -8,32 +8,18 @@ const serviceId = "service_3cck3s6";
 const templateId = "template_xwq40df";
 const publicKey = "uVXdxc_nUznzm6N3X";
 
-// Função para formatar o número de telefone com o código do país
-const formatPhoneNumber = (countryId, phoneNumber) => {
-  phoneNumber = phoneNumber.replace(/\D/g, ""); // Remove tudo que não for número
-  if (phoneNumber.length > 11) phoneNumber = phoneNumber.slice(0, 11); // Limita a 11 dígitos
-
-  const formattedNumber = phoneNumber.length <= 10
-    ? phoneNumber.replace(/(\d{2})(\d{4})(\d{0,4})/, "$1 $2-$3") // Formato XX XXXX-XXXX
-    : phoneNumber.replace(/(\d{2})(\d{5})(\d{0,4})/, "$1 $2-$3"); // Formato XX XXXXX-XXXX
-
-  return `${countryId} ${formattedNumber}`; // Retorna o número formatado com o código do país
-};
-
 const ContactForm = ({ language = "pt" }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    countryId: "+55", // Código do país padrão (Brasil)
-    phoneNumber: "", // Número de telefone sem o código do país
+    phoneNumber: "",
     subject: "",
     message: "",
   });
 
   const [status, setStatus] = useState("");
-  const [errors, setErrors] = useState({}); // Estado para armazenar erros de validação
+  const [errors, setErrors] = useState({});
 
-  // Textos traduzidos para cada idioma
   const translations = {
     pt: {
       title: "Vamos construir algo incrível <span class='text-purple-600 dark:text-purple-300'>JUNTOS</span>?",
@@ -47,13 +33,14 @@ const ContactForm = ({ language = "pt" }) => {
       },
       placeholders: {
         fullName: "Seu nome completo",
-        phone: "+55 11 98765-4321",
+        phone: "(DD) 9XXXX-XXXX ou (DD) XXXX-XXXX",
         email: "seuemail@exemplo.com",
         subject: "Qual é o assunto?",
         message: "Escreva sua mensagem aqui...",
       },
       errors: {
         required: "Preencha este campo",
+        invalidPhone: "Número de telefone inválido",
       },
       button: {
         submit: "ENVIAR MENSAGEM",
@@ -82,13 +69,14 @@ const ContactForm = ({ language = "pt" }) => {
       },
       placeholders: {
         fullName: "Tu nombre completo",
-        phone: "+34 912 345 678",
+        phone: "(DD) 9XXXX-XXXX o (DD) XXXX-XXXX",
         email: "tucorreo@ejemplo.com",
         subject: "¿Cuál es el asunto?",
         message: "Escribe tu mensaje aquí...",
       },
       errors: {
         required: "Completa este campo",
+        invalidPhone: "Número de teléfono inválido",
       },
       button: {
         submit: "ENVIAR MENSAJE",
@@ -117,13 +105,14 @@ const ContactForm = ({ language = "pt" }) => {
       },
       placeholders: {
         fullName: "Your full name",
-        phone: "+1 123 456 7890",
+        phone: "(DD) 9XXXX-XXXX or (DD) XXXX-XXXX",
         email: "youremail@example.com",
         subject: "What's the subject?",
         message: "Write your message here...",
       },
       errors: {
         required: "Fill this field",
+        invalidPhone: "Invalid phone number",
       },
       button: {
         submit: "SEND MESSAGE",
@@ -142,7 +131,6 @@ const ContactForm = ({ language = "pt" }) => {
     },
   };
 
-  // Seleciona o texto com base no idioma
   const {
     title,
     description,
@@ -154,7 +142,6 @@ const ContactForm = ({ language = "pt" }) => {
     error,
   } = translations[language];
 
-  // Desativa o scroll quando o card de confirmação está aberto
   useEffect(() => {
     if (status === "success" || status === "error") {
       document.body.classList.add("overflow-hidden");
@@ -163,13 +150,43 @@ const ContactForm = ({ language = "pt" }) => {
     }
   }, [status]);
 
+  const handlePhoneChange = (e) => {
+    let value = e.target.value;
+    value = value.replace(/\D/g, "");
+
+    if (value.length > 2) {
+      value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+    }
+    if (value.length > 9 && value.length <= 15) {
+      value = value.replace(/^(\(\d{2}\))\s*(\d{4,5})(\d{0,4})/, (match, ddd, firstPart, secondPart) => {
+        if (firstPart.length === 5) {
+          return `${ddd} ${firstPart}-${secondPart}`;
+        } else if (firstPart.length === 4) {
+          return `${ddd} ${firstPart}-${secondPart}`;
+        }
+        return match;
+      });
+    }
+
+    if (value.length > 15) {
+      value = value.substring(0, 15);
+    }
+    
+    setFormData((prevData) => ({
+      ...prevData,
+      phoneNumber: value,
+    }));
+    if (errors.phoneNumber) {
+      setErrors((prevErrors) => ({ ...prevErrors, phoneNumber: "" }));
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    // Limpa o erro ao começar a digitar
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     }
@@ -179,26 +196,33 @@ const ContactForm = ({ language = "pt" }) => {
     const newErrors = {};
     if (!formData.fullName.trim()) newErrors.fullName = errorMessages.required;
     if (!formData.email.trim()) newErrors.email = errorMessages.required;
-    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = errorMessages.required;
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = errorMessages.required;
+    } else {
+      const cleanedPhone = formData.phoneNumber.replace(/\D/g, "");
+      if (!/^\d{10,11}$/.test(cleanedPhone)) {
+        newErrors.phoneNumber = errorMessages.invalidPhone;
+      }
+    }
     if (!formData.subject.trim()) newErrors.subject = errorMessages.required;
     if (!formData.message.trim()) newErrors.message = errorMessages.required;
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Retorna true se não houver erros
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validateForm()) return; // Valida o formulário antes de enviar
+    if (!validateForm()) return;
 
     setStatus("sending");
 
-    const formattedPhone = formatPhoneNumber(formData.countryId, formData.phoneNumber); // Formata o telefone
+    const finalPhoneNumber = `+55${formData.phoneNumber.replace(/\D/g, "")}`;
 
     const templateParams = {
       user_name: formData.fullName,
       user_email: formData.email,
-      user_phone: formattedPhone, // Telefone formatado com código do país
+      user_phone: finalPhoneNumber,
       user_subject: formData.subject,
       message: formData.message,
     };
@@ -206,7 +230,7 @@ const ContactForm = ({ language = "pt" }) => {
     emailjs.send(serviceId, templateId, templateParams, publicKey).then(
       () => {
         setStatus("success");
-        setFormData({ fullName: "", email: "", countryId: "+55", phoneNumber: "", subject: "", message: "" });
+        setFormData({ fullName: "", email: "", phoneNumber: "", subject: "", message: "" });
       },
       (error) => {
         console.error("Error sending email: ", error.text);
@@ -215,7 +239,6 @@ const ContactForm = ({ language = "pt" }) => {
     );
   };
 
-  // Hook useInView para detectar quando a seção está visível
   const { ref: sectionRef, inView: sectionInView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -226,7 +249,6 @@ const ContactForm = ({ language = "pt" }) => {
       ref={sectionRef}
       className="min-h-screen w-full pt-16 flex flex-col items-center justify-center bg-purple-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-all duration-300 p-4"
     >
-      {/* Título e descrição */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
@@ -243,7 +265,6 @@ const ContactForm = ({ language = "pt" }) => {
         {description}
       </motion.p>
 
-      {/* Formulário */}
       <motion.form
         onSubmit={handleSubmit}
         className="space-y-6 max-w-3xl w-full"
@@ -251,7 +272,6 @@ const ContactForm = ({ language = "pt" }) => {
         animate={sectionInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.5 }}
       >
-        {/* Nome e Telefone */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           initial={{ opacity: 0, y: 20 }}
@@ -282,38 +302,25 @@ const ContactForm = ({ language = "pt" }) => {
             <label htmlFor="phoneNumber" className="font-medium mb-2 text-gray-700 dark:text-gray-300">
               {labels.phone}
             </label>
-            <div className="flex">
-              <input
-                type="text"
-                name="countryId"
-                value={formData.countryId}
-                onChange={handleChange}
-                className={`border ${
-                  errors.phoneNumber ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-l-lg px-4 py-3 w-20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-                placeholder="+55"
-              />
-              <input
-                type="tel"
-                name="phoneNumber"
-                id="phoneNumber"
-                required
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                maxLength={15}
-                className={`border ${
-                  errors.phoneNumber ? "border-red-500" : "border-gray-300 dark:border-gray-600"
-                } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-r-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
-                placeholder={placeholders.phone}
-              />
-            </div>
+            <input
+              type="tel"
+              name="phoneNumber"
+              id="phoneNumber"
+              required
+              value={formData.phoneNumber}
+              onChange={handlePhoneChange}
+              maxLength={15}
+              className={`border ${
+                errors.phoneNumber ? "border-red-500" : "border-gray-300 dark:border-gray-600"
+              } bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300 rounded-lg px-4 py-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent`}
+              placeholder={placeholders.phone}
+            />
             {errors.phoneNumber && (
               <p className="text-red-500 text-l mt-1">{errors.phoneNumber}</p>
             )}
           </div>
         </motion.div>
 
-        {/* E-mail e Assunto */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           initial={{ opacity: 0, y: 20 }}
@@ -362,7 +369,6 @@ const ContactForm = ({ language = "pt" }) => {
           </div>
         </motion.div>
 
-        {/* Mensagem */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={sectionInView ? { opacity: 1, y: 0 } : {}}
@@ -388,16 +394,15 @@ const ContactForm = ({ language = "pt" }) => {
           )}
         </motion.div>
 
-        {/* Botão e Status */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={sectionInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 1.3 }}
           className="pb-14"
         >
-          <Button 
-            type="submit" 
-            disabled={status === "sending"} 
+          <Button
+            type="submit"
+            disabled={status === "sending"}
             className="w-full mt-6 transition-all duration-300"
           >
             {status === "sending" ? button.sending : button.submit}
@@ -405,7 +410,6 @@ const ContactForm = ({ language = "pt" }) => {
         </motion.div>
       </motion.form>
 
-      {/* Card de confirmação */}
       <AnimatePresence>
         {(status === "success" || status === "error") && (
           <motion.div
@@ -414,7 +418,7 @@ const ContactForm = ({ language = "pt" }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm z-50"
-            onClick={() => setStatus("")} // Fecha o card ao clicar no fundo
+            onClick={() => setStatus("")}
           >
             <motion.div
               className="bg-white dark:bg-gray-800 rounded-lg p-6 w-[90%] md:w-[400px] text-center shadow-lg"
@@ -422,7 +426,7 @@ const ContactForm = ({ language = "pt" }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()} // Impede que o card feche ao clicar nele
+              onClick={(e) => e.stopPropagation()}
             >
               <h2 className="text-xl font-bold text-purple-600 dark:text-purple-300 mb-4">
                 {status === "success" ? success.title : error.title}

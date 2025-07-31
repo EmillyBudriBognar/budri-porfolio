@@ -69,8 +69,9 @@ const Formacao = ({ language = "pt" }) => {
         { nome: "Controle de versão - Meta", ano: "2024", link: "https://coursera.org/verify/68AMXBR5DZBH" },
         { nome: "Programação com JavaScript - Meta", ano: "2024", link: "https://www.coursera.org/verify/NLVLLFW25QMJ" },
         { nome: "Introdução ao desenvolvimento de front-end - Meta", ano: "2024", link: "https://coursera.org/verify/MPHK2EV89FKG" },
+        { nome: "Publicidade nas Redes Sociais - Santander Open Academy", ano: "2025" },
         { nome: "Redes e Computadores - Fundação Bradesco", ano: "2023" },
-        { nome: "Fundamentos do Python 1", ano: "2025", link: "https://www.netacad.com/pt/certificates?issuanceId=65138e47-1898-4c86-a659-80fe0d07c17a" },
+        { nome: "Fundamentos do Python 1 - Cisco", ano: "2025", link: "https://www.netacad.com/pt/certificates?issuanceId=65138e47-1898-4c86-a659-80fe0d07c17a" },
         { nome: "Imersão com Python na Prática - Empowerdata", ano: "2023" },
         { nome: "Lógica de Programação - SENAI", ano: "2023" }
       ]
@@ -121,8 +122,9 @@ const Formacao = ({ language = "pt" }) => {
         { nome: "Control de versiones - Meta", ano: "2024", link: "https://coursera.org/verify/68AMXBR5DZBH" },
         { nome: "Programación con JavaScript - Meta", ano: "2024", link: "https://www.coursera.org/verify/NLVLLFW25QMJ" },
         { nome: "Introducción al desarrollo front-end - Meta", ano: "2024", link: "https://coursera.org/verify/MPHK2EV89FKG" },
+        { nome: "Publicidad en Redes Sociales - Santander Open Academy", ano: "2025" },
         { nome: "Redes y Computadoras - Fundación Bradesco", ano: "2023" },
-        { nome: "Fundamentos de Python 1", ano: "2025", link: "https://www.netacad.com/pt/certificates?issuanceId=65138e47-1898-4c86-a659-80fe0d07c17a" },
+        { nome: "Fundamentos de Python 1 - Cisco", ano: "2025", link: "https://www.netacad.com/pt/certificates?issuanceId=65138e47-1898-4c86-a659-80fe0d07c17a" },
         { nome: "Inmersión en Python en la Práctica - Empowerdata", ano: "2023" },
         { nome: "Lógica de Programación - SENAI", ano: "2023" }
       ]
@@ -173,8 +175,9 @@ const Formacao = ({ language = "pt" }) => {
         { nome: "Version Control - Meta", ano: "2024", link: "https://coursera.org/verify/68AMXBR5DZBH" },
         { nome: "Programming with JavaScript - Meta", ano: "2024", link: "https://www.coursera.org/verify/NLVLLFW25QMJ" },
         { nome: "Introduction to Front-End Development - Meta", ano: "2024", link: "https://coursera.org/verify/MPHK2EV89FKG" },
+        { nome: "Social Media Advertising - Santander Open Academy", ano: "2025" },
         { nome: "Networks and Computers - Fundação Bradesco", ano: "2023" },
-        { nome: "Python Essentials 1", ano: "2025", link: "https://www.netacad.com/pt/certificates?issuanceId=65138e47-1898-4c86-a659-80fe0d07c17a" },
+        { nome: "Python Essentials 1 - Cisco", ano: "2025", link: "https://www.netacad.com/pt/certificates?issuanceId=65138e47-1898-4c86-a659-80fe0d07c17a" },
         { nome: "Python Immersion in Practice - Empowerdata", ano: "2023" },
         { nome: "Programming Logic - SENAI", ano: "2023" }
       ]

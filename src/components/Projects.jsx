@@ -139,17 +139,19 @@ const Portfolio = ({ language = "pt" }) => {
         },
         {
           section: "Website",
-          title: "BreShopp - Marketplace",
-          description: "Página de apresentação com foco em usabilidade, design responsivo, SEO e conversão. Projeto acadêmico com estética jovem e sustentável.",
-          category: ["Web App", "UX Design", "UI Design", "SEO"],
-          image: "/images/project-breshopp/capa-desktop.svg",
-          mobileImage: "/images/project-breshopp/slide1.svg",
-          link: "/projects/breshopp",
+          title: "Portfólio LKS Data",
+          description: "Projeto completo para a LKS Data com foco em soluções visuais e digitais. Incluiu o desenvolvimento de website institucional responsivo, identidade visual moderna, criação de logo, design de e-mails HTML e otimização para SEO.",
+          category: ["Web App", "UX Design", "UI Design", "SEO", "Logo", "Identidade Visual", "Email HTML"],
+          image: "/images/project-lks/capa-desktop-pt.png",
+          mobileImage: "/images/project-lks/capa-desktop-pt.png",
+          link: "/projects/lks-data",
           ctaText: "Ver Projeto",
           year: "2025",
           details: [
-            { label: "Tipo de projeto", value: "Projeto Integrador - Tecnólogo em Desenvolvimento de Software Multiplataforma" },
-            { label: "Ano", value: "2025" }
+            { label: "Cliente", value: "LKS Data" },
+            { label: "Ano", value: "2025" },
+            { label: "Tipo", value: "Portfólio Institucional" },
+            { label: "Pacote", value: "Website, Email HTML, Logo, Identidade Visual" }
           ]
         },
         {
@@ -233,17 +235,19 @@ const Portfolio = ({ language = "pt" }) => {
         },
         {
           section: "Website",
-          title: "BreShopp Landing Page - Thrift Marketplace",
-          description: "Landing page focused on usability, responsive design, SEO and conversions. Academic project with a youthful and sustainable style.",
-          category: ["Web App", "UX Design", "UI Design", "SEO", "E-commerce"],
-          image: "/images/project-breshopp/capa-desktop.svg",
-          mobileImage: "/images/project-breshopp/slide1.svg",
-          link: "/projects/breshopp",
-          ctaText: "View Full Project",
+          title: "LKS Data Portfolio",
+          description: "A full project for LKS Data focused on digital and visual solutions. Delivered a responsive institutional website, modern visual identity, logo design, HTML email templates, and SEO optimization.",
+          category: ["Web App", "UX Design", "UI Design", "SEO", "Logo", "Visual Identity", "HTML Email"],
+          image: "/images/project-lks/capa-desktop-en.png",
+          mobileImage: "/images/project-lks/capa-desktop-en.png",
+          link: "/projects/lks-data",
+          ctaText: "View Project",
           year: "2025",
           details: [
-            { label: "Project type", value: "Integrative Final Project – Associate Degree in Multiplatform Software Development" },
-            { label: "Year", value: "2025" }
+            { label: "Client", value: "LKS Data" },
+            { label: "Year", value: "2025" },
+            { label: "Type", value: "Institutional Portfolio" },
+            { label: "Package", value: "Website, HTML Email, Logo, Visual Identity" }
           ]
         },
         {
@@ -286,7 +290,7 @@ const Portfolio = ({ language = "pt" }) => {
       sections: [
         "Aplicaciones Móviles",
         "Email Marketing",
-        "Diseño Web",
+        "Sitio Web",
         "Identidad Visual",
         "Investigación & Estrategia"
       ],
@@ -326,18 +330,20 @@ const Portfolio = ({ language = "pt" }) => {
           ]
         },
         {
-          section: "Diseño Web",
-          title: "Landing Page BreShopp - Marketplace de Ropa",
-          description: "Página de presentación con enfoque en usabilidad, diseño responsivo, SEO y conversión. Proyecto académico con estilo sostenible.",
-          category: ["Aplicación Web", "Diseño UX", "Diseño UI", "SEO", "E-commerce"],
-          image: "/images/project-breshopp/capa-desktop.svg",
-          mobileImage: "/images/project-breshopp/slide1.svg",
-          link: "/projects/breshopp",
-          ctaText: "Ver Proyecto Completo",
+          section: "Sitio Web",
+          title: "Portafolio LKS Data",
+          description: "Proyecto integral para LKS Data con enfoque en soluciones digitales y visuales. Incluyó el desarrollo de un sitio institucional adaptable, identidad visual moderna, diseño de logotipo, emails HTML y optimización SEO.",
+          category: ["Aplicación Web", "Diseño UX", "Diseño UI", "SEO", "Logo", "Identidad Visual", "Email HTML"],
+          image: "/images/project-lks/capa-desktop-es.png",
+          mobileImage: "/images/project-lks/capa-desktop-es.png",
+          link: "/projects/lks-data",
+          ctaText: "Ver Proyecto",
           year: "2025",
           details: [
-            { label: "Tipo de proyecto", value: "Proyecto Integrador – Tecnicatura en Desarrollo de Software Multiplataforma" },
-            { label: "Año", value: "2025" }
+            { label: "Cliente", value: "LKS Data" },
+            { label: "Año", value: "2025" },
+            { label: "Tipo", value: "Portafolio Institucional" },
+            { label: "Paquete", value: "Sitio Web, Email HTML, Logo, Identidad Visual" }
           ]
         },
         {
