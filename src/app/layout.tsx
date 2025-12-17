@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Jost } from "next/font/google"; // Import font
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -36,8 +36,6 @@ export const metadata: Metadata = {
     "Portfólio Design Interativo", "Design System", "Tendências UX 2025"
   ],
   referrer: "origin-when-cross-origin",
-  themeColor: "#000000",
-  colorScheme: "dark light",
   creator: "Emilly Budri Bognar",
   publisher: "Emilly Budri Bognar",
   formatDetection: {
@@ -95,6 +93,14 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark light",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -105,10 +111,6 @@ export default function RootLayout({
       <head>
         {/* Meta Tags Essenciais */}
         <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
-        />
 
         {/* Pré-carregamento de recursos críticos */}
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
