@@ -1,0 +1,201 @@
+"use client";
+
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
+import { motion, Variants } from 'framer-motion';
+
+interface OverviewCardProps {
+    emoji: string;
+    title: string;
+    content: string;
+    textColor: string;
+    darkTextColor: string;
+}
+
+const OverviewCard: React.FC<OverviewCardProps> = ({ emoji, title, content, textColor, darkTextColor }) => {
+    return (
+        <motion.div
+            whileHover={{ y: -5 }}
+            className={`p-6 rounded-xl shadow-md hover:shadow-lg transition-all ${textColor} dark:${darkTextColor} bg-white dark:bg-gray-800 flex flex-col h-full`}
+        >
+            <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="text-4xl mb-4 block"
+                aria-hidden="true"
+            >
+                {emoji}
+            </motion.span>
+            <h3 className="text-xl font-semibold mb-3">{title}</h3>
+            <div className="flex-grow">
+                <p className="opacity-90">{content}</p>
+            </div>
+        </motion.div>
+    );
+};
+
+interface ProjectOverviewProps {
+    objective?: string;
+    challenge?: string;
+    solution?: string;
+    backgroundColor?: string;
+    darkBackgroundColor?: string;
+    textColor?: string;
+    darkTextColor?: string;
+    language?: string;
+}
+
+interface Translation {
+    sectionTitle: string;
+    objectiveTitle: string;
+    challengeTitle: string;
+    solutionTitle: string;
+}
+
+interface Translations {
+    [key: string]: Translation;
+}
+
+const ProjectOverview: React.FC<ProjectOverviewProps> = ({
+    objective,
+    challenge,
+    solution,
+    backgroundColor = 'bg-white',
+    darkBackgroundColor = 'bg-gray-900',
+    textColor = 'text-gray-800',
+    darkTextColor = 'text-gray-100',
+    language = 'en'
+}) => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
+    const translations: Translations = {
+        pt: {
+            sectionTitle: "Sobre o Projeto",
+            objectiveTitle: "Objetivo",
+            challengeTitle: "Desafio",
+            solutionTitle: "Solução",
+        },
+        es: {
+            sectionTitle: "Sobre el Proyecto",
+            objectiveTitle: "Objetivo",
+            challengeTitle: "Desafío",
+            solutionTitle: "Solución",
+        },
+        en: {
+            sectionTitle: "About the Project",
+            objectiveTitle: "Objective",
+            challengeTitle: "Challenge",
+            solutionTitle: "Solution",
+        }
+    };
+
+    const {
+        sectionTitle,
+        objectiveTitle,
+        challengeTitle,
+        solutionTitle
+    } = translations[language] || translations['en'];
+
+    const displayObjective = objective || "Define the main project objectives";
+    const displayChallenge = challenge || "Describe the challenges faced";
+    const displaySolution = solution || "Present the implemented solution";
+
+    const container: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                delayChildren: 0.5,
+                staggerChildren: 0.25,
+                when: "beforeChildren"
+            }
+        }
+    };
+
+    const item: Variants = {
+        hidden: { y: 30, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+            }
+        }
+    };
+
+    const cardItem: Variants = {
+        hidden: { scale: 0.95, opacity: 0 },
+        visible: (i: number) => ({
+            scale: 1,
+            opacity: 1,
+            transition: {
+                delay: i * 0.3,
+                type: "spring",
+                stiffness: 80,
+                damping: 10
+            }
+        })
+    };
+
+    return (
+        <motion.section
+            ref={ref}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={container}
+            className={`${backgroundColor} dark:${darkBackgroundColor} py-16 px-4`}
+        >
+            <div className="max-w-4xl mx-auto">
+                <motion.h2
+                    variants={item}
+                    className={`text-3xl font-bold mb-12 text-center ${textColor} dark:${darkTextColor}`}
+                >
+                    {sectionTitle}
+                </motion.h2>
+
+                <motion.div
+                    variants={container}
+                    className="grid md:grid-cols-3 gap-8"
+                >
+                    <motion.div variants={cardItem} custom={0} className="flex">
+                        <OverviewCard
+                            emoji="🎯"
+                            title={objectiveTitle}
+                            content={displayObjective}
+                            textColor={textColor}
+                            darkTextColor={darkTextColor}
+                        />
+                    </motion.div>
+
+                    <motion.div variants={cardItem} custom={1} className="flex">
+                        <OverviewCard
+                            emoji="🧩"
+                            title={challengeTitle}
+                            content={displayChallenge}
+                            textColor={textColor}
+                            darkTextColor={darkTextColor}
+                        />
+                    </motion.div>
+
+                    <motion.div variants={cardItem} custom={2} className="flex">
+                        <OverviewCard
+                            emoji="💡"
+                            title={solutionTitle}
+                            content={displaySolution}
+                            textColor={textColor}
+                            darkTextColor={darkTextColor}
+                        />
+                    </motion.div>
+                </motion.div>
+            </div>
+        </motion.section>
+    );
+};
+
+export default ProjectOverview;
