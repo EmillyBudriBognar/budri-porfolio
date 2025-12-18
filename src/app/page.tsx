@@ -8,6 +8,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import ScrollingWords from "@/components/ui/ScrollingWords";
 import ServicesSection from "@/components/sections/ServicesSection";
 import AboutMeSection from "@/components/sections/AboutMeSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
 import FormationSection from "@/components/sections/FormationSection";
 import ContactSection from "@/components/sections/ContactSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
@@ -36,6 +37,10 @@ export default function Home() {
 
                 <section id="aboutme-section" aria-label="About me" className="w-full">
                     <AboutMeSection />
+                </section>
+
+                <section id="experience-section" aria-label="Experience" className="w-full">
+                    <ExperienceSection />
                 </section>
 
                 <section id="formation-section" aria-label="Formation" className="w-full">

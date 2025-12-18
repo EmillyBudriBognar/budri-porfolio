@@ -3,6 +3,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronLeft, FiChevronRight, FiExternalLink } from "react-icons/fi";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface ProjectDetail {
     label: string;
@@ -22,97 +26,6 @@ interface Project {
     details: ProjectDetail[];
 }
 
-
-
-const ProjectItem: React.FC<{ project: Project; isActive: boolean }> = ({ project, isActive }) => {
-    return (
-        <motion.div
-            className={`relative w-full max-w-5xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800 ${isActive ? "opacity-100" : "opacity-0 absolute"
-                }`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isActive ? 1 : 0 }}
-            transition={{ duration: 0.5 }}
-        >
-            {/* Layout diferente para mobile e desktop */}
-            <div className="flex flex-col md:flex-row h-full">
-                {/* Imagem do projeto - mobile tem imagem menor e diferente */}
-                <div className="w-full md:w-1/2 h-48 md:h-auto bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-gray-800 dark:to-gray-800 relative overflow-hidden group">
-                    {/* Imagem para mobile */}
-                    <img
-                        src={project.mobileImage || project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 md:hidden"
-                        loading="lazy"
-                    />
-                    {/* Imagem para desktop */}
-                    <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 hidden md:block"
-                        loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-4 md:p-6 flex flex-col justify-end">
-                        <div className="flex flex-wrap gap-2">
-                            {project.category.map((cat, i) => (
-                                <span
-                                    key={i}
-                                    className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full border border-white/10"
-                                >
-                                    {cat}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Conteúdo - layout mais compacto no mobile */}
-                <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col h-full">
-                    <div className="flex-grow overflow-y-auto">
-                        <div className="mb-3 md:mb-6">
-                            <span className="text-xs md:text-sm text-purple-600 dark:text-purple-400 font-medium">
-                                {project.section}
-                            </span>
-                            <h3 className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white mt-1 mb-1 md:mb-3">
-                                {project.title}
-                            </h3>
-                            <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-2 md:mb-4 line-clamp-3 md:line-clamp-none">
-                                {project.description}
-                            </p>
-
-                            {/* Grid mais compacto no mobile */}
-                            <div className="grid grid-cols-2 gap-2 mb-3 md:mb-6">
-                                {project.details.map((detail, i) => (
-                                    <div key={i} className="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg">
-                                        <span className="block text-xs text-gray-500 dark:text-gray-400 mb-0 md:mb-1">
-                                            {detail.label}
-                                        </span>
-                                        <span className="block text-xs font-medium text-gray-900 dark:text-white truncate">
-                                            {detail.value}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Botão fixo na parte inferior - mobile */}
-                    <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800 sticky bottom-0 bg-white dark:bg-gray-900 pb-2 md:pb-0">
-                        <a
-                            href={project.link}
-                            className="w-full flex items-center justify-center px-3 py-4 md:px-6 md:py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-l"
-                        >
-                            {project.ctaText}
-                            <FiExternalLink className="ml-2" size={20} />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </motion.div>
-    );
-};
-
-import { useTranslation } from "@/hooks/useTranslation";
-
 interface Translation {
     sections: string[];
     projects: Project[];
@@ -122,17 +35,105 @@ interface Translations {
     [key: string]: Translation;
 }
 
+const ProjectItem: React.FC<{ project: Project; isActive: boolean }> = ({ project, isActive }) => {
+    const imageRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (isActive && imageRef.current) {
+            gsap.fromTo(imageRef.current,
+                { scale: 1.1, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" }
+            );
+        }
+    }, [isActive]);
+
+    return (
+        <motion.div
+            className={`relative w-full max-w-5xl mx-auto bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-[3rem] shadow-2xl overflow-hidden border border-purple-100 dark:border-purple-900/30 ${isActive ? "opacity-100" : "opacity-0 absolute"}`}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.95 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+            <div className="flex flex-col lg:flex-row h-full">
+                {/* Image Section */}
+                <div className="w-full lg:w-[45%] h-64 lg:h-auto overflow-hidden relative group" ref={imageRef}>
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 via-transparent to-transparent flex flex-col justify-end p-8">
+                        <div className="flex flex-wrap gap-2">
+                            {project.category.map((cat, i) => (
+                                <span
+                                    key={i}
+                                    className="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold rounded-full border border-white/20 uppercase tracking-widest"
+                                >
+                                    {cat}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="w-full lg:w-[55%] p-8 lg:p-12 flex flex-col justify-between">
+                    <div>
+                        <div className="flex items-center gap-4 mb-4">
+                            <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300 text-xs font-black rounded-full uppercase tracking-tighter">
+                                {project.section}
+                            </span>
+                            <span className="text-gray-400 dark:text-gray-500 font-medium text-sm">
+                                {project.year}
+                            </span>
+                        </div>
+
+                        <h3 className="text-3xl lg:text-4xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight leading-none">
+                            {project.title}
+                        </h3>
+
+                        <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                            {project.description}
+                        </p>
+
+                        <div className="grid grid-cols-2 gap-4 mb-8">
+                            {project.details.map((detail, i) => (
+                                <div key={i} className="bg-purple-50/50 dark:bg-purple-900/10 p-4 rounded-2xl border border-purple-100/50 dark:border-purple-900/20">
+                                    <span className="block text-[10px] text-purple-400 dark:text-purple-500 font-bold uppercase tracking-widest mb-1">
+                                        {detail.label}
+                                    </span>
+                                    <span className="block text-sm font-bold text-gray-800 dark:text-gray-200 truncate">
+                                        {detail.value}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative flex items-center justify-center gap-3 px-8 py-5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl text-white font-black uppercase tracking-widest hover:shadow-[0_20px_50px_rgba(147,51,234,0.3)] transition-all duration-300 active:scale-95"
+                    >
+                        {project.ctaText}
+                        <FiExternalLink className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </a>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
 const Portfolio: React.FC = () => {
     const { language } = useTranslation();
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
     const translations: Translations = {
         pt: {
-            sections: [
-                "Aplicações Mobile",
-                "Email Marketing",
-                "Website",
-                "Identidade Visual",
-                "Pesquisa & Estratégia"
-            ],
+            sections: ["Aplicações Mobile", "Email Marketing", "Website", "Identidade Visual", "Pesquisa & Estratégia"],
             projects: [
                 {
                     section: "Aplicações Mobile",
@@ -145,9 +146,9 @@ const Portfolio: React.FC = () => {
                     ctaText: "Ver Projeto",
                     year: "2024",
                     details: [
-                        { label: "Tipo de projeto", value: "TCC – Técnico em Informática para Internet" },
+                        { label: "Tipo", value: "TCC – Mobile" },
+                        { label: "Stack", value: "React Native, Expo" },
                         { label: "Ano", value: "2024" },
-                        { label: "Tecnologias", value: "React Native, Typescript, Expo" },
                         { label: "Resultado", value: "+85 usuários" }
                     ]
                 },
@@ -162,8 +163,8 @@ const Portfolio: React.FC = () => {
                     ctaText: "Ver Campanha",
                     year: "2025",
                     details: [
-                        { label: "Tipo de projeto", value: "Projeto Pessoal" },
-                        { label: "Formato", value: "E-mail HTML Responsivo" },
+                        { label: "Tipo", value: "Projeto Pessoal" },
+                        { label: "Formato", value: "HTML Responsivo" },
                         { label: "Ano", value: "2025" },
                         { label: "Conversão", value: "+60% média" }
                     ]
@@ -172,7 +173,7 @@ const Portfolio: React.FC = () => {
                     section: "Website",
                     title: "Portfólio LKS Data",
                     description: "Projeto completo para a LKS Data com foco em soluções visuais e digitais. Incluiu o desenvolvimento de website institucional responsivo, identidade visual moderna, criação de logo, design de e-mails HTML e otimização para SEO.",
-                    category: ["Web App", "UX Design", "UI Design", "SEO", "Logo", "Identidade Visual", "Email HTML"],
+                    category: ["Web App", "UX Design", "UI Design", "SEO"],
                     image: "/images/project-lks/capa-desktop-pt.png",
                     mobileImage: "/images/project-lks/capa-desktop-pt.png",
                     link: "/projects/lks-data",
@@ -181,8 +182,8 @@ const Portfolio: React.FC = () => {
                     details: [
                         { label: "Cliente", value: "LKS Data" },
                         { label: "Ano", value: "2025" },
-                        { label: "Tipo", value: "Portfólio Institucional" },
-                        { label: "Pacote", value: "Website, Email HTML, Logo, Identidade Visual" }
+                        { label: "Tipo", value: "Institucional" },
+                        { label: "Pacote", value: "Web, Email, Branding" }
                     ]
                 },
                 {
@@ -196,7 +197,7 @@ const Portfolio: React.FC = () => {
                     ctaText: "Ver Detalhes",
                     year: "2024",
                     details: [
-                        { label: "Tipo de projeto", value: "TCC – Técnico em Informática para Internet" },
+                        { label: "Tipo", value: "Identidade Visual" },
                         { label: "Ano", value: "2024" },
                         { label: "Ferramentas", value: "Figma" },
                         { label: "Aprovação", value: "100%" }
@@ -206,69 +207,63 @@ const Portfolio: React.FC = () => {
                     section: "Pesquisa & Estratégia",
                     title: "UX Research - WorkingBrain",
                     description: "Pesquisa com estudantes e professores sobre educação digital. Inclui personas, mapa de empatia e jornada do usuário.",
-                    category: ["UX Research", "Testes de Usabilidade"],
+                    category: ["UX Research", "Usability Testing"],
                     image: "/images/project-ux-research-workingbrain/capa-desktop.svg",
                     mobileImage: "/images/project-ux-research-workingbrain/slide1.svg",
                     link: "/projects/ux-research-workingbrain",
                     ctaText: "Ver Metodologia",
                     year: "2024",
                     details: [
-                        { label: "Tipo de projeto", value: "TCC – Técnico em Informática para Internet" },
+                        { label: "Tipo", value: "UX Research" },
                         { label: "Ano", value: "2024" },
-                        { label: "Participantes", value: "Professores e Alunos da Rede Pública" },
-                        { label: "Processos", value: "Empatizar, Definir e Idear" },
+                        { label: "Participantes", value: "Público Alvo" },
+                        { label: "Processos", value: "Design Thinking" }
                     ]
                 }
             ]
         },
         en: {
-            sections: [
-                "Mobile Applications",
-                "Email Marketing",
-                "Website",
-                "Visual Identity",
-                "Research & Strategy"
-            ],
+            sections: ["Mobile Apps", "Email Marketing", "Website", "Visual Identity", "Research & Strategy"],
             projects: [
                 {
-                    section: "Mobile Applications",
+                    section: "Mobile Apps",
                     title: "WorkingBrain - Educational Platform",
                     description: "Educational app with gamification and performance reports. Academic and personal project focused on digital inclusion.",
                     category: ["Mobile App", "UI Design", "UX Design", "Education"],
                     image: "/images/project-workingbrain-mobile/capa-desktop.svg",
                     mobileImage: "/images/project-workingbrain-mobile/slide1.svg",
                     link: "/projects/workingbrain-mobile",
-                    ctaText: "View Full Project",
+                    ctaText: "View Project",
                     year: "2024",
                     details: [
-                        { label: "Project type", value: "Capstone Project – Technical Course in Internet Systems" },
+                        { label: "Type", value: "Capstone Project" },
+                        { label: "Stack", value: "React Native, Expo" },
                         { label: "Year", value: "2024" },
-                        { label: "Technologies", value: "React Native, Typescript, Expo" },
-                        { label: "Result", value: "+85 interested users" }
+                        { label: "Result", value: "+85 users" }
                     ]
                 },
                 {
                     section: "Email Marketing",
-                    title: "Meu Aumigo – Email Marketing",
+                    title: "Meu Aumigo - Email Marketing",
                     description: "Responsive HTML email with CSS animations focused on conversion. Developed as a personal project to simulate a real campaign.",
-                    category: ["Email Marketing", "Motion Design", "Copywriting", "Creative Campaigns"],
+                    category: ["Email Marketing", "Motion Design", "Copywriting"],
                     image: "/images/project-meuaumigo/capa-desktop-en.svg",
                     mobileImage: "/images/project-meuaumigo/capa-mobile-en.svg",
                     link: "/projects/meu-aumigo",
                     ctaText: "View Campaign",
                     year: "2025",
                     details: [
-                        { label: "Project type", value: "Personal Project" },
-                        { label: "Format", value: "Responsive HTML Email" },
+                        { label: "Type", value: "Personal Project" },
+                        { label: "Format", value: "HTML Responsive" },
                         { label: "Year", value: "2025" },
-                        { label: "Conversion & Retention", value: "60%+ average" }
+                        { label: "Conversion", value: "+60% avg" }
                     ]
                 },
                 {
                     section: "Website",
                     title: "LKS Data Portfolio",
                     description: "A full project for LKS Data focused on digital and visual solutions. Delivered a responsive institutional website, modern visual identity, logo design, HTML email templates, and SEO optimization.",
-                    category: ["Web App", "UX Design", "UI Design", "SEO", "Logo", "Visual Identity", "HTML Email"],
+                    category: ["Web App", "UX Design", "UI Design", "SEO"],
                     image: "/images/project-lks/capa-desktop-en.png",
                     mobileImage: "/images/project-lks/capa-desktop-en.png",
                     link: "/projects/lks-data",
@@ -277,30 +272,30 @@ const Portfolio: React.FC = () => {
                     details: [
                         { label: "Client", value: "LKS Data" },
                         { label: "Year", value: "2025" },
-                        { label: "Type", value: "Institutional Portfolio" },
-                        { label: "Package", value: "Website, HTML Email, Logo, Visual Identity" }
+                        { label: "Type", value: "Institutional" },
+                        { label: "Package", value: "Web, Email, Branding" }
                     ]
                 },
                 {
                     section: "Visual Identity",
-                    title: "WorkingBrain Visual Identity & Mascot",
+                    title: "WorkingBrain Visual Identity",
                     description: "Visual identity creation and gamified mascot for a multi-platform application. Full creative direction.",
-                    category: ["Branding", "Design", "Illustration", "Design Thinking"],
+                    category: ["Branding", "Design", "Illustration"],
                     image: "/images/project-workingbrain/capa-desktop-en.png",
                     mobileImage: "/images/project-workingbrain/slide1-en.png",
                     link: "/projects/visual-identity-workingbrain",
                     ctaText: "View Details",
                     year: "2024",
                     details: [
-                        { label: "Project type", value: "Capstone Project – Technical Course in Internet Systems" },
+                        { label: "Type", value: "Visual Identity" },
                         { label: "Year", value: "2024" },
                         { label: "Tools", value: "Figma" },
-                        { label: "Presentation Grade", value: "100%" }
+                        { label: "Grade", value: "100%" }
                     ]
                 },
                 {
                     section: "Research & Strategy",
-                    title: "UX Research – WorkingBrain",
+                    title: "UX Research - WorkingBrain",
                     description: "Research with students and teachers on digital education. Includes personas, empathy map, and user journey.",
                     category: ["UX Research", "Usability Testing"],
                     image: "/images/project-ux-research-workingbrain/capa-desktop.svg",
@@ -309,62 +304,56 @@ const Portfolio: React.FC = () => {
                     ctaText: "View Methodology",
                     year: "2024",
                     details: [
-                        { label: "Project type", value: "Capstone Project – Technical Course in Internet Systems" },
+                        { label: "Type", value: "UX Research" },
                         { label: "Year", value: "2024" },
-                        { label: "Participants", value: "Public school teachers and students" },
-                        { label: "Processes", value: "Empathize, Define, and Ideate" },
+                        { label: "Participants", value: "Target Audience" },
+                        { label: "Process", value: "Design Thinking" }
                     ]
                 }
             ]
         },
         es: {
-            sections: [
-                "Aplicaciones Móviles",
-                "Email Marketing",
-                "Sitio Web",
-                "Identidad Visual",
-                "Investigación & Estrategia"
-            ],
+            sections: ["Apps Móviles", "Email Marketing", "Sitio Web", "Identidad Visual", "Investigación"],
             projects: [
                 {
                     section: "Aplicaciones Móviles",
                     title: "WorkingBrain - Plataforma Educativa",
                     description: "App educativa con gamificación e informes de desempeño. Proyecto académico y personal enfocado en inclusión digital.",
-                    category: ["Aplicación Móvil", "Diseño UI", "Diseño UX", "Educación"],
+                    category: ["Móvil", "UI Design", "UX Design", "Educación"],
                     image: "/images/project-workingbrain-mobile/capa-desktop.svg",
                     mobileImage: "/images/project-workingbrain-mobile/slide1.svg",
                     link: "/projects/workingbrain-mobile",
-                    ctaText: "Ver Proyecto Completo",
+                    ctaText: "Ver Proyecto",
                     year: "2024",
                     details: [
-                        { label: "Tipo de proyecto", value: "Trabajo Final – Técnico en Informática para Internet" },
+                        { label: "Tipo", value: "Proyecto Final" },
+                        { label: "Stack", value: "React Native, Expo" },
                         { label: "Año", value: "2024" },
-                        { label: "Tecnologías", value: "React Native, Typescript, Expo" },
-                        { label: "Resultado", value: "+85 usuarios interesados" }
+                        { label: "Resultado", value: "+85 usuarios" }
                     ]
                 },
                 {
                     section: "Email Marketing",
-                    title: "Meu Aumigo – Email Marketing",
-                    description: "Correo electrónico HTML responsivo con animaciones CSS enfocado en conversión. Desarrollado como proyecto personal para simular una campaña real.",
-                    category: ["Email Marketing", "Motion Design", "Copywriting", "Campañas Creativas"],
+                    title: "Meu Aumigo - Email Marketing",
+                    description: "Correo HTML responsivo con animaciones CSS enfocado en conversión. Desarrollado como proyecto personal para simular una campaña real.",
+                    category: ["Email Marketing", "Motion Design", "Copywriting"],
                     image: "/images/project-meuaumigo/capa-desktop-es.svg",
                     mobileImage: "/images/project-meuaumigo/capa-mobile-es.svg",
                     link: "/projects/meu-aumigo",
                     ctaText: "Ver Campaña",
                     year: "2025",
                     details: [
-                        { label: "Tipo de proyecto", value: "Proyecto Personal" },
-                        { label: "Formato", value: "Correo HTML responsivo" },
+                        { label: "Tipo", value: "Proyecto Personal" },
+                        { label: "Formato", value: "HTML Responsivo" },
                         { label: "Año", value: "2025" },
-                        { label: "Conversión y Fidelización", value: "60%+ promedio" }
+                        { label: "Conversión", value: "+60% prom" }
                     ]
                 },
                 {
                     section: "Sitio Web",
                     title: "Portafolio LKS Data",
-                    description: "Proyecto integral para LKS Data con enfoque en soluciones digitales y visuales. Incluyó el desarrollo de un sitio institucional adaptable, identidad visual moderna, diseño de logotipo, emails HTML y optimización SEO.",
-                    category: ["Aplicación Web", "Diseño UX", "Diseño UI", "SEO", "Logo", "Identidad Visual", "Email HTML"],
+                    description: "Proyecto integral para LKS Data enfocado en soluciones digitales y visuales. Incluyó el desarrollo de un sitio institucional, identidad visual, logo, e-mails HTML e optimización SEO.",
+                    category: ["Web App", "UX Design", "UI Design", "SEO"],
                     image: "/images/project-lks/capa-desktop-es.png",
                     mobileImage: "/images/project-lks/capa-desktop-es.png",
                     link: "/projects/lks-data",
@@ -373,274 +362,98 @@ const Portfolio: React.FC = () => {
                     details: [
                         { label: "Cliente", value: "LKS Data" },
                         { label: "Año", value: "2025" },
-                        { label: "Tipo", value: "Portafolio Institucional" },
-                        { label: "Paquete", value: "Sitio Web, Email HTML, Logo, Identidad Visual" }
+                        { label: "Tipo", value: "Institucional" },
+                        { label: "Paquete", value: "Web, Email, Branding" }
                     ]
                 },
                 {
                     section: "Identidad Visual",
-                    title: "Identidad Visual y Mascota WorkingBrain",
-                    description: "Creación de identidad visual y mascota gamificada para una app multiplataforma. Dirección creativa completa.",
-                    category: ["Branding", "Diseño", "Ilustración", "Design Thinking"],
+                    title: "Marca WorkingBrain",
+                    description: "Creación de identidad visual y mascota gamificada para app multiplataforma. Dirección creativa completa.",
+                    category: ["Branding", "Diseño", "Ilustración"],
                     image: "/images/project-workingbrain/capa-desktop-es.png",
                     mobileImage: "/images/project-workingbrain/slide1-es.png",
                     link: "/projects/visual-identity-workingbrain",
                     ctaText: "Ver Detalles",
                     year: "2024",
                     details: [
-                        { label: "Tipo de proyecto", value: "Trabajo Final – Técnico en Informática para Internet" },
+                        { label: "Tipo", value: "Identidad Visual" },
                         { label: "Año", value: "2024" },
                         { label: "Herramientas", value: "Figma" },
-                        { label: "Evaluación Final", value: "100%" }
+                        { label: "Aprobación", value: "100%" }
                     ]
                 },
                 {
-                    section: "Investigación y Estrategia",
-                    title: "UX Research – WorkingBrain",
+                    section: "Investigación",
+                    title: "UX Research - WorkingBrain",
                     description: "Investigación con estudiantes y docentes sobre educación digital. Incluye personas, mapa de empatía y recorrido del usuario.",
-                    category: ["Investigación UX", "Pruebas de Usabilidad"],
+                    category: ["UX Research", "Pruebas Usabilidad"],
                     image: "/images/project-ux-research-workingbrain/capa-desktop.svg",
                     mobileImage: "/images/project-ux-research-workingbrain/slide1.svg",
                     link: "/projects/ux-research-workingbrain",
                     ctaText: "Ver Metodología",
                     year: "2024",
                     details: [
-                        { label: "Tipo de proyecto", value: "Trabajo Final – Técnico en Informática para Internet" },
+                        { label: "Tipo", value: "UX Research" },
                         { label: "Año", value: "2024" },
-                        { label: "Participantes", value: "Docentes y estudiantes de escuelas públicas" },
-                        { label: "Procesos", value: "Empatizar, Definir e Idear" },
+                        { label: "Participantes", value: "Público Alvo" },
+                        { label: "Proceso", value: "Design Thinking" }
                     ]
                 }
             ]
         }
     };
 
-    const {
-        sections,
-        projects: translatedProjects
-    } = translations[language] || translations['pt'];
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState<'left' | 'right' | null>(null);
-    const [activeSection, setActiveSection] = useState(0);
-    const [touchStartX, setTouchStartX] = useState<number | null>(null);
-    const [touchEndX, setTouchEndX] = useState<number | null>(null);
-    const carouselRef = useRef<HTMLDivElement>(null);
-
-    // Configuração para auto-rotatividade
-    useEffect(() => {
-        const interval = setInterval(() => {
-            handleNext();
-        }, 8000);
-        return () => clearInterval(interval);
-    }, [currentIndex]); // Only depend on currentIndex to reset timer
+    const { projects } = translations[language] || translations['pt'];
 
     const handleNext = () => {
-        setDirection('right');
-        setCurrentIndex(prev =>
-            prev >= translatedProjects.length - 1 ? 0 : prev + 1
-        );
-        setActiveSection(prev =>
-            prev >= sections.length - 1 ? 0 : prev + 1
-        );
+        setCurrentIndex((prev) => (prev + 1) % projects.length);
     };
 
     const handlePrev = () => {
-        setDirection('left');
-        setCurrentIndex(prev =>
-            prev <= 0 ? translatedProjects.length - 1 : prev - 1
-        );
-        setActiveSection(prev =>
-            prev <= 0 ? sections.length - 1 : prev - 1
-        );
-    };
-
-    const goToSection = (index: number) => {
-        setDirection(index > currentIndex ? 'right' : 'left');
-        setCurrentIndex(index);
-        setActiveSection(index);
-    };
-
-    // Handlers para touch events melhorados
-    const handleTouchStart = (e: React.TouchEvent) => {
-        setTouchStartX(e.targetTouches[0].clientX);
-        setTouchEndX(e.targetTouches[0].clientX); // Inicializa touchEndX também
-    };
-
-    const handleTouchMove = (e: React.TouchEvent) => {
-        setTouchEndX(e.targetTouches[0].clientX);
-    };
-
-    const handleTouchEnd = () => {
-        if (!touchStartX || !touchEndX) return;
-
-        const diffX = touchStartX - touchEndX;
-        const threshold = 50; // Limite mínimo para considerar o swipe
-
-        if (diffX > threshold) {
-            // Swipe para a esquerda (avançar)
-            handleNext();
-        } else if (diffX < -threshold) {
-            // Swipe para a direita (voltar)
-            handlePrev();
-        }
-    };
-
-    const variants = {
-        enter: (direction: 'left' | 'right') => ({
-            x: direction === 'right' ? 1000 : -1000,
-            opacity: 0
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: [0.32, 0.72, 0, 1]
-            }
-        },
-        exit: (direction: 'left' | 'right') => ({
-            x: direction === 'right' ? -1000 : 1000,
-            opacity: 0,
-            transition: {
-                duration: 0.4,
-                ease: [0.32, 0.72, 0, 1]
-            }
-        })
+        setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
     };
 
     return (
-        <section className="w-full px-4 md:px-8 pb-12 md:pb-20 relative max-w-7xl mx-auto">
-            {/* Seções do portfólio - Versão mobile scrollável */}
-            <div className="md:hidden overflow-x-auto py-4 mb-4 no-scrollbar">
-                <div className="flex space-x-2 px-2 w-max">
-                    {sections.map((section, index) => (
-                        <button
-                            key={index}
-                            onClick={() => goToSection(index)}
-                            className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all whitespace-nowrap ${activeSection === index
-                                ? 'bg-white dark:bg-gray-900 shadow-sm text-purple-600 dark:text-purple-400'
-                                : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700/50'
-                                }`}
-                        >
-                            {section}
-                        </button>
+        <div ref={containerRef} className="relative w-full py-12">
+            {/* Display Projects */}
+            <div className="relative min-h-[600px] flex items-center justify-center">
+                <AnimatePresence mode="wait">
+                    {projects.map((project, index) => (
+                        index === currentIndex && (
+                            <ProjectItem key={index} project={project} isActive={true} />
+                        )
                     ))}
-                </div>
+                </AnimatePresence>
             </div>
 
-            {/* Seções do portfólio - Versão desktop */}
-            <div className="hidden md:flex justify-center mb-8 md:mb-12">
-                <div className="inline-flex rounded-xl bg-gray-100 dark:bg-gray-800 p-1">
-                    {sections.map((section, index) => (
-                        <button
-                            key={index}
-                            onClick={() => goToSection(index)}
-                            className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${activeSection === index
-                                ? 'bg-white dark:bg-gray-900 shadow-sm text-purple-600 dark:text-purple-400'
-                                : 'text-gray-600 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700/50'
-                                }`}
-                        >
-                            {section}
-                        </button>
-                    ))}
-                </div>
-            </div>
-
-            {/* Carrossel com altura adaptável */}
-            <div className="relative overflow-hidden">
-                <div
-                    ref={carouselRef}
-                    className="relative h-[550px] md:h-[500px] flex items-center"
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                >
-                    <AnimatePresence custom={direction} initial={false}>
-                        <motion.div
-                            key={currentIndex}
-                            custom={direction}
-                            variants={variants as any}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            className="absolute inset-0 flex justify-center"
-                        >
-                            <ProjectItem
-                                project={translatedProjects[currentIndex]}
-                                isActive={true}
-                            />
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
-                {/* Controles - Mobile mais acessíveis */}
-                <div className="md:hidden flex justify-center space-x-4 mt-4">
-                    <motion.button
-                        onClick={handlePrev}
-                        className="p-2.5 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all"
-                        aria-label={language === 'en' ? 'Previous project' : 'Projeto anterior'}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <FiChevronLeft className="text-lg text-purple-600 dark:text-purple-400" />
-                    </motion.button>
-                    <motion.button
-                        onClick={handleNext}
-                        className="p-2.5 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all"
-                        aria-label={language === 'en' ? 'Next project' : 'Próximo projeto'}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <FiChevronRight className="text-lg text-purple-600 dark:text-purple-400" />
-                    </motion.button>
-                </div>
-
-                {/* Controles - Desktop */}
-                <motion.button
+            {/* Navigation Controls */}
+            <div className="flex justify-center items-center gap-6 mt-16">
+                <button
                     onClick={handlePrev}
-                    className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow transition-colors backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
-                    aria-label={language === 'en' ? 'Previous project' : 'Projeto anterior'}
+                    className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 border border-purple-100 dark:border-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shadow-lg hover:bg-purple-600 hover:text-white dark:hover:bg-purple-500 transition-all duration-300 active:scale-90"
                 >
-                    <FiChevronLeft className="text-xl text-purple-600 dark:text-purple-400" />
-                </motion.button>
-                <motion.button
-                    onClick={handleNext}
-                    className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow transition-colors backdrop-blur-sm bg-opacity-80 dark:bg-opacity-80"
-                    aria-label={language === 'en' ? 'Next project' : 'Próximo projeto'}
-                >
-                    <FiChevronRight className="text-xl text-purple-600 dark:text-purple-400" />
-                </motion.button>
+                    <FiChevronLeft size={30} />
+                </button>
 
-            </div>
-
-            {/* Indicadores de progresso */}
-            <div className="flex justify-center mt-6 md:mt-10">
-                <div className="w-full max-w-md bg-gray-100 dark:bg-gray-800 rounded-full h-1.5 md:h-2">
-                    <motion.div
-                        className="bg-gradient-to-r from-purple-600 to-blue-600 h-full rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{
-                            width: `${(currentIndex + 1) / translatedProjects.length * 100}%`,
-                            transition: { duration: 0.6 }
-                        }}
-                    />
+                <div className="flex gap-2">
+                    {projects.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={`h-2 rounded-full transition-all duration-500 ${index === currentIndex ? "w-12 bg-purple-600" : "w-2 bg-purple-200 dark:bg-purple-900"}`}
+                        />
+                    ))}
                 </div>
-            </div>
 
-            {/* Indicadores de pontos para mobile mais visíveis */}
-            <div className="md:hidden flex justify-center mt-4 space-x-2">
-                {translatedProjects.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => goToSection(index)}
-                        className={`w-2.5 h-2.5 rounded-full transition-all ${currentIndex === index
-                            ? 'bg-purple-600 w-4'
-                            : 'bg-gray-300 dark:bg-gray-600'
-                            }`}
-                        aria-label={`Go to project ${index + 1}`}
-                    />
-                ))}
+                <button
+                    onClick={handleNext}
+                    className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 border border-purple-100 dark:border-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400 shadow-lg hover:bg-purple-600 hover:text-white dark:hover:bg-purple-500 transition-all duration-300 active:scale-90"
+                >
+                    <FiChevronRight size={30} />
+                </button>
             </div>
-        </section>
+        </div>
     );
 };
 

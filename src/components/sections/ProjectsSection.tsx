@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useMemo } from "react";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import Projects from "@/components/Projects";
+import React, { useRef } from "react";
+import Portfolio from "@/components/Projects";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -10,11 +13,6 @@ interface Translation {
     title: string;
     subtitle: string;
     highlight: string;
-    firstText: string;
-    innovation: string;
-    and: string;
-    experience: string;
-    secondText: string;
 }
 
 interface Translations {
@@ -23,107 +21,92 @@ interface Translations {
 
 const ProjectsSection: React.FC = () => {
     const { language } = useTranslation();
-    // Objeto de tradução memoizado
-    const translations: Translations = useMemo(() => ({
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const translations: Translations = {
         pt: {
-            title: "PRINCIPAIS PROJETOS",
-            subtitle: "A Budri transforma ideias em ",
-            highlight: "soluções reais.",
-            firstText: "Confira alguns dos nossos principais projetos e veja como trazemos ",
-            innovation: "inovação",
-            and: "e",
-            experience: "experiência",
-            secondText: " em cada um deles.",
+            title: "Projetos em Destaque",
+            subtitle: "Uma seleção de trabalhos que unem ",
+            highlight: "DESIGN & TECNOLOGIA.",
         },
         es: {
-            title: "PRINCIPALES PROYECTOS",
-            subtitle: "Budri transforma ideas en ",
-            highlight: "soluciones reales.",
-            firstText: "Descubre algunos de nuestros principales proyectos y cómo aportamos ",
-            innovation: "innovación",
-            and: "y",
-            experience: "experiencia",
-            secondText: " en cada uno de ellos.",
+            title: "Proyectos Destacados",
+            subtitle: "Una selección de trabajos que unen ",
+            highlight: "DISEÑO & TECNOLOGÍA.",
         },
         en: {
-            title: "MAIN PROJECTS",
-            subtitle: "Budri transforms ideas into ",
-            highlight: "real solutions.",
-            firstText: "Check out some of our main projects and see how we bring ",
-            innovation: "innovation",
-            and: "and",
-            experience: "experience",
-            secondText: " to each of them.",
+            title: "Featured Projects",
+            subtitle: "A selection of works that combine ",
+            highlight: "DESIGN & TECHNOLOGY.",
         },
-    }), []);
+    };
 
-    // Seleciona os textos com base no idioma
-    const {
-        title,
-        subtitle,
-        highlight,
-        firstText,
-        innovation,
-        and,
-        experience,
-        secondText,
-    } = translations[language] || translations['pt'];
+    const { title, subtitle, highlight } = translations[language] || translations['pt'];
 
-    const { ref: titleRef, inView: titleInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-    const { ref: subtitleRef, inView: subtitleInView } = useInView({ triggerOnce: true, threshold: 0.1 });
-    const { ref: firstTextRef, inView: firstTextInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
 
-    const getAnimationClasses = (inView: boolean) =>
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10";
+    useGSAP(() => {
+        const blobs = gsap.utils.toArray('.projects-blob');
+        blobs.forEach((blob: any) => {
+            gsap.to(blob, {
+                x: "random(-60, 60)",
+                y: "random(-60, 60)",
+                duration: "random(6, 12)",
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+    }, { scope: containerRef });
 
     return (
-        <section className="bg-gradient-to-r pt-12 from-purple-200 to-blue-200 dark:from-purple-900 dark:to-blue-900 w-full text-gray-900 dark:text-white py-24 px-6 md:px-12" id="projects-section">
-            <div className="mx-auto text-center pt-12">
-                {/* Título da seção com animação */}
-                <h2
-                    ref={titleRef}
-                    className={`text-3xl font-semibold mb-8 leading-tight ${getAnimationClasses(titleInView)} transition-all duration-700 ease-out`}
-                >
-                    {title}
-                </h2>
+        <section
+            ref={containerRef}
+            className="relative bg-white dark:bg-gray-950 w-full py-24 px-6 md:px-12 overflow-hidden transition-colors duration-500"
+            id="projects-section"
+        >
+            {/* Background Decorations */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="projects-blob absolute top-1/4 -left-20 w-80 h-80 bg-purple-300/20 dark:bg-purple-900/10 rounded-full blur-3xl" />
+                <div className="projects-blob absolute bottom-1/3 -right-20 w-96 h-96 bg-blue-300/20 dark:bg-blue-900/10 rounded-full blur-3xl" />
+            </div>
 
-                {/* Linha decorativa */}
-                <div className="w-24 h-1 bg-gray-900 dark:bg-white mx-auto mt-8 mb-12"></div>
+            <div className="relative z-10 mx-auto max-w-7xl">
+                <div className="flex flex-col items-center text-center mb-16">
+                    <motion.h2
+                        ref={ref}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8 }}
+                        className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight"
+                    >
+                        {title}
+                    </motion.h2>
 
-                {/* Subtítulo com animação */}
-                <p
-                    ref={subtitleRef}
-                    className={`text-xl font-light mb-8 max-w-3xl text-gray-700 dark:text-gray-200 mx-auto ${getAnimationClasses(subtitleInView)} transition-all duration-700 ease-out`}
-                >
-                    {subtitle}
-                    <span className="text-gray-900 dark:text-white uppercase font-bold">
-                        {highlight}
-                    </span>
-                </p>
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={inView ? { scaleX: 1 } : {}}
+                        transition={{ duration: 1, delay: 0.3 }}
+                        className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-8"
+                    />
 
-                {/* Texto adicional com animação */}
-                <p
-                    ref={firstTextRef}
-                    className={`text-xl font-light mb-8 max-w-3xl text-gray-700 dark:text-gray-200 mx-auto ${getAnimationClasses(firstTextInView)} transition-all duration-700 ease-out`}
-                >
-                    {firstText}
-                    <span className="text-gray-900 dark:text-white uppercase font-bold">
-                        {innovation}
-                    </span>{" "}
-                    {and}{" "}
-                    <span className="text-gray-900 dark:text-white uppercase font-bold">
-                        {experience}
-                    </span>
-                    {secondText}
-                </p>
-
-                {/* Linha decorativa */}
-                <div className="w-24 h-1 bg-gray-600 dark:bg-gray-200 mx-auto mt-12 mb-12 transition-colors duration-300"></div>
-
-                {/* Exibição dos projetos */}
-                <div>
-                    <Projects />
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : {}}
+                        transition={{ delay: 0.5 }}
+                        className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl"
+                    >
+                        {subtitle}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 font-bold">
+                            {highlight}
+                        </span>
+                    </motion.p>
                 </div>
+
+                <Portfolio />
             </div>
         </section>
     );

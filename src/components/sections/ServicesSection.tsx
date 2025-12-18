@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import React, { useState, useEffect } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Services from "@/components/Services";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -22,9 +24,8 @@ interface Translations {
 
 const ServicesSection: React.FC = () => {
     const { language } = useTranslation();
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
 
-    // Objeto de tradução para os textos da seção
     const translations: Translations = {
         pt: {
             title: "A Budri não apenas cria designs, aqui nós criamos",
@@ -49,90 +50,94 @@ const ServicesSection: React.FC = () => {
         },
     };
 
-    // Seleciona os textos com base no idioma
     const { title, experiences, subtitle, highlight, restSubtitle } = translations[language] || translations['pt'];
 
-    // Detecta quando a seção entra na tela
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.2,
     });
 
-    useEffect(() => {
-        const theme = document.documentElement.classList.contains("dark");
-        setIsDarkMode(theme);
-
-        const handleThemeChange = () => {
-            const newTheme = document.documentElement.classList.contains("dark");
-            setIsDarkMode(newTheme);
-        };
-
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleThemeChange);
-        return () => {
-            window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", handleThemeChange);
-        };
-    }, []);
+    useGSAP(() => {
+        const blobs = gsap.utils.toArray('.services-blob');
+        blobs.forEach((blob: any) => {
+            gsap.to(blob, {
+                x: "random(-50, 50)",
+                y: "random(-50, 50)",
+                duration: "random(5, 10)",
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        });
+    }, { scope: containerRef });
 
     return (
         <section
-            ref={ref}
-            className="bg-purple-50 dark:bg-gray-900 w-full text-gray-800 dark:text-gray-100 py-16 px-6 md:px-12 transition-colors duration-300"
+            ref={containerRef}
+            className="relative bg-purple-50 dark:bg-gray-950 w-full py-24 px-6 md:px-12 overflow-hidden transition-colors duration-500"
             id="services-section"
         >
-            <div className="mx-auto text-center">
-                {/* Logo e Título */}
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                    className="mb-6"
-                >
-                    <div className="flex justify-center items-center">
+            {/* Background Decorations */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="services-blob absolute top-1/3 -right-20 w-80 h-80 bg-blue-300/20 dark:bg-blue-900/10 rounded-full blur-3xl opacity-60" />
+                <div className="services-blob absolute bottom-1/4 -left-20 w-64 h-64 bg-purple-300/20 dark:bg-purple-900/10 rounded-full blur-3xl opacity-60" />
+            </div>
+
+            <div className="relative z-10 mx-auto max-w-7xl">
+                <div className="flex flex-col items-center text-center mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={inView ? { opacity: 1, scale: 1 } : {}}
+                        className="mb-8"
+                    >
                         <Image
                             src="/images/logo/black-and-purple.svg"
                             alt="Logo Budri"
-                            width={40}
+                            width={160}
                             height={40}
-                            className="w-40 dark:hidden"
+                            className="w-32 md:w-40 dark:hidden"
                         />
                         <Image
                             src="/images/logo/white-and-purple.svg"
                             alt="Logo Budri"
-                            width={40}
+                            width={160}
                             height={40}
-                            className="w-40 hidden dark:block"
+                            className="w-32 md:w-40 hidden dark:block"
                         />
-                    </div>
+                    </motion.div>
 
-                    <h2 className="text-xl mt-8 font-semibold">
-                        {title} <br className="mb-8" />
-                        <span className="bg-gradient-to-r from-purple-700 to-blue-700 bg-clip-text text-transparent text-5xl font-bold leading-relaxed dark:bg-gradient-to-r dark:from-purple-500 dark:to-blue-500">
+                    <motion.h2
+                        ref={ref}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8 }}
+                        className="text-2xl md:text-3xl font-medium mb-4 max-w-4xl"
+                    >
+                        {title}
+                        <span className="block text-5xl md:text-7xl font-black mt-2 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 uppercase">
                             {experiences}
                         </span>
-                    </h2>
-                </motion.div>
+                    </motion.h2>
 
-                {/* Linha decorativa com delay */}
-                <motion.div
-                    initial={{ opacity: 0, scaleX: 0.5 }}
-                    animate={inView ? { opacity: 1, scaleX: 1 } : {}}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                    className="w-24 h-1 bg-gray-600 dark:bg-gray-200 mx-auto my-6 mb-10 transition-colors duration-300"
-                ></motion.div>
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={inView ? { scaleX: 1 } : {}}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="w-24 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full my-8"
+                    />
 
-                {/* Subtítulo com delay maior */}
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-                    className="text-xl mb-4"
-                >
-                    {subtitle}
-                    <span className="text-purple-700 dark:text-purple-400 font-bold">{highlight} </span>
-                    {restSubtitle}
-                </motion.p>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : {}}
+                        transition={{ delay: 0.7 }}
+                        className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl"
+                    >
+                        {subtitle}
+                        <span className="font-bold text-gray-900 dark:text-white uppercase mx-1 underline decoration-purple-500 decoration-4 underline-offset-4">{highlight}</span>
+                        {restSubtitle}
+                    </motion.p>
+                </div>
 
-                {/* Cards de serviços */}
                 <Services />
             </div>
         </section>

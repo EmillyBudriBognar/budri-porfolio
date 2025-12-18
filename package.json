@@ -12,8 +12,10 @@
   "dependencies": {
     "@babel/runtime": "~7.26.10",
     "@emailjs/browser": "^4.4.1",
+    "@gsap/react": "^2.1.2",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^12.0.6",
+    "gsap": "^3.14.2",
     "i18next": "^24.2.2",
     "lucide-react": "^0.474.0",
     "next": "15.2.8",
